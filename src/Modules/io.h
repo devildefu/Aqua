@@ -2,6 +2,12 @@
 #define __IO_H_
 #include "definitions.h"
 
-static inline uint8_t inb(uint16_t port);
+static inline uint8_t inb(uint16_t port) {
+	uint8_t ret;
+	asm volatile ("inb %1, %0"
+			: "=a"(ret)
+			: "Nd"(port) );
+	return ret;
+}
 
 #endif

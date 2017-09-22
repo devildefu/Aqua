@@ -2,7 +2,7 @@
 #define __VGA_H_
 
 void clear();
-void putchar(char character, int pos);
+void putchar(char character);
 void puts(const char* str);
 
 #endif

@@ -14,5 +14,6 @@ char getScancode() {
 }
 
 char getchar() {
-	//return scancode[getScancode()+1];	
+	//return scancode[getScancode()+1];
+	return 0;	
 }
