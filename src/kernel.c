@@ -1,7 +1,9 @@
 #include "Modules/vga.h"
+#include "Modules/keyboard.h"
 
 void kmain(void) {
 	clear();
-	puts("Hello!");
+	puts("litera:");
+    	putchar(getchar());	
 	return;
 }
