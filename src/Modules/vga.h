@@ -9,5 +9,6 @@ void clear();
 void putchar(char character);
 void puts(const char* str);
 void color(uint16_t color);
+static void vga_scroll();
 
 #endif
