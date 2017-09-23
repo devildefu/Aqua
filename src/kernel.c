@@ -3,9 +3,7 @@
 
 void kmain(void) {
 	clear();
-	//char key = getScancode();
-	puts("NO SIEMA!\n");
-	putchar('k');
-	puts("ELO");
+	puts("Letter:");
+    	putchar(getchar());	
 	return;
 }

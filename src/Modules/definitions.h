@@ -9,5 +9,6 @@ typedef signed short s16int;
 typedef unsigned char uint8_t;
 typedef unsigned char u8int;
 typedef signed char s8int;
+typedef enum { false = 0, true = 1 } bool;
 
 #endif
