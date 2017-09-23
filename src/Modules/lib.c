@@ -2,6 +2,7 @@
 
 void atoi(char *str, int* a)
 {
+    #include "vga.h"
     int k = 0;
     while(*str)
     {

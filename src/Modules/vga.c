@@ -17,7 +17,6 @@ void putchar(char character) {
 		i += 2;
 	}
 	vga_buffer[i] = character;
-	vga_buffer[i+1] = 0x07;
 }
 
 void puts(const char* string) {
@@ -27,4 +26,12 @@ void puts(const char* string) {
 		putchar(string[i]);
 		i += 1;
  	}
+}
+
+void color(uint16_t color) {
+	unsigned short i = 0;
+	while(i < 80 * 25 * 2) {
+		vga_buffer[i+1] = color;
+		i += 2;
+	}
 }
