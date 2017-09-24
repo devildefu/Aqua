@@ -39,12 +39,4 @@ void color(uint16_t color) {
 		i += 2;
 	}
 }
-static void vga_scroll()
-{
-	int i;
-	for (i = 0; i < SCREEN_WIDTH * (SCREEN_HEIGHT - 1); ++i)
-		vga_mem[i] = vga_mem[i + SCREEN_WIDTH];
 
-	for(i = 0; i < SCREEN_WIDTH; ++i)
-		vga_mem[SCREEN_WIDTH * (SCREEN_HEIGHT - 1) + i] = 3872; 
-}
