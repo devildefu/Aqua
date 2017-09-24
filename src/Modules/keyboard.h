@@ -2,6 +2,6 @@
 #define __KEYBOARD_H_
 
 char getScancode();
-char getchar();
+char getch();
 
 #endif
