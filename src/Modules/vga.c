@@ -1,8 +1,5 @@
 #include "vga.h"
-#define SCREEN_HEIGHT 25
-#define SCREEN_WIDTH 80
 
-static u16int* vga_mem;
 char* vga_buffer = (char*)0xb8000;
  
 void clear() {
@@ -39,12 +36,4 @@ void color(uint16_t color) {
 		i += 2;
 	}
 }
-static void vga_scroll()
-{
-	int i;
-	for (i = 0; i < SCREEN_WIDTH * (SCREEN_HEIGHT - 1); ++i)
-		vga_mem[i] = vga_mem[i + SCREEN_WIDTH];
 
-	for(i = 0; i < SCREEN_WIDTH; ++i)
-		vga_mem[SCREEN_WIDTH * (SCREEN_HEIGHT - 1) + i] = 3872; 
-}
