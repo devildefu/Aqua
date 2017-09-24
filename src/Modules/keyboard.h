@@ -2,7 +2,7 @@
 #define __KEYBOARD_H_
 
 char getScancode();
-char getch();
+char getchar();
 
 //////////
 ///STR////
