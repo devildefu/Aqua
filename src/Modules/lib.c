@@ -39,3 +39,8 @@ void* memcpy(void* destination, const void* from, unsigned int block_size) {
     }
     return destination;
 }
+
+void tsleep(int ms) {
+     ms *= 1000; 
+     for(int i = 0; i<ms; i++) {}
+ }
