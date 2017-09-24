@@ -1,4 +1,5 @@
 #include "lib.h"
+#include "definitions.h"
 
 void atoi(char *str, int* a)
 {
