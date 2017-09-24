@@ -1,8 +1,5 @@
 #include "vga.h"
-#define SCREEN_HEIGHT 25
-#define SCREEN_WIDTH 80
 
-static u16int* vga_mem;
 char* vga_buffer = (char*)0xb8000;
  
 void clear() {
