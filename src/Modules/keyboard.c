@@ -1,6 +1,7 @@
 #include "keyboard.h"
 #include "io.h"
 #include "lib.h"
+#include "definitions.h"
 
 #define NULL 0
 
