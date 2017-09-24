@@ -10,5 +10,7 @@ void free(void* ptr); //<- Not now, maybe tomorrow
 int memcmp(const void* a, const void* b, unsigned int size);
 void* memcpy(void* destination, const void* from, unsigned int block_size);
 
+void tsleep(int ms); //<- waits some time
+
 
 #endif
