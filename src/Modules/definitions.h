@@ -1,6 +1,10 @@
 #ifndef __DEFINITIONS_H_
 #define __DEFINITIONS_H_
 
+#define memSize_b 10240
+#define memPos 0x1010
+#defome memShortSize memSize_b / 8
+
 #define null 0
 #define NULL 0
 typedef long long int64_t;
