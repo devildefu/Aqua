@@ -8,7 +8,7 @@ void kmain(void) {
 	//screen.a = 'A';
 	color(0x37);
 	puts("Hello!");
-	putchar(getch());
+	putchar(getchar());
 	//putchar(screen.a);	
 	return;
 }
