@@ -30,6 +30,7 @@ void* malloc(size_t size) {
     if(size > 0) {
         for(uint32_t i = 0; i<memShortSize; i++) {
             uint32_t counter = findBit(i);
+            //TODO Make it workable
         }
     }
     return NULL;
