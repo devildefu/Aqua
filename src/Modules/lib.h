@@ -1,6 +1,6 @@
 #ifndef __LIB_H_
 #define __LIB_H_
-#include "address.h"
+#include "definitions.h"
 
 void atoi(char *str, int* a);
 
