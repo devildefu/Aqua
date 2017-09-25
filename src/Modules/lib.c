@@ -1,5 +1,6 @@
 #include "lib.h"
 #include "definitions.h"
+#include "adress.h"
 
 void atoi(char *str, int* a)
 {
