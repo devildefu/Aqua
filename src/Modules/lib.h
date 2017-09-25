@@ -4,8 +4,7 @@
 void atoi(char *str, int* a);
 
 ///SYS////
-#define memSize_b 10240
-#define memPos 0x1010
+
  extern struct _byte_ {
   char _1:1, _2:1, _3:1, _4:1,
        _5:1, _6:1, _7:1, _8:1;
