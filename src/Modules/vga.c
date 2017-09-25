@@ -39,7 +39,7 @@ void color(uint16_t color) {
 
 void gotoxy(int x, int y) {
 	int* cursor_x = (int*)0x1002;
-	int* cursor_y = (int*)0x1003;
+	int* cursor_y = (int*)0x1006;
 	*cursor_x = x;
 	*cursor_y = y;
 }
