@@ -3,8 +3,6 @@
 
 //#include "definitions.h"
 
-typedef unsigned int uint16_t;
-
 void clear();
 void putchar(char character);
 void puts(const char* str);
