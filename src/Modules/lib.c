@@ -15,10 +15,6 @@ void atoi(char *str, int* a)
 
 //////////
 ///SYS////
-struct used_mem {
-    char bits:1[8];
-}
-
 void* malloc(unsigned size); //<- Not now, maybe tomorrow
 void free(void* ptr); //<- Not now, maybe tomorrow
 
