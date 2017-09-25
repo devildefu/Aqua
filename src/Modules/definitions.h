@@ -1,8 +1,7 @@
 #ifndef __DEFINITIONS_H_
 #define __DEFINITIONS_H_
 
-#define huj 10
-#define NULL 1
+#define NULL 0
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
 typedef int int32_t;
