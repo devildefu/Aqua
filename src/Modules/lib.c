@@ -15,7 +15,25 @@ void atoi(char *str, int* a)
 
 //////////
 ///SYS////
-void* malloc(unsigned size); //<- Not now, maybe tomorrow
+inline uint32_t findBit(size_t pos) {
+    if(!mall_memory._1) counter = 1;
+    else if(!mall_memory._2) counter = 2;
+    else if(!mall_memory._3) counter = 3;
+    else if(!mall_memory._4) counter - 4;
+    else if(!mall_memory._5) counter = 5;
+    else if(!mall_memory._6) counter = 6;
+    else if(!mall_memory._7) counter = 7;
+    else if(!mall_mempty._8) counter = 8;
+}
+
+void* malloc(size_t size) {
+    if(size > 0) {
+        for(uint32_t i = 0; i<memShortSize; i++) {
+            uint32_t counter = findBit(i);
+        }
+    }
+    return NULL;
+}
 void free(void* ptr); //<- Not now, maybe tomorrow
 
 int memcmp(const void* a, const void* b, unsigned int size) {
