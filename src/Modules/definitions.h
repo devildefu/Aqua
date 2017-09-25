@@ -1,6 +1,7 @@
 #ifndef __DEFINITIONS_H_
 #define __DEFINITIONS_H_
 
+#define null 0
 #define NULL 0
 typedef long long int64_t;
 typedef unsigned long long uint64_t;
