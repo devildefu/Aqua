@@ -34,8 +34,8 @@ char getchar() {
 	int n = sizeof(scancodes)/sizeof(scancodes[0]);
 	for(int i=0; i < n+1; i++) {
 		if(scancodes[i]==the_scancode) {
+			outb(0x60,0);
 			return codestrans[i];
-			break;
 		}
 	}
 	return ';';
