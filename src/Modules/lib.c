@@ -15,7 +15,8 @@ void atoi(char *str, int* a)
 
 //////////
 ///SYS////
-inline uint32_t blockBit(size_t pos_
+inline uint32_t blockBit(size_t pos) {
+}
 
 inline uint32_t findBit(size_t pos, char block) {
     if(pos < memShortSize) {
