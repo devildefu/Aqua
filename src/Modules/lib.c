@@ -15,7 +15,22 @@ void atoi(char *str, int* a)
 
 //////////
 ///SYS////
-inline uint32_t blockBit(size_t pos) {
+
+///TO DO Operation on bits and malloc
+
+inline int editBit(size_t pos, size_t)
+
+inline void blockBit(size_t pos, size_t bit) {
+    if(pos < memShortSize) {
+        if(!mall_memory[pos]._1) return 1;
+        if(!mall_memory[pos]._2) return 2;
+        if(!mall_memory[pos]._3) return 3;
+        if(!mall_memory[pos]._4) return 4;
+        if(!mall_memory[pos]._5) return 5;
+        if(!mall_memory[pos]._6) return 6;
+        if(!mall_memory[pos]._7) return 7;
+        if(!mall_memory[pos]._8) return 8;
+    }
 }
 
 inline uint32_t findBit(size_t pos, char block) {
