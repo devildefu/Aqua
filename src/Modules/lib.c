@@ -16,14 +16,15 @@ void atoi(char *str, int* a)
 //////////
 ///SYS////
 inline uint32_t findBit(size_t pos) {
-    if(!mall_memory._1) counter = 1;
-    else if(!mall_memory._2) counter = 2;
-    else if(!mall_memory._3) counter = 3;
-    else if(!mall_memory._4) counter = 4;
-    else if(!mall_memory._5) counter = 5;
-    else if(!mall_memory._6) counter = 6;
-    else if(!mall_memory._7) counter = 7;
-    else if(!mall_mempty._8) counter = 8;
+    if(!mall_memory._1) returm 1;
+    if(!mall_memory._2) return 2;
+    if(!mall_memory._3) return 3;
+    if(!mall_memory._4) return 4;
+    if(!mall_memory._5) return 5;
+    if(!mall_memory._6) return 6;
+    if(!mall_memory._7) return 7;
+    if(!mall_mempty._8) return 8;
+    return 0;
 }
 
 void* malloc(size_t size) {
