@@ -16,7 +16,7 @@ void atoi(char *str, int* a)
 //////////
 ///SYS////
 inline uint32_t findBit(size_t pos) {
-    if(!mall_memory._1) returm 1;
+    if(!mall_memory._1) return 1;
     if(!mall_memory._2) return 2;
     if(!mall_memory._3) return 3;
     if(!mall_memory._4) return 4;
