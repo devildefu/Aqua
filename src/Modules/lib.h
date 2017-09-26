@@ -11,7 +11,7 @@ void atoi(char *str, int* a);
        _5:1, _6:1, _7:1, _8:1;
 } mall_memory[memShortSize]; 
 
-inline uint32_t blockBit(size_t pos);
+inline void blockBit(size_t pos, size_t bit);
 inline uint32_t findBit(size_t pos, char block);
 
 void* malloc(unsigned size); //<- Not now, maybe tomorrow
