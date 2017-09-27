@@ -2,8 +2,6 @@
 #define __LIB_H_
 #include "definitions.h"
 
-void atoi(char *str, int* a);
-
 ///SYS////
 extern char memory_allocated[memShortSize];
 
