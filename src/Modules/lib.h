@@ -16,8 +16,10 @@ void set_bit(char* _byte_, unsigned char bit);
 ////////////////////////////
 //BASIC RAM CONTROL
 
-void* malloc(unsigned size); //<- Not now, maybe tomorrow
-void free(void* ptr); //<- Not now, maybe tomorrow
+void* malloc(size_t size);
+void free(void* ptr);
+void* calloc(size_t nmemb, size_t size);
+void* realloc(void* ptr, size_t size);
 
 /////////////////////////////
 //MEMORY CONTROL
