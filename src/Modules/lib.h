@@ -2,7 +2,8 @@
 #define __LIB_H_
 #include "definitions.h"
 
-///SYS////
+///////////////////////////
+//SYS
 extern char memory_allocated[memShortSize];
 
 ///////////////////////////
