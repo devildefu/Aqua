@@ -73,9 +73,15 @@
 typedef struct{
   char vendor[13];
   char name[48];
-  char* feature[4];
-  char* instructions[11];
+  char* feature[4]; 	  // Do not edit
+  char* instructions[11]; // ^
 } CPU_INFO;
+
+static void CPU_INFO_INIT(CPU_INFO* obj) {
+	if(obj == NULL) return;
+	for(uint32_t i = 0; i<4; i++) obj->feature[0] = "\0";
+	for(uint32_t i = 0; i<11; i++) obj->instructions[11] = "\0";
+}
 
 static inline void cpuid(uint32_t reg, uint32_t* eax, uint32_t* ebx, uint32_t* ecx, uint32_t* edx) {
 	asm volatile( "cpuid"
@@ -83,7 +89,28 @@ static inline void cpuid(uint32_t reg, uint32_t* eax, uint32_t* ebx, uint32_t* e
 		    : "0" (reg) );
 }
 
-CPU_INFO CPUInfo() {
+static const CPU_INFO CPUInfo() {
+	//Structure
+	CPU_INFO cpu_data;
+	CPU_INFO_INIT(&cpu_data);
+	
+	//Variables for store cpuid return data
+	uint32_t eax, ebx, ecx, edx;
+	
+	//Get vendor
+	cpuid(0x0, &eax, (uint32_t*)(cpu_data.vendor), (uint32_t*)(cpu_data.vendor + 8), (uint32_t*)(cpu_data.vendor + 4));
+	cpu_data.vendor[12] = '\0';
+	
+	//Function 0x01
+	if(eax >= 0x01) {
+		//Features and instructions
+		cpuid(0x01,&eax, &ebx, &ecx, &edx);
+		if(edx & EDX_PSE)
+		if(edx & EDX_PAE)
+		if(edx & EDX_APIC)
+		if(edx & EDX_MTRR)
+		
+	}
 	
 }
 
