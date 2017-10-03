@@ -2,8 +2,8 @@
 #define TIME_H
 
 #include "definitions.h"
-#define ClocksPerSecond 1000
 #define ClocksPerMilisecond 1
+#define ClocksPerSecond ClocksPerMilisecond * 1000
 
 
 static inline uint64_t clock() {
