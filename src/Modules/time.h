@@ -3,12 +3,13 @@
 
 #include "definitions.h"
 #define ClocksPerSecond 1000
+#define ClocksPerMilisecond 1
 
 
 static inline uint64_t clock() {
-  	uint64_t time;
-  	asm volatile ("rdtsc" : "=A"(time));
-  	return time;
+  	uint32_t low, high;
+  	asm volatile ("rdtsc" : "=a"(low), "=d"(high));
+  	return ((uint64_t)hi << 32) | lo;
 }
 
 static void wait(uint64_t ms) {
