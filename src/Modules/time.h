@@ -1,3 +1,6 @@
+#ifndef TIME_H
+#define TIME_H
+
 #include "definitions.h"
 #define ClocksPerSecond 1000
 
@@ -12,6 +15,8 @@ static void wait(uint64_t ms) {
   int64_t now = clock();
   while(clock() <= now+ms) {}
 }
+
+#endif
 
 
 
