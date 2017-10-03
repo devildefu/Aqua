@@ -101,6 +101,10 @@ static const CPU_INFO CPUInfo() {
 	cpuid(0x0, &eax, (uint32_t*)(cpu_data.vendor), (uint32_t*)(cpu_data.vendor + 8), (uint32_t*)(cpu_data.vendor + 4));
 	cpu_data.vendor[12] = '\0';
 	
+	/*
+	////////////////////////////
+	///////////////////SOON/////
+	///////////////////////////
 	//Function 0x01
 	if(eax >= 0x01) {
 		//Features and instructions
@@ -111,6 +115,8 @@ static const CPU_INFO CPUInfo() {
 		if(edx & EDX_MTRR)
 		
 	}
+	*/
+	return cpu_data;
 	
 }
 
