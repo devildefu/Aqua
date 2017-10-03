@@ -1,7 +1,7 @@
 #ifndef __VGA_H_
 #define __VGA_H_
 
-//#include "definitions.h"
+#include "definitions.h"
 
 void clear();
 void putchar(char character);

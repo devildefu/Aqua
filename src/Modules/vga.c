@@ -1,4 +1,5 @@
 #include "vga.h"
+#include "definitions.h"
 
 char* vga_buffer = (char*)0xb8000;
  
@@ -18,6 +19,8 @@ void putchar(char character) {
 		i += 2;
 	}
 	vga_buffer[i] = character;
+	uint16_t* color = (uint16_t*)0x1001;
+	vga_buffer[i+1] = *color;
 }
 
 void puts(const char* string) {
@@ -30,16 +33,10 @@ void puts(const char* string) {
 }
 
 void color(uint16_t color) {
-	unsigned short i = 0;
-	while(i < 80 * 25 * 2) {
-		vga_buffer[i+1] = color;
-		i += 2;
-	}
+	uint16_t* colptr = (uint16_t*)0x1001;
+	*colptr = color;
 }
 
 void gotoxy(int x, int y) {
-	int* cursor_x = (int*)0x1002;
-	int* cursor_y = (int*)0x1006;
-	*cursor_x = x;
-	*cursor_y = y;
+	
 }

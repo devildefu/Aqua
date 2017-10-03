@@ -52,7 +52,7 @@ char getchar() {
 	return ';';
 }
 
-
+/*
 ////DARK////
 char* getStringn(unsigned int size) {
     if(size>0) {
@@ -136,3 +136,4 @@ int strcmp(const char* a, const char* b) {
     return -1;
     
 }
+*/

@@ -1,6 +1,7 @@
 #include "lib.h"
 #include "definitions.h"
 
+/*
 //////////
 ///SYS////
 
@@ -67,3 +68,4 @@ void* memcpy(void* destination, const void* from, unsigned int block_size) {
     }
     return destination;
 }
+*/

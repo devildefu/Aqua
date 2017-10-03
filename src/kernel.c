@@ -1,14 +1,12 @@
 #include "Modules/vga.h"
 #include "Modules/keyboard.h"
-
-//VGAScreen screen;
+#include "Modules/time.h"
 
 void kmain(void) {
 	clear();
-	//screen.a = 'A';
-	color(0x37);
+	color(0x07);
 	puts("Hello!");
-	putchar(getchar());
-	//putchar(screen.a);	
+	color(0x37);
+	puts("BFUBUBUIbuif");
 	return;
 }
