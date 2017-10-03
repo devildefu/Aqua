@@ -14,9 +14,7 @@ static inline uint64_t clock() {
 
 static void wait(uint64_t ms) {
   	int64_t now = clock();
-  	while(clock() <= now+ms) {
-		
-	}
+  	while(clock() <= now+ms) {}
 }
 
 #endif
