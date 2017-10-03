@@ -3,6 +3,8 @@
 
 #include "definitions.h"
 #define ClocksPerMilisecond 1
+#define ClocksPerDecisecond ClocksPerMilisecond * 10
+#define ClocksPerCentisecond ClocksPerMilisecond * 100
 #define ClocksPerSecond ClocksPerMilisecond * 1000
 
 
