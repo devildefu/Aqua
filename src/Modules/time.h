@@ -11,7 +11,7 @@
 static inline uint64_t clock() {
   	uint32_t low, high;
   	asm volatile ("rdtsc" : "=a"(low), "=d"(high));
-  	return ((uint64_t)hi << 32) | lo;
+  	return ((uint64_t)high << 32) | low;
 }
 
 static void wait(uint64_t ms) {
