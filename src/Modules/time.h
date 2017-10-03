@@ -2,10 +2,15 @@
 #define ClocksPerSecond 1000
 
 
-static inline int64_t clock() {
-  int64_t time;
+static inline uint64_t clock() {
+  uint64_t time;
   _asm("rdtsc" : "=a"(time));
   return time;
+}
+
+static void wait(uint64_t ms) {
+  int64_t now = clock();
+  while(clock() <= now+ms) {}
 }
 
 
