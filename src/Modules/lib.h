@@ -26,11 +26,5 @@ void* realloc(void* ptr, size_t size);
 int memcmp(const void* a, const void* b, unsigned int size);
 void* memcpy(void* destination, const void* from, unsigned int block_size);
 
-//////////////////////////////
-//CLOCKS AND TIME
-
-void sleep(int ms); //<- Waits until time expires
-int clock(); //<- Returns processor clock
-
 
 #endif
