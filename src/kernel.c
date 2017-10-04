@@ -4,10 +4,11 @@
 #include "Modules/time.h"
 
 void kmain(void) {
+	initTimer();
+	
 	clear();
-	double d = 50.54;
-	char str[6];
-	d2s(d,str,6,'.');
+	char str[10];
+	d2s(clock(),str,10,'.');
 	puts(str);
 	return;
 }
