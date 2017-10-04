@@ -15,8 +15,8 @@
 #define ClocksPerYear ClocksPerDay * 365
 
 extern struct {
-  uint64_t start;
-} start_clocks;
+    uint64_t start;
+}   start_clocks;
 
 static inline uint64_t rdtsc() {
   	uint32_t low, high;
@@ -25,17 +25,17 @@ static inline uint64_t rdtsc() {
 }
 
 static int64_t clock() {
-  return rdtsc() - start_clocks.start;
+    return rdtsc() - start_clocks.start;
 }
 
 static void wait(uint64_t ms) {
-  	int64_t now = clock();
+    int64_t now = clock();
     int64_t end = now+ms;
-  	while(clock() <= end) {}
+   while(clock() <= end) {}
 }
 
 static void initTimer() {
-  start_clocks.start = rdtsc();
+    start_clocks.start = rdtsc();
 }
 
 #endif
