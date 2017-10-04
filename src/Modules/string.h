@@ -2,6 +2,8 @@
 
 void atoi(char *str, int* a);
 
+void double_to_string(double n, char* string, char dot) //<- Converts number to string
+
 char* getStringn(unsigned int size); //<- Usses malloc. Adds chars from keyboard up to given limit
 char* getStringc(char CHAR); //<- Usses malloc. Adds chars from keyboard until char is the same as given
 
