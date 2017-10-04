@@ -8,7 +8,13 @@ void kmain(void) {
 	
 	clear();
 	char str[10];
+	
+	d2s(rdtsc(),str,10,'.');
+	puts("rdtsc: ");
+	puts(str);
+	
 	d2s(clock(),str,10,'.');
+	puts("  || clock: ");
 	puts(str);
 	return;
 }
