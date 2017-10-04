@@ -12,8 +12,6 @@ void atoi(char *str, int* a)
     *a = k;
 }
 
-
-////DARK////
 char* getStringn(unsigned int size) {
     if(size>0) {
         char* string;
