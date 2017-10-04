@@ -5,9 +5,9 @@
 
 void kmain(void) {
 	clear();
-	color(0x07);
-	puts("Hello!");
-	color(0x37);
-	puts("BFUBUBUIbuif");
+	double d = 50.54;
+	char str[6]]
+	d2s(d,str,6,'.');
+	puts(str);
 	return;
 }
