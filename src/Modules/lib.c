@@ -47,6 +47,8 @@ void* malloc(size_t size) {
 }
 void free(void* ptr); //<- Not now, maybe tomorrow
 
+*/
+
 int memcmp(const void* a, const void* b, unsigned int size) {
     if(size>0) {
         unsigned int goodbytes = 0;
@@ -68,4 +70,13 @@ void* memcpy(void* destination, const void* from, unsigned int block_size) {
     }
     return destination;
 }
-*/
+
+void* memset(void* ptr, char value, size_t num) {
+    if(block_size>0) {
+        for(int i = 0; i<block_size; i++) {
+            ((char*)ptr)[i] = value;
+        }
+    }
+    return ptr;
+}
+
