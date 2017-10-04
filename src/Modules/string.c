@@ -19,15 +19,21 @@ void d2s(double d, char* string, size_t size, char dot) {
     char isFloat = 0; if(d-(int64_t)d>0) isFloat = 1;
     size_t tab_n = 0; string[tab_n] = '\0';
     if(isMinus) {string[tab_n] = '-'; tab_n++; d=-d;}
-    int64_t minus_pos = d;
+    int64_t dot_pos = d;
     do {
         d/=10;
     }
     while(d>0);
     int64_t temp = 0;
+    char dotSet = 0;
     while(d != (int64_t)d) {
         if(tab_n >= size) return;
-        else if(tab_n < size-1) {string[tab_n] = '\0'; return'}
+        else if(tab_n < size-1) {string[tab_n] = '\0'; return;}
+        if((int64_t)d == dot_pos && !dotSet) {
+            string[tab_n] = dot;
+            ++tab_n;
+            dotSet = 1;
+        }
         d*=10;
         string[tab_n] = '0' + ( (int64_t)d - temp*10 );
         ++tab_n;
