@@ -1,4 +1,5 @@
 #include "string.h"
+#include "definitions.h"
 
 void atoi(char *str, int* a)
 {
@@ -10,6 +11,22 @@ void atoi(char *str, int* a)
         str++;
     }
     *a = k;
+}
+
+void d2s(double d, char* string, size_t size, char dot) {
+    if(size < 0) return;
+    char isMinus = 0; if(d < 0) isMinus = 1;
+    char isFloat = 0; if(d-(int64_t)d>0) isFloat = 1;
+    size_t tab_n = 0;
+    if(isMinus) {string[tab_n] = '-'; tab_n++; d=-d;}
+    double left = (int64_t)d; double temp = left;
+    do {
+        if(tab_n >= size) return;
+        left/=10;
+        string[tab_n]
+        
+    }
+    
 }
 
 char* getStringn(unsigned int size) {
