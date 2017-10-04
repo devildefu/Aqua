@@ -14,16 +14,28 @@
 #define ClocksPerYearQuater ClocksPerMonth * 4
 #define ClocksPerYear ClocksPerDay * 365
 
+extern struct {
+  uint64_t start;
+} start_clocks;
 
-static inline uint64_t clock() {
+static inline uint64_t rdtsc() {
   	uint32_t low, high;
   	asm volatile ("rdtsc" : "=a"(low), "=d"(high));
   	return ((uint64_t)high << 32) | low;
 }
 
+static int64_t clock() {
+  return rdtsc() - start_clocks.start;
+}
+
 static void wait(uint64_t ms) {
   	int64_t now = clock();
-  	while(clock() <= now+ms) {}
+    int64_t end = now+ms;
+  	while(clock() <= end) {}
+}
+
+static void initTimer() {
+  start_clocks.start = rdtsc();
 }
 
 #endif
