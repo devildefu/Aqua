@@ -6,7 +6,7 @@
 void kmain(void) {
 	clear();
 	double d = 50.54;
-	char str[6]]
+	char str[6];
 	d2s(d,str,6,'.');
 	puts(str);
 	return;
