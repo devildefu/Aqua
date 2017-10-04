@@ -1,9 +1,9 @@
 #include "string.h"
 #include "definitions.h"
+#include "vga.h"
 
 void atoi(char *str, int* a)
 {
-    #include "vga.h"
     int k = 0;
     while(*str)
     {
@@ -19,13 +19,20 @@ void d2s(double d, char* string, size_t size, char dot) {
     char isFloat = 0; if(d-(int64_t)d>0) isFloat = 1;
     size_t tab_n = 0;
     if(isMinus) {string[tab_n] = '-'; tab_n++; d=-d;}
-    double left = (int64_t)d; double temp = left;
+    double left = (int64_t)d; int64_t temp = left;
     do {
         if(tab_n >= size) return;
         left/=10;
-        string[tab_n]
-        
+        if(tab_n < size-1)
+            string[tab_n] = '0'+temp - ( (int64_t)left * 10 );
+        else
+            string[tab_n] = '\0';
+        tab_n++;
     }
+    while(left > 0);
+    if(tab_n >= size) return;
+    string[tab_n] = '\0';
+    
     
 }
 
