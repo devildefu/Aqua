@@ -16,17 +16,6 @@ char codestrans[] =
 '`','\\','z','x','c','v','b','n','m',',','.','/','*',' ','7','8','9','-',
 '4','5','6','+','1','2','3','0','.',13,27,127,127,15,14,32,8};
 
-void atoi(char *str, int* a)
-{
-    #include "vga.h"
-    int k = 0;
-    while(*str)
-    {
-        k = (k<<3)+(k<<1)+(*str)-'0';
-        str++;
-    }
-    *a = k;
-}
 
 char getScancode() {
 	char c=0;
