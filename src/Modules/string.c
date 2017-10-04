@@ -27,12 +27,10 @@ void d2s(double d, char* string, size_t size, char dot) {
     int64_t temp = 0;
     while(d != (int64_t)d) {
         if(tab_n >= size) return;
+        else if(tab_n < size-1) {string[tab_n] = '\0'; return'}
         d*=10;
-        if(tab_n < size-1) {
-            string[tab_n] = '0' + ( (int64_t)d - temp*10 );
-        }
-        else {string[tab_n] = '\0';}
-        ++tab_n
+        string[tab_n] = '0' + ( (int64_t)d - temp*10 );
+        ++tab_n;
     }
 }
 
