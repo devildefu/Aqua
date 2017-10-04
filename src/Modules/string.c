@@ -17,23 +17,23 @@ void d2s(double d, char* string, size_t size, char dot) {
     if(size < 0) return;
     char isMinus = 0; if(d < 0) isMinus = 1;
     char isFloat = 0; if(d-(int64_t)d>0) isFloat = 1;
-    size_t tab_n = 0;
+    size_t tab_n = 0; string[tab_n] = '\0';
     if(isMinus) {string[tab_n] = '-'; tab_n++; d=-d;}
-    double left = (int64_t)d; int64_t temp = left;
+    int64_t minus_pos = d;
     do {
-        if(tab_n >= size) return;
-        left/=10;
-        if(tab_n < size-1)
-            string[tab_n] = '0'+temp - ( (int64_t)left * 10 );
-        else
-            string[tab_n] = '\0';
-        tab_n++;
+        d/=10;
     }
-    while(left > 0);
-    if(tab_n >= size) return;
-    string[tab_n] = '\0';
-    
-    
+    while(d>0);
+    int64_t temp = 0;
+    while(d != (int64_t)d) {
+        if(tab_n >= size) return;
+        d*=10;
+        if(tab_n < size-1) {
+            string[tab_n] = '0' + ( (int64_t)d - temp*10 );
+        }
+        else {string[tab_n] = '\0';}
+        ++tab_n
+    }
 }
 
 char* getStringn(unsigned int size) {
