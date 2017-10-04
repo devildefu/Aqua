@@ -13,6 +13,8 @@ void kmain(void) {
 	puts("rdtsc: ");
 	puts(str);
 	
+	memset(str,'\0',10);
+	
 	d2s(clock(),str,10,'.');
 	puts("  || clock: ");
 	puts(str);
