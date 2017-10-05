@@ -24,7 +24,7 @@ static inline uint64_t rdtsc() {
   	return ((uint64_t)high << 32) | low;
 }
 
-static int64_t clock() {
+static inline int64_t clock() {
     return rdtsc() - start_clocks.start;
 }
 
