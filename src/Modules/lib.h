@@ -1,5 +1,5 @@
-#ifndef __LIB_H_
-#define __LIB_H_
+#pragma once
+
 #include "definitions.h"
 
 ///////////////////////////
@@ -28,4 +28,3 @@ void* memcpy(void* destination, const void* from, unsigned int block_size);
 void* memset(void* ptr, char value, size_t num);
 
 
-#endif
