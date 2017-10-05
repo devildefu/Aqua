@@ -12,5 +12,6 @@ void gotoxy(int x, int y);
 int snprintf(char* s, size_t n, const char* format, ...); //<- Prints formatted text to the string with limitted size
 int sprintf(char* s, const char* format, ...); //<- Prints formatted text to the string
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
+int scanf(const char* format, ...); //<- Reads data from input data and saves to variables
 
 #endif
