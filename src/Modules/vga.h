@@ -8,7 +8,9 @@ void putchar(char character);
 void puts(const char* str);
 void color(uint16_t color);
 void gotoxy(int x, int y);
-int sprintf(const char*, ...); //<- Draws on default display buffer text with converted variables
-                               //On success returns size of displayed string
+
+int snprintf(char* s, size_t n, const char* format, ...); //<- Prints formatted text to the string with limitted size
+int sprintf(char* s, const char* format, ...); //<- Prints formatted text to the string
+int printf(const char* format, ...); //<- Prints formatted text to output buffer
 
 #endif
