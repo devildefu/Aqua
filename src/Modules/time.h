@@ -34,7 +34,7 @@ static void wait(uint64_t ms) {
    while(clock() <= end) {}
 }
 
-static void initTimer() {
+static inline void initTimer() {
     start_clocks.start = rdtsc();
 }
 
