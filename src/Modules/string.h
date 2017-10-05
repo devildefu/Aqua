@@ -12,4 +12,4 @@ int getStringcp(char* ptr, unsigned int ptr_size, char CHAR); //<- Does not use 
 
 int sprintf(const char*, ...); //<- Draws on default display buffer text with converted variables
 
-int strcmp(const char* a, const char* b); //<- Compares to strings. Returns 0 if all strings is the same;
+int strcmp(const char* a, const char* b); //<- Compares two strings. Returns 0 if all strings is the same;
