@@ -32,7 +32,7 @@ static inline int64_t clock() {
 static void wait(uint64_t ms) {
     int64_t now = clock();
     int64_t end = now+(float)ms*ClocksPerMilisecond;
-   while(clock() <= end) {}
+   while(clock() < end) {}
 }
 
 static inline void initTimer() {
