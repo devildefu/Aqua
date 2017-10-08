@@ -14,7 +14,7 @@ void clear() {
 }
  
 void putchar(char character) {
-	unsigned short i = 0;
+	unsigned short i = curr.curr_pos;
 	while(vga_buffer[i]!=' ') {
 		i += 2;
 	}
