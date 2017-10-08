@@ -5,7 +5,7 @@
 
 struct {
   uint16_t curr_pos;
-} cur;
+} curr;
 
 void clear();
 void putchar(char character);
