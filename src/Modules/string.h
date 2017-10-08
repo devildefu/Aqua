@@ -1,8 +1,9 @@
 #pragma once
+#include "definitions.h"
 
 void atoi(char *str, int* a);
 
-void d2s(double n, char* string, size_t size, char dot) //<- Converts number to string
+//void d2s(double n, char* string, size_t size, char dot) //<- Converts number to string
 
 char* getStringn(unsigned int size); //<- Usses malloc. Adds chars from keyboard up to given limit
 char* getStringc(char CHAR); //<- Usses malloc. Adds chars from keyboard until char is the same as given

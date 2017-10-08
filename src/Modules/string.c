@@ -12,7 +12,7 @@ void atoi(char *str, int* a)
     }
     *a = k;
 }
-
+/*
 void d2s(double d, char* string, size_t size, char dot) {
     if(size < 0) return;
     char isMinus = 0; if(d < 0) isMinus = 1;
@@ -39,7 +39,8 @@ void d2s(double d, char* string, size_t size, char dot) {
         ++tab_n;
     }
 }
-
+*/
+/*
 char* getStringn(unsigned int size) {
     if(size>0) {
         char* string;
@@ -74,6 +75,7 @@ char* getStringc(char CHAR) {
     }
     return string;
 }
+*/
 int getStringnp(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {

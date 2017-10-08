@@ -14,10 +14,10 @@
 #define ClocksPerYearQuater ClocksPerMonth * 4
 #define ClocksPerYear ClocksPerDay * 365
 
-extern struct {
+struct {
     uint64_t start;
 }   start_clocks;
-
+/*
 static inline uint64_t rdtsc() {
   	uint32_t low, high;
   	asm volatile ("rdtsc" : "=a"(low), "=d"(high));
@@ -37,7 +37,7 @@ static void wait(uint64_t ms) {
 static inline void initTimer() {
     start_clocks.start = rdtsc();
 }
-
+*/
 #endif
 
 
