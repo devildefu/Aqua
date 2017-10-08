@@ -3,6 +3,10 @@
 
 #include "definitions.h"
 
+struct {
+  int curr_pos;
+} cursor_pos;
+
 void clear();
 void putchar(char character);
 void puts(const char* str);
