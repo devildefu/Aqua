@@ -39,7 +39,7 @@ void color(uint16_t color) {
 }
 
 void gotoxy(int x, int y) {
-	curr.curr_pos = (y*80) + x;
+	curr.curr_pos = x+y*80;
 	
 	outb(0x3D4, 0x0F);
 	outb(0x3D5, (unsigned char)(curr.curr_pos&0xFF));
