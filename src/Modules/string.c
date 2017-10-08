@@ -40,7 +40,7 @@ void d2s(double d, char* string, size_t size, char dot) {
     }
 }
 */
-
+/*
 char* getStringn(unsigned int size) {
     if(size>0) {
         char* string;
@@ -75,7 +75,7 @@ char* getStringc(char CHAR) {
     }
     return string;
 }
-
+*/
 int getStringnp(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
