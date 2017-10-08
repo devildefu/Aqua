@@ -15,17 +15,18 @@ void clear() {
 }
  
 void putchar(char character) {
-	if(character == '\n') {
+	switch(character) {
+	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
 		gotoxy(0,m.p/(80*2));
-	}
-	else if(character == 32) {
+		break;
+	case 32:
 		m.p+=2;
 		gotoxy(m.p%(80*2), m.p/(80*2));
-	}
-	else {
+		break;
+	default:
 		vga_buffer[i] = character;
-		
+		break;
 	}
 	uint16_t* color = (uint16_t*)0x1001;
 	vga_buffer[i+1] = *color;
