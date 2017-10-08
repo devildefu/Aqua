@@ -5,6 +5,5 @@
 
 void kmain(void) {
 	clear();
-	puts("DADA");
 	return;
 }
