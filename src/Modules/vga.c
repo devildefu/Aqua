@@ -15,11 +15,18 @@ void clear() {
 }
  
 void putchar(char character) {
-	unsigned short i = curr.curr_pos;
-	while(vga_buffer[i]!=' ') {
-		i += 2;
+	if(character == '\n') {
+		m.p+=((80*2)-(m.p%(80*2)));
+		gotoxy(0,m.p/(80*2));
 	}
-	vga_buffer[i] = character;
+	else if(character == 32) {
+		m.p+=2;
+		gotoxy(m.p%(80*2), m.p/(80*2));
+	}
+	else {
+		vga_buffer[i] = character;
+		
+	}
 	uint16_t* color = (uint16_t*)0x1001;
 	vga_buffer[i+1] = *color;
 }
@@ -39,8 +46,8 @@ void color(uint16_t color) {
 }
 
 void gotoxy(int x, int y) {
-	curr.curr_pos = x+y*80;
+	m.p = x+y*80*2;
 	
 	outb(0x3D4, 0x0F);
-	outb(0x3D5, (unsigned char)(curr.curr_pos&0xFF));
+	outb(0x3D5, (unsigned char)((m.p/2)&0xFF));
 }
