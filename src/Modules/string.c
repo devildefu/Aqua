@@ -40,42 +40,7 @@ void d2s(double d, char* string, size_t size, char dot) {
     }
 }
 */
-/*
-char* getStringn(unsigned int size) {
-    if(size>0) {
-        char* string;
-        for(int i = 1; i<=size+1; i++) {
-            char* temp = string;
-            string = (char*)malloc(sizeof(char)*i);
-            for(int j = 0; j<i-1; j++) string[j] = temp[j];
-            if(i<size+1) string[i-1] = getchar();
-            else string[i-1] = '\0';
-            free(temp);
-        }
-        return string;
-    }
-    return NULL;
-}
-char* getStringc(char CHAR) {
-    char* string = NULL;
-    unsigned int size = 0;
-    char ch = getchar();
-    while(1) {
-        char* temp = string;
-        string = (char*)malloc(sizeof(char)*size+1);
-        for(int j = 0; j<size; j++) string[j] = temp[j];
-        if((ch = getchar()) != CHAR) {
-            string[size] = ch;
-        }
-        else {
-            string[size] = '\0';
-            break;
-        }
-        free(temp);
-    }
-    return string;
-}
-*/
+
 int getStringnp(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
