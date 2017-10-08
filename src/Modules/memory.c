@@ -72,8 +72,8 @@ void* memcpy(void* destination, const void* from, unsigned int block_size) {
 }
 
 void* memset(void* ptr, char value, size_t num) {
-    if(block_size>0) {
-        for(int i = 0; i<block_size; i++) {
+    if(num>0) {
+        for(int i = 0; i<num; i++) {
             ((char*)ptr)[i] = value;
         }
     }
