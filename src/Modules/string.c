@@ -41,17 +41,16 @@ void d2s(double d, char* string, size_t size, char dot) {
 }
 */
 
-int getStringn(char* ptr, unsigned int ptr_size) {
+char* getStringn(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
             ptr[i] = getchar();
         }
         ptr[ptr_size-1] = '\0';
-        return 0;
     }
-    return 1;
+    return ptr;
 }
-int getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
+char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
             char ch = getchar();
@@ -65,7 +64,7 @@ int getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
         }
         ptr[ptr_size-1] = '\0';
     }
-    return 1;
+    return ptr;
 }
 int strcmp(const char* a, const char* b) {
     unsigned int size_a = 0;
