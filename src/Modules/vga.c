@@ -29,7 +29,7 @@ void putchar(char character) {
 		break;
 	}
 	uint16_t* color = (uint16_t*)0x1001;
-	vga_buffer[i+1] = *color;
+	vga_buffer[m.p+1] = *color;
 }
 
 void puts(const char* string) {
