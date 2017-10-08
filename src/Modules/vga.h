@@ -4,8 +4,8 @@
 #include "definitions.h"
 
 struct {
-  int curr_pos;
-} cursor_pos;
+  uint16_t curr_pos;
+} cur;
 
 void clear();
 void putchar(char character);
