@@ -1,5 +1,6 @@
 #include "vga.h"
 #include "definitions.h"
+#include "io.h"
 
 char* vga_buffer = (char*)0xb8000;
  
