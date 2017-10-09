@@ -25,7 +25,9 @@ void putchar(char character) {
 		gotoxy(m.p%(80*2), m.p/(80*2));
 		break;
 	default:
-		vga_buffer[i] = character;
+		m.p+=2;
+		gotoxy
+		vga_buffer[m.p] = character;
 		break;
 	}
 	uint16_t* color = (uint16_t*)0x1001;
