@@ -3,9 +3,12 @@
 
 #include "definitions.h"
 
-struct {
+struct cursor_position {
   uint16_t p;
 } m = { .p = 0 };
+
+uint16_t get_x_coordinate(struct cursor_position* cursor);
+uint16_t get_y_coordinate(struct cursor_position* cursor);
 
 void clear();
 void putchar(char character);
