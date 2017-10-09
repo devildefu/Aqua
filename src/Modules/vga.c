@@ -30,6 +30,7 @@ void clear() {
  
 void putchar(char character) {
 	vga_buffer[m.p] = character;
+	vga_buffer[m.p+1] = *(uint16_t*)0x1001 //<< Color address;
 	m.p+=2;
 	switch(character) {
 	case '\n':
@@ -37,8 +38,6 @@ void putchar(char character) {
 		break;
 	//maybe more cases
 	sgotoxy(m.p/2);
-	uint16_t* color = (uint16_t*)0x1001;
-	vga_buffer[m.p+1] = *color;
 }
 
 void puts(const char* string) {
