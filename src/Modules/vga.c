@@ -3,6 +3,20 @@
 #include "io.h"
 
 char* vga_buffer = (char*)0xb8000;
+
+uint16_t get_x_coordinate(struct mouse_position* cursor) {
+	if(cursor != NULL) {
+		return cursor->p % (80*2);
+	}
+	return 0;
+}
+
+uint16_t get_y_coordinate(struct mouse_position* cursor) {
+	if(cursor != NULL) {
+		return cursor->p / (80*2);
+	}
+	return 0;
+}
  
 void clear() {
 	unsigned short j = 0;
@@ -46,11 +60,11 @@ void color(uint16_t color) {
 	*colptr = color;
 }
 
-void mgotoxy(int xy) { //<- Gotoxy xy
+void mgotoxy(uint16_t xy) { //<- Gotoxy xy
 	outb(0x3D4, 0x0F);
 	outb(0x3D5, (unsigned char)((xy)&0xFF));
 }
 
-void sgotoxy(int x, int y) { //<- Gotoxy x,y
+void sgotoxy(uinr16_t x, uint16_t y) { //<- Gotoxy x,y
 	mgotoxy(x+y*80));
 }
