@@ -35,10 +35,7 @@ void putchar(char character) {
 	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
 		break;
-	case 32:
-		m.p+=2;
-		break;
-	}
+	//maybe more cases
 	sgotoxy(m.p/2);
 	uint16_t* color = (uint16_t*)0x1001;
 	vga_buffer[m.p+1] = *color;
