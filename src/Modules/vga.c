@@ -31,17 +31,15 @@ void clear() {
 void putchar(char character) {
 	vga_buffer[m.p] = character;
 	m.p+=2;
-	gotoxy(m.p%(80*2), m.p/(80*2));
 	switch(character) {
 	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
-		gotoxy(0,m.p/(80*2));
 		break;
 	case 32:
 		m.p+=2;
-		gotoxy(m.p%(80*2), m.p/(80*2));
 		break;
 	}
+	sgotoxy(m.p/2);
 	uint16_t* color = (uint16_t*)0x1001;
 	vga_buffer[m.p+1] = *color;
 }
@@ -62,9 +60,9 @@ void color(uint16_t color) {
 
 void mgotoxy(uint16_t xy) { //<- Gotoxy xy
 	outb(0x3D4, 0x0F);
-	outb(0x3D5, (unsigned char)((xy)&0xFF));
+	outb(0x3D5, (unsigned char)(xy&0xFF));
 }
 
-void sgotoxy(uinr16_t x, uint16_t y) { //<- Gotoxy x,y
+void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
 	mgotoxy(x+y*80));
 }
