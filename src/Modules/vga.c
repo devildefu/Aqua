@@ -36,6 +36,7 @@ void putchar(char character) {
 	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
 		break;
+	}
 	//maybe more cases
 	sgotoxy(m.p/2);
 }
