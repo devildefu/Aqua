@@ -5,7 +5,7 @@
 
 struct {
   uint16_t p;
-} m;
+} m = { .p = 0 };
 
 void clear();
 void putchar(char character);
