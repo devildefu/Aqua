@@ -7,7 +7,8 @@
 void kmain(void) {
 	char str[10];
 	getStringc(str,10,13);
-	memset(str,'-',10);
+	memset(str,'-',9);
+	str[9] = '\0';
 	puts(str);
 	return;
 }
