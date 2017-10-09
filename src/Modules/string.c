@@ -41,11 +41,18 @@ void d2s(double d, char* string, size_t size, char dot) {
 }
 */
 
+#define DRAW_STRING 1
 char* getStringn(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
             ptr[i] = getchar();
+            #if DRAW_STRING
+                putchar(ptr[i]);
+            #enfif
         }
+        #if DRAW_STRING
+            putchar('\n');
+        #enfif
         ptr[ptr_size-1] = '\0';
     }
     return ptr;
@@ -56,12 +63,18 @@ char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
             char ch = getchar();
             if(ch != CHAR) {
                 ptr[i] = ch;
+                #if DRAW_STRING
+                    putchar(ptr[i]);
+                #enfif
             }
             else {
                 ptr_size = i+1;
                 break;
             }
         }
+        #if DRAW_STRING
+            putchar('\n');
+        #enfif
         ptr[ptr_size-1] = '\0';
     }
     return ptr;
