@@ -4,14 +4,14 @@
 
 char* vga_buffer = (char*)0xb8000;
 
-uint16_t get_x_coordinate(struct mouse_position* cursor) {
+uint16_t get_x_coordinate(struct cursor_position* cursor) {
 	if(cursor != NULL) {
 		return cursor->p % (80*2);
 	}
 	return 0;
 }
 
-uint16_t get_y_coordinate(struct mouse_position* cursor) {
+uint16_t get_y_coordinate(struct cursor_position* cursor) {
 	if(cursor != NULL) {
 		return cursor->p / (80*2);
 	}
