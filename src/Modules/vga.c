@@ -38,7 +38,7 @@ void putchar(char character) {
 		break;
 	}
 	//maybe more cases
-	sgotoxy(m.p/2);
+	mgotoxy(m.p/2);
 }
 
 void puts(const char* string) {
