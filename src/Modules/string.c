@@ -46,7 +46,7 @@ char* getStringn(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
             ptr[i] = getchar()
-               #ifdef DRAW_STRING
+            #ifdef DRAW_STRING
                 putchar(ptr[i]);
             #enfif
         }
