@@ -48,11 +48,11 @@ char* getStringn(char* ptr, unsigned int ptr_size) {
             ptr[i] = getchar()
             #ifdef DRAW_STRING
                 putchar(ptr[i]);
-            #enfif
+            #endif
         }
         #ifdef DRAW_STRING
             putchar('\n');
-        #enfif
+        #endif
         ptr[ptr_size-1] = '\0';
     }
     return ptr;
@@ -65,7 +65,7 @@ char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
                 ptr[i] = ch;
                 #ifdef DRAW_STRING
                     putchar(ptr[i]);
-                #enfif
+                #endif
             }
             else {
                 ptr_size = i+1;
@@ -74,7 +74,7 @@ char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
         }
         #ifdef DRAW_STRING
             putchar('\n');
-        #enfif
+        #endif
         ptr[ptr_size-1] = '\0';
     }
     return ptr;
