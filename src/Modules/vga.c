@@ -30,7 +30,7 @@ void clear() {
  
 void putchar(char character) {
 	vga_buffer[m.p] = character;
-	vga_buffer[m.p+1] = *(uint16_t*)0x1001 //<< Color address;
+	vga_buffer[m.p+1] = *(uint16_t*)0x1001; //<< Color address;
 	m.p+=2;
 	switch(character) {
 	case '\n':
@@ -61,5 +61,5 @@ void mgotoxy(uint16_t xy) { //<- Gotoxy xy
 }
 
 void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
-	mgotoxy(x+y*80));
+	mgotoxy(x+y*80);
 }
