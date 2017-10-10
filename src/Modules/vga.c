@@ -3,6 +3,9 @@
 #include "io.h"
 
 char* vga_buffer = (char*)0xb8000;
+struct cursor_position m = {
+	.p = 0;
+};
 
 uint16_t get_x_coordinate(struct cursor_position* cursor) {
 	if(cursor != NULL) {
