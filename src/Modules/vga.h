@@ -3,7 +3,7 @@
 
 #include "definitions.h"
 
-struct cursor_position {
+extern struct cursor_position {
   uint16_t p;
 } m = { .p = 0 };
 
