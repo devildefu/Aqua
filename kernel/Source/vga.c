@@ -1,6 +1,6 @@
-#include "vga.h"
-#include "definitions.h"
-#include "io.h"
+#include "../Include/vga.h"
+#include "../Include/definitions.h"
+#include "../Include/io.h"
 
 char* vga_buffer = (char*)0xb8000;
 struct cursor_position m = {

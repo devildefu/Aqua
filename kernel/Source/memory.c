@@ -1,5 +1,5 @@
-#include "memory.h"
-#include "definitions.h"
+#include "../Include/memory.h"
+#include "../Include/definitions.h"
 
 /*
 //////////

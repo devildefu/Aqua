@@ -1,6 +1,6 @@
-#include "string.h"
-#include "definitions.h"
-#include "vga.h"
+#include "../Include/string.h"
+#include "../Include/definitions.h"
+#include "../Include/vga.h"
 
 void atoi(char *str, int* a)
 {
