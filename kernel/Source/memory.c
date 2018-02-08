@@ -79,4 +79,3 @@ void* memset(void* ptr, char value, size_t num) {
     }
     return ptr;
 }
-

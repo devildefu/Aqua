@@ -100,4 +100,33 @@ int strcmp(const char* a, const char* b) {
     
 }
 
+_Bool reverse(void* _ptr, size_t size) {
+    if(size==0) return 0;
+    char* bt[size];
+    for(size_t i = 0; i < size; i++) {
+        bt[i] = ((char*)_ptr)[size-i-1];
+    }
+    for(size_t i = 0; i < size; i++) {
+        ((char*)_ptr)[i] = bt[i];
+    }
+    return 1;
+}
 
+_Bool integerToString(int64_t integer, char* _ptr) {
+    if(integer < 0) {
+        integer = -integer;
+        *_ptr = '-';
+        _ptr++;
+    }
+    int iter = -1;
+    do {
+        iter++;
+        _ptr[iter] = (integer % 10) + 48;
+        integer/=10;
+    }
+    while(integer > 0);
+    reverse(_ptr,iter+1);
+    _ptr[iter+1] = '\0';
+    return 1;
+    
+}
