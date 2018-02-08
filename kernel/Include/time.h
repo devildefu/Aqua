@@ -21,7 +21,7 @@ struct {
 
 static inline uint64_t rdtsc() {
     uint64_t ret;
-    _asm_ volatile("rdtsc" : "=A"(ret));
+    asm ("rdtsc" : "=A"(ret));
     return ret;
 }
 
