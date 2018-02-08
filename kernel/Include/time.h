@@ -20,9 +20,9 @@ struct {
 }   start_clocks;
 
 static inline uint64_t rdtsc() {
-  	uint32_t low, high;
-  	asm volatile ("rdtsc" : "=a"(low), "=d"(high));
-  	return ((uint64_t)high << 32) | low;
+    uint64_t ret;
+    asm volatile("rdtsc" : "=A"(ret));
+    return ret;
 }
 
 static inline int64_t clock() {
