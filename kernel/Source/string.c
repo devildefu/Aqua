@@ -1,6 +1,7 @@
 #include "../Include/string.h"
 #include "../Include/definitions.h"
 #include "../Include/vga.h"
+#include "../Include/keyboard.h"
 
 void atoi(char *str, int* a)
 {
@@ -97,22 +98,25 @@ int strcmp(const char* a, const char* b) {
     }
     if(size_b >= size_a) return 0;
     return -1;
-    
-}
 
+}
 _Bool reverse(void* _ptr, size_t size) {
     if(size==0) return 0;
-    char* bt[size];
-    for(size_t i = 0; i < size; i++) {
-        bt[i] = ((char*)_ptr)[size-i-1];
-    }
-    for(size_t i = 0; i < size; i++) {
-        ((char*)_ptr)[i] = bt[i];
+    for(size_t i = 0; i < size/2; i++) {
+
+        char* c_1 = (char*)(_ptr + i);
+        char* c_2 = (char*)(_ptr + size - i - 1);
+
+        char D = *c_1;
+        char C = *c_2;
+
+        *c_1 = C;
+        *c_2 = D;
     }
     return 1;
 }
 
-_Bool integerToString(int64_t integer, char* _ptr) {
+_Bool integerToString(int32_t integer, char* _ptr) {
     if(integer < 0) {
         integer = -integer;
         *_ptr = '-';
@@ -123,10 +127,9 @@ _Bool integerToString(int64_t integer, char* _ptr) {
         iter++;
         _ptr[iter] = (integer % 10) + 48;
         integer/=10;
-    }
-    while(integer > 0);
+    } while(integer > 0);
     reverse(_ptr,iter+1);
     _ptr[iter+1] = '\0';
     return 1;
-    
+
 }

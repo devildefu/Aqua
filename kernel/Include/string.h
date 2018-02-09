@@ -12,4 +12,4 @@ char* getStringc(char* ptr, unsigned int ptr_size, char CHAR); //<- Does not use
 int strcmp(const char* a, const char* b); //<- Compares two strings. Returns 0 if all strings is the same;
 
 _Bool reverse(void* _ptr, size_t size);
-_Bool integerToString(int64_t integer, char* ptr);
+_Bool integerToString(int32_t integer, char* _ptr);
