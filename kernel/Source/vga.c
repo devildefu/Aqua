@@ -4,6 +4,7 @@
 
 char* vga_buffer = (char*)0xb8000;
 struct cursor_position m = {
+	void(*res_func)(struct cursor_position*);
 	.p = 0
 };
 
