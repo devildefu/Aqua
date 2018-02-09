@@ -89,17 +89,16 @@ static inline void cpuid(uint32_t reg, uint32_t* eax, uint32_t* ebx, uint32_t* e
 		    : "0" (reg) );
 }
 
-static const CPU_INFO CPUInfo() {
-	//Structure
-	CPU_INFO cpu_data;
-	CPU_INFO_INIT(&cpu_data);
+void CPUInfo(CPU_INFO* _ptr) {
+	//Structure init
+	CPU_INFO_INIT(_ptr);
 	
 	//Variables for store cpuid return data
 	uint32_t eax, ebx, ecx, edx;
 	
 	//Get vendor
-	cpuid(0x0, &eax, (uint32_t*)(cpu_data.vendor), (uint32_t*)(cpu_data.vendor + 8), (uint32_t*)(cpu_data.vendor + 4));
-	cpu_data.vendor[12] = '\0';
+	cpuid(0x0, &eax, (uint32_t*)(_ptr->vendor), (uint32_t*)(_ptr->vendor + 8), (uint32_t*)(_ptr->vendor + 4));
+	_ptr->vendor[12] = '\0';
 	
 	/*
 	////////////////////////////
@@ -116,7 +115,6 @@ static const CPU_INFO CPUInfo() {
 		
 	}
 	*/
-	return cpu_data;
 	
 }
 
