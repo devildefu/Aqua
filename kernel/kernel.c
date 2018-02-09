@@ -7,10 +7,10 @@
 
 void kmain(void) {
 	clear();
-	color(0x0002);
+	color(0x0F);
 	puts("Letter = Aaaaa!");
 	newLine();
-	puts("XDD");
-
+	puts("XDD\n");
+	puts("LOL");
 	return;
 }
