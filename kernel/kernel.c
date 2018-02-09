@@ -6,15 +6,24 @@
 #include "kernelData.h"
 #include "Include/cpu.h"
 
-
 void kmain(void) {
 	clear();
 	color(0x0F);
-	puts(kernelVer);
 
+	//Kernel Logs
 	CPU_INFO cpuData;
 	CPUInfo(&cpuData);
-	//puts(cpuData.vendor);
+
+	puts("[Kernel] Kernel Version: ");
+	puts(kernelVer);
+	newLine();
+	puts("[CPU] Manufacturer: ");
+	puts(cpuData.vendor);
+	newLine();
+	puts("[CPU] Name: ");
+	puts(cpuData.name);
+	newLine();
+	puts("[Kernel] Starting main shell...");
 
 	return;
 }
