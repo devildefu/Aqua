@@ -75,7 +75,7 @@ typedef struct{
   char name[48];
 } CPU_INFO;
 
-static inline void cpuid(uint32_t reg, uint32_t* eax, uint32_t* ebx, uint32_t* ecx, uint32_t* edx) {
+static inline void cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) {
 	asm volatile( "cpuid"
 		    : "=a" (*eax), "=b" (*ebx), "=c" (*ecx), "=d" (*edx)
 		    : "0" (reg) );
@@ -83,10 +83,10 @@ static inline void cpuid(uint32_t reg, uint32_t* eax, uint32_t* ebx, uint32_t* e
 
 void CPUInfo(CPU_INFO* _ptr) {
 	//Variables for store cpuid return data
-	uint32_t eax, ebx, ecx, edx;
+	int32_t eax, ebx, ecx, edx;
 	
 	//Get vendor
-	cpuid(0x0, &eax, (uint32_t*)(_ptr->vendor), (uint32_t*)(_ptr->vendor + 8), (uint32_t*)(_ptr->vendor + 4));
+	cpuid(0x0, &eax, (int32_t*)(_ptr->vendor), (int32_t*)(_ptr->vendor + 8), (int32_t*)(_ptr->vendor + 4));
 	_ptr->vendor[12] = '\0';
 	
 	/*
