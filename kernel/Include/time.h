@@ -39,6 +39,11 @@ static inline void initTimer() {
     start_clocks.start = rdtsc();
 }
 
+static inline void waitClocks(uint64_t clocks) {
+    uint64_t now = rdtsc();
+    while(rdtsc()-now <= clocks) {}
+}
+
 #endif
 
 
