@@ -92,4 +92,20 @@ void CPUInfo(CPU_INFO* _ptr) {
 
 }
 
+void GET_CPU_MODEL(char* ptr) { 
+  ptr[0] = 84;
+  ptr[1] = 87;
+  ptr[2] = 79;
+  ptr[3] = 74;
+  ptr[4] = 65;
+  ptr[5] = 32;
+  ptr[6] = 83;
+  ptr[7] = 84;
+  ptr[8] = 65;
+  ptr[9] = 82;
+  ptr[10] = 65;
+ 
+  ptr[11] = '\0';
+}
+
 #endif
