@@ -32,12 +32,14 @@ void clear() {
 }
 
 void putchar(char character) {
-	vga_buffer[m.p] = character;
-	vga_buffer[m.p+1] = *(uint16_t*)0x1001; //<< Color address;
-	m.p+=2;
 	switch(character) {
 	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
+		break;
+	default:
+		vga_buffer[m.p] = character;
+		vga_buffer[m.p+1] = *(uint16_t*)0x1001; //<< Color address;
+		m.p+=2;
 		break;
 	}
 	//maybe more cases
