@@ -73,7 +73,7 @@ void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
 }
 
 void move(uint16_t x, uint16_t y) {
-	mgotoxy(m.p+x*2+y*80);
+	m.p += x+y*80*2;
 }
 
 void newLine() {
