@@ -5,6 +5,7 @@
 #include "Include/memory.h"
 #include "kernelData.h"
 #include "Include/cpu.h"
+#include "Shell/Shell.h"
 
 void kmain(void) {
 	clear();
@@ -24,6 +25,11 @@ void kmain(void) {
 	puts(cpuData.name);
 	newLine();
 	puts("[Kernel] Starting main shell...");
+
+	shell();
+
+	newLine();
+	puts("[Kernel] Exit");
 
 	return;
 }
