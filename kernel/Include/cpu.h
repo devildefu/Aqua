@@ -89,22 +89,6 @@ void CPUInfo(CPU_INFO* _ptr) {
 	cpuid(0x0, &eax, (int32_t*)(_ptr->vendor), (int32_t*)(_ptr->vendor + 8), (int32_t*)(_ptr->vendor + 4));
 	_ptr->vendor[12] = '\0';
 	
-	/*
-	////////////////////////////
-	///////////////////SOON/////
-	///////////////////////////
-	//Function 0x01
-	if(eax >= 0x01) {
-		//Features and instructions
-		cpuid(0x01,&eax, &ebx, &ecx, &edx);
-		if(edx & EDX_PSE)
-		if(edx & EDX_PAE)
-		if(edx & EDX_APIC)
-		if(edx & EDX_MTRR)
-		
-	}
-	*/
-	
 }
 
 #endif
