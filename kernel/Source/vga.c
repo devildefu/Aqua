@@ -36,6 +36,8 @@ void putchar(char character) {
 	case '\n':
 		m.p+=((80*2)-(m.p%(80*2)));
 		break;
+	case '\0':
+		m.p+=2;
 	default:
 		vga_buffer[m.p] = character;
 		vga_buffer[m.p+1] = *(uint16_t*)0x1001; //<< Color address;
@@ -70,7 +72,6 @@ void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
 }
 
 void newLine() {
-	m.p+=2;
 	m.p+=((80*2)-(m.p%(80*2)));
 	mgotoxy(m.p/2);
 }
