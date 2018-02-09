@@ -4,6 +4,7 @@
 #include "definitions.h"
 
 struct cursor_position {
+  void(*res_func)(struct cursor_position*);
   uint16_t p;
 };
 
