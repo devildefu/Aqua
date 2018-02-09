@@ -9,6 +9,8 @@ void kmain(void) {
 	clear();
 	color(0x0002);
 	puts("Letter = Aaaaa!");
+	newLine();
+	puts("XDD");
 
 	return;
 }
