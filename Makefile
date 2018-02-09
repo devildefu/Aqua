@@ -3,7 +3,7 @@ LD=ld
 NASM=nasm
 
 G++_FLAGS=-m32 -c -O2 -Wall -Wextra -fno-builtin -nostdlib
-GCC_FLAGS=-m32 -c -std=gnu99 -O2 -Wall -Wextra -fno-builtin -nostdlib
+GCC_FLAGS=-m32 -c -std=gnu99 -O2 -Wall -fno-stack-protector -fno-builtin -nostdlib
 
 LD_FILES=build/boot.o build/kernel.o build/vga.o build/keyboard.o build/memory.o build/string.o
 LD_FLAGS=-m elf_i386 -T linker.ld -o kirid -O2 -nostdlib

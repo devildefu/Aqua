@@ -86,9 +86,9 @@ void CPUInfo(CPU_INFO* _ptr) {
     int32_t eax, ebx, ecx, edx;
 
     //Get vendor
-    uint32_t* v_p = _ptr->vendor;
+    int32_t* v_p = _ptr->vendor;
     cpuid(0x0, &eax, v_p, v_p+2, v_p+1);
-    _ptr->vendor[12] = '\0';
+    //_ptr->vendor[12] = '\0';
 
 }
 

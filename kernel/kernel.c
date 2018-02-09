@@ -14,7 +14,7 @@ void kmain(void) {
 
 	CPU_INFO cpuData;
 	CPUInfo(&cpuData);
-	//puts(cpuData.name);
+	//puts(cpuData.vendor);
 
 	return;
 }
