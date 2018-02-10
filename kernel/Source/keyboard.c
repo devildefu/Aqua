@@ -34,5 +34,5 @@ char getchar(BREAK show_opts) {
 	else
 		keycode = getKeycode();
 	if(keycode < 2) return 0;
-	return  ANSI_Translation_Tab[keycode-2]
+	return  ANSI_Translation_Tab[keycode-2];
 }
