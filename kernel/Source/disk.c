@@ -3,28 +3,16 @@
 #include "../Include/vga.h"
 #include "../Include/time.h"
 
+unsigned char ide_buf[2048] = {0};
+unsigned static char ide_irq_invoked = 0;
+unsigned static char atapi_packet[12] = {0xA8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
 struct IDEChannelRegisters {
    unsigned short base;  // I/O Base.
    unsigned short ctrl;  // Control Base
    unsigned short bmide; // Bus Master IDE
    unsigned char  nIEN;  // nIEN (No Interrupt);
 } channels[2];
-
-unsigned char ide_buf[2048] = {0};
-unsigned static char ide_irq_invoked = 0;
-unsigned static char atapi_packet[12] = {0xA8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-
-struct ide_device {
-   unsigned char  Reserved;    // 0 (Empty) or 1 (This Drive really exists).
-   unsigned char  Channel;     // 0 (Primary Channel) or 1 (Secondary Channel).
-   unsigned char  Drive;       // 0 (Master Drive) or 1 (Slave Drive).
-   unsigned short Type;        // 0: ATA, 1:ATAPI.
-   unsigned short Signature;   // Drive Signature
-   unsigned short Capabilities;// Features.
-   unsigned int   CommandSets; // Command Sets Supported.
-   unsigned int   Size;        // Size in Sectors.
-   unsigned char  Model[41];   // Model in string.
-} ide_devices[4];
 
 void ide_write(unsigned char channel, unsigned char reg, unsigned char data) {
    if (reg > 0x07 && reg < 0x0C)
@@ -141,7 +129,7 @@ unsigned int BAR4) {
    for (i = 0; i < 2; i++)
       for (j = 0; j < 2; j++) {
 
-         unsigned char err = 0, type = IDE_ATA, status;
+         err = 0, type = IDE_ATA, status;
          ide_devices[count].Reserved = 0; // Assuming that no drive here.
 
          // (I) Select Drive:

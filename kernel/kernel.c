@@ -6,6 +6,8 @@
 #include "kernelData.h"
 #include "Include/cpu.h"
 #include "Shell/Shell.h"
+#include "Include/disk.h"
+char ch[100];
 
 void kmain(void) {
 	clear();
@@ -24,13 +26,14 @@ void kmain(void) {
 	puts("[CPU] Name: ");
 	puts(cpuData.name);
 	newLine();
-	puts("[Kernel] Starting main shell...");
+	//puts("[Kernel] Starting main shell...");
 
 	//shell();
-	char tab[10];
-	int a = getchar(1);
-	integerToString(a,tab);
-	puts(a);
+
+	/* Not working disk support!
+	ide_initialize(0x1F0, 0x3F6, 0x170, 0x376, 0x000);
+	ide_print_error(0, err);
+	*/
 
 	newLine();
 	puts("[Kernel] Exit");

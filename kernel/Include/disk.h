@@ -76,3 +76,24 @@
 // Directions:
 #define      ATA_READ      0x00
 #define      ATA_WRITE     0x01
+
+struct ide_device {
+   unsigned char  Reserved;    // 0 (Empty) or 1 (This Drive really exists).
+   unsigned char  Channel;     // 0 (Primary Channel) or 1 (Secondary Channel).
+   unsigned char  Drive;       // 0 (Master Drive) or 1 (Slave Drive).
+   unsigned short Type;        // 0: ATA, 1:ATAPI.
+   unsigned short Signature;   // Drive Signature
+   unsigned short Capabilities;// Features.
+   unsigned int   CommandSets; // Command Sets Supported.
+   unsigned int   Size;        // Size in Sectors.
+   unsigned char  Model[41];   // Model in string.
+} ide_devices[4];
+
+unsigned char err, type, status;
+
+void ide_write(unsigned char channel, unsigned char reg, unsigned char data);
+unsigned char ide_read(unsigned char channel, unsigned char reg);
+unsigned char ide_polling(unsigned char channel, unsigned int advanced_check);
+unsigned char ide_print_error(unsigned int drive, unsigned char err);
+void ide_initialize(unsigned int BAR0, unsigned int BAR1, unsigned int BAR2, unsigned int BAR3,
+unsigned int BAR4);
