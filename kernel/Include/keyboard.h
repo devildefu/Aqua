@@ -1,5 +1,6 @@
 #ifndef __KEYBOARD_H_
 #define __KEYBOARD_H_
+
 typedef enum {
 	GET_WAIT,
 	GET_NOWAIT
