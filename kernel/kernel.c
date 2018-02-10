@@ -6,8 +6,6 @@
 #include "kernelData.h"
 #include "Include/cpu.h"
 #include "Shell/Shell.h"
-#include "Include/disk.h"
-char ch[100];
 
 void kmain(void) {
 	clear();
