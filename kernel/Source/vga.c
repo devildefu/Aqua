@@ -72,29 +72,29 @@ void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
 }
 
 void move(uint16_t x, uint16_t y) {
-	m.p += (y*160+x*2);
+	m.p += (y*80+x*2);
 	mgotoxy(m.p/2);
 }
 
 void setPosition(uint16_t x, uint16_t y) {
-	m.p = (x*2+y*160);
+	m.p = (x*2+y*80);
 	mgotoxy(m.p/2);
 }
 
 char getChar(uint16_t x, uint16_t y) {
-	return(x*2+y*160);
+	return(x*2+y*80);
 }
 
 uint16_t getColor(uint16_t x, uint16_t y) {
-	return (x*2+y*160-1);
+	return (x*2+y*80-1);
 }
 
 void setColor(uint16_t x, uint16_t y, uint16_t color) {
-	vga_buffer[x*2+y*160-1] = color;
+	vga_buffer[x*2+y*80-1] = color;
 }
 
 void setChar(uint16_t x, uint16_t y, char c) {
-	vga_buffer[x*2+y*160] = c;
+	vga_buffer[x*2+y*80] = c;
 }
 
 void newLine() {
