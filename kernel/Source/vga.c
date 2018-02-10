@@ -94,7 +94,7 @@ void setColor(uint16_t x, uint16_t y, uint16_t color) {
 }
 
 void setChar(uint16_t x, uint16_t y, char c) {
-	vga_buffer[x*2+y*160] = c;
+	vga_buffer[x*2+y*80] = c;
 }
 
 void newLine() {
