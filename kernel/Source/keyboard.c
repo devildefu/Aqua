@@ -22,9 +22,9 @@ char getKeycodeWait() {
 	return k;
 }
 
-char getchar(BREAK show_opts) {
+char getchar(char show_opts) {
 	char keycode;
-	if(show_opts = GET_WAIT)
+	if(show_opts = 1)
 		keycode = getKeycodeWait();
 	else
 		keycode = getKeycode();
