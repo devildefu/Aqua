@@ -1,15 +1,26 @@
-// Ports
+// VGA Kirid Driver - Ports
+
+/* OTHER */
 #define VGA_MODE_CONTROL        0x3C0
 #define VGA_OVERSCAN_REGISTER   0x3C0
 #define VGA_COLOR_PLANE_ENABLE  0x3C0
 #define VGA_HORIZONTAL_PANNING  0x3C0
 #define VGA_COLOR_SELECT        0x3C0
-#define VGA_MISC_OUTPUT_REG     0x3C2 // Miscellaneous Output Register
-#define VGA_CLOCK_MODE_REGISTER 0x3C4
+
 #define VGA_CHARACTER_SELECT    0x3C4
 #define VGA_MEMORY_MODE_REG     0x3C4
+
 #define VGA_MODE_REGISTER       0x3CE
 #define VGA_MISC_REGISTER       0x3CE // Miscellaneous Register
+
+#define VGA_MODE_CONTROL_2      0x3D4
+
+
+/* CRT CONTROLLER */
+#define VGA_MISC_OUTPUT_REG     0x3C2 // Miscellaneous Output Register
+
+#define VGA_CLOCK_MODE_REGISTER 0x3C4
+
 #define VGA_HORIZONTAL_TOTAL    0x3D4
 #define VGA_HOR_DISP_ENA_END    0x3D4 // Horizontal Display Enable End
 #define VGA_HOR_BLANK_START     0x3D4 // Horizontal Blank Start
@@ -26,4 +37,3 @@
 #define VGA_UNDERLINE_LOCATION  0x3D4
 #define VGA_VER_BLANK_START     0x3D4 // Vertical Blank Start
 #define VGA_VERTICAL_BLANK_END  0x3D4
-#define VGA_MODE_CONTROL_2      0x3D4
