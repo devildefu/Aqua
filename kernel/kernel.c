@@ -7,7 +7,7 @@
 #include "Include/cpu.h"
 #include "Include/io.h"
 #include "Shell/Shell.h"
-#include "Drivers/SATA/sata.h"
+#include "Drivers/ATA/ata.h"
 
 void kmain(void) {
 	clear();
