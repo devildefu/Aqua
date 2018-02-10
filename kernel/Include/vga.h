@@ -22,6 +22,8 @@ void move(uint16_t x, uint16_t y);
 void setPosition(uint16_t x, uint16_t y);
 void setColor(uint16_t x, uint16_t y, uint16_t color);
 void setChar(uint16_t x, uint16_t y, char c);
+char getChar(uint16_t x, uint16_t y);
+uint16_t getColor(uint16_t x, uint16_t y);
 
 int snprintf(char* s, size_t n, const char* format, ...); //<- Prints formatted text to the string with limitted size
 int sprintf(char* s, const char* format, ...); //<- Prints formatted text to the string
