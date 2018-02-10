@@ -81,23 +81,13 @@ char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
     return ptr;
 }
 int strcmp(const char* a, const char* b) {
-    unsigned int size_a = 0;
-    unsigned int size_b = 0;
     for(int i = 0;;i++) {
-        if(a[i]!='\n') size_a++;
-        else break;
+        if(a[i]=='\0' && b[i]!='\0') return -1;
+        if(a[i]!='\0' && b[i]=='\0') return 1;
+        if(a[i]!=b[i]) return 1;
+        if(a[i]=='\0' && b[i]=='\0') break;
     }
-    for(int i = 0;;i++) {
-        if(b[i]!='\n') size_b++;
-        else break;
-    }
-    if(size_a > size_b) return 1;
-    size_b = 0;
-    for(int i = 0; i<size_a; i++) {
-        if(a[i] == b[i]) size_b++;
-    }
-    if(size_b >= size_a) return 0;
-    return -1;
+    return 0;
 
 }
 _Bool reverse(void* _ptr, size_t size) {
