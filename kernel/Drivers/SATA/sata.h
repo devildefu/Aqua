@@ -289,3 +289,9 @@ typedef struct tagHBA_CMD_TBL
 	// 0x80
 	HBA_PRDT_ENTRY	prdt_entry[1];	// Physical region descriptor table entries, 0 ~ 65535
 } HBA_CMD_TBL;
+
+static int check_type(HBA_PORT* port);
+void probe_port(HBA_MEM *abar);
+void start_cmd(HBA_PORT *port);
+void stop_cmd(HBA_PORT *port);
+void port_rebase(HBA_PORT *port, int portno);

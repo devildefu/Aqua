@@ -48,8 +48,7 @@ static int check_type(HBA_PORT* port) {
 	}
 }
 
-void probe_port(HBA_MEM *abar)
-{
+void probe_port(HBA_MEM *abar) {
 	// Search disk in impelemented ports
 	uint32_t pi = abar->pi;
 	int i = 0;
@@ -106,8 +105,7 @@ void probe_port(HBA_MEM *abar)
 }
 
 // Start command engine
-void start_cmd(HBA_PORT *port)
-{
+void start_cmd(HBA_PORT *port) {
 	// Wait until CR (bit15) is cleared
 	while (port->cmd & HBA_PxCMD_CR);
 
@@ -117,8 +115,7 @@ void start_cmd(HBA_PORT *port)
 }
 
 // Stop command engine
-void stop_cmd(HBA_PORT *port)
-{
+void stop_cmd(HBA_PORT *port) {
 	// Clear ST (bit0)
 	port->cmd &= ~HBA_PxCMD_ST;
 
@@ -136,8 +133,7 @@ void stop_cmd(HBA_PORT *port)
 	port->cmd &= ~HBA_PxCMD_FRE;
 }
 
-void port_rebase(HBA_PORT *port, int portno)
-{
+void port_rebase(HBA_PORT *port, int portno) {
 	stop_cmd(port);	// Stop command engine
 
 	// Command list offset: 1K*portno
