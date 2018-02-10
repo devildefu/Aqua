@@ -46,7 +46,7 @@ void d2s(double d, char* string, size_t size, char dot) {
 char* getStringn(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
-            ptr[i] = getchar();
+            ptr[i] = getchar(GET_WAIT);
             #ifdef DRAW_STRING
                 putchar(ptr[i]);
             #endif
@@ -61,7 +61,7 @@ char* getStringn(char* ptr, unsigned int ptr_size) {
 char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
-            char ch = getchar();
+            char ch = getchar(GET_WAIT);
             if(ch != CHAR) {
                 ptr[i] = ch;
                 #ifdef DRAW_STRING
