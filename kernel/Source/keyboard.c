@@ -1,6 +1,7 @@
 #include "../Include/keyboard.h"
 #include "../Include/io.h"
 #include "../Include/definitions.h"
+#include "../Include/time.h"
 
 
 char ANSI_Translation_Tab[] =
@@ -11,14 +12,14 @@ char ANSI_Translation_Tab[] =
 
 
 char getKeycode() {
-	char k = inb(0x60);
-	outb(0x60,0);
-	return k;
+	char ret = inb(0x60);
+    //outb(0x60,0);
+    return ret;
 }
 
 char getKeycodeWait() {
 	char k;
-	while(!(k = getKeycode()));
+	while((k = getKeycode()) == 0);
 	return k;
 }
 
@@ -29,5 +30,5 @@ char getchar(char show_opts) {
 	else
 		keycode = getKeycode();
 	if(keycode < 2) return 0;
-	return  ANSI_Translation_Tab[keycode-2];
+	return ANSI_Translation_Tab[keycode-2];
 }
