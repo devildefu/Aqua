@@ -45,6 +45,3 @@ static inline void waitClocks(uint64_t clocks) {
 }
 
 #endif
-
-
-
