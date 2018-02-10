@@ -26,7 +26,11 @@ void kmain(void) {
 	newLine();
 	puts("[Kernel] Starting main shell...");
 
-	shell();
+	//shell();
+	char tab[10];
+	int a = getchar(1);
+	integerToString(a,tab);
+	puts(a);
 
 	newLine();
 	puts("[Kernel] Exit");
