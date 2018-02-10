@@ -2,6 +2,30 @@
 #include "../../Include/vga.h"
 #include "../../Include/string.h"
 #include "../../Include/memory.h"
+#include "../../Include/io.h"
+
+int identify(uint16_t port) {
+	outb(port, 0xA0);
+
+	outb(0x1F2, 0);
+	outb(0x1F3, 0);
+	outb(0x1F4, 0);
+	outb(0x1F5, 0);
+
+	outb(0x1F7, 0xEC);
+
+	if(inb(0x1F7)==0) {
+		puts("No disk identified");
+	} else if(inb(0x1F7)==83){
+		puts("The disk support LBA48");
+	} else if(inb(0x1F7)==88){
+		puts("The disk support UDMA modes");
+	} else if(inb(0x1F7)==60 || inb(0x1F7)==61){
+		puts("The disk support LBA28");
+	} else {
+		puts("Disc has been identified");
+	}
+}
 
 // Check device type
 int check_type(HBA_PORT* port) {
