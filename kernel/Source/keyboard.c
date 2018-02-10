@@ -11,7 +11,7 @@ char ANSI_Translation_Tab[]
 
 
 char getKeycode() {
-	char k = inb(0x60));
+	char k = inb(0x60);
 	out(0x60,0);
 	return k;
 }
