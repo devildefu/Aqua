@@ -10,33 +10,35 @@ char scancodes[] =
 0x4D,0x4E,0x4F,0x50,0x51,0x52,0x53,0x1C,0x01,0xE0,0xD3,0x2A,0x36,0x39,
 0x0E};
 
-char codestrans[] =
+char ANSI_Translation_Tab
 {'1','2','3','4','5','6','7','8','9','0','-','=',9,'q','w','e','r','t'
 ,'y','u','i','o','p','[',']','a','s','d','f','g','h','j','k','l',';','\'',
 '`','\\','z','x','c','v','b','n','m',',','.','/','*',' ','7','8','9','-',
 '4','5','6','+','1','2','3','0','.',13,27,127,127,15,14,32,8};
 
 
-char getScancode() {
-	char c=0;
-	do {
-		if(inb(0x60)!=c) {
-			c=inb(0x60);
-			if(c>0) {
-				return c;
-			}
-		}
-	} while(1);
+char getKeycode() {
+	char k = inb(0x60));
+	return k;
 }
 
-char getchar() {
-	char the_scancode = getScancode();
-	int n = sizeof(scancodes)/sizeof(scancodes[0]);
-	for(int i=0; i < n+1; i++) {
-		if(scancodes[i]==the_scancode) {
-			outb(0x60,0);
-			return codestrans[i];
-		}
-	}
-	return ';';
+char getKeycodeWait() {
+	char k;
+	while(!(k = getGeycode()));
+	return k;
+}
+
+typedef enum {
+	GET_WAIT,
+	GET_NOWAIT
+} BREAK;
+
+char getchar(BREAK show_opts) {
+	char keycode;
+	if(show_opts = GET_WAIT)
+		keycode = getKeycodeWait();
+	else
+		keycode = getKeycode();
+	if(keycode < 2) return 0;
+	return  ANSI_Translation_Tab[keycode-2]
 }
