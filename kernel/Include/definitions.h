@@ -5,6 +5,9 @@
 #define memPos 0x1010
 #define memShortSize memSize_b / 8
 
+#define GET_WAIT 1
+#define GET_NOWAIT 2
+
 #define null 0
 #define NULL 0
 typedef long long int64_t;
