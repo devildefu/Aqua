@@ -22,11 +22,6 @@ char getKeycodeWait() {
 	return k;
 }
 
-typedef enum {
-	GET_WAIT,
-	GET_NOWAIT
-} BREAK;
-
 char getchar(BREAK show_opts) {
 	char keycode;
 	if(show_opts = GET_WAIT)
