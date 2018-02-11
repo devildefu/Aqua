@@ -12,3 +12,6 @@ isodir/*
 grub.cfg
 kirid.bin
 script.sh
+
+kernel/Source/A20.c
+kernel/Source/A20.h

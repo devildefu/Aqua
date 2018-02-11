@@ -9,6 +9,8 @@
 #include "Shell/Shell.h"
 #include "Drivers/ATA/ata.h"
 
+#include "Include/A20.h"
+
 void kmain(void) {
 	clear();
 	color(0x0F);
@@ -35,5 +37,11 @@ void kmain(void) {
 	newLine();
 	puts("[Kernel] Exit");
 
+	newLine();
+	if(A20_check_on()) {
+		puts("NOT");
+	} else {
+		puts("YES");
+	}
 	return;
 }
