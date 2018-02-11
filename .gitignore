@@ -6,3 +6,9 @@ kirid.img
 kirid.iso
 list.txt
 result.txt
+.vscode/*
+iso/*
+isodir/*
+grub.cfg
+kirid.bin
+script.sh
