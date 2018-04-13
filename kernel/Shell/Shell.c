@@ -16,6 +16,7 @@ void commands(char* cmd) {
 }
 
 void shell(void) {
+  /*
   newLine();
   while(1) {
     newLine();
@@ -28,5 +29,10 @@ void shell(void) {
       puts("BYYHB");
     }
   }
+  */
+  //I commented on the code because it did not work + broke the entire screen ;) ~defu
+  puts("[KShell] KShell does not work fully due to the lack of ATA and FAT32 support, so most commands do not work or are... artificial?");
+  newLine();
+  puts("$ -> ");
   return;
 }

@@ -8,13 +8,14 @@
 #include "Include/io.h"
 #include "Shell/Shell.h"
 #include "Drivers/ATA/ata.h"
-
 #include "Include/A20.h"
+#include "Drivers/VGA/include/main.h"
 
 void kmain(void) {
 	clear();
 	color(0x0F);
 
+	//startVGA();
 	//Kernel Logs
 	CPU_INFO cpuData;
 	CPUInfo(&cpuData);
@@ -33,15 +34,15 @@ void kmain(void) {
 	//shell();
 	puts("[ATA Driver]: ");
 	identify(0x1F6);
+  newLine();
+
+  puts("[KShell] Running...");
+  newLine();
+  shell();
 
 	newLine();
 	puts("[Kernel] Exit");
 
-	newLine();
-	if(A20_check_on()) {
-		puts("NOT");
-	} else {
-		puts("YES");
-	}
+	//startVGA();
 	return;
 }

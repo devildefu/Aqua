@@ -5,5 +5,5 @@ void disable_int() {
 }
 
 void enable_int() {
-    asm("sli");
+    asm("sti");
 }
