@@ -5,4 +5,5 @@ Only tools what you need are: GCC, G++, NASM, and LD. To compile it, use that co
 ```
 $ make
 ```
-And... Yay! You compiled kernel on your own computer!
+And now, congratulations. You did this and you compiled our kernel on your computer. Good fun and no bugs! :D
+
