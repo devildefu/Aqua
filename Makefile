@@ -7,14 +7,14 @@ LD=ld
 NASM=nasm
 
 G++_FLAGS=-m32 -c -O2 -Wall -Wextra -fno-builtin -nostdlib
-GCC_FLAGS=-m32 -c -std=gnu99 -O2 -Wall -fno-stack-protector -fno-builtin -nostdlib
+GCC_FLAGS=-m32 -c -std=gnu99 -O2 -Wall -fno-stack-protector -fno-builtin -nostdlib -Ikernel/Include
 
-LD_FILES=$(build)/boot.o $(build)/kernel.o $(build)/vga.o $(build)/keyboard.o $(build)/memory.o $(build)/string.o $(build)/shell.o $(build)/A20.o $(build)/interrupts.o $(build)/ata.o 
+LD_FILES=$(build)/boot.o $(build)/kernel.o $(build)/vga.o $(build)/keyboard.o $(build)/memory.o $(build)/string.o $(build)/shell.o $(build)/A20.o $(build)/interrupts.o $(build)/ata.o $(build)/beeper.o 
 LD_FLAGS=-m elf_i386 -T linker.ld -o kirid -O2 -nostdlib
 :q
 all: Kirid
 
-Kirid: boot.o kernel.o keyboard.o memory.o string.o vga.o shell.o A20.o interrupts.o ata.o
+Kirid: boot.o kernel.o keyboard.o memory.o string.o vga.o shell.o A20.o interrupts.o ata.o beeper.o
 	$(LD) $(LD_FILES) $(LD_FLAGS)
 
 #############################################################
@@ -52,6 +52,8 @@ ata.o:
 vga_driver.o:
 	$(GCC) kernel/Drivers/VGA/source/main.c -o $(build)/vga_driver.o $(GCC_FLAGS)
 
+beeper.o:
+	$(GCC) kernel/Drivers/Beeper/beeper.c -o $(build)/beeper.o $(GCC_FLAGS)
 ############################################################
 
 create_directories:

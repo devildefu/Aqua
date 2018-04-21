@@ -10,6 +10,7 @@
 #include "Drivers/ATA/ata.h"
 #include "Include/A20.h"
 #include "Drivers/VGA/include/main.h"
+#include "Drivers/Beeper/beeper.h"
 
 void kmain(void) {
 	clear();
@@ -39,6 +40,8 @@ void kmain(void) {
   puts("[KShell] Running...");
   newLine();
   shell();
+
+	beep(1000);
 
 	newLine();
 	puts("[Kernel] Exit");
