@@ -1,8 +1,7 @@
 # Kirid
 Kernel made for fun. Use pull requests to help us in code creating
 ## Compilation
-Compilation tools which you need: GCC, G++, NASM and LD.
-To complile use this command
+Only tools what you need are: GCC, G++, NASM, and LD. To compile it, use that command:
 ```
 $ make
 ```
