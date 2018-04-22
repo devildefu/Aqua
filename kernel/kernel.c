@@ -7,8 +7,6 @@
 #include "Include/cpu.h"
 #include "Include/io.h"
 #include "Shell/Shell.h"
-#include "Drivers/ATA/ata.h"
-#include "Include/A20.h"
 #include "Drivers/VGA/include/main.h"
 #include "Drivers/Beeper/beeper.h"
 
@@ -31,17 +29,6 @@ void kmain(void) {
 	puts(cpuData.name);
 	newLine();
 	//puts("[Kernel] Starting main shell...");
-
-	//shell();
-	puts("[ATA Driver]: ");
-	identify(0x1F6);
-  newLine();
-
-  puts("[KShell] Running...");
-  newLine();
-  shell();
-
-	beep(1000);
 
 	newLine();
 	puts("[Kernel] Exit");
