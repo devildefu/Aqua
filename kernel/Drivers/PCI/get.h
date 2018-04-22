@@ -1,5 +1,4 @@
 #pragma once
-#include "../Include/definitions.h"
 #include "../Include/io.h"
 
 uint16_t pciConfigReadWord (uint8_t bus, uint8_t slot,
