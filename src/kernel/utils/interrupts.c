@@ -1,4 +1,4 @@
-#include "../Include/interrupts.h"
+#include "interrupts.h"
 
 void disable_int() {
     asm("cli");

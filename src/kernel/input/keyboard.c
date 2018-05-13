@@ -1,8 +1,8 @@
 //Need rework!
 
-#include "../Include/keyboard.h"
-#include "../Include/io.h"
-#include "../Include/definitions.h"
+#include "keyboard.h"
+#include <io/ports.h>
+#include <utils/definitions.h>
 
 char scancodes[] = 
 {0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0F,0x10,

@@ -1,14 +1,7 @@
-#include "Include/vga.h"
-#include "Include/keyboard.h"
-#include "Include/string.h"
-#include "Include/time.h"
-#include "Include/memory.h"
 #include "kernelData.h"
-#include "Include/cpu.h"
-#include "Include/io.h"
-#include "Shell/Shell.h"
-#include "Drivers/VGA/include/main.h"
-#include "Drivers/Beeper/beeper.h"
+
+#include <display/tty.h>
+#include <device/cpu.h>
 
 void kmain(void) {
 	clear();

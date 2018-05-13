@@ -1,6 +1,6 @@
 #pragma once
 
-#include "definitions.h"
+#include <utils/definitions.h>
 
 void atoi(char *str, int* a);
 

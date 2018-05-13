@@ -1,7 +1,7 @@
-#ifndef __VGA_H_
-#define __VGA_H_
+#ifndef __TTY_H_
+#define __TTY_H_
 
-#include "definitions.h"
+#include <utils/definitions.h>
 
 struct cursor_position {
   void(*res_func)(struct cursor_position*);

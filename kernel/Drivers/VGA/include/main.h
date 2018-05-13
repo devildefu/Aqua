@@ -1,1 +1,0 @@
-void startVGA(void);

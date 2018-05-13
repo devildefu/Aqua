@@ -1,7 +1,7 @@
-#include "../Include/string.h"
-#include "../Include/definitions.h"
-#include "../Include/vga.h"
-#include "../Include/keyboard.h"
+#include "string.h"
+#include <utils/definitions.h>
+#include <display/tty.h>
+#include <input/keyboard.h>
 
 void atoi(char *str, int* a)
 {

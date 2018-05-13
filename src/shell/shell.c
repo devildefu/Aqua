@@ -1,9 +1,9 @@
-#include "../Include/vga.h"
-#include "../Include/keyboard.h"
-#include "../Include/string.h"
-#include "../Include/time.h"
-#include "../Include/memory.h"
-#include "Shell.h"
+#include <display/tty.h>
+#include <input/keyboard.h>
+#include <string/string.h>
+#include <utils/time.h>
+#include <memory/memory.h>
+#include "shell.h"
 
 int isExit = 0;
 char* command = "NULL";
