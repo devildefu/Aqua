@@ -1,4 +1,4 @@
-#include "kernelData.h"
+#include "config.h"
 
 #include <display/tty.h>
 #include <device/cpu.h>

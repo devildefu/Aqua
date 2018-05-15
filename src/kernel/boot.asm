@@ -18,6 +18,9 @@ stack_top:
 
 section .text
 global _start:function (_start.end - _start)
+
+%include "src/kernel/v86.asm"
+
 _start:
 	mov esp, stack_top
 	extern kmain
