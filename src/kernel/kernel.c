@@ -6,8 +6,7 @@
 void kmain(void) {
 	clear();
 	color(0x0F);
-
-	//startVGA();
+	
 	//Kernel Logs
 	CPU_INFO cpuData;
 	CPUInfo(&cpuData);
@@ -21,11 +20,10 @@ void kmain(void) {
 	puts("[CPU] Name: ");
 	puts(cpuData.name);
 	newLine();
-	//puts("[Kernel] Starting main shell...");
-
+  SSE_Check();
+  newLine();
+	
 	newLine();
 	puts("[Kernel] Exit");
-
-	//startVGA();
 	return;
 }

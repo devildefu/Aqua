@@ -73,6 +73,7 @@
 typedef struct{
   char vendor[13];
   char name[48];
+  bool sse_available;
 } CPU_INFO;
 
 void cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) {
