@@ -1,4 +1,4 @@
-/* ELF Documentation
+/* ELF Documentation:
  * http://www.skyfree.org/linux/references/ELF_Format.pdf
  * */
 
