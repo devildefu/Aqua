@@ -19,7 +19,7 @@ C_FILES=$(build)/kernel.o $(build)/tty.o $(build)/keyboard.o $(build)/memory.o $
 LD_FILES=$(ASM_FILES) $(C_FILES) 
 LD_FLAGS=-m elf_i386 -T linker.ld -o kirid -O2 -nostdlib
 
-all: Kirid
+all: create_directories Kirid
 
 Kirid: assembly c_lang
 	$(LD) $(LD_FILES) $(LD_FLAGS)
@@ -72,6 +72,7 @@ pci.o:
 ############################################################
 
 create_directories:
+	mkdir build
 	mkdir build/$(arch);
 
 clear:
