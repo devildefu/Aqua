@@ -1,29 +1,27 @@
 #include "config.h"
 
 #include <display/tty.h>
-#include <device/cpu.h>
+#include <processor/setjmp.h>
+
+uint64_t rdtsc() {
+	uint64_t ret;
+	asm volatile("rdtsc" : "=A"(ret));
+	return ret;
+}
 
 void kmain(void) {
 	clear();
-	color(0x0F);
-	
-	//Kernel Logs
-	CPU_INFO cpuData;
-	CPUInfo(&cpuData);
+	color(6);
 
-	puts("[Kernel] Kernel Version: ");
-	puts(kernelVer);
-	newLine();
-	puts("[CPU] Manufacturer: ");
-	puts(cpuData.vendor);
-	newLine();
-	puts("[CPU] Name: ");
-	puts(cpuData.name);
-	newLine();
-  SSE_Check();
-  newLine();
-	
-	newLine();
-	puts("[Kernel] Exit");
-	return;
+	jmp_buf b;
+
+	if(!setjmp(b)) {
+		puts("abc");
+	}
+
+	puts("dce");
+
+	longjmp(b,1);
+
+	while(1);
 }
