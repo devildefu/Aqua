@@ -1,7 +1,7 @@
 #ifndef K_PCI
 #define K_PCI
 
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
 
 void checkFunction(uint8_t bus, uint8_t device, uint8_t function);
 void checkDevice(uint8_t bus, uint8_t device);

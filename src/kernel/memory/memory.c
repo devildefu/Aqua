@@ -1,53 +1,23 @@
 #include "memory.h"
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
 
-/*
-//////////
-///SYS////
+static alloc_table mall_table;
 
-///TO DO Operation on bits and malloc
-
-inline int editBit(size_t pos, size_t)
-
-inline void blockBit(size_t pos, size_t bit) {
-    if(pos < memShortSize) {
-        if(!mall_memory[pos]._1) return 1;
-        if(!mall_memory[pos]._2) return 2;
-        if(!mall_memory[pos]._3) return 3;
-        if(!mall_memory[pos]._4) return 4;
-        if(!mall_memory[pos]._5) return 5;
-        if(!mall_memory[pos]._6) return 6;
-        if(!mall_memory[pos]._7) return 7;
-        if(!mall_memory[pos]._8) return 8;
-    }
+void init_ram_alloc_table(alloc_table* tab) {
+    mall_table = *tab;
 }
 
-inline uint32_t findBit(size_t pos, char block) {
-    if(pos < memShortSize) {
-        if(!mall_memory[pos]._1) return 1;
-        if(!mall_memory[pos]._2) return 2;
-        if(!mall_memory[pos]._3) return 3;
-        if(!mall_memory[pos]._4) return 4;
-        if(!mall_memory[pos]._5) return 5;
-        if(!mall_memory[pos]._6) return 6;
-        if(!mall_memory[pos]._7) return 7;
-        if(!mall_memory[pos]._8) return 8;
-    }
-    return 0;
+void init_ram(void* start, void* end, uint32_t limit) {
+    mall_table.start = start;
+    mall_table.end = end;
+    mall_table.alloc_limit = limit;
+    
 }
 
-void* malloc(size_t size) {
-    if(size > 0) {
-        for(uint32_t i = 0; i<memShortSize; i++) {
-            uint32_t counter = findBit(i);
-            //TODO Make it workable
-        }
-    }
-    return NULL;
+void* m_alloc(size_t size) {
+    
 }
-void free(void* ptr); //<- Not now, maybe tomorrow
 
-*/
 
 int memcmp(const void* a, const void* b, unsigned int size) {
     if(size>0) {

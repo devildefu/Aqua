@@ -1,7 +1,7 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
 #define ClocksPerMilisecond 3504055.289
 #define ClocksPerDecisecond ClocksPerMilisecond * 10
 #define ClocksPerCentisecond ClocksPerMilisecond * 100

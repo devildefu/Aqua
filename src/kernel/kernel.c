@@ -1,7 +1,16 @@
 #include "config.h"
 
-#include <display/tty.h>
-#include <processor/setjmp.h>
+#include <kernel/display/tty.h>
+#include <kernel/processor/setjmp.h>
+#include <kernel/memory/memory.h>
+#include <kernel/files/file.h>
+#include <kernel/input/keyboard.h>
+
+#include <kernel/string/string.h>
+
+#include <drivers/PS2/ps2.h>
+
+#include <kernel/args/arg.h>
 
 uint64_t rdtsc() {
 	uint64_t ret;
@@ -9,19 +18,11 @@ uint64_t rdtsc() {
 	return ret;
 }
 
-void kmain(void) {
+void kmain(void* lkc) {
 	clear();
-	color(6);
+	color(12);
 
-	jmp_buf b;
-
-	if(!setjmp(b)) {
-		puts("abc");
+	while(1) {
+		putchar(getch());
 	}
-
-	puts("dce");
-
-	longjmp(b,1);
-
-	while(1);
 }

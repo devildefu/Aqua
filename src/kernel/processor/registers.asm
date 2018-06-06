@@ -47,3 +47,68 @@ _jmp:
     mov eax, [esp+4]
     pop ebx
     jmp eax
+
+global pokeb
+pokeb:
+    mov dx, ds
+
+    mov bx, [esp+4]
+    mov ecx, [esp+6]
+    mov ah, [esp+10]
+
+    mov ds, bx
+    mov [ecx], ah
+
+    mov ds, dx
+
+    ret
+
+global peekb
+peekb:
+    mov dx, ds
+
+    mov bx, [esp+4]
+    mov ecx, [esp+6]
+
+    mov ds, bx
+    mov ah, [ecx]
+
+    mov ds, dx
+
+    ret
+
+global pokew
+pokew:
+    mov dx, ds
+
+    mov bx, [esp+4]
+    mov ecx, [esp+6]
+    mov ax, [esp+10]
+
+    mov ds, bx
+    mov [ecx], ax
+
+    mov ds, dx
+
+    ret
+
+global peekw
+peekw:
+    mov dx, ds
+
+    mov bx, [esp+4]
+    mov ecx, [esp+6]
+
+    mov ds, bx
+    mov ax, [ecx]
+
+    mov ds, dx
+
+    ret
+
+global getseg
+getseg:
+    mov ax, ds
+    ret
+
+

@@ -70,6 +70,8 @@
 #define EDX_RDTSCP                      (1 << 27)   // RDTSCP and IA32_TSC_AUX
 #define EDX_64_BIT                      (1 << 29)   // 64-bit Architecture
 
+#include <kernel/utils/definitions.h>
+
 typedef struct{
   char vendor[13];
   char name[48];

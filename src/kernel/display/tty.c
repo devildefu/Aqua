@@ -1,10 +1,17 @@
 #include "tty.h"
-#include <utils/definitions.h>
-#include <io/ports.h>
+#include <kernel/utils/definitions.h>
+#include <kernel/io/ports.h>
+#include <kernel/string/string.h>
+#include <kernel/input/keyboard.h>
 
-char* vga_buffer = (char*)0xb8000;
+FILE systty[1] = {{
+	.pr = ttyProcedure
+}};
+
+static char* vga_buffer = (char*)0xb8000;
 struct cursor_position m = {
-	.p = 0
+	.p = 0,
+	.c = 0
 };
 
 uint16_t get_x_coordinate(struct cursor_position* cursor) {
@@ -22,29 +29,33 @@ uint16_t get_y_coordinate(struct cursor_position* cursor) {
 }
 
 void clear() {
-	unsigned short j = 0;
-
-	while(j < 80 * 25 * 2) {
-		vga_buffer[j] = ' ';
-		vga_buffer[j+1] = 0x07;
-		j += 2;
-	}
+	fill_buffer(0,0);
 }
 
 void putchar(char character) {
 	switch(character) {
 	case '\n':
+		vga_buffer[m.p]='\n';
 		m.p+=((80*2)-(m.p%(80*2)));
 		break;
 	case '\0':
-		m.p+=2;
+		break;
+	case 0x08:
+		if(m.p > 0) {
+			m.p -= 2;
+			while(!vga_buffer[m.p] && m.p) {
+				m.p -= 2;
+			}
+			vga_buffer[m.p] = 0;
+			vga_buffer[m.p+1] = 0;
+		}
+		break;
 	default:
 		vga_buffer[m.p] = character;
-		vga_buffer[m.p+1] = *(uint16_t*)0x1001; //<< Color address;
+		vga_buffer[m.p+1] = m.c;
 		m.p+=2;
 		break;
 	}
-	//maybe more cases
 	mgotoxy(m.p/2);
 }
 
@@ -58,13 +69,14 @@ void puts(const char* string) {
 }
 
 void color(uint16_t color) {
-	uint16_t* colptr = (uint16_t*)0x1001;
-	*colptr = color;
+	m.c = color;
 }
 
 void mgotoxy(uint16_t xy) { //<- Gotoxy xy
 	outb(0x3D4, 0x0F);
-	outb(0x3D5, (unsigned char)(xy&0xFF));
+	outb(0x3D5, (uint8_t)(xy & 0xFF));
+	outb(0x3D4, 0x0E);
+	outb(0x3D5, (uint8_t)((xy >> 8) & 0xFF));
 }
 
 void sgotoxy(uint16_t x, uint16_t y) { //<- Gotoxy x,y
@@ -100,4 +112,73 @@ void setChar(uint16_t x, uint16_t y, char c) {
 void newLine() {
 	m.p+=((80*2)-(m.p%(80*2)));
 	mgotoxy(m.p/2);
+}
+
+void fill_buffer(char c, uint16_t color) {
+	for(uint16_t i = 0; i < screen_res*2; i+=2) {
+		vga_buffer[i] = c;
+		vga_buffer[i+1] = color;
+	}
+}
+
+void* ttyProcedure(int procedure, void* data, uint32_t size, FILE* th) {
+		switch(procedure) {
+		case F_OPEN:
+			return NULL;
+
+		case F_CLOSE:
+			th->data = 0;
+			th->pr = 0;
+
+			return 1;
+
+		case F_READ:
+			{
+				char* p = *(char**)data;
+				size_t size = *(size_t*)(data+4);
+				size_t nitems = *(size_t*)(data+8);
+
+				for(uint32_t i = 0; i < nitems*size; i+=size) {
+					p[i] = _getch(def_keyboard, _SC_US, 1);
+				}
+			}
+			return 1;
+
+		case F_WRITE:
+			{
+				char* p = *(char**)data;
+				size_t size = *(size_t*)(data+4);
+				size_t nitems = *(size_t*)(data+8);
+
+				for(uint32_t i = 0; i < nitems*size; i+=size) {
+					putchar(p[i]);
+				}
+			}
+			return 1;
+
+		case F_SEEK:
+			{
+				int offset = *(int*)(data);
+				int mode = *(int*)(data+4);
+
+				switch(mode) {
+				case SEEK_SET:
+					setPosition(offset,0);
+					break;	
+
+				case SEEK_CUR:
+					setPosition(m.p/2 + offset,0);
+					break;
+
+				case SEEK_END:
+					setPosition(screen_res - offset,0);
+				}
+				
+
+				return 1;
+			}
+
+		}
+		
+		return 0;
 }
