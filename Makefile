@@ -22,7 +22,7 @@ LD_FLAGS=-m elf_i386 -T linker.ld -o kirid -O2 -nostdlib
 
 all: Kirid
 
-Kirid: assembly c_lang
+Kirid: create_directories assembly c_lang
 	$(LD) $(LD_FILES) $(LD_FLAGS)
 
 #Assembly ####################################################
@@ -91,9 +91,6 @@ ps2_keyboard.o:
 ############################################################
 
 create_directories:
-	mkdir build
-	mkdir build/$(arch);
-
-clear:
 	rm -rf build
 	mkdir build
+	mkdir build/$(arch)
