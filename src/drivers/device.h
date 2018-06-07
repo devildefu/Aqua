@@ -40,9 +40,12 @@ typedef struct _device_ {
 #define checkIndex(dev, ind) \
     dev->device_s == ind
 
-#define init_device(d,tp,dm) \
-    d->devmode = dm; \
-    d->device_s = tp
+#define init_device(dv,tp,dm) \
+    dv->devmode = dm; \
+    dv->device_s = tp
+
+#define init_devmode(d,pr) \
+    d->proc = pr
 
 #endif
 

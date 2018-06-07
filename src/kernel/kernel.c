@@ -13,7 +13,8 @@
 #include <kernel/args/arg.h>
 
 void kmain(void* lkc) {
-	init_device(devCast(def_keyboard), __dev_keyboard, _ps2);
+	init_ps2();
+	init_keyboard();
 
     clear();
     color(12);

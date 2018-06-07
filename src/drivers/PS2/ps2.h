@@ -3,7 +3,7 @@
 
 #include <drivers/device.h>
 
-extern dev_mode _ps2[1];
+static dev_mode _ps2[1];
 
 void* ps2_procedure(int signal, void* data, size_t size, struct _device_* d);
 
@@ -16,5 +16,8 @@ enum _ps2_devs {
 };
 
 uint8_t ps2_detect_device();
+
+#define init_ps2() \
+    init_devmode(_ps2,ps2_procedure)
 
 #endif

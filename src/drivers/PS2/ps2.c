@@ -3,10 +3,6 @@
 #include "keyboard/keyboard.h"
 #include <kernel/io/ports.h>
 
-dev_mode _ps2[1] = {{
-    .proc = ps2_procedure
-}};
-
 void* ps2_procedure(int signal, void* data, size_t size, struct _device_* d_ptr) {
     switch(d_ptr->device_s) {
     case __dev_keyboard:

@@ -135,6 +135,9 @@ uint8_t _getch(_dev_keyboard_* d, int lang, char wait);
 
 #define set_leds(leds, k) d->led_states ^= leds
 
+#define init_keyboard() \
+    init_device(devCast(def_keyboard), __dev_keyboard, _ps2)
+
 void _update_led_states(_dev_keyboard_* d);
 
 #endif
