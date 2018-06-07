@@ -12,17 +12,13 @@
 
 #include <kernel/args/arg.h>
 
-uint64_t rdtsc() {
-	uint64_t ret;
-	asm volatile("rdtsc" : "=A"(ret));
-	return ret;
-}
-
 void kmain(void* lkc) {
-	clear();
-	color(12);
+	init_device(devCast(def_keyboard), __dev_keyboard, _ps2);
 
-	while(1) {
+    clear();
+    color(12);
+
+    while(1) {
 		putchar(getch());
 	}
 }

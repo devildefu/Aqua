@@ -5,6 +5,8 @@
 
 extern dev_mode _ps2[1];
 
+void* ps2_procedure(int signal, void* data, size_t size, struct _device_* d);
+
 enum _ps2_devs {
     PS2_AncientAT,
     PS2_Mouse,
@@ -12,8 +14,6 @@ enum _ps2_devs {
     PS2_5ButtonMouse,
     PS2_MF2Keyboard = 0xAB
 };
-
-void* ps2_procedure(int signal, void* data, size_t size, struct _device_* d);
 
 uint8_t ps2_detect_device();
 

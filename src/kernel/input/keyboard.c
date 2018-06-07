@@ -4,13 +4,6 @@
 #include <drivers/procedures.h>
 #include <kernel/maths/maths.h>
 
-_dev_keyboard_ def_keyboard[1] = {{
-    .dev = {{
-             .device_s = __dev_keyboard,
-             .devmode = _ps2,
-            }}
-}};
-
 int _key_clck(char key, _dev_keyboard_* k) {
     return k->buf->ch[key/8] & (1 << (key%8));
 }

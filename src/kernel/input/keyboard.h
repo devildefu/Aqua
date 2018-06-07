@@ -6,7 +6,7 @@
 #include <drivers/mechanisms.h>
 
 
-extern _dev_keyboard_ def_keyboard[1];
+static _dev_keyboard_ def_keyboard[1];
 
 enum _key_leds_ {
     _KLED_CAPSLOCK = 1,
