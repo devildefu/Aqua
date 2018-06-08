@@ -16,7 +16,7 @@ G++_FLAGS=-m32 -c -O2 -Wall -Wextra -fno-builtin -nostdlib
 GCC_FLAGS=-m32 -c -std=gnu99 -O2 -Wall -fno-stack-protector -fno-builtin -nostdlib -I$(src)
 
 ASM_FILES=$(build)/boot.o $(build)/v86.o $(build)/sse_asm.o $(build)/registers.o
-C_FILES=$(build)/kernel.o $(build)/tty.o $(build)/keyboard.o $(build)/memory.o $(build)/string.o $(build)/interrupts.o $(build)/beeper.o $(build)/pci.o $(build)/sse_c.o $(build)/setjmp.o $(build)/file.o $(build)/ps2.o $(build)/ps2_keyboard.o
+C_FILES=$(build)/kernel.o $(build)/tty.o $(build)/keyboard.o $(build)/memory.o $(build)/string.o $(build)/interrupts.o $(build)/beeper.o $(build)/pci.o $(build)/sse_c.o $(build)/setjmp.o $(build)/file.o $(build)/ps2.o $(build)/ps2_keyboard.o $(build)/cmos.o
 LD_FILES=$(ASM_FILES) $(C_FILES) 
 LD_FLAGS=-m elf_i386 -T linker.ld -o kirid -O2 -nostdlib
 
@@ -41,7 +41,7 @@ registers.o:
 	$(NASM) -felf32 $(kernel)/processor/registers.asm -o $(build)/registers.o
 
 #C ###########################################################
-c_lang: kernel.o keyboard.o memory.o string.o tty.o interrupts.o beeper.o pci.o sse_c.o setjmp.o file.o ps2.o ps2_keyboard.o
+c_lang: kernel.o keyboard.o memory.o string.o tty.o interrupts.o beeper.o pci.o sse_c.o setjmp.o file.o ps2.o ps2_keyboard.o cmos.o
 
 kernel.o:
 	$(GCC) $(kernel)/kernel.c -o $(build)/kernel.o $(GCC_FLAGS)
@@ -79,6 +79,9 @@ beeper.o:
 
 pci.o:
 	$(GCC) $(drivers)/PCI/pci.c -o $(build)/pci.o $(GCC_FLAGS)
+
+cmos.o:
+	$(GCC) $(drivers)/CMOS/cmos.c -o $(build)/cmos.o $(GCC_FLAGS)
 
 #PS2#
 
