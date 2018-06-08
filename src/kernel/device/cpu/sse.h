@@ -1,7 +1,7 @@
 #ifndef __SSE_H_
 #define __SSE_H_
 
-#include <display/tty.h>
+#include <kernel/display/tty.h>
 
 extern void SSE_Check(void);
 void SSE_Available(void);

@@ -29,4 +29,6 @@ typedef unsigned char uint8_t;
 typedef unsigned int size_t;
 typedef enum { false = 0, true = 1 } bool;
 
+#define _packed_ __attribute__((packed))
+
 #endif

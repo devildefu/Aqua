@@ -1,27 +1,25 @@
 #include "config.h"
 
-#include <display/tty.h>
-#include <processor/setjmp.h>
+#include <kernel/display/tty.h>
+#include <kernel/processor/setjmp.h>
+#include <kernel/memory/memory.h>
+#include <kernel/files/file.h>
+#include <kernel/input/keyboard.h>
 
-uint64_t rdtsc() {
-	uint64_t ret;
-	asm volatile("rdtsc" : "=A"(ret));
-	return ret;
-}
+#include <kernel/string/string.h>
 
-void kmain(void) {
-	clear();
-	color(6);
+#include <drivers/PS2/ps2.h>
 
-	jmp_buf b;
+#include <kernel/args/arg.h>
 
-	if(!setjmp(b)) {
-		puts("abc");
+void kmain(void* lkc) {
+	init_ps2();
+	init_keyboard();
+
+    clear();
+    color(12);
+
+    while(1) {
+		putchar(getch());
 	}
-
-	puts("dce");
-
-	longjmp(b,1);
-
-	while(1);
 }

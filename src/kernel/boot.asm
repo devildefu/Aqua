@@ -21,9 +21,14 @@ global _start:function (_start.end - _start)
 
 _start:
 	mov esp, stack_top
+
+	mov eax, .end	;Pushes address of the last instruction
+	push eax		;as the parameter of kmain
+
 	extern kmain
 	call kmain
 	cli
 .hang: hlt
 	jmp .hang
+
 .end:

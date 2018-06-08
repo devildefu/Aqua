@@ -5,7 +5,7 @@
 #ifndef ELF_TYPES_H
 #define ELF_TYPES_H
 
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
 
 /*  ELF TYPES
  *  Elf32_Addr has 4 bytes

@@ -1,10 +1,16 @@
 #ifndef __TTY_H_
 #define __TTY_H_
 
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
+#include <kernel/files/file.h>
+
+#define screen_res_x 80
+#define screen_res_y 25
+#define screen_res screen_res_x * screen_res_y
 
 struct cursor_position {
   void(*res_func)(struct cursor_position*);
+  uint16_t c;
   uint16_t p;
 };
 
@@ -25,9 +31,19 @@ void setChar(uint16_t x, uint16_t y, char c);
 char getChar(uint16_t x, uint16_t y);
 uint16_t getColor(uint16_t x, uint16_t y);
 
+void fill_buffer(char c, uint16_t color);
+
 int snprintf(char* s, size_t n, const char* format, ...); //<- Prints formatted text to the string with limitted size
 int sprintf(char* s, const char* format, ...); //<- Prints formatted text to the string
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
 int scanf(const char* format, ...); //<- Reads data from input data and saves to variables
+
+void* ttyProcedure(int procedure, void* p, uint32_t size, FILE* that);
+
+extern FILE systty[1];
+
+#define stdout systty
+#define stdin systty
+#define stderr systty
 
 #endif

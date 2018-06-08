@@ -1,28 +1,38 @@
-#pragma once
+#ifndef __MEMORY_H_
+#define __MEMORY_H_
 
-#include <utils/definitions.h>
+#include <kernel/utils/definitions.h>
 
-///////////////////////////
-//SYS
-extern char memory_allocated[memShortSize];
+typedef struct _alloc_table {
 
-///////////////////////////
-//BIT CONTROL
+    void* start;
+    void* end;
 
-int check_bit(char* _byte_);
-void set_bit(char* _byte_, unsigned char bit);
+    uint32_t alloc_limit;
 
-////////////////////////////
-//BASIC RAM CONTROL
+} alloc_table;
 
-void* malloc(size_t size);
-void free(void* ptr);
-void* calloc(size_t nmemb, size_t size);
-void* realloc(void* ptr, size_t size);
+typedef struct _alloc_data {
 
-/////////////////////////////
-//MEMORY CONTROL
+    void* start;
+    
+    uint32_t size;
+
+    struct _alloc_data *left, *right;
+
+} alloc_data;
+
+void set_ram_alloc_table(alloc_table* al);
+void init_ram(void* start, void* end, uint32_t alloc_limit);
+
+void  m_move();
+void* m_alloc(size_t size);
+void  m_free(void* ptr);
+void* m_calloc(size_t nmemb, size_t size);
+void* m_realloc(void* ptr, size_t size);
 
 int memcmp(const void* a, const void* b, unsigned int size);
 void* memcpy(void* destination, const void* from, unsigned int block_size);
 void* memset(void* ptr, char value, size_t num);
+
+#endif

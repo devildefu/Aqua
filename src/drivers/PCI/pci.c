@@ -1,6 +1,6 @@
 #include "pci.h"
 
-#include <io/ports.h>
+#include <kernel/io/ports.h>
 
 void checkFunction(uint8_t bus, uint8_t device, uint8_t function) {
     uint8_t baseClass;

@@ -1,7 +1,7 @@
 #include "string.h"
-#include <utils/definitions.h>
-#include <display/tty.h>
-#include <input/keyboard.h>
+#include <kernel/utils/definitions.h>
+#include <kernel/display/tty.h>
+#include <kernel/input/keyboard.h>
 
 void atoi(char *str, int* a)
 {
@@ -46,7 +46,7 @@ void d2s(double d, char* string, size_t size, char dot) {
 char* getStringn(char* ptr, unsigned int ptr_size) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
-            ptr[i] = getchar(GET_WAIT);
+            ptr[i] = _getch(def_keyboard,_SC_US, 1);
             #ifdef DRAW_STRING
                 putchar(ptr[i]);
             #endif
@@ -61,7 +61,7 @@ char* getStringn(char* ptr, unsigned int ptr_size) {
 char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
     if(ptr_size > 0) {
         for(int i = 0; i<ptr_size-1; i++) {
-            char ch = getchar(GET_WAIT);
+            char ch = _getch(def_keyboard, _SC_US, 1);
             if(ch != CHAR) {
                 ptr[i] = ch;
                 #ifdef DRAW_STRING
@@ -122,4 +122,24 @@ _Bool integerToString(int32_t integer, char* _ptr) {
     _ptr[iter+1] = '\0';
     return 1;
 
+}
+
+void htoa(uint32_t h, char* t) {
+    t[0] = '0';
+    t[1] = 'x';
+    t+=2;
+
+    uint32_t i = 0;
+
+    do {
+        char d = h % 0x10;
+        if(d < 10) d += 0x30;
+        else d += 0x41-0x0A;
+        t[i] = d;
+        i++;
+    } while(h /= 0x10);
+
+    t[i] = '\0';
+
+    reverse(t,i);
 }
