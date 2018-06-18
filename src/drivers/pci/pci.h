@@ -4,6 +4,9 @@
 #include <kernel/include/definitions.h>
 #include <kernel/include/ports.h>
 
+#define PCI_TYPE0_ADDRESSES 5
+#define PCI_TYPE1_ADDRESSES 2
+
 /* 
     Enum for pci device types, for more about it, go to https://wiki.osdev.org/PCI#Class_Codes
 */
@@ -37,7 +40,7 @@ enum DEVICE_TYPE {
 */
 
 
-struct PCI_DEVICE {
+typedef struct _PCI_DEVICE {
     /* 8 bit variables */
         uint8_t RevisionID; 
         uint8_t ProgIf; 
@@ -52,7 +55,9 @@ struct PCI_DEVICE {
         uint16_t DeviceID; 
         uint16_t Command; 
         uint16_t Status; 
-
+        uint16_t BusNumber;
+        uint16_t DeviceNumber;
+        uint16_t FunctionNumber;
     /* Union for specific pci device */
     union {
 
@@ -148,6 +153,23 @@ struct PCI_DEVICE {
                 uint32_t LegacyBaseAddress;
         } type2;
     } u;
-};
+} PCI_DEVICE;
+
+void detect_devices();
+
+uint32_t read_config_dword(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset);
+
+uint16_t get_vendor_id(uint8_t bus, uint8_t device, uint8_t function);
+uint16_t get_device_id(uint8_t bus, uint8_t device, uint8_t function);
+uint16_t get_command(uint8_t bus, uint8_t device, uint8_t function);
+uint16_t get_status(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_class_code(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_subclass(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_prog_if(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_revision_id(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_bist(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_header_type(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_latency_timer(uint8_t bus, uint8_t device, uint8_t function);
+uint8_t get_cache_line_size(uint8_t bus, uint8_t device, uint8_t function);
 
 #endif

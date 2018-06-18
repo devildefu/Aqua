@@ -7,11 +7,14 @@
 
 #include <drivers/ps2/ps2.h>
 #include <drivers/cmos/cmos.h>
+#include <drivers/pci/pci.h>
 
 void kmain(void* lkc) {
-	  init_ps2();
-	  init_keyboard();
+	init_ps2();
+	init_keyboard();
 
     clear();
     color(12);
+
+    detect_devices();
 }
