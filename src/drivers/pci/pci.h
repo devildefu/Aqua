@@ -11,7 +11,7 @@
     Enum for pci device types, for more about it, go to https://wiki.osdev.org/PCI#Class_Codes
 */
 
-enum DEVICE_TYPE {
+typedef enum _DEVICE_TYPE {
     OLD = 0x0,
     MASS_STORAGE = 0x1,
     NETWORK = 0x2,
@@ -32,7 +32,7 @@ enum DEVICE_TYPE {
     DATA_ACQUISITION = 0x11,
     RESERVED = 0x12,
     UNKNOWN = 0x13
-};
+} DEVICE_CLASS_TYPE;
 
 /*
     Struct for typical pci device, for more information go to https://wiki.osdev.org/PCI#PCI_Device_Structure and 
@@ -60,7 +60,6 @@ typedef struct _PCI_DEVICE {
         uint16_t FunctionNumber;
     /* Union for specific pci device */
     union {
-
         /* Struct for 00h type device */
         struct PCI_DEVICE_TYPE_00H {
             /* 8 bit variables */
@@ -155,21 +154,33 @@ typedef struct _PCI_DEVICE {
     } u;
 } PCI_DEVICE;
 
-void detect_devices();
+/* Pci functions */
+    void       init_pci(void);
+    void       lspci(void);
+    size_t     number_of_devices(void);
+    PCI_DEVICE get_device(size_t index);
 
-uint32_t read_config_dword(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset);
+/* Pci config read and write */
+    uint8_t  read_config_byte(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset);
+    uint16_t read_config_word(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset);
+    uint32_t read_config_dword(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset);
 
-uint16_t get_vendor_id(uint8_t bus, uint8_t device, uint8_t function);
-uint16_t get_device_id(uint8_t bus, uint8_t device, uint8_t function);
-uint16_t get_command(uint8_t bus, uint8_t device, uint8_t function);
-uint16_t get_status(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_class_code(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_subclass(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_prog_if(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_revision_id(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_bist(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_header_type(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_latency_timer(uint8_t bus, uint8_t device, uint8_t function);
-uint8_t get_cache_line_size(uint8_t bus, uint8_t device, uint8_t function);
+    void     write_config_byte(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset, uint8_t value);
+    void     write_config_word(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset, uint16_t value);
+    void     write_config_dword(uint8_t bus, uint8_t device, uint8_t function, uint8_t offset, uint32_t value);
+
+/* Get from pci config */
+    uint16_t get_vendor_id(uint8_t bus, uint8_t device, uint8_t function);
+    uint16_t get_device_id(uint8_t bus, uint8_t device, uint8_t function);
+    uint16_t get_command(uint8_t bus, uint8_t device, uint8_t function);
+    uint16_t get_status(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_class_code(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_subclass(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_prog_if(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_revision_id(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_bist(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_header_type(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_latency_timer(uint8_t bus, uint8_t device, uint8_t function);
+    uint8_t  get_cache_line_size(uint8_t bus, uint8_t device, uint8_t function);
 
 #endif

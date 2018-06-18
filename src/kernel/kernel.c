@@ -4,6 +4,7 @@
 #include <kernel/include/keyboard.h>
 #include <kernel/include/string.h>
 #include <kernel/include/arg.h>
+#include <kernel/include/cpu.h>
 
 #include <drivers/ps2/ps2.h>
 #include <drivers/cmos/cmos.h>
@@ -16,5 +17,6 @@ void kmain(void* lkc) {
     clear();
     color(12);
 
-    detect_devices();
+    init_pci();
+    lspci();
 }
