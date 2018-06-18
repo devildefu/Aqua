@@ -258,3 +258,10 @@ int printf(const char* restrict format, ...) {
 	va_end(parameters);
 	return written;
 }
+
+char *strcpy(char *src, char *dest)
+{
+   char *save = dest;
+   while(*dest++ = *src++);
+   return save;
+}

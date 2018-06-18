@@ -10,13 +10,18 @@
 #include <drivers/cmos/cmos.h>
 #include <drivers/pci/pci.h>
 
+CPU_INFO* cpuinfo;
+
 void kmain(void* lkc) {
 	init_ps2();
 	init_keyboard();
+    init_pci();
+    CPUInfo(cpuinfo);
 
     clear();
     color(12);
-
-    init_pci();
+    printf("----------- CPU INFO ---------\n");
+    CPUInfoPrint(cpuinfo);
+    printf("----------- PCI INFO ---------\n");
     lspci();
 }
