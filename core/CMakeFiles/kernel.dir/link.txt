@@ -1,2 +1,0 @@
-/usr/bin/cc -c -std=gnu99 -ffreestanding -m32 -fno-stack-protector -fno-builtin -nostdlib   -rdynamic -T arch/i686/pc/linker.ld -N
-  CMakeFiles/kernel.dir/arch/i686/pc/boot.asm.o CMakeFiles/kernel.dir/kernel.c.o  -o kernel 
