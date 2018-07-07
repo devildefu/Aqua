@@ -1,9 +1,9 @@
 #include <core/include/int.h>
 
-void disable_int() {
+void DisableInt() {
     asm("cli");
 }
 
-void enable_int() {
+void EnableInt() {
     asm("sti");
 }
