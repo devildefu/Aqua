@@ -102,7 +102,7 @@ void cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) 
             : "0" (reg) );
 }
 
-void CPUInfo(CPU_INFO* _ptr) {
+void cpu_info(CPU_INFO* _ptr) {
     //Variables for store cpuid return data
     int32_t eax, ebx, ecx, edx;
 
@@ -150,7 +150,7 @@ void CPUInfo(CPU_INFO* _ptr) {
     }
 }
 
-void CPUInfoPrint(CPU_INFO* _ptr) {
+void cpu_print_info(CPU_INFO* _ptr) {
     printf("CPU Vendor: %s\n", _ptr->vendor);
     printf("CPU Name: %s\n", _ptr->name);
     printf("CPU Architecture: %s\n", _ptr->architecture);

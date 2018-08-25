@@ -1,4 +1,5 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.0)
+enable_language(ASM_NASM)
 
 project(Kirid)
 

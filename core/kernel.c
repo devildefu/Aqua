@@ -14,7 +14,7 @@ void kmain(void* lkc) {
     init_ps2();
     init_keyboard();
     init_pci();
-    CPUInfo(cpuinfo);
+    cpu_info(cpuinfo);
 
     clear();
     color(12);

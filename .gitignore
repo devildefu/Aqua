@@ -13,6 +13,3 @@ grub.cfg
 kirid.bin
 script.sh
 start.sh
-
-kernel/Source/A20.c
-kernel/Include/A20.h
