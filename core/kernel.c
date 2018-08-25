@@ -7,6 +7,7 @@
 
 #include <drivers/ps2/ps2.h>
 #include <drivers/pci/pci.h>
+#include <drivers/com/com.h>
 
 CPU_INFO* cpuinfo;
 
@@ -14,17 +15,14 @@ void kmain(void* lkc) {
     init_ps2();
     init_keyboard();
     init_pci();
+    COM_init(COM1_PORT);
     cpu_info(cpuinfo);
 
     clear();
     color(12);
 
-    /*
-    printf("----------- CPU INFO ---------\n");
-    CPUInfoPrint(cpuinfo);
-    printf("----------- PCI INFO ---------\n");
-    lspci();
-    */
+    COM_write(COM1_PORT, 'a');
+    COM_write(COM1_PORT, 'b');
     puts("Hello");
 
     return;
