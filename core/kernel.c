@@ -9,9 +9,9 @@
 #include <drivers/pci/pci.h>
 #include <drivers/com/com.h>
 
-CPU_INFO* cpuinfo;
-
 void kmain(void* lkc) {
+    CPU_INFO* cpuinfo;
+	
     init_ps2();
     init_keyboard();
     init_pci();
