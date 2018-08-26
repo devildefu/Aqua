@@ -10,6 +10,6 @@ SSE_Check:
   call SSE_Available
   ret
   .noSSE:
-  extern SSE_NoAvailable ; Print message
-  call SSE_NoAvailable
+  extern SSE_NotAvailable ; Print message
+  call SSE_NotAvailable
   ret

@@ -5,6 +5,6 @@
 
 extern void SSE_Check(void);
 void SSE_Available(void);
-void SSE_NoAvailable(void);
+void SSE_NotAvailable(void);
 
 #endif
