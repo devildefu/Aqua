@@ -27,3 +27,11 @@ void COM_write(uint16_t port, char letter) {
     while(COM_is_transmit_empty(port) == 0);
     outb(port, letter);
 }
+
+void COM_print(uint16_t port, char* string) {
+    uint16_t i;
+    while(string[i]!='\0') {
+        COM_write(port, string[i]);
+        i++;
+    }
+}

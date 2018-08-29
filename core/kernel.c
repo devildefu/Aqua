@@ -8,6 +8,7 @@
 #include <drivers/ps2/ps2.h>
 #include <drivers/pci/pci.h>
 #include <drivers/com/com.h>
+#include <drivers/gfx/bga/bga.h>
 
 void kmain(void* lkc) {
     CPU_INFO* cpuinfo;
@@ -21,9 +22,7 @@ void kmain(void* lkc) {
     clear();
     color(12);
 
-    COM_write(COM1_PORT, 'a');
-    COM_write(COM1_PORT, 'b');
+    
     puts("Hello");
-
     return;
 }

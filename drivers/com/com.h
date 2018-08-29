@@ -12,5 +12,6 @@
 void COM_init(uint16_t port);
 char COM_read(uint16_t port);
 void COM_write(uint16_t port, char letter);
+void COM_print(uint16_t port, char* string);
 
 #endif

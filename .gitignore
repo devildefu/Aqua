@@ -13,3 +13,5 @@ grub.cfg
 kirid.bin
 script.sh
 start.sh
+bochsrc.bxrc
+vgabios-0.7a.bin
