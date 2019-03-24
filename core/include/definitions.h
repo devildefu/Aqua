@@ -3,14 +3,13 @@
 
 #define INT_MAX 2147483647
 
-#define memSize_b 10240
-#define memPos 0x1010
-#define memShortSize memSize_b / 8
+#define MEM_SIZE_B 10240
+#define MEM_POS 0x1010
+#define MEM_SHORT_SIZE MEM_SIZE_B / 8
 
 #define GET_WAIT 1
 #define GET_NOWAIT 2
 
-#define null 0
 #define NULL 0
 /* 8 bytes */
 typedef long long int64_t;

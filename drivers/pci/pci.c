@@ -8,7 +8,7 @@ size_t devicesInArray = 0;
 bool inited = 0;
 
 /* Get size of devices array */
-size_t arraySize(void) {
+size_t array_size(void) {
     return devicesInArray;
 }
 
@@ -37,31 +37,31 @@ void check_function(uint8_t bus, uint8_t device, uint8_t function) {
     uint16_t command  = get_device_id(bus, device, function);
     uint16_t status  = get_device_id(bus, device, function);
 
-    devices[arraySize()].BaseClass = class_code;
-    devices[arraySize()].SubClass = sub_class;
-    devices[arraySize()].RevisionID = revision_id;
-    devices[arraySize()].ProgIf = prog_if;
-    devices[arraySize()].CacheLineSize = cache_line_size;
-    devices[arraySize()].LatencyTimer = latency_timer;
-    devices[arraySize()].HeaderType = header_type;
-    devices[arraySize()].BIST = bist;
+    devices[array_size()].BaseClass = class_code;
+    devices[array_size()].SubClass = sub_class;
+    devices[array_size()].RevisionID = revision_id;
+    devices[array_size()].ProgIf = prog_if;
+    devices[array_size()].CacheLineSize = cache_line_size;
+    devices[array_size()].LatencyTimer = latency_timer;
+    devices[array_size()].HeaderType = header_type;
+    devices[array_size()].BIST = bist;
 
-    devices[arraySize()].DeviceID = device_id;
-    devices[arraySize()].VendorID = vendor_id;
-    devices[arraySize()].Command = command;
-    devices[arraySize()].Status = status;
-    devices[arraySize()].BusNumber = bus;
-    devices[arraySize()].DeviceNumber = device;
-    devices[arraySize()].FunctionNumber = function;
+    devices[array_size()].DeviceID = device_id;
+    devices[array_size()].VendorID = vendor_id;
+    devices[array_size()].Command = command;
+    devices[array_size()].Status = status;
+    devices[array_size()].BusNumber = bus;
+    devices[array_size()].DeviceNumber = device;
+    devices[array_size()].FunctionNumber = function;
 
-    //printf("%i:%i.%i Type: 0x%i, More precisely: 0x%i, Prog IF: 0x%i | Header: 0x%i ar: %i\n", bus, device, function, class_code, sub_class, prog_if, header_type, arraySize());
+    //printf("%i:%i.%i Type: 0x%i, More precisely: 0x%i, Prog IF: 0x%i | Header: 0x%i ar: %i\n", bus, device, function, class_code, sub_class, prog_if, header_type, array_size());
 
     devicesInArray++;
 }
 
 //lspci
 void lspci(void) {
-    for(uint16_t device = 0; device < arraySize(); ++device) {
+    for(uint16_t device = 0; device < array_size(); ++device) {
         printf("%i:%i.%i VendorID: %i, Type: 0x%i, Class: 0x%i, Prog IF: 0x%i, Header: 0x%i\n", devices[device].BusNumber, devices[device].DeviceNumber, devices[device].FunctionNumber, devices[device].VendorID, devices[device].BaseClass, devices[device].SubClass, devices[device].ProgIf, devices[device].HeaderType);
     }
     //printf("%i:%i.%i Type: 0x%i, More precisely: 0x%i\n", bus, device, function, class_code, sub_class);
@@ -75,7 +75,7 @@ void lspci(void) {
 
 /* Device functions */
     size_t number_of_devices(void) {
-        return arraySize();
+        return array_size();
     } 
 
     PCI_DEVICE get_device(size_t index) {

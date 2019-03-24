@@ -2,18 +2,18 @@
 #define TIME_H
 
 #include <core/include/definitions.h>
-#define ClocksPerMilisecond 3504055.289
-#define ClocksPerDecisecond ClocksPerMilisecond * 10
-#define ClocksPerCentisecond ClocksPerMilisecond * 100
-#define ClocksPerSecond ClocksPerMilisecond * 1000
-#define ClocksPerMinute ClocksPerSecond * 60
-#define ClocksPerHour ClocksPerMinute * 60
-#define ClocksPerDay ClocksPerHour * 24
-#define ClocksPerWeek ClocksPerDay * 7
-#define ClocksPerMonth ClocksPerDay * 31
-#define ClocksPerYearQuater ClocksPerMonth * 4
-#define ClocksPerYear ClocksPerDay * 365
-#define GHz ClocksPerSecond/100000000
+#define CLOCKS_PER_MILISECOND 3504055.289
+#define CLOCKS_PER_DECISECOND CLOCKS_PER_MILISECOND * 10
+#define CLOCKS_PER_CENTISECOND CLOCKS_PER_MILISECOND * 100
+#define CLOCKS_PER_SECOND CLOCKS_PER_MILISECOND * 1000
+#define CLOCKS_PER_MINUTE CLOCKS_PER_SECOND * 60
+#define CLOCKS_PER_HOUR CLOCKS_PER_MINUTE * 60
+#define CLOCKS_PER_DAY CLOCKS_PER_HOUR * 24
+#define CLOCKS_PER_WEEK CLOCKS_PER_DAY * 7
+#define CLOCKS_PER_MONTH CLOCKS_PER_DAY * 31
+#define CLOCKS_PER_YEAR_QUATER CLOCKS_PER_MONTH * 4
+#define CLOCKS_PER_YEAR CLOCKS_PER_DAY * 365
+#define GHZ CLOCKS_PER_SECOND/100000000
 
 struct {
     uint64_t start;
@@ -31,7 +31,7 @@ static inline int64_t clock() {
 
 static void wait(uint64_t ms) {
     int64_t now = clock();
-    int64_t end = now+(float)ms*ClocksPerMilisecond;
+    int64_t end = now+(float)ms*CLOCKS_PER_MILISECOND;
    while(clock() < end) {}
 }
 

@@ -9,9 +9,9 @@
 /* uint16_t */
 #include <core/include/ports.h>
 
-void COM_init(uint16_t port);
-char COM_read(uint16_t port);
-void COM_write(uint16_t port, char letter);
-void COM_print(uint16_t port, char* string);
+void com_init(uint16_t port);
+char com_read(uint16_t port);
+void com_write(uint16_t port, char letter);
+void com_print(uint16_t port, char* string);
 
 #endif

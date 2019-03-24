@@ -1,7 +1,7 @@
 #include <core/include/tty.h>
 
 FILE systty[1] = {{
-	.pr = ttyProcedure
+	.pr = tty_procedure
 }};
 
 static char* vga_buffer = (char*)0xb8000;
@@ -84,40 +84,40 @@ void move(uint16_t x, uint16_t y) {
 	mgotoxy(m.p/2);
 }
 
-void setPosition(uint16_t x, uint16_t y) {
+void set_position(uint16_t x, uint16_t y) {
 	m.p = (x*2+y*80);
 	mgotoxy(m.p/2);
 }
 
-char getChar(uint16_t x, uint16_t y) {
+char get_char(uint16_t x, uint16_t y) {
 	return(x*2+y*80);
 }
 
-uint16_t getColor(uint16_t x, uint16_t y) {
+uint16_t get_color(uint16_t x, uint16_t y) {
 	return (x*2+y*80-1);
 }
 
-void setColor(uint16_t x, uint16_t y, uint16_t color) {
+void set_color(uint16_t x, uint16_t y, uint16_t color) {
 	vga_buffer[x*2+y*80-1] = color;
 }
 
-void setChar(uint16_t x, uint16_t y, char c) {
+void set_char(uint16_t x, uint16_t y, char c) {
 	vga_buffer[x*2+y*80] = c;
 }
 
-void newLine() {
+void new_line() {
 	m.p+=((80*2)-(m.p%(80*2)));
 	mgotoxy(m.p/2);
 }
 
 void fill_buffer(char c, uint16_t color) {
-	for(uint16_t i = 0; i < screen_res*2; i+=2) {
+	for(uint16_t i = 0; i < SCREEN_RES*2; i+=2) {
 		vga_buffer[i] = c;
 		vga_buffer[i+1] = color;
 	}
 }
 
-void* ttyProcedure(int procedure, void* data, uint32_t size, FILE* th) {
+void* tty_procedure(int procedure, void* data, uint32_t size, FILE* th) {
 		switch(procedure) {
 		case F_OPEN:
 			return NULL;
@@ -159,15 +159,15 @@ void* ttyProcedure(int procedure, void* data, uint32_t size, FILE* th) {
 
 				switch(mode) {
 				case SEEK_SET:
-					setPosition(offset,0);
+					set_position(offset,0);
 					break;	
 
 				case SEEK_CUR:
-					setPosition(m.p/2 + offset,0);
+					set_position(m.p/2 + offset,0);
 					break;
 
 				case SEEK_END:
-					setPosition(screen_res - offset,0);
+					set_position(SCREEN_RES - offset,0);
 				}
 				
 

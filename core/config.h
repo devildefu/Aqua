@@ -1,1 +1,1 @@
-static char* kernelVer = "0.1-rc2";
+static char* kernelVer = "0.2-remastered";

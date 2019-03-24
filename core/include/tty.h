@@ -9,9 +9,9 @@
 
 #include <stdarg.h>
 
-#define screen_res_x 80
-#define screen_res_y 25
-#define screen_res screen_res_x * screen_res_y
+#define SCREEN_RES_X 80
+#define SCREEN_RES_Y 25
+#define SCREEN_RES SCREEN_RES_X * SCREEN_RES_Y
 
 struct cursor_position {
   void(*res_func)(struct cursor_position*);
@@ -30,11 +30,11 @@ void sgotoxy(uint16_t x, uint16_t y);
 void mgotoxy(uint16_t xy);
 void newLine();
 void move(uint16_t x, uint16_t y);
-void setPosition(uint16_t x, uint16_t y);
-void setColor(uint16_t x, uint16_t y, uint16_t color);
-void setChar(uint16_t x, uint16_t y, char c);
-char getChar(uint16_t x, uint16_t y);
-uint16_t getColor(uint16_t x, uint16_t y);
+void set_position(uint16_t x, uint16_t y);
+void set_color(uint16_t x, uint16_t y, uint16_t color);
+void set_char(uint16_t x, uint16_t y, char c);
+char get_char(uint16_t x, uint16_t y);
+uint16_t get_color(uint16_t x, uint16_t y);
 
 void fill_buffer(char c, uint16_t color);
 
@@ -43,7 +43,7 @@ int sprintf(char* s, const char* format, ...); //<- Prints formatted text to the
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
 int scanf(const char* format, ...); //<- Reads data from input data and saves to variables
 
-void* ttyProcedure(int procedure, void* p, uint32_t size, FILE* that);
+void* tty_procedure(int procedure, void* p, uint32_t size, FILE* that);
 
 extern FILE systty[1];
 

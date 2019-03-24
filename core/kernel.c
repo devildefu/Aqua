@@ -12,16 +12,9 @@
 
 void kmain(void* lkc) {
     CPU_INFO* cpuinfo;
-	
-    init_ps2();
-    init_keyboard();
-    init_pci();
-    COM_init(COM1_PORT);
-    cpu_info(cpuinfo);
 
     clear();
     color(12);
-
     
     puts("Hello");
     return;
