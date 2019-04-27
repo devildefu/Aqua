@@ -5,7 +5,7 @@ project(Kirid)
 
 set(CMAKE_BINARY_DIR build)
 
-include(core/CMakeLists.txt)
+include(kernel/CMakeLists.txt)
 include(drivers/CMakeLists.txt)
 
 add_executable(kirid ${PLATFORM_SOURCE} ${ARCH_SOURCE} ${KERNEL_SOURCE} ${DRIVERS_SOURCE})

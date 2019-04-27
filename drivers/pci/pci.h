@@ -1,9 +1,9 @@
 #ifndef K_PCI
 #define K_PCI
 
-#include <core/include/definitions.h>
-#include <core/include/ports.h>
-#include <core/include/string.h>
+#include <kernel/include/definitions.h>
+#include <kernel/include/ports.h>
+#include <kernel/include/string.h>
 
 #define PCI_TYPE0_ADDRESSES 5
 #define PCI_TYPE1_ADDRESSES 2
