@@ -1,9 +1,7 @@
-<img src="https://cdn.discordapp.com/attachments/437310430721998848/447114026506387457/ObaKiridLogo.png"/>
-
-# Kirid
-Kernel made for fun. Use pull requests to help us in code creating
+# Aqua
+Operating system made for fun. Use pull requests to help us in code creating
 ## Compilation
-Only tools what you need are: GCC, G++, NASM, LD and CMake. To compile it, use that command:
+Only tools what you need are: GCC, NASM, LD and CMake. To compile it, use that command:
 ```
 $ ./build.sh
 ```
