@@ -1,7 +1,7 @@
 #pragma once
 
 #include <kernel/include/definitions.h>
-#include <kernel/include/tty.h>
+#include <kernel/include/video/tty.h>
 #include <kernel/include/keyboard.h>
 
 void atoi(char *str, int* a);
