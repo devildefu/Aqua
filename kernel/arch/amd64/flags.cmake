@@ -1,0 +1,3 @@
+set(ARCH_LINKER_FLAGS "")
+set(ARCH_C_FLAGS "")
+set(ARCH_ASM_FLAGS "")

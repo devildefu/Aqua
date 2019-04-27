@@ -1,0 +1,2 @@
+#cmakedefine SYSTEM_VERSION "@SYSTEM_VERSION@"
+#cmakedefine SYSTEM_ARCH "@SYSTEM_ARCH@"
