@@ -6,8 +6,11 @@
 #include <kernel/include/cpu.h>
 #include <kernel/include/devices/serial.h>
 
-void kmain(void* lkc) {
+void kmain(unsigned long magic, const void* multiboot_pointer) {
     clear();
-    puts(SYSTEM_VERSION);
+    color(7);
+    char* buf[10000];
+    htoa(magic, buf);
+    printf("%s", buf);
     return;
 }
