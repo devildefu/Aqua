@@ -1,2 +1,2 @@
-#cmakedefine SYSTEM_VERSION "@SYSTEM_VERSION@"
-#cmakedefine SYSTEM_ARCH "@SYSTEM_ARCH@"
+const char* SYSTEM_VERSION = "@SYSTEM_VERSION@";
+const char* SYSTEM_ARCH = "@SYSTEM_ARCH@";

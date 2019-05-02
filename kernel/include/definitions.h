@@ -27,9 +27,16 @@ typedef unsigned short uint16_t;
 typedef char int8_t;
 typedef unsigned char uint8_t;
 
+typedef int intptr_t;
+typedef unsigned uintptr_t;
+
 typedef unsigned int size_t;
 typedef enum { false = 0, true = 1 } bool;
 
 #define _packed_ __attribute__((packed))
+
+#define UINT32_MAX 0xFFFFFFFF
+
+#define UINTPTR_MAX UINT32_MAX
 
 #endif

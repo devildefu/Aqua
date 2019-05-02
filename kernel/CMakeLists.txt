@@ -6,6 +6,7 @@ generate_config_header()
 
 # Add all files *.c and *.asm to KERNEL_SOURCE from kernel source code
 file(GLOB_RECURSE KERNEL_SOURCE "${kernel_source}/*.c" "${kernel_source}/*.asm")
+string(REGEX REPLACE "${kernel_source}/arch/[^;]+;?" "" KERNEL_SOURCE "${KERNEL_SOURCE}")
 
 include_directories("${CMAKE_SOURCE_DIR}")
 # Set architecture

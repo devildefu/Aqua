@@ -1,3 +1,4 @@
+extern SYSTEM_ARCH
 global throw_regs
 throw_regs:
     mov eax, [esp+4]
@@ -110,5 +111,4 @@ global getseg
 getseg:
     mov ax, ds
     ret
-
 
