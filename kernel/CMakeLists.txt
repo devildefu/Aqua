@@ -10,6 +10,8 @@ string(REGEX REPLACE "${kernel_source}/arch/[^;]+;?" "" KERNEL_SOURCE "${KERNEL_
 
 include_directories("${CMAKE_SOURCE_DIR}/kernel/include")
 include_directories("${CMAKE_SOURCE_DIR}")
+include_directories("${CMAKE_SOURCE_DIR}/sdk/c")
+
 # Set architecture
 set_arch("i686" "pc")
 
