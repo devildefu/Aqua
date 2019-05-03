@@ -10,7 +10,7 @@
 
 void com_init(uint16_t port);
 char com_read(uint16_t port);
-void com_write(uint16_t port, char letter);
+void com_putchar(uint16_t port, char letter);
 void com_print(uint16_t port, char* string);
 
 #endif

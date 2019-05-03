@@ -23,7 +23,7 @@ int com_is_transmit_empty(uint16_t port) {
     return inb(port + 5) & 0x20;
 }
 
-void com_write(uint16_t port, char letter) {
+void com_putchar(uint16_t port, char letter) {
     while(com_is_transmit_empty(port) == 0);
     outb(port, letter);
 }
@@ -31,7 +31,7 @@ void com_write(uint16_t port, char letter) {
 void com_print(uint16_t port, char* string) {
     uint16_t i;
     while(string[i]!='\0') {
-        com_write(port, string[i]);
+        com_putchar(port, string[i]);
         i++;
     }
 }
