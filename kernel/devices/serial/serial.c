@@ -29,9 +29,7 @@ void com_putchar(uint16_t port, char letter) {
 }
 
 void com_print(uint16_t port, char* string) {
-    uint16_t i;
-    while(string[i]!='\0') {
+    for(size_t i = 0; i < strlen(string); i++) {
         com_putchar(port, string[i]);
-        i++;
     }
 }

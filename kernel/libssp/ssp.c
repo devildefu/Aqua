@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <devices/serial.h>
+#include <debug/debug.h>
 
 #if UINT32_MAX == UINTPTR_MAX
 #define STACK_CHK_GUARD 0xE2DEE396
@@ -10,12 +11,8 @@
 
 uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
 
-void fail(const char* msg) {
-    color(0x0C);
-    printf(msg);
-    // TODO: Don't use color(0x07)! Instead: color(old_color)
-    color(0x07);
-
+void fail(char* msg) {
+    debug(msg);
     abort();
 }
 
