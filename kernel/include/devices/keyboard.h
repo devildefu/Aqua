@@ -1,12 +1,13 @@
 #ifndef __KEYBOARD_H_
 #define __KEYBOARD_H_
 
-#include <kernel/include/definitions.h>
+#include <definitions.h>
+#include <stdint.h>
 #include <drivers/device.h>
 #include <drivers/mechanisms.h>
 #include <drivers/ps2/ps2.h>
 #include <drivers/procedures.h>
-#include <kernel/include/maths.h>
+#include <maths.h>
 
 static _dev_keyboard_ def_keyboard[1];
 

@@ -1,4 +1,4 @@
-#include <kernel/include/keyboard.h>
+#include <devices/keyboard.h>
 
 int _key_clck(char key, _dev_keyboard_* k) {
     return k->buf->ch[key/8] & (1 << (key%8));

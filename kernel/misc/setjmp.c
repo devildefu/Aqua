@@ -1,4 +1,4 @@
-#include <kernel/include/setjmp.h>
+#include <setjmp.h>
 
 int setjmp(_jmp_buf* buf) {
     return throw_regs(buf);

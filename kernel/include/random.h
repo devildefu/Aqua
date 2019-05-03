@@ -1,7 +1,7 @@
 #ifndef __RANDOM_H_
 #define __RANDOM_H_
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 static unsigned long int next = 1;
 

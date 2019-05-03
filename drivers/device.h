@@ -1,7 +1,8 @@
 #ifndef __DEVICE_H_
 #define __DEVICE_H_
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
+#include <definitions.h>
 
 struct _device_;
 

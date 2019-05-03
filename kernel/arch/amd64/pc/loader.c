@@ -1,4 +1,4 @@
-#include <kernel/include/multiboot/multiboot.h>
+#include <multiboot/multiboot.h>
 
 #define NULL 0
 

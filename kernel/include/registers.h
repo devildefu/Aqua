@@ -1,7 +1,7 @@
 #ifndef __REGS_H_
 #define __REGS_H_
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 typedef struct regs {
 

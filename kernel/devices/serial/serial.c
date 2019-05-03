@@ -1,4 +1,4 @@
-#include <kernel/include/devices/serial.h>
+#include <devices/serial.h>
 
 void com_init(uint16_t port) {
     outb(port + 1, 0x00);

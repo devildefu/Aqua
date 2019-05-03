@@ -3,7 +3,7 @@
 
 #include <drivers/device.h>
 #include <drivers/ps2/keyboard/keyboard.h>
-#include <kernel/include/ports.h>
+#include <ports.h>
 
 static dev_mode _ps2[1];
 

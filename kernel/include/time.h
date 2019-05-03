@@ -1,7 +1,7 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 #define CLOCKS_PER_MILISECOND 3504055.289
 #define CLOCKS_PER_DECISECOND CLOCKS_PER_MILISECOND * 10
 #define CLOCKS_PER_CENTISECOND CLOCKS_PER_MILISECOND * 100

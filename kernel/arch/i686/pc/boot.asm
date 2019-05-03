@@ -6,6 +6,7 @@ CHECKSUM equ - (MAGIC + FLAGS)
 
 section .multiboot
 align 4
+multiboot_header:
 	dd MAGIC
 	dd FLAGS
 	dd CHECKSUM

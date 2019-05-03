@@ -1,7 +1,7 @@
 #ifndef __MEMORY_H_
 #define __MEMORY_H_
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 typedef struct _alloc_table {
 

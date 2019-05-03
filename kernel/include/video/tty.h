@@ -1,11 +1,11 @@
 #ifndef __TTY_H_
 #define __TTY_H_
 
-#include <kernel/include/definitions.h>
-#include <kernel/include/file.h>
-#include <kernel/include/ports.h>
-#include <kernel/include/string.h>
-#include <kernel/include/keyboard.h>
+#include <stdint.h>
+#include <file.h>
+#include <ports.h>
+#include <string.h>
+#include <devices/keyboard.h>
 
 #include <stdarg.h>
 

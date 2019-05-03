@@ -1,4 +1,4 @@
-#include <kernel/include/file.h>
+#include <file.h>
 
 int fopen(const char* name, FILE* f) {
     int ret;

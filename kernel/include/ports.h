@@ -1,6 +1,6 @@
 #ifndef __IO_H_
 #define __IO_H_
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 ///////////////////////////////////////////////////////////
 //IN

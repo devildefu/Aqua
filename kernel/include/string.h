@@ -1,8 +1,9 @@
 #pragma once
 
-#include <kernel/include/definitions.h>
-#include <kernel/include/video/tty.h>
-#include <kernel/include/keyboard.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include <video/tty.h>
+#include <devices/keyboard.h>
 
 void atoi(char *str, int* a);
 

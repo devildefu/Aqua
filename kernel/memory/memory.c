@@ -1,4 +1,4 @@
-#include <kernel/include/memory.h>
+#include <memory.h>
 
 static alloc_table mall_table;
 

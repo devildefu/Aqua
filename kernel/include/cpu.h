@@ -70,7 +70,7 @@
 #define EDX_RDTSCP                      (1 << 27)   // RDTSCP and IA32_TSC_AUX
 #define EDX_64_BIT                      (1 << 29)   // 64-bit Architecture
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 typedef struct {
     /* CPU basic informations */

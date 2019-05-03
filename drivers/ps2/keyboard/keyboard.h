@@ -5,7 +5,7 @@
 #include <drivers/device.h>
 #include <drivers/mechanisms.h>
 #include <drivers/procedures.h>
-#include <kernel/include/ports.h>
+#include <ports.h>
 
 void* __ps2_keyboard_entry(int signal, void* data, size_t size, _dev_keyboard_* k_ptr);
 

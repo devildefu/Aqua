@@ -1,4 +1,4 @@
-#include <kernel/include/video/tty.h>
+#include <video/tty.h>
 
 FILE systty[1] = {{
 	.pr = tty_procedure

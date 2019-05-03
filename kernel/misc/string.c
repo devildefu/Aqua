@@ -1,4 +1,4 @@
-#include <kernel/include/string.h>
+#include <string.h>
 
 void atoi(char *str, int* a)
 {

@@ -8,6 +8,7 @@ generate_config_header()
 file(GLOB_RECURSE KERNEL_SOURCE "${kernel_source}/*.c" "${kernel_source}/*.asm")
 string(REGEX REPLACE "${kernel_source}/arch/[^;]+;?" "" KERNEL_SOURCE "${KERNEL_SOURCE}")
 
+include_directories("${CMAKE_SOURCE_DIR}/kernel/include")
 include_directories("${CMAKE_SOURCE_DIR}")
 # Set architecture
 set_arch("i686" "pc")

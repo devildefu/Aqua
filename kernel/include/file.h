@@ -1,7 +1,7 @@
 #ifndef __FILE_H_
 #define __FILE_H_
 
-#include <kernel/include/definitions.h>
+#include <stdint.h>
 
 typedef enum _SEEK_L_ {
     SEEK_SET = 0,

@@ -1,4 +1,4 @@
-#include <kernel/include/random.h>
+#include <random.h>
 
 int rand(void) {
   next = next * 1103515245 + 12345;

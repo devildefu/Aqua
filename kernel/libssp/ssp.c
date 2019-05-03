@@ -1,6 +1,6 @@
-#include <kernel/include/definitions.h>
-#include <kernel/include/stdlib.h>
-#include <kernel/include/devices/serial.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <devices/serial.h>
 
 #if UINT32_MAX == UINTPTR_MAX
 #define STACK_CHK_GUARD 0xE2DEE396
