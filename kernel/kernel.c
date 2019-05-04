@@ -23,18 +23,15 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
     /* Is the bootloader compatible with multiboot? */
     if(magic == MULTIBOOT_BOOTLOADER_MAGIC) {
-        debug("Kernel booted by a bootloader compatible with multiboot!\r\n");
+        debug("Kernel booted by a bootloader compatible with multiboot!");
         
         if(CHECK_FLAG(mb_info->flags, 3)) {
             if(mb_info->mods_count > 0) {
-                debug("RamDisk found!\r\n");
+                debug("RamDisk found!");
 
                 /* Get ramdisk structure */
                 multiboot_module_t* mod;
                 mod = (multiboot_module_t*)mb_info->mods_addr;
-
-                /* Print ramdisk content */
-                printf("%s", (char*)mod->mod_start);
             }
         }
     }
