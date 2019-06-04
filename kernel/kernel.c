@@ -25,6 +25,12 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     if(magic == MULTIBOOT_BOOTLOADER_MAGIC) {
         debug("Kernel booted by a bootloader compatible with multiboot!");
         
+        if(CHECK_FLAG(mb_info->flags, 0)) {
+            printf("mem_lower: %i\n", mb_info->mem_lower);
+            printf("mem_upper: %i\n", mb_info->mem_upper);
+        }
+
+        /* Has ramdisk been loaded? */
         if(CHECK_FLAG(mb_info->flags, 3)) {
             if(mb_info->mods_count > 0) {
                 debug("RamDisk found!");
