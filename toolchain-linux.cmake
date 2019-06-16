@@ -10,9 +10,9 @@ set(CMAKE_EXE_LINKER_FLAGS "")
 set(CMAKE_C_FLAGS "")
 
 # Force compilers
-set(CMAKE_ASM_NASM_COMPILER nasm)
-set(CMAKE_C_COMPILER gcc)
-set(LINKER ld) 
+set(CMAKE_ASM_NASM_COMPILER nasm CACHE STRING "")
+set(CMAKE_C_COMPILER gcc CACHE STRING "")
+set(LINKER ld CACHE STRING "") 
 
 # Inform the cmake that everything is all right.
 set(CMAKE_C_COMPILER_WORKS 1)

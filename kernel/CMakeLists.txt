@@ -35,6 +35,5 @@ add_executable(aqua arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/boot.asm
                     kernel.c)
 
 # Change linker and flags, so we can compile a kernel
-
 set(CMAKE_C_LINK_EXECUTABLE "${LINKER} <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
 set_target_properties(aqua PROPERTIES LINK_FLAGS "-T ${PLATFORM_LAYOUT} -N ${ARCH_LINKER_FLAGS} ${PLATFORM_LINKER_FLAGS}")

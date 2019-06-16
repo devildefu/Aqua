@@ -11,9 +11,9 @@ set(CMAKE_C_FLAGS "")
 set(CMAKE_CXX_FLAGS "")
 
 # Force compilers
-set(CMAKE_ASM_NASM_COMPILER nasm)
-set(CMAKE_C_COMPILER amd64-elf-gcc)
-set(LINKER amd64-elf-ld)
+set(CMAKE_ASM_NASM_COMPILER nasm CACHE STRING "")
+set(CMAKE_C_COMPILER amd64-elf-gcc CACHE STRING "")
+set(LINKER amd64-elf-ld CACHE STRING "")
 
 # Inform the cmake that everything is all right.
 set(CMAKE_C_COMPILER_WORKS 1)
