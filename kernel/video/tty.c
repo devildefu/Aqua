@@ -1,9 +1,5 @@
 #include <video/tty.h>
 
-FILE systty[1] = {{
-	.pr = tty_procedure
-}};
-
 static char* vga_buffer = (char*)0xb8000;
 struct cursor_position m = {
 	.p = 0,
@@ -115,68 +111,6 @@ void fill_buffer(char c, uint16_t color) {
 		vga_buffer[i] = c;
 		vga_buffer[i+1] = color;
 	}
-}
-
-void* tty_procedure(int procedure, void* data, uint32_t size, FILE* th) {
-		switch(procedure) {
-		case F_OPEN:
-			return NULL;
-
-		case F_CLOSE:
-			th->data = 0;
-			th->pr = 0;
-
-			return 1;
-
-		case F_READ:
-			{
-				char* p = *(char**)data;
-				size_t size = *(size_t*)(data+4);
-				size_t nitems = *(size_t*)(data+8);
-
-				for(uint32_t i = 0; i < nitems*size; i+=size) {
-					p[i] = _getch(def_keyboard, _SC_US, 1);
-				}
-			}
-			return 1;
-
-		case F_WRITE:
-			{
-				char* p = *(char**)data;
-				size_t size = *(size_t*)(data+4);
-				size_t nitems = *(size_t*)(data+8);
-
-				for(uint32_t i = 0; i < nitems*size; i+=size) {
-					putchar(p[i]);
-				}
-			}
-			return 1;
-
-		case F_SEEK:
-			{
-				int offset = *(int*)(data);
-				int mode = *(int*)(data+4);
-
-				switch(mode) {
-				case SEEK_SET:
-					set_position(offset,0);
-					break;	
-
-				case SEEK_CUR:
-					set_position(m.p/2 + offset,0);
-					break;
-
-				case SEEK_END:
-					set_position(SCREEN_RES - offset,0);
-				}
-				
-
-				return 1;
-			}
-
-		}
-		
-		return 0;
 }
 
 static bool print(const char* data, size_t length) {

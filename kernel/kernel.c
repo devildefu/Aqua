@@ -44,3 +44,7 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
     return;
 }
+
+void _kmain(unsigned long magic, unsigned long multiboot_pointer) {
+    return;
+}

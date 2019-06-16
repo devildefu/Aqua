@@ -40,43 +40,7 @@ void d2s(double d, char* string, size_t size, char dot) {
 */
 
 #define DRAW_STRING
-char* getStringn(char* ptr, unsigned int ptr_size) {
-    if(ptr_size > 0) {
-        for(int i = 0; i<ptr_size-1; i++) {
-            ptr[i] = _getch(def_keyboard,_SC_US, 1);
-            #ifdef DRAW_STRING
-                putchar(ptr[i]);
-            #endif
-        }
-        #ifdef DRAW_STRING
-            putchar('\n');
-        #endif
-        ptr[ptr_size-1] = '\0';
-    }
-    return ptr;
-}
-char* getStringc(char* ptr, unsigned int ptr_size, char CHAR) {
-    if(ptr_size > 0) {
-        for(int i = 0; i<ptr_size-1; i++) {
-            char ch = _getch(def_keyboard, _SC_US, 1);
-            if(ch != CHAR) {
-                ptr[i] = ch;
-                #ifdef DRAW_STRING
-                    putchar(ptr[i]);
-                #endif
-            }
-            else {
-                ptr_size = i+1;
-                break;
-            }
-        }
-        #ifdef DRAW_STRING
-            putchar('\n');
-        #endif
-        ptr[ptr_size-1] = '\0';
-    }
-    return ptr;
-}
+
 int strcmp(const char* a, const char* b) {
     for(int i = 0;;i++) {
         if(a[i]=='\0' && b[i]!='\0') return -1;
