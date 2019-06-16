@@ -8,4 +8,8 @@ if(NOT NASM_EXISTS)
     message("NASM not found!")
 endif()
 
+if("${LINKER}" STREQUAL "")
+    message(FATAL_ERROR "LINKER is empty!")
+endif()
+
 add_subdirectory(kernel)
