@@ -1,5 +1,3 @@
-include(CMakeForceCompiler)
-
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 
@@ -14,7 +12,7 @@ set(CMAKE_C_FLAGS "")
 # Force compilers
 set(CMAKE_ASM_NASM_COMPILER nasm)
 set(CMAKE_C_COMPILER i686-elf-gcc)
-set(LINKER "i686-elf-ld") # I don't know why, but if we set up CMAKE_LINKER, it's empty...
+set(LINKER i686-elf-ld) # I don't know why, but if we set up CMAKE_LINKER, it's empty...
 
 # Inform the cmake that everything is all right.
 set(CMAKE_C_COMPILER_WORKS 1)

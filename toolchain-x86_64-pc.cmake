@@ -1,5 +1,3 @@
-include(CMakeForceCompiler)
-
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_VERSION 1)
 
@@ -15,4 +13,8 @@ set(CMAKE_CXX_FLAGS "")
 # Force compilers
 set(CMAKE_ASM_NASM_COMPILER nasm)
 set(CMAKE_C_COMPILER amd64-elf-gcc)
-set(CMAKE_LINKER amd64-elf-ld)
+set(LINKER amd64-elf-ld)
+
+# Inform the cmake that everything is all right.
+set(CMAKE_C_COMPILER_WORKS 1)
+set(CMAKE_CXX_COMPILER_WORKS 1)
