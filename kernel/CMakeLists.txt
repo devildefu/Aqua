@@ -20,18 +20,35 @@ set(CMAKE_ASM_NASM_COMPILE_OBJECT "<CMAKE_ASM_NASM_COMPILER> ${ARCH_ASM_FLAGS} $
 set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS}")
 set(PLATFORM_LAYOUT "${CMAKE_SOURCE_DIR}/kernel/arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/linker.ld")
 
-add_executable(aqua arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/boot.asm
+add_executable(aqua # Arch
+                    arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/boot.asm
+                    
+                    # CPU
                     cpu/cpu.c
+                    cpu/gdt.asm
+                    cpu/gdt.c
+
+                    # Devices
                     devices/serial/serial.c
+                    
+                    # Libssp
                     libssp/ssp.c
+                    
+                    # Memory
                     memory/memory.c
+                    
+                    # Misc
                     misc/file.c
                     misc/random.c
                     misc/registers.asm
                     misc/setjmp.c
                     misc/stdlib.c
                     misc/string.c
+                    
+                    # Video
                     video/tty.c
+                    
+                    # and main
                     kernel.c)
 
 # Change linker and flags, so we can compile a kernel

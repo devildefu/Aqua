@@ -4,12 +4,16 @@
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
 #include <devices/serial.h>
+#include <cpu/gdt.h>
 
 #include <debug/debug.h>
 
 #define CHECK_FLAG(flags,bit) ((flags) & (1 << (bit)))
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
+    /* Initialize gdt */
+    gdt_init();
+    
     clear();
     color(7);
 
