@@ -11,8 +11,16 @@ include_directories("include")
 include_directories("${CMAKE_SOURCE_DIR}")
 include_directories("../sdk/c")
 
-include("arch/${SYSTEM_ARCH}/flags.cmake")
-include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/flags.cmake")
+set(SOURCE  libssp/ssp.c
+            memory/memory.c
+            misc/file.c
+            misc/random.c
+            misc/stdlib.c
+            misc/string.c
+            kernel.c)
+
+include("arch/${SYSTEM_ARCH}/settings.cmake")
+include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/settings.cmake")
 
 # How to compile asm code
 set(CMAKE_ASM_NASM_COMPILE_OBJECT "<CMAKE_ASM_NASM_COMPILER> ${ARCH_ASM_FLAGS} ${PLATFORM_ASM_FLAGS} -o <OBJECT> <SOURCE>")
@@ -20,36 +28,7 @@ set(CMAKE_ASM_NASM_COMPILE_OBJECT "<CMAKE_ASM_NASM_COMPILER> ${ARCH_ASM_FLAGS} $
 set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS}")
 set(PLATFORM_LAYOUT "${CMAKE_SOURCE_DIR}/kernel/arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/linker.ld")
 
-add_executable(aqua # Arch
-                    arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/boot.asm
-                    
-                    # CPU
-                    cpu/cpu.c
-                    cpu/gdt.asm
-                    cpu/gdt.c
-
-                    # Devices
-                    devices/serial/serial.c
-                    
-                    # Libssp
-                    libssp/ssp.c
-                    
-                    # Memory
-                    memory/memory.c
-                    
-                    # Misc
-                    misc/file.c
-                    misc/random.c
-                    misc/registers.asm
-                    misc/setjmp.c
-                    misc/stdlib.c
-                    misc/string.c
-                    
-                    # Video
-                    video/tty.c
-                    
-                    # and main
-                    kernel.c)
+add_executable(aqua ${SOURCE})
 
 # Change linker and flags, so we can compile a kernel
 set(CMAKE_C_LINK_EXECUTABLE "${LINKER} <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>")
