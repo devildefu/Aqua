@@ -2,6 +2,4 @@ build/*
 .vscode/*
 doc/html
 doc/latex
-boot/floppy.img
-boot/build/*
 deprecated/*
