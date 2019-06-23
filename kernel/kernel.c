@@ -55,5 +55,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
         }
     }
 
+    int dog = 10 / 0;
+    printf("zajebiscie");
+
     return;
 }

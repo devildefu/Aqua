@@ -9,5 +9,5 @@ void isrs_init() {
 void isr0_handler() {
     outb(0x20, 0x20);
 
-    fail("Divide by zero!");
+    debug("Divide by zero!");
 }
