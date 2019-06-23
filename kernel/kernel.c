@@ -48,9 +48,12 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
                 mod = (multiboot_module_t*)mb_info->mods_addr;
             }
         }
-    }
 
-    int dog = 10 / 0;
+        /* maybe it'll work someday... maybe */
+        if(CHECK_FLAG(mb_info->flags, 12)) {
+            printf("%i", mb_info->framebuffer_height);
+        }
+    }
 
     return;
 }

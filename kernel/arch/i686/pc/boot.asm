@@ -1,6 +1,7 @@
 MBALIGN equ 1<<0
 MEMINFO equ 1<<1
-FLAGS equ MBALIGN | MEMINFO
+MUSEGFX equ 1<<2
+FLAGS equ MBALIGN | MEMINFO | MUSEGFX
 MAGIC equ 0x1BADB002
 CHECKSUM equ - (MAGIC + FLAGS)
 
@@ -10,6 +11,15 @@ multiboot_header:
 	dd MAGIC
 	dd FLAGS
 	dd CHECKSUM
+	dd 0x00000000
+	dd 0x00000000
+	dd 0x00000000
+	dd 0x00000000
+	dd 0x00000000
+	dd 0x00000000
+	dd 1920
+	dd 1080
+	dd 32
 
 section .bss
 align 4
