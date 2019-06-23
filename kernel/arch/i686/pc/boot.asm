@@ -21,14 +21,17 @@ section .text
 global _start:function (_start.end - _start)
 
 _start:
-	cli
 	mov esp, stack_top
+
+	extern _init
+	call _init
 
 	push ebx
 	push eax
 
 	extern kmain
 	call kmain
+	cli
 .hang: hlt
 	jmp .hang
 
