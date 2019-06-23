@@ -2,6 +2,14 @@
 
 IDT_entry IDT[256];
 
+void idt_set(unsigned char id, unsigned long base, unsigned short selector, unsigned char type_attr) {
+    IDT[id].offset_lowerbits = base & 0xFFFF;
+    IDT[id].selector = selector;
+    IDT[id].zero = 0;
+    IDT[id].type_attr = type_attr;
+    IDT[id].offset_higherbits = (base & 0xFFFF0000) >> 16;
+}
+
 void idt_init(void) {
     extern int idt_load();
     extern int irq0();
@@ -53,117 +61,22 @@ void idt_init(void) {
     outb(0xA1, 0x0);
 
     /* Setting up */
-    irq0_address = (unsigned long)irq0;
-    IDT[32].offset_lowerbits = irq0_address & 0xFFFF;
-    IDT[32].selector = 0x08;
-    IDT[32].zero = 0;
-    IDT[32].type_attr = 0x8E;
-    IDT[32].offset_higherbits = (irq0_address & 0xFFFF0000) >> 16;
-
-    irq1_address = (unsigned long)irq1; 
-	IDT[33].offset_lowerbits = irq1_address & 0xFFFF;
-	IDT[33].selector = 0x08;
-	IDT[33].zero = 0;
-	IDT[33].type_attr = 0x8E;
-	IDT[33].offset_higherbits = (irq1_address & 0xFFFF0000) >> 16;
- 
-	irq2_address = (unsigned long)irq2; 
-	IDT[34].offset_lowerbits = irq2_address & 0xFFFF;
-	IDT[34].selector = 0x08;
-	IDT[34].zero = 0;
-	IDT[34].type_attr = 0x8E;
-	IDT[34].offset_higherbits = (irq2_address & 0xFFFF0000) >> 16;
- 
-	irq3_address = (unsigned long)irq3; 
-	IDT[35].offset_lowerbits = irq3_address & 0xFFFF;
-	IDT[35].selector = 0x08;
-	IDT[35].zero = 0;
-	IDT[35].type_attr = 0x8E;
-	IDT[35].offset_higherbits = (irq3_address & 0xFFFF0000) >> 16;
- 
-	irq4_address = (unsigned long)irq4; 
-	IDT[36].offset_lowerbits = irq4_address & 0xFFFF;
-	IDT[36].selector = 0x08;
-	IDT[36].zero = 0;
-	IDT[36].type_attr = 0x8E;
-	IDT[36].offset_higherbits = (irq4_address & 0xFFFF0000) >> 16;
- 
-	irq5_address = (unsigned long)irq5; 
-	IDT[37].offset_lowerbits = irq5_address & 0xFFFF;
-	IDT[37].selector = 0x08;
-	IDT[37].zero = 0;
-	IDT[37].type_attr = 0x8E;
-	IDT[37].offset_higherbits = (irq5_address & 0xFFFF0000) >> 16;
- 
-	irq6_address = (unsigned long)irq6; 
-	IDT[38].offset_lowerbits = irq6_address & 0xFFFF;
-	IDT[38].selector = 0x08;
-	IDT[38].zero = 0;
-	IDT[38].type_attr = 0x8E;
-	IDT[38].offset_higherbits = (irq6_address & 0xFFFF0000) >> 16;
- 
-	irq7_address = (unsigned long)irq7; 
-	IDT[39].offset_lowerbits = irq7_address & 0xFFFF;
-	IDT[39].selector = 0x08;
-	IDT[39].zero = 0;
-	IDT[39].type_attr = 0x8E;
-	IDT[39].offset_higherbits = (irq7_address & 0xFFFF0000) >> 16;
- 
-	irq8_address = (unsigned long)irq8; 
-	IDT[40].offset_lowerbits = irq8_address & 0xFFFF;
-	IDT[40].selector = 0x08;
-	IDT[40].zero = 0;
-	IDT[40].type_attr = 0x8E;
-	IDT[40].offset_higherbits = (irq8_address & 0xFFFF0000) >> 16;
- 
-	irq9_address = (unsigned long)irq9; 
-	IDT[41].offset_lowerbits = irq9_address & 0xFFFF;
-	IDT[41].selector = 0x08;
-	IDT[41].zero = 0;
-	IDT[41].type_attr = 0x8E;
-	IDT[41].offset_higherbits = (irq9_address & 0xFFFF0000) >> 16;
- 
-	irq10_address = (unsigned long)irq10; 
-	IDT[42].offset_lowerbits = irq10_address & 0xFFFF;
-	IDT[42].selector = 0x08;
-	IDT[42].zero = 0;
-	IDT[42].type_attr = 0x8E;
-	IDT[42].offset_higherbits = (irq10_address & 0xFFFF0000) >> 16;
- 
-	irq11_address = (unsigned long)irq11; 
-	IDT[43].offset_lowerbits = irq11_address & 0xFFFF;
-	IDT[43].selector = 0x08;
-	IDT[43].zero = 0;
-	IDT[43].type_attr = 0x8E;
-	IDT[43].offset_higherbits = (irq11_address & 0xFFFF0000) >> 16;
- 
-	irq12_address = (unsigned long)irq12; 
-	IDT[44].offset_lowerbits = irq12_address & 0xFFFF;
-	IDT[44].selector = 0x08;
-	IDT[44].zero = 0;
-	IDT[44].type_attr = 0x8E;
-	IDT[44].offset_higherbits = (irq12_address & 0xFFFF0000) >> 16;
- 
-	irq13_address = (unsigned long)irq13; 
-	IDT[45].offset_lowerbits = irq13_address & 0xFFFF;
-	IDT[45].selector = 0x08;
-	IDT[45].zero = 0;
-	IDT[45].type_attr = 0x8E;
-	IDT[45].offset_higherbits = (irq13_address & 0xFFFF0000) >> 16;
- 
-	irq14_address = (unsigned long)irq14; 
-	IDT[46].offset_lowerbits = irq14_address & 0xFFFF;
-	IDT[46].selector = 0x08;
-	IDT[46].zero = 0;
-	IDT[46].type_attr = 0x8E;
-	IDT[46].offset_higherbits = (irq14_address & 0xFFFF0000) >> 16;
- 
-    irq15_address = (unsigned long)irq15; 
-	IDT[47].offset_lowerbits = irq15_address & 0xFFFF;
-	IDT[47].selector = 0x08;
-	IDT[47].zero = 0;
-	IDT[47].type_attr = 0x8E;
-	IDT[47].offset_higherbits = (irq15_address & 0xFFFF0000) >> 16;
+    idt_set(32, (unsigned)irq0, 0x08, 0x8E);
+    idt_set(33, (unsigned)irq1, 0x08, 0x8E);
+    idt_set(34, (unsigned)irq2, 0x08, 0x8E);
+    idt_set(35, (unsigned)irq3, 0x08, 0x8E);
+    idt_set(36, (unsigned)irq4, 0x08, 0x8E);
+    idt_set(37, (unsigned)irq5, 0x08, 0x8E);
+    idt_set(38, (unsigned)irq6, 0x08, 0x8E);
+    idt_set(39, (unsigned)irq7, 0x08, 0x8E);
+    idt_set(40, (unsigned)irq8, 0x08, 0x8E);
+    idt_set(41, (unsigned)irq9, 0x08, 0x8E);
+    idt_set(42, (unsigned)irq10, 0x08, 0x8E);
+    idt_set(43, (unsigned)irq11, 0x08, 0x8E);
+    idt_set(44, (unsigned)irq12, 0x08, 0x8E);
+    idt_set(45, (unsigned)irq13, 0x08, 0x8E);
+    idt_set(46, (unsigned)irq14, 0x08, 0x8E);
+    idt_set(47, (unsigned)irq15, 0x08, 0x8E);
 
     idt_address = (unsigned long)IDT;
     idt_ptr[0] = (sizeof(IDT_entry) * 256) + ((idt_address & 0xFFFF) << 16);

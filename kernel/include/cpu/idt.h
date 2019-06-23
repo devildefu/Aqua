@@ -17,5 +17,6 @@ struct _IDT_entry {
 typedef struct _IDT_entry IDT_entry;
 
 void idt_init(void);
+void idt_set_gate(unsigned char id, unsigned long base, unsigned short selector, unsigned char type_attr);
 
 #endif
