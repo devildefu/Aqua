@@ -2,6 +2,9 @@
 #define __IO_H_
 #include <stdint.h>
 
+#define KEYBOARD_STATUS 0x64
+#define KEYBOARD_KEYCODE 0x60
+
 ///////////////////////////////////////////////////////////
 //IN
 

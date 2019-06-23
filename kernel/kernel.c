@@ -5,6 +5,7 @@
 #include <multiboot/multiboot.h>
 #include <devices/serial.h>
 #include <cpu/gdt.h>
+#include <cpu/idt.h>
 
 #include <debug/debug.h>
 
@@ -13,7 +14,8 @@
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     /* Initialize gdt */
     gdt_init();
-    
+    idt_init();
+
     clear();
     color(7);
 

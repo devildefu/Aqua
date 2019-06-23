@@ -21,6 +21,7 @@ section .text
 global _start:function (_start.end - _start)
 
 _start:
+	cli
 	mov esp, stack_top
 
 	push ebx
@@ -28,7 +29,6 @@ _start:
 
 	extern kmain
 	call kmain
-	cli
 .hang: hlt
 	jmp .hang
 
