@@ -8,6 +8,8 @@ list(APPEND SOURCE  arch/i686/pc/boot.asm
                     arch/i686/cpu/gdt.c
                     arch/i686/cpu/idt.c
                     arch/i686/cpu/idt.asm
+                    arch/i686/cpu/isrs.asm
+                    arch/i686/cpu/isrs.c
                     arch/i686/devices/serial/serial.c
                     arch/i686/misc/registers.asm
                     arch/i686/video/tty.c)

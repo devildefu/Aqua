@@ -6,6 +6,7 @@
 #include <devices/serial.h>
 #include <cpu/gdt.h>
 #include <cpu/idt.h>
+#include <cpu/isrs.h>
 
 #include <debug/debug.h>
 
@@ -15,6 +16,7 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     /* Initialize gdt */
     gdt_init();
     idt_init();
+    isrs_init();
 
     clear();
     color(7);
@@ -47,6 +49,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
             }
         }
     }
+
+    int dog = 10 / 0;
 
     return;
 }

@@ -22,6 +22,8 @@ typedef unsigned uintptr_t;
 
 typedef unsigned int size_t;
 
+typedef unsigned long ulong_t;
+
 #define UINT32_MAX 0xFFFFFFFF
 
 #define UINTPTR_MAX UINT32_MAX

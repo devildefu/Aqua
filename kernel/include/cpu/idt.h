@@ -3,20 +3,20 @@
 
 #include <stdint.h>
 #include <ports.h>
-
+#include <cpu/isrs.h>
 #include <video/tty.h>
 
 struct _IDT_entry {
-    unsigned short int offset_lowerbits;
-    unsigned short int selector;
-    unsigned char zero;
-    unsigned char type_attr;
-    unsigned short int offset_higherbits;
+    uint16_t offset_lowerbits;
+    uint16_t selector;
+    uint8_t zero;
+    uint8_t type_attr;
+    uint16_t offset_higherbits;
 };
 
 typedef struct _IDT_entry IDT_entry;
 
 void idt_init(void);
-void idt_set_gate(unsigned char id, unsigned long base, unsigned short selector, unsigned char type_attr);
+void idt_set(uint8_t id, ulong_t base, uint16_t selector, uint8_t type_attr);
 
 #endif

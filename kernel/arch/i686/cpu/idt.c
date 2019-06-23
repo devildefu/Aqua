@@ -2,7 +2,7 @@
 
 IDT_entry IDT[256];
 
-void idt_set(unsigned char id, unsigned long base, unsigned short selector, unsigned char type_attr) {
+void idt_set(uint8_t id, ulong_t base, uint16_t selector, uint8_t type_attr) {
     IDT[id].offset_lowerbits = base & 0xFFFF;
     IDT[id].selector = selector;
     IDT[id].zero = 0;
@@ -60,7 +60,7 @@ void idt_init(void) {
     outb(0x21, 0x0);
     outb(0xA1, 0x0);
 
-    /* Setting up */
+    /* Setting up IRQ */
     idt_set(32, (unsigned)irq0, 0x08, 0x8E);
     idt_set(33, (unsigned)irq1, 0x08, 0x8E);
     idt_set(34, (unsigned)irq2, 0x08, 0x8E);
@@ -100,6 +100,7 @@ void irq1_handler(void) {
             return;
         
         /* TODO: implement character typing */
+        printf("a");
     }
 }
  

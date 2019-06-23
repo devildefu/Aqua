@@ -11,11 +11,6 @@
 
 uintptr_t __stack_chk_guard = STACK_CHK_GUARD;
 
-void fail(char* msg) {
-    debug(msg);
-    abort();
-}
-
 void __stack_chk_fail(void) {
     fail("Stack smashing detected! Terminated.");
 }
