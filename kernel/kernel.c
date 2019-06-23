@@ -13,7 +13,7 @@
 #define CHECK_FLAG(flags,bit) ((flags) & (1 << (bit)))
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
-    /* Initialize gdt */
+    /* Initialize */
     gdt_init();
     idt_init();
     isrs_init();
@@ -55,7 +55,7 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
         }
     }
 
-    int dog = 10 / 0;
+    //int dog = 10 / 0;
     printf("zajebiscie");
 
     return;

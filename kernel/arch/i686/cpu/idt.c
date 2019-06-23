@@ -2,7 +2,7 @@
 
 IDT_entry IDT[256];
 
-void idt_set(uint8_t id, ulong_t base, uint16_t selector, uint8_t type_attr) {
+void idt_set(uint8_t id, unsigned long base, uint16_t selector, uint8_t type_attr) {
     IDT[id].offset_lowerbits = base & 0xFFFF;
     IDT[id].selector = selector;
     IDT[id].zero = 0;
