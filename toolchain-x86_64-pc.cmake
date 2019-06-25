@@ -11,7 +11,7 @@ set(CMAKE_C_FLAGS "")
 set(CMAKE_CXX_FLAGS "")
 
 # Force compilers
-set(CMAKE_ASM_NASM_COMPILER nasm CACHE STRING "")
+set(CMAKE_ASM_COMPILER nasm CACHE STRING "")
 set(CMAKE_C_COMPILER amd64-elf-gcc CACHE STRING "")
 set(LINKER amd64-elf-ld CACHE STRING "")
 
