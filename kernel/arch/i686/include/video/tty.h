@@ -2,6 +2,7 @@
 #define __TTY_H_
 
 #include <stdint.h>
+#include <definitions.h>
 #include <file.h>
 #include <ports.h>
 #include <string.h>

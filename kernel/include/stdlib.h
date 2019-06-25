@@ -1,7 +1,6 @@
 #ifndef __STDLIB_H_
 #define __STDLIB_H_
 
-#include <devices/serial.h>
 #include <video/tty.h>
 
 __attribute__((noreturn))

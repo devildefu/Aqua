@@ -3,7 +3,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <video/tty.h>
-#include <devices/keyboard.h>
 
 void atoi(char *str, int* a);
 

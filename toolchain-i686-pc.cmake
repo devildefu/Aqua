@@ -10,7 +10,8 @@ set(CMAKE_EXE_LINKER_FLAGS "")
 set(CMAKE_C_FLAGS "")
 
 # Force compilers
-set(CMAKE_ASM_NASM_COMPILER nasm CACHE STRING "")
+set(CMAKE_ASM_COMPILER nasm CACHE STRING "")
+#set(CMAKE_ASM_NASM_COMPILER nasm CACHE STRING "")
 set(CMAKE_C_COMPILER i686-elf-gcc CACHE STRING "")
 set(LINKER i686-elf-ld CACHE STRING "") # I don't know why, but if we set up CMAKE_LINKER, it's empty...
 

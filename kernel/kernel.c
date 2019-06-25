@@ -1,5 +1,6 @@
 #include "config.h"
 
+#include <stdint.h>
 #include <video/tty.h>
 #include <video/colors.h>
 #include <multiboot/multiboot.h>

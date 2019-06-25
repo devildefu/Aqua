@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdlib.h>
-#include <devices/serial.h>
+#ifdef __i386__
+    #include <devices/serial.h>
+#endif
 #include <debug/debug.h>
 
 #if UINT32_MAX == UINTPTR_MAX
