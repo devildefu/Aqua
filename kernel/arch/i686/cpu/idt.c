@@ -100,7 +100,6 @@ void irq1_handler(void) {
             return;
         
         /* TODO: implement character typing */
-        printf("a");
     }
 }
  

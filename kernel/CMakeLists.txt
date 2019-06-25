@@ -8,6 +8,8 @@ generate_config_header()
 
 # Informs where the headers are
 include_directories("include")
+include_directories("arch/${SYSTEM_ARCH}/include")
+include_directories("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/include")
 include_directories("${CMAKE_SOURCE_DIR}")
 include_directories("../sdk/c")
 
