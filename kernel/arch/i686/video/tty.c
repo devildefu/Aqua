@@ -29,7 +29,7 @@ uint16_t tty_cursor_get_color() {
 
 /// Cursor gotoxy functions
 void tty_cursor_gotoxy(uint16_t x, uint16_t y) {
-	tty_cursor_full_gotoxy(x+y*TTY_SCREEN_RES);
+	tty_cursor_full_gotoxy(x+y*TTY_SCREEN_RES_X);
 }
 
 void tty_cursor_full_gotoxy(uint16_t xy) {
@@ -41,18 +41,18 @@ void tty_cursor_full_gotoxy(uint16_t xy) {
 
 /// Set and move cursor position functions
 void tty_cursor_setpos(uint16_t x, uint16_t y) {
-	ttyMouse.pos = (x*2+y*TTY_SCREEN_RES);
+	ttyMouse.pos = (x*2+y*TTY_SCREEN_RES_X);
 	tty_cursor_full_gotoxy(ttyMouse.pos/2);
 }
 
 void tty_cursor_move(uint16_t x, uint16_t y) {
-	ttyMouse.pos += (y*TTY_SCREEN_RES+x*2);
+	ttyMouse.pos += (y*TTY_SCREEN_RES_X+x*2);
 	tty_cursor_full_gotoxy(ttyMouse.pos/2);
 }
 
 /// Create new line
 void tty_newline() {
-	ttyMouse.pos+=((TTY_SCREEN_RES*2)-(ttyMouse.pos%(TTY_SCREEN_RES*2)));
+	ttyMouse.pos+=((TTY_SCREEN_RES_X*2)-(ttyMouse.pos%(TTY_SCREEN_RES_X*2)));
 	tty_cursor_full_gotoxy(ttyMouse.pos/2);
 }
 
@@ -66,7 +66,7 @@ void tty_putch(char ch) {
 	switch(ch) {
 	case '\n':
 		vgaBuffer[ttyMouse.pos]='\n';
-		ttyMouse.pos+=((TTY_SCREEN_RES*2)-(ttyMouse.pos%(TTY_SCREEN_RES*2)));
+		ttyMouse.pos+=((TTY_SCREEN_RES_X*2)-(ttyMouse.pos%(TTY_SCREEN_RES_X*2)));
 		break;
 	case '\0':
 		break;
@@ -101,20 +101,20 @@ void tty_putstr(const char* str) {
 
 /// Get and set tty text color
 uint16_t tty_get_color(uint16_t x, uint16_t y) {
-	return (x*2+y*TTY_SCREEN_RES-1);
+	return (x*2+y*TTY_SCREEN_RES_X-1);
 }
 
 void tty_set_color(uint16_t x, uint16_t y, uint16_t color) {
-	vgaBuffer[x*2+y*TTY_SCREEN_RES-1] = color;
+	vgaBuffer[x*2+y*TTY_SCREEN_RES_X-1] = color;
 }
 
 /// Get and set char at the position
 char tty_getch(uint16_t x, uint16_t y) {
-	return(x*2+y*TTY_SCREEN_RES);
+	return(x*2+y*TTY_SCREEN_RES_X);
 }
 
 void tty_setch(uint16_t x, uint16_t y, char ch) {
-	vgaBuffer[x*2+y*TTY_SCREEN_RES] = ch;
+	vgaBuffer[x*2+y*TTY_SCREEN_RES_X] = ch;
 }
 
 /// Fill tty buffer
