@@ -8,6 +8,7 @@
 #include <cpu/gdt.h>
 #include <cpu/idt.h>
 #include <cpu/isrs.h>
+#include <stdio.h>
 
 #include <debug/debug.h>
 
@@ -19,21 +20,21 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     idt_init();
     isrs_init();
 
-    clear();
-    color(7);
+    tty_clear();
+    tty_cursor_set_color(7);
 
     /* Initialize devices */
     com_init(COM1_PORT);
 
-    printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
-
+    printf("Aqua %s version %s\n", SYSTEM_ARCH, SYSTEM_VERSION);
+    
     /* Get multiboot information structure */
     const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
 
     /* Is the bootloader compatible with multiboot? */
     if(magic == MULTIBOOT_BOOTLOADER_MAGIC) {
         debug("Kernel booted by a bootloader compatible with multiboot!");
-        
+
         if(CHECK_FLAG(mb_info->flags, 0)) {
             printf("mem_lower: %i\n", mb_info->mem_lower);
             printf("mem_upper: %i\n", mb_info->mem_upper);

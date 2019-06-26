@@ -29,6 +29,7 @@ set(SOURCE  libssp/ssp.c
             misc/random.c
             misc/stdlib.c
             misc/string.c
+            misc/stdio.c
             kernel.c)
 
 include("arch/${SYSTEM_ARCH}/settings.cmake")

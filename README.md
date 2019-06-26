@@ -1,7 +1,7 @@
 # Aqua
 Operating system made for fun. Use pull requests to help us in code creating
 ## Compilation
-Only tools what you need are: GCC, NASM, LD and CMake. To compile it, use that command:
+Only tools what you need are: GCC, NASM 2.13.3 (Newer version seems to have errors), LD and CMake. To compile it, use that command:
 ```
 $ ./build.sh
 ```
