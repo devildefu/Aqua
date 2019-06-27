@@ -4,14 +4,14 @@
 static char* vgaBuffer = (char*)0xb8000;
 
 /// Get cursor x and y coordinate
-uint16_t tty_cursor_get_x(struct tty_CursorData* cursor) {
+uint16_t tty_get_x(struct tty_CursorData* cursor) {
 	if(cursor != NULL) {
 		return cursor->pos % (TTY_SCREEN_RES_X*2);
 	}
 	return 0;
 }
 
-uint16_t tty_cursor_get_y(struct tty_CursorData* cursor) {
+uint16_t tty_get_y(struct tty_CursorData* cursor) {
 	if(cursor != NULL) {
 		return cursor->pos / (TTY_SCREEN_RES_X*2);
 	}
@@ -28,11 +28,11 @@ uint16_t tty_cursor_get_color() {
 }
 
 /// Cursor gotoxy functions
-void tty_cursor_gotoxy(uint16_t x, uint16_t y) {
+void tty_gotoxy(uint16_t x, uint16_t y) {
 	tty_cursor_full_gotoxy(x+y*TTY_SCREEN_RES_X);
 }
 
-void tty_cursor_full_gotoxy(uint16_t xy) {
+void tty_full_gotoxy(uint16_t xy) {
 	outb(0x3D4, 0x0F);
 	outb(0x3D5, (uint8_t)(xy & 0xFF));
 	outb(0x3D4, 0x0E);
@@ -40,12 +40,12 @@ void tty_cursor_full_gotoxy(uint16_t xy) {
 }
 
 /// Set and move cursor position functions
-void tty_cursor_setpos(uint16_t x, uint16_t y) {
+void tty_setpos(uint16_t x, uint16_t y) {
 	ttyMouse.pos = (x*2+y*TTY_SCREEN_RES_X);
 	tty_cursor_full_gotoxy(ttyMouse.pos/2);
 }
 
-void tty_cursor_move(uint16_t x, uint16_t y) {
+void tty_move(uint16_t x, uint16_t y) {
 	ttyMouse.pos += (y*TTY_SCREEN_RES_X+x*2);
 	tty_cursor_full_gotoxy(ttyMouse.pos/2);
 }
@@ -90,7 +90,7 @@ void tty_putch(char ch) {
 }
 
 /// Put string at the cursor position
-void tty_putstr(const char* str) {
+void tty_write(const char* str) {
 	unsigned short i = 0;
 
 	while(str[i] != '\0') {
