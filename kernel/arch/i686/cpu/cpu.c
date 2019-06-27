@@ -1,5 +1,6 @@
 #include <cpu/cpu.h>
 #include <string.h>
+#include <stdio.h>
 
 void cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) {
     asm volatile( "cpuid"
