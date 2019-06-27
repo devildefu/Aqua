@@ -18,17 +18,17 @@ struct tty_CursorData {
 } ttyMouse;
 
 /// Get cursor x and y coordinate
-uint16_t tty_cursor_get_x(struct tty_CursorData* cursor);
-uint16_t tty_cursor_get_y(struct tty_CursorData* cursor);
+uint16_t tty_get_x(struct tty_CursorData* cursor);
+uint16_t tty_get_y(struct tty_CursorData* cursor);
 /// Set and get cursor color
 void tty_cursor_set_color(uint16_t color);
 uint16_t tty_cursor_get_color();
 /// Cursor gotoxy functions
-void tty_cursor_gotoxy(uint16_t x, uint16_t y);
-void tty_cursor_full_gotoxy(uint16_t xy);
+void tty_gotoxy(uint16_t x, uint16_t y);
+void tty_full_gotoxy(uint16_t xy);
 /// Set and move cursor position functions
-void tty_cursor_setpos(uint16_t x, uint16_t y);
-void tty_cursor_move(uint16_t x, uint16_t y);
+void tty_setpos(uint16_t x, uint16_t y);
+void tty_move(uint16_t x, uint16_t y);
 /// Create new line
 void tty_newline();
 
@@ -36,8 +36,8 @@ void tty_newline();
 void tty_clear();
 /// Put char at the cursor position
 void tty_putch(char ch);
-/// Put string at the cursor position
-void tty_putstr(const char* str);
+/// Write string at the cursor position
+void tty_write(const char* str);
 /// Get and set tty text color
 uint16_t tty_get_color(uint16_t x, uint16_t y);
 void tty_set_color(uint16_t x, uint16_t y, uint16_t color);
