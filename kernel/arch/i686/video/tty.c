@@ -29,7 +29,7 @@ uint16_t tty_cursor_get_color() {
 
 /// Cursor gotoxy functions
 void tty_gotoxy(uint16_t x, uint16_t y) {
-	tty_cursor_full_gotoxy(x+y*TTY_SCREEN_RES_X);
+	tty_full_gotoxy(x+y*TTY_SCREEN_RES_X);
 }
 
 void tty_full_gotoxy(uint16_t xy) {
@@ -42,18 +42,18 @@ void tty_full_gotoxy(uint16_t xy) {
 /// Set and move cursor position functions
 void tty_setpos(uint16_t x, uint16_t y) {
 	ttyMouse.pos = (x*2+y*TTY_SCREEN_RES_X);
-	tty_cursor_full_gotoxy(ttyMouse.pos/2);
+	tty_full_gotoxy(ttyMouse.pos/2);
 }
 
 void tty_move(uint16_t x, uint16_t y) {
 	ttyMouse.pos += (y*TTY_SCREEN_RES_X+x*2);
-	tty_cursor_full_gotoxy(ttyMouse.pos/2);
+	tty_full_gotoxy(ttyMouse.pos/2);
 }
 
 /// Create new line
 void tty_newline() {
 	ttyMouse.pos+=((TTY_SCREEN_RES_X*2)-(ttyMouse.pos%(TTY_SCREEN_RES_X*2)));
-	tty_cursor_full_gotoxy(ttyMouse.pos/2);
+	tty_full_gotoxy(ttyMouse.pos/2);
 }
 
 /// Clear tty
@@ -86,7 +86,7 @@ void tty_putch(char ch) {
 		ttyMouse.pos+=2;
 		break;
 	}
-	tty_cursor_full_gotoxy(ttyMouse.pos/2);
+	tty_full_gotoxy(ttyMouse.pos/2);
 }
 
 /// Put string at the cursor position
