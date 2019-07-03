@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Detect operating system, on whom kernel is going to be compiled
-
-
 ERROR=$'\033'"[1;31mError"$'\033'"[m"
 
 checkDependency() {
