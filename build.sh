@@ -5,7 +5,7 @@ ERROR=$'\033'"[1;31mError"$'\033'"[m"
 checkDependency() {
 	PROG_FULLNAME="${ARCH_SUFFIX}-elf-$1"
 	if ! type -P "${PROG_FULLNAME}" >/dev/null; then
-		printf "${ERROR}: '${PROG_FULLNAME}' not found. If you use "${ARCH_SUFFIX}" system with elf as an executable format, then you should create symlinks to gcc and ld in your PATH  with "${ARCH_SUFFIX}-elf-" before each link's name.\n"
+		printf "${ERROR}: '${PROG_FULLNAME}' not found. If you use ${ARCH_SUFFIX} system with elf as an executable format, then you should create symlinks to gcc and ld in your PATH with '${ARCH_SUFFIX}-elf-' before each link's name.\nIn other cases, you have to install a cross compiler.\n"
 		exit 1
 	fi
 }
