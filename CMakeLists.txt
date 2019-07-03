@@ -10,7 +10,7 @@ if("${CMAKE_ASM_COMPILER}" STREQUAL "nasm")
     endif()
 endif()
 
-if("${LINKER}" STREQUAL "")
+if("${CMAKE_LINKER}" STREQUAL "")
     message(FATAL_ERROR "-- LINKER is empty!")
 endif()
 

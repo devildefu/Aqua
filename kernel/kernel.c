@@ -5,6 +5,7 @@
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
 #include <devices/serial.h>
+#include <devices/keyboard.h>
 #include <cpu/gdt.h>
 #include <cpu/idt.h>
 #include <cpu/isrs.h>
@@ -59,6 +60,11 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
     int dog = 10 / 0;
     debug("Divide-by-zero ISR works!\n");
+
+    /* Keyboard testing */
+    while(true) {
+	    tty_putch(getch());
+    }
 
     return;
 }

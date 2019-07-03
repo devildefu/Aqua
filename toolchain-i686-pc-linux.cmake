@@ -8,11 +8,12 @@ set(SYSTEM_PLATFORM "pc")
 # Empty flags variables
 set(CMAKE_EXE_LINKER_FLAGS "")
 set(CMAKE_C_FLAGS "")
+set(CMAKE_ASM_FLAGS "")
 
 # Force compilers
 set(CMAKE_ASM_COMPILER nasm CACHE STRING "")
 set(CMAKE_C_COMPILER gcc CACHE STRING "")
-set(LINKER ld CACHE STRING "") 
+set(CMAKE_LINKER ld CACHE STRING "") 
 
 # Inform the cmake that everything is all right.
 set(CMAKE_C_COMPILER_WORKS 1)

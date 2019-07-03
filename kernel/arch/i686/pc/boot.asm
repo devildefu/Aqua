@@ -43,6 +43,9 @@ _start:
 
 	extern kmain
 	call kmain
+
+	extern _fini
+	call _fini
 .hang: hlt
 	jmp .hang
 
