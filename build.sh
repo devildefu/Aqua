@@ -14,6 +14,11 @@ cmakePrepareBuild() {
 	cmake -H. -Bbuild -G "Ninja" -DCMAKE_TOOLCHAIN_FILE="$1"
 }
 
+clean() {
+	rm "${TOOLCHAIN}-workaround.cmake"
+	exit $1
+}
+
 if ! [ -d build ]; then
 
 	[[ -n $1 ]] && TOOLCHAIN_TARGET="$1" || TOOLCHAIN_TARGET="i686-pc"
@@ -33,9 +38,9 @@ if ! [ -d build ]; then
 
 		if ! cmakePrepareBuild "${TOOLCHAIN}-workaround.cmake"; then
 			printf "${ERROR}: Oops. Cannot prepare a build.\n"
-			rm "${TOOLCHAIN}-workaround.cmake"
-			exit 1
+			clean 1
 		fi
+		clean 0
 	fi
 
 fi
