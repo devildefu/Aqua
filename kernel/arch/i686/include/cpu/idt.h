@@ -2,6 +2,7 @@
 #define IDT_H
 
 #include <stdint.h>
+#include <definitions.h>
 #include <ports.h>
 #include <cpu/isrs.h>
 #include <video/tty.h>

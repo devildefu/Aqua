@@ -2,6 +2,7 @@
 #define __MEMORY_H_
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef struct _alloc_table {
 
