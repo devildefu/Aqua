@@ -10,8 +10,10 @@
 #define GET_WAIT 1
 #define GET_NOWAIT 2
 
-#define NULL 0
+//#define NULL 0
 
 #define _packed_ __attribute__((packed))
+
+typedef unsigned long ulong_t;
 
 #endif

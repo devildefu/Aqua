@@ -2,6 +2,7 @@
 #define __FILE_H_
 
 #include <stdint.h>
+#include <stddef.h>
 
 typedef enum _SEEK_L_ {
     SEEK_SET = 0,
