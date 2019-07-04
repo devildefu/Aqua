@@ -1,5 +1,5 @@
-set(ARCH_LINKER_FLAGS "-m elf_i386 -O0 -nostdlib")
-set(ARCH_C_FLAGS "-std=gnu11 -ffreestanding -m32 -fno-builtin -nostdlib -fstack-protector")
+set(ARCH_LINKER_FLAGS "-ffreestanding -O0 -nostdlib -lgcc")
+set(ARCH_C_FLAGS "-std=gnu11 -ffreestanding -fstack-protector")
 set(ARCH_ASM_FLAGS "-felf32")
 
 #list(REVERSE SOURCE)
