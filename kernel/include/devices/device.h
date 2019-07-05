@@ -4,6 +4,7 @@
 /* Polymorphous device implementation */
 
 #include <stdint.h>
+#include <stddef.h>
 #include <definitions.h>
 
 struct _device_;
