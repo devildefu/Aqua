@@ -1,7 +1,6 @@
 set(ARCH_LINKER_FLAGS "-ffreestanding -O0 -nostdlib -lgcc")
 set(ARCH_C_FLAGS "-std=gnu11 -ffreestanding -fstack-protector")
 set(ARCH_ASM_FLAGS "-felf32")
-set(ARCH_CRT_FLAGS "-m32")
 
 #list(REVERSE SOURCE)
 set(WORKAROUND arch/i686/crti.asm)
