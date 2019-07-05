@@ -30,6 +30,7 @@ set(SOURCE  libssp/ssp.c
             misc/stdlib.c
             misc/string.c
             misc/stdio.c
+            devices/keyboard.c
             kernel.c)
 
 include("arch/${SYSTEM_ARCH}/settings.cmake")
