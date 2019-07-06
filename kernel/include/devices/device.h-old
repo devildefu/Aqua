@@ -1,0 +1,99 @@
+#ifndef __DEVICE_H_
+#define __DEVICE_H_
+
+#include <stdint.h>
+#include <definitions.h>
+
+struct _device_;
+
+/* TODO:
+ * different procedures like __ps2_getch(), __ps2_kbhit() than one common __ps2_procedure()
+ */
+typedef void*(*dev_mode__procedure)(int signal, void* data, size_t size, struct _device_* d_ptr);
+
+/* Enum with device indexes */
+enum _dev_mode_device_ {
+    __dev_keyboard,
+    __dev_mouse
+} dev_mode_device;
+
+/* Structure with device's procedures */
+typedef struct _dev_mode_ {
+    dev_mode__procedure proc;
+} dev_mode;
+
+/* Device structure.
+ * Has:
+ * 	device_s = device index
+ * 	devmode = pointer to device's procedures
+ */
+typedef struct _device_ {
+    
+    int device_s;
+    dev_mode* devmode;
+
+} _packed_ device;
+
+/* Pragmas for actions with devices */
+
+/* Execute device's procedure. */
+#define devProc(signal, data, size, dev) \
+    dev->devmode->proc(signal, data, size, dev)
+
+/* Cast any object inherited from device to device. */
+#define devCast(dev) ((device*)dev)
+
+/* Compare procedures in two devmodes */
+#define platformCmp(devm0, devm1) \
+    devm0->proc == devm1->proc
+
+/* Check if procedure in 'dev' in equal procedure in 'plat' */
+#define checkPlatform(dev, plat) \
+    platformCmp(dev->devmode,plat)
+
+/* Set devmode for 'dev' to 'plat' */
+#define setPlatform(dev, plat) \
+    dev->devmode = plat
+
+/* Check if device's index is equal 'ind' */
+#define checkIndex(dev, ind) \
+    dev->device_s == ind
+
+/* Init a device with dv - device, tp - device index, dm - devmode */
+#define init_device(dv,tp,dm) \
+    (dv->devmode = dm, dv->device_s = tp)
+
+/* Init a devmode 'd' with pr - procedure */
+#define init_devmode(d,pr) \
+    d->proc = pr
+
+/* Define device as one entry table
+ * 	dev 	 - device name
+ * 	devtype  - device type (eg. _dev_keyboard_)
+ *	devindex - device index (eg. __dev_keyboard)
+ *	devmode  - device mode (procedure)
+ */
+#define define_device_tb(dev,devtype,devindex,devmode) \
+	devtype dev[1] = { { { { devindex, devmode } } } }
+
+/* Define devmode as one entry table
+ * 	devmode - devmode's name
+ * 	proc	- procedure
+ */
+#define define_devmode_tb(devmode, proc) \
+	dev_mode devmode[1] = { { proc } }
+
+/* Extern device as one entry table
+ * 	dev	- device name
+ * 	devtype - device type
+ */
+#define extern_device_tb(dev, devtype) \
+	extern devtype dev[1];
+
+/* Extern devmode as one entry table
+ * 	devmode	- devmode name
+ */
+#define extern_devmode_tb(devmode) \
+	extern dev_mode devmode[1];
+
+#endif

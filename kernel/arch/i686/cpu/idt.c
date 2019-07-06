@@ -93,14 +93,14 @@ void irq0_handler(void) {
 void irq1_handler(void) {
 	outb(0x20, 0x20);
     
-    uint8_t status = inb(KEYBOARD_STATUS);
+   /* uint8_t status = inb(KEYBOARD_STATUS);
     if(status & 0x01) {
         char keycode = inb(KEYBOARD_KEYCODE);
         if(keycode < 0)
-            return;
+            return; */
         
         /* TODO: implement character typing */
-    }
+    /*}*/
 }
  
 void irq2_handler(void) {

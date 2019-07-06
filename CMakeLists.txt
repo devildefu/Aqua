@@ -10,8 +10,8 @@ if("${CMAKE_ASM_COMPILER}" STREQUAL "nasm")
     endif()
 endif()
 
-if("${LINKER}" STREQUAL "")
-    message(FATAL_ERROR "-- LINKER is empty!")
+if("${CMAKE_LINKER}" STREQUAL "")
+    message(FATAL_ERROR "-- CMAKE_LINKER is empty!")
 endif()
 
 add_subdirectory(kernel)

@@ -30,6 +30,7 @@ set(SOURCE  libssp/ssp.c
             misc/stdlib.c
             misc/string.c
             misc/stdio.c
+            devices/keyboard.c
             kernel.c)
 
 include("arch/${SYSTEM_ARCH}/settings.cmake")
@@ -44,5 +45,5 @@ set(PLATFORM_LAYOUT "${CMAKE_SOURCE_DIR}/kernel/arch/${SYSTEM_ARCH}/${SYSTEM_PLA
 add_executable(aqua ${WORKAROUND} ${SOURCE})
 
 # Change linker and flags, so we can compile a kernel
-set(CMAKE_C_LINK_EXECUTABLE "${LINKER} <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> ${crtbegin} <OBJECTS> ${crtend} -o <TARGET> <LINK_LIBRARIES>")
+set(CMAKE_C_LINK_EXECUTABLE "${CMAKE_LINKER} <CMAKE_CXX_LINK_FLAGS> <LINK_FLAGS> ${crtbegin} <OBJECTS> ${crtend} -o <TARGET> <LINK_LIBRARIES>")
 set_target_properties(aqua PROPERTIES LINK_FLAGS "-T ${PLATFORM_LAYOUT} ${ARCH_LINKER_FLAGS} ${PLATFORM_LINKER_FLAGS}")
