@@ -17,4 +17,5 @@ list(APPEND SOURCE  arch/i686/pc/boot.asm
                     arch/i686/misc/registers.asm
                     arch/i686/video/tty.c
                     arch/i686/devices/ps2/keyboard/keyboard.c
+                    arch/i686/misc/init_arch.c
                     arch/i686/crtn.asm)

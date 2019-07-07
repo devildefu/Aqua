@@ -4,12 +4,9 @@
 #include <video/tty.h>
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
-#include <devices/serial.h>
 #include <devices/keyboard.h>
-#include <cpu/gdt.h>
-#include <cpu/idt.h>
-#include <cpu/isrs.h>
 #include <stdio.h>
+#include <misc/init_arch.h>
 
 #include <debug/debug.h>
 
@@ -17,15 +14,10 @@
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     /* Initialize */
-    gdt_init();
-    idt_init();
-    isrs_init();
+    init_arch();
 
     tty_clear();
     tty_cursor_set_color(7);
-
-    /* Initialize devices */
-    com_init(COM1_PORT);
 
     printf("Aqua %s version %s\n", SYSTEM_ARCH, SYSTEM_VERSION);
     
