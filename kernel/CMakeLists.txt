@@ -39,7 +39,7 @@ include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/settings.cmake")
 # How to compile asm code
 set(CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> ${ARCH_ASM_FLAGS} ${PLATFORM_ASM_FLAGS} -o <OBJECT> <SOURCE>")
 
-set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS}")
+set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS} -D__FILE__='\"$(subst ${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'")
 set(PLATFORM_LAYOUT "${CMAKE_SOURCE_DIR}/kernel/arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/linker.ld")
 
 add_executable(aqua ${WORKAROUND} ${SOURCE})

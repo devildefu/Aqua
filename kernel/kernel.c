@@ -20,7 +20,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     tty_cursor_set_color(7);
 
     printf("Aqua %s version %s\n", SYSTEM_ARCH, SYSTEM_VERSION);
-    
+    printf("(%s:%i)\n", __FILE__, __LINE__);
+
     /* Get multiboot information structure */
     const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
 
