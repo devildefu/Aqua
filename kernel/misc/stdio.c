@@ -2,6 +2,7 @@
 #include <definitions.h>
 #include <video/tty.h>
 #include <string.h>
+#include <cpuid.h>
 
 /// Print string with fixed length
 static bool print(const char* data, size_t length) {

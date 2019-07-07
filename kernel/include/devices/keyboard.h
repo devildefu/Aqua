@@ -3,24 +3,23 @@
 
 #include <definitions.h>
 #include <stdint.h>
-#include <drivers/device.h>
-#include <drivers/mechanisms.h>
-#include <drivers/ps2/ps2.h>
-#include <drivers/procedures.h>
 #include <maths.h>
+#include <devices/keyboard.h>
+#include "device.h"
 
-static _dev_keyboard_ def_keyboard[1];
-
+/* Enum of keyboard leds */
 enum _key_leds_ {
     _KLED_CAPSLOCK = 1,
     _KLED_SCRLOCK = 2,
     _KLED_NUMLOCK = 4
 };
 
+/* Enum of supported langs */
 enum _scancode_langs_ {
-    _SC_US
+    _KB_LAYOUT_QWERTY
 };
 
+/* Enum of all keyboard keycodes */
 enum _keys_ {
     _K_ESC = 0x01,
     _K_1,
@@ -109,38 +108,87 @@ enum _keys_ {
     _K_F11 = 0x57,
     _K_F12,
 
-    _K_R_BIGLETTERS,
+    /* Additional keycodes meaning if switch key is set for */
+    _K_R_CAPSLOCK,
     _K_R_SCRLCK,
     _K_R_NUMLOCK,
     _K_R_SHIFT,
-    _K_R_CONTROL
+    _K_R_CONTROL,
+
+    /* Count of keycodes in enum */
+    _K_COUNT = _K_R_CONTROL
 
 };
 
+
+enum _dev_keyboard_proc_signals_ {
+    __dev_keyboard_kbhit,
+    __dev_keyboard_keycode,
+    __dev_keyboard_led
+};
+
+typedef struct __dev_k_keybuffer__ {
+    char ch[_K_COUNT/8];
+} _dev_k_keybuffer_;
+
+/*Keyboard device struct. Inherits from device*/
+typedef struct __dev_keyboard__ {
+
+    struct _device_ dev[1];
+    struct __dev_k_keybuffer__ buf[1];
+    char led_states;
+
+
+} _packed_ _dev_keyboard_;
+
+/* Extern default PS/2 keyboard
+ * Defined in keyboard.c */
+extern _dev_keyboard_ def_keyboard[1];
+
+/* Check if key is clicked */
 int _key_clck(char key, _dev_keyboard_* k);
+
+/* Switch key status */
 void _set_key(char key, _dev_keyboard_* k);
 
-#define key_clck(key) _key_clck(key, def_keyboard)
-#define set_key(key) _set_key(key, def_keyboard)
+/* Translate keycode 's' into an ascii character appropriate to 'lang' for keyboard 'd'.
+ * Keyboard argument is required, because of special switches like SHIFT or CAPS LOCK.
+ * Translating function must know when to replace 'a' to 'A' or '9' to '('.
+ * If 'd' argument is NULL, then keyboard switches are ignored and characters are always lower-case. */
+uint8_t translate_keycode(uint8_t s, int layout, _dev_keyboard_* d);
 
-uint8_t translate_keycode(uint8_t s, int lang, _dev_keyboard_* d);
+/* Update keyboard settings from a key 's'. */
 uint8_t access_keyboard_settings(uint8_t s, _dev_keyboard_* d);
 
+/* Get last hit key for keyboard 'd'. */
 uint8_t _kbhit(_dev_keyboard_* d);
-#define khbit() _kbhit(def_keyboard)
 
+/* Do _kbhit, but additionally wait for a hit if required. */
 uint8_t _keycode(_dev_keyboard_* d, char wait);
+
+/* Get keycode and translate it into an ascii char. Wait if required. */
+char _getch(_dev_keyboard_* d, int layout, char wait);
+
+/* Update leds for a keyboard 'd'. */
+void _update_led_states(_dev_keyboard_* d);
+
+/* Pragmas shortening invocations to use default keyboard 'def_keyboard'. */
+#define key_clck(key) _key_clck(key, def_keyboard)
+#define set_key(key) _set_key(key, def_keyboard)
+#define kbhit() _kbhit(def_keyboard)
 #define keycode() _keycode(def_keyboard, 1)
+#define _getch_(LAYOUT) _getch(def_keyboard,LAYOUT,1)
+#define getch() _getch_(_KB_LAYOUT_QWERTY)
 
-uint8_t _getch(_dev_keyboard_* d, int lang, char wait);
-#define _getch_(LANG) _getch(def_keyboard,LANG,1)
-#define getch() _getch_(_SC_US)
+/* Set leds in keyboard 'k' */
+#define set_leds(leds, k) k->led_states ^= leds
 
-#define set_leds(leds, k) d->led_states ^= leds
+/* Set and update leds in keyboard 'k' */
+#define set_and_update_leds(leds, k) \
+	{ set_leds(leds, k); _update_led_states(k); }
 
+/* Init in default PS/2 keyboard */
 #define init_keyboard() \
     init_device(devCast(def_keyboard), __dev_keyboard, _ps2)
-
-void _update_led_states(_dev_keyboard_* d);
 
 #endif

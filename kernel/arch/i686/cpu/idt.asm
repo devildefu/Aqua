@@ -17,23 +17,6 @@ global irq15:function
  
 global idt_load:function
  
-global irq0_handler
-global irq1_handler
-global irq2_handler
-global irq3_handler
-global irq4_handler
-global irq5_handler
-global irq6_handler
-global irq7_handler
-global irq8_handler
-global irq9_handler
-global irq10_handler
-global irq11_handler
-global irq12_handler
-global irq13_handler
-global irq14_handler
-global irq15_handler
- 
 extern irq0_handler
 extern irq1_handler
 extern irq2_handler

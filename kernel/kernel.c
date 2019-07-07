@@ -4,11 +4,9 @@
 #include <video/tty.h>
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
-#include <devices/serial.h>
-#include <cpu/gdt.h>
-#include <cpu/idt.h>
-#include <cpu/isrs.h>
+#include <devices/keyboard.h>
 #include <stdio.h>
+#include <misc/init_arch.h>
 
 #include <debug/debug.h>
 
@@ -16,18 +14,14 @@
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     /* Initialize */
-    gdt_init();
-    idt_init();
-    isrs_init();
+    init_arch();
 
     tty_clear();
     tty_cursor_set_color(7);
 
-    /* Initialize devices */
-    com_init(COM1_PORT);
-
     printf("Aqua %s version %s\n", SYSTEM_ARCH, SYSTEM_VERSION);
-    
+    printf("(%s:%i)\n", __FILE__, __LINE__);
+
     /* Get multiboot information structure */
     const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
 
@@ -37,7 +31,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
         if(CHECK_FLAG(mb_info->flags, 0)) {
             printf("mem_lower: %i\n", mb_info->mem_lower);
-            printf("mem_upper: %i\n", mb_info->mem_upper);
+            /* "The value returned for upper memory is maximally the address of the first upper memory hole minus 1 megabyte." and we need to add 128, I don't know why */
+            printf("mem_upper: %i in megabytes: %i\n", mb_info->mem_upper, (mb_info->mem_upper+1024+128)/1024);
         }
 
         /* Has ramdisk been loaded? */
@@ -55,6 +50,14 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
         if(CHECK_FLAG(mb_info->flags, 12)) {
             printf("%i", mb_info->framebuffer_height);
         }
+    }
+
+    int dog = 10 / 0;
+    debug("Divide-by-zero ISR works!\n");
+
+    /* Keyboard testing */
+    while(true) {
+	    tty_putch(getch());
     }
 
     return;

@@ -8,6 +8,8 @@
 
 #include <string.h>
 #include <ports.h>
+#include <stdbool.h>
+#include <definitions.h>
 
 void com_init(uint16_t port);
 char com_read(uint16_t port);
