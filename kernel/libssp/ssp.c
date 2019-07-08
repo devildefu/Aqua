@@ -1,5 +1,5 @@
 #include <stdint.h>
-#include <stdlib.h>
+#include <libk/stdlib.h>
 #ifdef __i386__
     #include <devices/serial.h>
 #endif

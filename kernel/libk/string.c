@@ -1,4 +1,4 @@
-#include <string.h>
+#include <libk/string.h>
 
 void atoi(char *str, int* a)
 {
@@ -123,13 +123,13 @@ void itoa(int32_t h, char* t) {
   reverse(t,i);
 }
 
-size_t strlen(char* str) {
+size_t strlen(const char* str) {
     size_t len = 0;
     while (*str++) len++;
     return len;
 }
 
-char *strcpy(char *src, char *dest)
+char* strcpy(char *src, char *dest)
 {
    char *save = dest;
    while(*dest++ = *src++);

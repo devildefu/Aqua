@@ -1,8 +1,8 @@
 #ifndef __DEBUG_H_
 #define __DEBUG_H_
 
-#include <stdlib.h>
-#include <string.h>
+#include <libk/stdlib.h>
+#include <libk/string.h>
 
 #ifdef __i386__
     #include <devices/serial.h>

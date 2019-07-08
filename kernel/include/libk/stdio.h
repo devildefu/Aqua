@@ -1,8 +1,12 @@
-#ifndef __FILE_H_
-#define __FILE_H_
-
+#ifndef __STDIO_H_
+#define __STDIO_H_
 #include <stdint.h>
+#include <definitions.h>
+#include <stdarg.h>
 #include <stddef.h>
+
+int printf(const char* format, ...); //<- Prints formatted text to output buffer
+int vsprintf(char * s, const char * format, va_list arg);
 
 typedef enum _SEEK_L_ {
     SEEK_SET = 0,
@@ -34,7 +38,5 @@ int fclose(FILE* f);
 int fseek(FILE* f, int offset, int mode);
 int fread(void* ptr, size_t size, size_t nitems, FILE* f);
 int fwrite(const void* ptr, size_t size, size_t nitems, FILE* f);
-
-
 
 #endif

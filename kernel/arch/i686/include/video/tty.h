@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-#include <file.h>
+#include <libk/stdio.h>
 #include <ports.h>
 
 #define TTY_SCREEN_RES_X 80
@@ -12,7 +12,7 @@
 
 /// Struct for containing cursor date such as color and position
 struct tty_CursorData {
-   void(*res_func)(struct cursor_position*);
+   //void(*res_func)(struct cursor_position*);
    uint16_t color;
    uint16_t pos;
 } ttyMouse;
@@ -49,7 +49,7 @@ void tty_fill_buffer(char ch, uint16_t color);
 
 void* tty_procedure(int procedure, void* p, uint32_t size, FILE* that);
 
-extern FILE sysTTY[1];
+FILE sysTTY[1];
 
 #define stdout sysTTY
 #define stdin sysTTY

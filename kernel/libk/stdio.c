@@ -1,4 +1,8 @@
-#include <file.h>
+#include <libk/stdio.h>
+#include <definitions.h>
+#include <video/tty.h>
+#include <libk/string.h>
+#include <cpuid.h>
 
 int fopen(const char* name, FILE* f) {
     int ret;

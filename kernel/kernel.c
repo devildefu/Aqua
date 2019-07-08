@@ -5,7 +5,7 @@
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
 #include <devices/keyboard.h>
-#include <stdio.h>
+#include <libk/stdio.h>
 #include <misc/init_arch.h>
 
 #include <debug/debug.h>
