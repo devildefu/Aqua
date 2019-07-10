@@ -20,4 +20,5 @@ void itoa(int32_t h, char* t);
 bool reverse(void* _ptr, size_t size);
 bool itos(int32_t integer, char* _ptr);
 
-size_t strlen(char* str);
+size_t strlen(const char* str);
+char* strcpy(char *src, char *dest);

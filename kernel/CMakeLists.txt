@@ -25,21 +25,17 @@ string(STRIP ${crtend} crtend)
 
 set(SOURCE  libssp/ssp.c
             memory/memory.c
-            misc/file.c
-            misc/random.c
-            misc/stdlib.c
-            misc/string.c
-            misc/stdio.c
             devices/keyboard.c
             kernel.c)
 
+add_subdirectory(libk)
 include("arch/${SYSTEM_ARCH}/settings.cmake")
 include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/settings.cmake")
 
 # How to compile asm code
 set(CMAKE_ASM_COMPILE_OBJECT "<CMAKE_ASM_COMPILER> ${ARCH_ASM_FLAGS} ${PLATFORM_ASM_FLAGS} -o <OBJECT> <SOURCE>")
 
-set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS} -D__FILE__='\"$(subst ${CMAKE_SOURCE_DIR}/,,$(abspath $<))\"'")
+set(CMAKE_C_FLAGS "${ARCH_C_FLAGS} ${PLATFORM_C_FLAGS}")
 set(PLATFORM_LAYOUT "${CMAKE_SOURCE_DIR}/kernel/arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/linker.ld")
 
 add_executable(aqua ${WORKAROUND} ${SOURCE})
