@@ -1,9 +1,39 @@
 # Aqua
 Operating system made for fun. Use pull requests to help us in developing.
 
+<p align=center>
+  <img alt="Stable version" src="https://img.shields.io/badge/stable-0.2-blue.svg">
+  <img alt="Preview version" src="https://img.shields.io/badge/preview-0.3-red.svg">
+</p>
+
+# Preparation
+
+To compile Aqua, you need exactly:
+* Cross Compiler (GNU GCC)
+* Binutils (readelf, objdump, etc.)
+* Netwide Assembler (WARNING: nasm 2.14+ version causes problems!)
+* CMake
+
+CMake and nasm can be installed using package manager on Linux, *BSD or macOS (if homebrew is installed).
+When it comes to the cross-compiler, there are two ways to do it.
+1. manual compilation. This is the most recommended method, because then you can be sure that it is the right version.
+2. Download from the repository. Some distributions have a cross-compiler in the repository, e.g. Arch Linux.
+
+Recommended versions:
+* GNU GCC - 8.2.0
+* Binutils - 2.32
+* Netwide Assembler - 2.13.02
+* CMake - 3.10.2
+
+Newer versions should also work, but these versions are recommended.
+
+For the first way to compile a cross compiler you will find [here](https://wiki.osdev.org/GCC_Cross-Compiler#Preparing_for_the_build)
+
+On Windows the best and easiest method is to use Windows Subsystem for Linux, but unfortunately it is only for Windows 10.
+On older versions (7, 8.x) we recommend using a Cygwin.
+
 ## Compilation
 
-To compile Aqua, you need exactly 3 tools: gcc, nasm and ld, practically 2, bacause ld, in 99.9% cases, goes together with gcc, so it's not a big deal :).
 In addition to cmake scripts, we prepared a small `build.sh` script. 
 ```
 $ ./build.sh
