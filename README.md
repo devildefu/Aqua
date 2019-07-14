@@ -11,7 +11,7 @@ Operating system made for fun. Use pull requests to help us in developing.
 To compile Aqua, you need exactly:
 * Cross Compiler (GNU GCC)
 * Binutils (readelf, objdump, etc.)
-* Netwide Assembler (WARNING: nasm 2.14+ version causes problems!)
+* Netwide Assembler
 * CMake
 
 CMake and nasm can be installed using package manager on Linux, *BSD or macOS (if homebrew is installed).
