@@ -71,6 +71,9 @@
 #define EDX_64_BIT                      (1 << 29)   // 64-bit Architecture
 
 #include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+#include <debug/debug.h>
 
 typedef struct {
     /* CPU basic informations */
@@ -95,5 +98,9 @@ typedef struct {
         uint8_t f16c;
         uint8_t rdrand;
 } CPU_INFO;
+
+void cpu_cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx);
+void cpu_info(CPU_INFO* _ptr);
+void cpu_print_info();
 
 #endif

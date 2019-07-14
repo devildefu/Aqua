@@ -7,6 +7,7 @@
 #include <devices/keyboard.h>
 #include <stdio.h>
 #include <misc/init_arch.h>
+#include <cpu/cpu.h>
 
 #include <debug/debug.h>
 
@@ -54,6 +55,9 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
     int dog = 10 / 0;
     debug("Divide-by-zero ISR works!\n");
+
+    
+    cpu_print_info();
 
     /* Keyboard testing */
     while(true) {
