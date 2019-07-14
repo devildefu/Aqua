@@ -26,9 +26,12 @@ string(STRIP ${crtend} crtend)
 set(SOURCE  libssp/ssp.c
             memory/memory.c
             devices/keyboard.c
+            libc/stdlib.c
+            libc/string.c
+            libc/stdio.c
+            libc/stdio/printf.c
             kernel.c)
 
-add_subdirectory(libk)
 include("arch/${SYSTEM_ARCH}/settings.cmake")
 include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/settings.cmake")
 
