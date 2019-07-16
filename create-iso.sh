@@ -1,3 +1,3 @@
 #!/bin/sh
-cp build/aqua iso/boot/aqua
-grub-mkrescue -o aqua.iso iso
+cp build/kernel/aqua iso/boot/aqua
+grub-mkrescue -o iso/aqua.iso iso

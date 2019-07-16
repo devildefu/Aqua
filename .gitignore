@@ -4,3 +4,4 @@ doc/html
 doc/latex
 deprecated/*
 kernel/config.h
+iso/*
