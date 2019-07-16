@@ -3,7 +3,9 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
+#ifdef _i386_
 #include <video/tty.h>
+#endif
 
 void atoi(char *str, int* a);
 

@@ -2,7 +2,6 @@
 #include <definitions.h>
 #include <video/tty.h>
 #include <string.h>
-#include <cpuid.h>
 
 int fopen(const char* name, FILE* f) {
     int ret;
