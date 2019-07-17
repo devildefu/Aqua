@@ -16,8 +16,8 @@ typedef ulong_t(*dev_mode__procedure)(int signal, void* data, size_t size, struc
 
 /* Enum with device indexes */
 enum _dev_mode_device_ {
-    __dev_keyboard,
-    __dev_mouse
+	__dev_keyboard,
+	__dev_mouse
 } dev_mode_device;
 
 /* Device structure.
@@ -26,9 +26,9 @@ enum _dev_mode_device_ {
  * 	proc = pointer to a device's procedure function
  */
 typedef struct _device_ {
-    
-    int device_s;
-    dev_mode__procedure proc;
+	
+	int device_s;
+	dev_mode__procedure proc;
 
 } _packed_ device;
 
@@ -39,26 +39,26 @@ typedef struct _device_ {
 
 /* Execute device's procedure. */
 #define devCall(signal, data, size, dev) \
-    dev->proc(signal, data, size, dev)
+	dev->proc(signal, data, size, dev)
 
 /* Cast any object inherited from device to device. */
 #define devCast(dev) ((device*)dev)
 
 /* Compare procedures in two devices */
 #define procCmp(dev0, dev1) \
-    dev0->proc == dev1->proc
+	dev0->proc == dev1->proc
 
 /* Set procedure for 'dev' to 'proc' */
 #define setProc(dev, proc) \
-    dev->proc = proc
+	dev->proc = proc
 
 /* Check if device's index is equal 'ind' */
 #define checkIndex(dev, ind) \
-    dev->device_s == ind
+	dev->device_s == ind
 
 /* Init a device with dv - device, tp - device index, pr - procedure */
 #define init_device(dv,tp,pr) \
-    (dv->proc = dm, dv->device_s = tp)
+	(dv->proc = dm, dv->device_s = tp)
 
 /* Define device as one entry table
  * 	dev 	 - device name

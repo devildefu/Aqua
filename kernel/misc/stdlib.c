@@ -2,6 +2,6 @@
 
 __attribute__((noreturn))
 void abort(void) {
-    while(1) { }
-    __builtin_unreachable();
+	while(1) { }
+	__builtin_unreachable();
 }

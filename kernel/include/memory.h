@@ -6,20 +6,20 @@
 
 typedef struct _alloc_table {
 
-    void* start;
-    void* end;
+	void* start;
+	void* end;
 
-    uint32_t alloc_limit;
+	uint32_t alloc_limit;
 
 } alloc_table;
 
 typedef struct _alloc_data {
 
-    void* start;
-    
-    uint32_t size;
+	void* start;
+	
+	uint32_t size;
 
-    struct _alloc_data *left, *right;
+	struct _alloc_data *left, *right;
 
 } alloc_data;
 

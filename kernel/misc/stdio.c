@@ -10,9 +10,9 @@ static bool print(const char* data, size_t length) {
 	for (size_t i = 0; i < length; i++)
 		if (bytes[i] == '\0') {
 			return false;
-        } else {
-            tty_putch(bytes[i]);
-        }
+		} else {
+			tty_putch(bytes[i]);
+		}
 	return true;
 }
 
@@ -65,11 +65,11 @@ int printf(const char* restrict format, ...) {
 			if (!print(str, len))
 				return -1;
 			written += len;
-        } else if (*format == 'i') {
+		} else if (*format == 'i') {
 			format++;
 			int numstr = va_arg(parameters, int);
-            char str[sizeof(int)];
-            itoa(numstr, str);
+			char str[sizeof(int)];
+			itoa(numstr, str);
 			size_t len = strlen(str);
 			if (maxrem < len) {
 				// TODO: Set errno to EOVERFLOW.
