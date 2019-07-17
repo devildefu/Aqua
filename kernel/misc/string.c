@@ -1,6 +1,6 @@
 #include <string.h>
 
-void atoi(char *str, int* a)
+void atoi(char* str, int* a)
 {
     int k = 0;
     while(*str)
@@ -129,9 +129,9 @@ size_t strlen(char* str) {
     return len;
 }
 
-char *strcpy(char *src, char *dest)
+char* strcpy(char* src, char* dest)
 {
-   char *save = dest;
+   char* save = dest;
    while(*dest++ = *src++);
    return save;
 }

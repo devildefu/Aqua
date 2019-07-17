@@ -7,7 +7,7 @@
 #include <video/tty.h>
 #endif
 
-void atoi(char *str, int* a);
+void atoi(char* str, int* a);
 
 //void d2s(double n, char* string, size_t size, char dot) //<- Converts number to string
 
@@ -23,4 +23,4 @@ bool reverse(void* _ptr, size_t size);
 bool itos(int32_t integer, char* _ptr);
 
 size_t strlen(const char* str);
-char* strcpy(char *src, char *dest);
+char* strcpy(char* src, char* dest);

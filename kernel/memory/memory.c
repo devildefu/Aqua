@@ -20,7 +20,7 @@ const size_t mman_ptrs_start = 0x10000; //memory table starts at 64 KB
 const size_t mman_ptrs_end = mman_ptrs_start + 0x80000; //512 KB memory table
 
 size_t last_address = mman_ptrs_start;
-typedef struct{
+typedef struct {
 	unsigned start;
 	unsigned end;
 } mman_cell;
@@ -31,7 +31,7 @@ void mman_init(){
 	debug("Initializing memory manager");
 	debug("Clearing memory");
 	for(size_t i = mman_ptrs_start; i<mman_ptrs_end; i++){
-		char * ptr = (char*) i;
+		char* ptr = (char*) i;
 		*ptr = 0x00;
 	}
 	debug("Reserving hardware addresses");
@@ -40,7 +40,7 @@ void mman_init(){
 }
 
 void mreserve(size_t start, size_t end){
-	char * ptr = (char*)last_address;
+	char* ptr = (char*)last_address;
 	mman_cell* memcell = (mman_cell*)ptr;
 
 	memcell->start = start;
@@ -52,12 +52,12 @@ void mreserve(size_t start, size_t end){
 void* malloc(size_t size){
 	size_t retry_count=0;
 	while(1){
-		char * ptr = (char*)last_address;
+		char* ptr = (char*)last_address;
 		
 		mman_cell* memcell = (mman_cell*)ptr;
 		if(memcell->start == 0x00 && memcell->end == 0x00){//Memory cell is free
-			char * wanted = 0x00;
-			char * startaddress = 0x00;
+			char* wanted = 0x00;
+			char* startaddress = 0x00;
 			char ok=0;
 			while(!ok){
 				ok=1;
