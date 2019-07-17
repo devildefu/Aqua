@@ -1,6 +1,7 @@
 #include "config.h"
 
 #include <stdint.h>
+#include <stdbool.h>
 #include <video/tty.h>
 #include <video/colors.h>
 #include <multiboot/multiboot.h>
@@ -59,9 +60,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
     int dog = 10 / 0;
     debug("Divide-by-zero ISR works!\n");
-
     
-    cpu_print_info();
+    //cpu_print_info();
 
     /* Keyboard testing */
     while(true) {
