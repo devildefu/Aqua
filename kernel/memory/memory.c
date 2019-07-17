@@ -16,7 +16,7 @@ void init_ram(void* start, void* end, uint32_t limit) {
 }
 
 //Memory manager
-const size_t mman_ptrs_start = 0x10000; //memory table starts at 64 KB
+const size_t mman_ptrs_start = 0x01000000; //memory table starts at 1 MB
 const size_t mman_ptrs_end = mman_ptrs_start + 0x80000; //512 KB memory table
 
 size_t last_address = mman_ptrs_start;
@@ -36,6 +36,7 @@ void mman_init(){
 	}
 	debug("Reserving hardware addresses");
 	mreserve(0x00000000, 0x01000000);//Reserved memory
+	mreserve(mman_ptrs_start, mman_ptrs_end);//Memory table
 	debug("Memory manager initialized.");
 }
 

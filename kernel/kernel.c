@@ -32,6 +32,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
     /* Initialize */
     init_arch();
 
+	mman_init();//Init memory management
+
     tty_clear();
     tty_cursor_set_color(7);
 
@@ -71,8 +73,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
             printf("%i", mb_info->framebuffer_height);
         }
     }
-
-	mman_init();//Init memory management
 
 	print_splash_screen();
 
