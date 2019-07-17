@@ -11,4 +11,7 @@ void abort(void);
 int rand(void);
 void srand(uint32_t seed);
 
+void* malloc(size_t size);
+void free(void* ptr);
+
 #endif

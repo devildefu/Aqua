@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 
+void indent(uint8_t size);//Make indentation (for logging)
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
 
 typedef enum _SEEK_L_ {
