@@ -4,3 +4,5 @@ doc/html
 doc/latex
 deprecated/*
 kernel/config.h
+iso/boot/aqua
+iso/aqua.iso
