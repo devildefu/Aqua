@@ -1,23 +1,23 @@
 #ifndef GDT_H
 #define GDT_H
 
-#include <stdint.h>
-#include <definitions.h>
 #include <cpu/tss.h>
+#include <definitions.h>
 #include <memory.h>
+#include <stdint.h>
 
 struct _GdtEntry {
-    uint16_t limit_low;
-    uint16_t base_low;
-    uint8_t base_middle;
-    uint8_t access;
-    uint8_t granularity;
-    uint8_t base_high;
+	uint16_t limit_low;
+	uint16_t base_low;
+	uint8_t base_middle;
+	uint8_t access;
+	uint8_t granularity;
+	uint8_t base_high;
 } _packed_;
 
 struct _GdtPtr {
-    uint16_t limit;
-    uint32_t base;
+	uint16_t limit;
+	uint32_t base;
 } _packed_;
 
 typedef struct _GdtEntry GdtEntry;

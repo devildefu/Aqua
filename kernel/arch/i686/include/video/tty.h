@@ -1,20 +1,20 @@
 #ifndef __TTY_H_
 #define __TTY_H_
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdio.h>
 #include <ports.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
 #define TTY_SCREEN_RES_X 80
 #define TTY_SCREEN_RES_Y 25
-#define TTY_SCREEN_RES TTY_SCREEN_RES_X * TTY_SCREEN_RES_Y
+#define TTY_SCREEN_RES TTY_SCREEN_RES_X* TTY_SCREEN_RES_Y
 
 /// Struct for containing cursor date such as color and position
 struct tty_CursorData {
-   void(*res_func)(struct cursor_position*);
-   uint16_t color;
-   uint16_t pos;
+	void (*res_func)(struct cursor_position*);
+	uint16_t color;
+	uint16_t pos;
 } ttyMouse;
 
 /// Get cursor x and y coordinate

@@ -5,9 +5,9 @@
 
 typedef struct regs {
 
-    uint32_t eax, ebx, ecx,
-             edx, eip, esp,
-             ebp;
+	uint32_t eax, ebx, ecx,
+		edx, eip, esp,
+		ebp;
 
 } _regs;
 
