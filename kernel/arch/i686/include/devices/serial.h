@@ -6,10 +6,10 @@
 #define COM3_PORT 0x3E8
 #define COM4_PORT 0x2E8
 
-#include <string.h>
+#include <definitions.h>
 #include <ports.h>
 #include <stdbool.h>
-#include <definitions.h>
+#include <string.h>
 
 void com_init(uint16_t port);
 char com_read(uint16_t port);

@@ -1,18 +1,18 @@
 #ifndef IDT_H
 #define IDT_H
 
-#include <stdint.h>
+#include <cpu/isrs.h>
 #include <definitions.h>
 #include <ports.h>
-#include <cpu/isrs.h>
+#include <stdint.h>
 #include <video/tty.h>
 
 struct _IDT_entry {
-    uint16_t offset_lowerbits;
-    uint16_t selector;
-    uint8_t zero;
-    uint8_t type_attr;
-    uint16_t offset_higherbits;
+	uint16_t offset_lowerbits;
+	uint16_t selector;
+	uint8_t zero;
+	uint8_t type_attr;
+	uint16_t offset_higherbits;
 };
 
 typedef struct _IDT_entry IDT_entry;

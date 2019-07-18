@@ -3,9 +3,9 @@
 
 #include <devices/device.h>
 #include <devices/keyboard.h>
-#include <stdint.h>
-#include <stddef.h>
 #include <ports.h>
+#include <stddef.h>
+#include <stdint.h>
 
 ulong_t __ps2_keyboard_entry(int signal, void* data, size_t size, _dev_keyboard_* k_ptr);
 
