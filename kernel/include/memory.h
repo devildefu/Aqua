@@ -1,8 +1,8 @@
 #ifndef __MEMORY_H_
 #define __MEMORY_H_
 
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 typedef struct _alloc_table {
 
@@ -16,7 +16,6 @@ typedef struct _alloc_table {
 typedef struct _alloc_data {
 
 	void* start;
-	
 	uint32_t size;
 
 	struct _alloc_data *left, *right;

@@ -1,11 +1,11 @@
 #ifndef __KEYBOARD_H_
 #define __KEYBOARD_H_
 
-#include <definitions.h>
-#include <stdint.h>
-#include <maths.h>
-#include <devices/keyboard.h>
 #include "device.h"
+#include <definitions.h>
+#include <devices/keyboard.h>
+#include <maths.h>
+#include <stdint.h>
 
 /* Enum of keyboard leds */
 enum _key_leds_ {
@@ -120,7 +120,6 @@ enum _keys_ {
 
 };
 
-
 enum _dev_keyboard_proc_signals_ {
 	__dev_keyboard_kbhit,
 	__dev_keyboard_keycode,
@@ -128,17 +127,14 @@ enum _dev_keyboard_proc_signals_ {
 };
 
 typedef struct __dev_k_keybuffer__ {
-	char ch[_K_COUNT/8];
+	char ch[_K_COUNT / 8];
 } _dev_k_keybuffer_;
 
 /*Keyboard device struct. Inherits from device*/
 typedef struct __dev_keyboard__ {
-
 	struct _device_ dev[1];
 	struct __dev_k_keybuffer__ buf[1];
 	char led_states;
-
-
 } _packed_ _dev_keyboard_;
 
 /* Extern default PS/2 keyboard
@@ -177,7 +173,7 @@ void _update_led_states(_dev_keyboard_* d);
 #define set_key(key) _set_key(key, def_keyboard)
 #define kbhit() _kbhit(def_keyboard)
 #define keycode() _keycode(def_keyboard, 1)
-#define _getch_(LAYOUT) _getch(def_keyboard,LAYOUT,1)
+#define _getch_(LAYOUT) _getch(def_keyboard, LAYOUT, 1)
 #define getch() _getch_(_KB_LAYOUT_QWERTY)
 
 /* Set leds in keyboard 'k' */
@@ -185,7 +181,10 @@ void _update_led_states(_dev_keyboard_* d);
 
 /* Set and update leds in keyboard 'k' */
 #define set_and_update_leds(leds, k) \
-	{ set_leds(leds, k); _update_led_states(k); }
+	{                                \
+		set_leds(leds, k);           \
+		_update_led_states(k);       \
+	}
 
 /* Init in default PS/2 keyboard */
 #define init_keyboard() \

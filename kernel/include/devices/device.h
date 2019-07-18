@@ -3,16 +3,16 @@
 
 /* Polymorphous device implementation */
 
-#include <stdint.h>
-#include <stddef.h>
 #include <definitions.h>
+#include <stddef.h>
+#include <stdint.h>
 
 struct _device_;
 
 /* TODO:
  * different procedures like __ps2_getch(), __ps2_kbhit() than one common __ps2_procedure()
  */
-typedef ulong_t(*dev_mode__procedure)(int signal, void* data, size_t size, struct _device_* d_ptr);
+typedef ulong_t (*dev_mode__procedure)(int signal, void* data, size_t size, struct _device_* d_ptr);
 
 /* Enum with device indexes */
 enum _dev_mode_device_ {
@@ -26,7 +26,6 @@ enum _dev_mode_device_ {
  * 	proc = pointer to a device's procedure function
  */
 typedef struct _device_ {
-	
 	int device_s;
 	dev_mode__procedure proc;
 
@@ -57,7 +56,7 @@ typedef struct _device_ {
 	dev->device_s == ind
 
 /* Init a device with dv - device, tp - device index, pr - procedure */
-#define init_device(dv,tp,pr) \
+#define init_device(dv, tp, pr) \
 	(dv->proc = dm, dv->device_s = tp)
 
 /* Define device as one entry table
@@ -66,7 +65,7 @@ typedef struct _device_ {
  *	devindex - device index (eg. __dev_keyboard)
  *	devproc  - device procedure
  */
-#define define_device_tb(dev,devtype,devindex,devproc) \
+#define define_device_tb(dev, devtype, devindex, devproc) \
 	devtype dev[1] = { { { { devindex, devproc } } } }
 
 /* Extern device as one entry table

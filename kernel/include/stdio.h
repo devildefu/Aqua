@@ -1,9 +1,9 @@
 #ifndef __STDIO_H_
 #define __STDIO_H_
-#include <stdint.h>
 #include <definitions.h>
 #include <stdarg.h>
 #include <stddef.h>
+#include <stdint.h>
 
 void indent(uint8_t size);//Make indentation (for logging)
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
@@ -26,7 +26,7 @@ typedef enum _PROCEDURES_L_ {
 struct _FILE_;
 
 /* FILE procedure. Used for IO calls */
-typedef void*(*FILE_PROCEDURE)(int procedure, void* p, uint32_t size, struct _FILE_* that);
+typedef void* (*FILE_PROCEDURE)(int procedure, void* p, uint32_t size, struct _FILE_* that);
 
 typedef struct _FILE_ {
 	void* data;

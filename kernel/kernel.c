@@ -1,18 +1,18 @@
 #include "config.h"
 
-#include <stdint.h>
-#include <stdbool.h>
-#include <video/tty.h>
-#include <video/colors.h>
-#include <multiboot/multiboot.h>
-#include <devices/keyboard.h>
-#include "stdio.h"
-#include <misc/init_arch.h>
 #include <cpu/cpu.h>
+#include <devices/keyboard.h>
+#include <misc/init_arch.h>
+#include <multiboot/multiboot.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <video/colors.h>
+#include <video/tty.h>
 
 #include <debug/debug.h>
 
-#define CHECK_FLAG(flags,bit) ((flags) & (1 << (bit)))
+#define CHECK_FLAG(flags, bit) ((flags) & (1 << (bit)))
 
 char line[100];//for debug
 
@@ -32,12 +32,11 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	/* Initialize */
 	init_arch();
 
-	mman_init();//Init memory management
-
 	tty_clear();
 	tty_cursor_set_color(7);
 
 	printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
+	printf("(%s:%i)\n", __FILE__, __LINE__);
 
 	/* Get multiboot information structure */
 	const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;

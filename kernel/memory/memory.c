@@ -12,7 +12,6 @@ void init_ram(void* start, void* end, uint32_t limit) {
 	mall_table.start = start;
 	mall_table.end = end;
 	mall_table.alloc_limit = limit;
-	
 }
 
 //Memory manager
@@ -100,14 +99,13 @@ void free(void* ptr){
 	}
 }
 
-
 int memcmp(const void* a, const void* b, unsigned int size) {
-	if(size>0) {
+	if(size > 0) {
 		unsigned int goodbytes = 0;
-		for(int i = 0; i<size; i++) {
+		for(int i = 0; i < size; i++) {
 			if(((const char*)a)[i] == ((const char*)b)[i]) goodbytes++;
 		}
-		if(goodbytes>=size) return 0;
+		if(goodbytes >= size) return 0;
 		if(((const char*)a)[0] > ((const char*)b)[0]) return 1;
 		if(((const char*)a)[0] < ((const char*)b)[0]) return -1;
 	}
@@ -115,8 +113,8 @@ int memcmp(const void* a, const void* b, unsigned int size) {
 }
 
 void* memcpy(void* destination, const void* from, unsigned int block_size) {
-	if(block_size>0) {
-		for(int i = 0; i<block_size; i++) {
+	if(block_size > 0) {
+		for(int i = 0; i < block_size; i++) {
 			((char*)destination)[i] = ((const char*)from)[i];
 		}
 	}
@@ -124,8 +122,8 @@ void* memcpy(void* destination, const void* from, unsigned int block_size) {
 }
 
 void* memset(void* ptr, char value, size_t num) {
-	if(num>0) {
-		for(int i = 0; i<num; i++) {
+	if(num > 0) {
+		for(int i = 0; i < num; i++) {
 			((char*)ptr)[i] = value;
 		}
 	}

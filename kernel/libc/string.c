@@ -1,11 +1,9 @@
 #include <string.h>
 
-void atoi(char* str, int* a)
-{
+void atoi(char* str, int* a) {
 	int k = 0;
-	while(*str)
-	{
-		k = (k<<3)+(k<<1)+(*str)-'0';
+	while(*str) {
+		k = (k << 3) + (k << 1) + (*str) - '0';
 		str++;
 	}
 	*a = k;
@@ -42,18 +40,17 @@ void d2s(double d, char* string, size_t size, char dot) {
 #define DRAW_STRING
 
 int strcmp(const char* a, const char* b) {
-	for(int i = 0;;i++) {
-		if(a[i]=='\0' && b[i]!='\0') return -1;
-		if(a[i]!='\0' && b[i]=='\0') return 1;
-		if(a[i]!=b[i]) return 1;
-		if(a[i]=='\0' && b[i]=='\0') break;
+	for(int i = 0;; i++) {
+		if(a[i] == '\0' && b[i] != '\0') return -1;
+		if(a[i] != '\0' && b[i] == '\0') return 1;
+		if(a[i] != b[i]) return 1;
+		if(a[i] == '\0' && b[i] == '\0') break;
 	}
 	return 0;
-
 }
 bool reverse(void* _ptr, size_t size) {
-	if(size==0) return 0;
-	for(size_t i = 0; i < size/2; i++) {
+	if(size == 0) return 0;
+	for(size_t i = 0; i < size / 2; i++) {
 
 		char* c_1 = (char*)(_ptr + i);
 		char* c_2 = (char*)(_ptr + size - i - 1);
@@ -77,61 +74,63 @@ bool itos(int32_t integer, char* _ptr) {
 	do {
 		iter++;
 		_ptr[iter] = (integer % 10) + 48;
-		integer/=10;
+		integer /= 10;
 	} while(integer > 0);
-	reverse(_ptr,iter+1);
-	_ptr[iter+1] = '\0';
+	reverse(_ptr, iter + 1);
+	_ptr[iter + 1] = '\0';
 	return 1;
-
 }
 
 void htoa(uint32_t h, char* t) {
 	t[0] = '0';
 	t[1] = 'x';
-	t+=2;
+	t += 2;
 
 	uint32_t i = 0;
 
 	do {
 		char d = h % 0x10;
-		if(d < 10) d += 0x30;
-		else d += 0x41-0x0A;
+		if(d < 10)
+			d += 0x30;
+		else
+			d += 0x41 - 0x0A;
 		t[i] = d;
 		i++;
 	} while(h /= 0x10);
 
 	t[i] = '\0';
 
-	reverse(t,i);
+	reverse(t, i);
 }
 
 void itoa(int32_t h, char* t) {
-  if(h < 0) {
-	*t = '-';
-	h = -h;
-	t++;
-  }
+	if(h < 0) {
+		*t = '-';
+		h = -h;
+		t++;
+	}
 
-  uint32_t i = 0;
-  do {
-	t[i] = h % 0xA + 0x30;
-	i++;
-  } while(h /= 0xA);
+	uint32_t i = 0;
+	do {
+		t[i] = h % 0xA + 0x30;
+		i++;
+	} while(h /= 0xA);
 
-  t[i] = '\0';
-  
-  reverse(t,i);
+	t[i] = '\0';
+
+	reverse(t, i);
 }
 
 size_t strlen(const char* str) {
 	size_t len = 0;
-	while (*str++) len++;
+	while(*str++)
+		len++;
 	return len;
 }
 
-char* strcpy(char* src, char* dest)
-{
-   char* save = dest;
-   while(*dest++ = *src++);
-   return save;
+char* strcpy(char* src, char* dest) {
+	char* save = dest;
+	while(*dest++ = *src++)
+		;
+	return save;
 }

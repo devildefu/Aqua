@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #ifdef __i386__
-	#include <devices/serial.h>
+#include <devices/serial.h>
 #endif
 #include <debug/debug.h>
 
@@ -19,7 +19,6 @@ void __stack_chk_fail(void) {
 
 /* This function is only for compiling kernel without cross-compiler. */
 void __stack_chk_fail_local(void) {
-	
 }
 
 void __chk_fail(void) {

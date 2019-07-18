@@ -13,15 +13,16 @@
 #define CLOCKS_PER_MONTH CLOCKS_PER_DAY * 31
 #define CLOCKS_PER_YEAR_QUATER CLOCKS_PER_MONTH * 4
 #define CLOCKS_PER_YEAR CLOCKS_PER_DAY * 365
-#define GHZ CLOCKS_PER_SECOND/100000000
+#define GHZ CLOCKS_PER_SECOND / 100000000
 
 struct {
 	uint64_t start;
-}   start_clocks;
+} start_clocks;
 
 static inline uint64_t rdtsc() {
 	uint64_t ret;
-	asm ("rdtsc" : "=A"(ret));
+	asm("rdtsc"
+		: "=A"(ret));
 	return ret;
 }
 
@@ -31,8 +32,8 @@ static inline int64_t clock() {
 
 static void wait(uint64_t ms) {
 	int64_t now = clock();
-	int64_t end = now+(float)ms*CLOCKS_PER_MILISECOND;
-   while(clock() < end) {}
+	int64_t end = now + (float)ms * CLOCKS_PER_MILISECOND;
+	while(clock() < end) {}
 }
 
 static inline void initTimer() {
@@ -41,7 +42,7 @@ static inline void initTimer() {
 
 static inline void waitClocks(uint64_t clocks) {
 	uint64_t now = rdtsc();
-	while(rdtsc()-now <= clocks) {}
+	while(rdtsc() - now <= clocks) {}
 }
 
 #endif
