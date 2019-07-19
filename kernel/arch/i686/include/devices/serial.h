@@ -10,10 +10,12 @@
 #include <ports.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdarg.h>
 
 void com_init(uint16_t port);
 char com_read(uint16_t port);
 void com_putchar(uint16_t port, char letter);
 void com_print(uint16_t port, char* string);
+int com_printf(uint16_t port, const char* restrict format, ...);
 
 #endif
