@@ -66,7 +66,7 @@ int printf(const char* restrict format, ...) {
 			if(!print(str, len))
 				return -1;
 			written += len;
-		} else if(*format == 'i') {
+		} else if(*format == 'i' || *format == 'd') {
 			format++;
 			int numstr = va_arg(parameters, int);
 			char str[sizeof(int)];
@@ -79,8 +79,12 @@ int printf(const char* restrict format, ...) {
 			if(!print(str, len))
 				return -1;
 			written += len;
-		} else if(*format == 'x') {
+		} else if(*format == 'x' || *format == 'X') {
 			UNIMPLEMENTED_PART("x specifier");
+		} else if(*format == 'f' || *format == 'F') {
+			UNIMPLEMENTED_PART("f specifier");
+		} else if(*format == 'p') {
+			UNIMPLEMENTED_PART("p specifier");
 		} else {
 			format = format_begun_at;
 			size_t len = strlen(format);
