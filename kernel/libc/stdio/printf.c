@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <video/tty.h>
+#include <debug/debug.h>
 
 /// Print string with fixed length
 static bool print(const char* data, size_t length) {
@@ -78,6 +79,8 @@ int printf(const char* restrict format, ...) {
 			if(!print(str, len))
 				return -1;
 			written += len;
+		} else if(*format == 'x') {
+			UNIMPLEMENTED_PART("x specifier");
 		} else {
 			format = format_begun_at;
 			size_t len = strlen(format);

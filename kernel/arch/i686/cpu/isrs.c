@@ -7,6 +7,6 @@ void isrs_init() {
 }
 
 void isr_handler() {
-	debug("ISR Handler called!");
+	UNIMPLEMENTED;
 	//debug("Divide by zero!");
 }
