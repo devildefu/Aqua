@@ -50,11 +50,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 		if(CHECK_FLAG(mb_info->flags, 9)) {
 			printf("Bootloader: %s\n", mb_info->boot_loader_name);
 		}
-
-		/* maybe it'll work someday... maybe */
-		if(CHECK_FLAG(mb_info->flags, 12)) {
-			printf("%i", mb_info->framebuffer_height);
-		}
 	}
 
 	int dog = 10 / 0;

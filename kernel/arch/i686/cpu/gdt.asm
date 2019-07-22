@@ -2,6 +2,8 @@ global gdt_flush:function
 extern gdt_ptr
 gdt_flush:
     lgdt [gdt_ptr] ; Load the GDT
+    jmp 0x0008:fix_cs
+    fix_cs:
     mov ax, 0x10
     mov ds, ax
     mov es, ax
