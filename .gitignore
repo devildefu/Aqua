@@ -1,7 +1,6 @@
 build/*
 .vscode/*
-doc/html
-doc/latex
+docs/generated
 deprecated/*
 kernel/config.h
 iso/boot/aqua
