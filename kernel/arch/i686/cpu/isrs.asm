@@ -31,6 +31,7 @@ extern isr_handler
 
 isr0:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4    
@@ -40,6 +41,7 @@ isr0:
 
 isr1:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -49,6 +51,7 @@ isr1:
 
 isr2:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -58,6 +61,7 @@ isr2:
 
 isr3:
     pushad
+    cld
     push 1
     call isr_handler
     add esp, 4 
@@ -67,6 +71,7 @@ isr3:
 
 isr4:
     pushad
+    cld
     push 1
     call isr_handler
     add esp, 4 
@@ -76,6 +81,7 @@ isr4:
 
 isr5:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -85,6 +91,7 @@ isr5:
 
 isr6:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -94,6 +101,7 @@ isr6:
 
 isr7:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -103,6 +111,7 @@ isr7:
 
 isr8:
     pushad
+    cld
     push 2
     call isr_handler
     add esp, 4 
@@ -111,6 +120,7 @@ isr8:
 
 isr10:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -120,6 +130,7 @@ isr10:
 
 isr11:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -129,6 +140,7 @@ isr11:
 
 isr12:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -138,6 +150,7 @@ isr12:
 
 isr13:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -147,6 +160,7 @@ isr13:
 
 isr14:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -156,6 +170,7 @@ isr14:
 
 isr16:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -165,6 +180,7 @@ isr16:
 
 isr17:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -174,6 +190,7 @@ isr17:
 
 isr18:
     pushad
+    cld
     push 2
     call isr_handler
     add esp, 4 
@@ -182,6 +199,7 @@ isr18:
 
 isr19:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -191,6 +209,7 @@ isr19:
 
 isr20:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
@@ -200,6 +219,7 @@ isr20:
 
 isr30:
     pushad
+    cld
     push 0
     call isr_handler
     add esp, 4 
