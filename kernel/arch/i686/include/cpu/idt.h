@@ -17,7 +17,14 @@ struct _IDT_entry {
 
 typedef struct _IDT_entry IDT_entry;
 
+/**
+ * Setups irqs and idt
+ */
 void idt_init(void);
+
+/**
+ * Sets IDT_entry
+ */
 void idt_set(uint8_t id, ulong_t base, uint16_t selector, uint8_t type_attr);
 
 #endif

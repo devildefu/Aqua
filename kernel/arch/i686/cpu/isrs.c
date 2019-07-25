@@ -44,6 +44,12 @@ void isrs_init() {
 	idt_set(30, (unsigned)isr30, 0x08, 0x8E);
 }
 
+/**
+ * Manage any exception that has occurred
+ * Exceptions list: https://wiki.osdev.org/Exceptions
+ * @param id Exception Id
+ * @param err_code Exception's error code, if the exception does not return an error code, it is 0
+ */
 void isr_handler(int id, uint32_t err_code) {
 	ExceptionType exception_type;
 	

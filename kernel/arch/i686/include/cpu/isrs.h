@@ -16,6 +16,9 @@ enum _ExceptionType {
 
 typedef enum _ExceptionType ExceptionType;
 
+/**
+ * Setups all exceptions
+ */
 void isrs_init();
 
 #endif
