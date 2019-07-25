@@ -7,12 +7,14 @@
 
 #include <debug/debug.h>
 
-enum ExceptionType {
+enum _ExceptionType {
 	Fault,
 	Trap,
 	Abort,
 	Unknown
 };
+
+typedef enum _ExceptionType ExceptionType;
 
 void isrs_init();
 

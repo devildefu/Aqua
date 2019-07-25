@@ -33,8 +33,9 @@ isr0:
     pushad
     cld
     push 0
+    push 0
     call isr_handler
-    add esp, 4    
+    add esp, 8
     jmp_next
     popad
     iret
@@ -43,8 +44,9 @@ isr1:
     pushad
     cld
     push 0
+    push 1
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -53,8 +55,9 @@ isr2:
     pushad
     cld
     push 0
+    push 2
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -62,9 +65,10 @@ isr2:
 isr3:
     pushad
     cld
-    push 1
+    push 0
+    push 3
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -72,9 +76,10 @@ isr3:
 isr4:
     pushad
     cld
-    push 1
+    push 0
+    push 4
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -83,8 +88,9 @@ isr5:
     pushad
     cld
     push 0
+    push 5
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -93,8 +99,9 @@ isr6:
     pushad
     cld
     push 0
+    push 6
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -103,8 +110,9 @@ isr7:
     pushad
     cld
     push 0
+    push 7
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -112,18 +120,20 @@ isr7:
 isr8:
     pushad
     cld
-    push 2
+    push dword [esp]
+    push 8
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     popad
     iret
 
 isr10:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 10
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -131,9 +141,10 @@ isr10:
 isr11:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 11
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -141,9 +152,10 @@ isr11:
 isr12:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 12
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -151,9 +163,10 @@ isr12:
 isr13:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 13
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -161,9 +174,10 @@ isr13:
 isr14:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 14
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -172,8 +186,9 @@ isr16:
     pushad
     cld
     push 0
+    push 16
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -181,9 +196,10 @@ isr16:
 isr17:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 17
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -191,9 +207,10 @@ isr17:
 isr18:
     pushad
     cld
-    push 2
+    push 0
+    push 18
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     popad
     iret
 
@@ -201,8 +218,9 @@ isr19:
     pushad
     cld
     push 0
+    push 19
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -211,8 +229,9 @@ isr20:
     pushad
     cld
     push 0
+    push 20
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
@@ -220,9 +239,10 @@ isr20:
 isr30:
     pushad
     cld
-    push 0
+    push dword [esp]
+    push 30
     call isr_handler
-    add esp, 4 
+    add esp, 8 
     jmp_next
     popad
     iret
