@@ -1,0 +1,40 @@
+sudo: false
+
+language: c
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    packages:
+      - libc6
+      - libc6-dev
+      - flex
+      - bison
+      - make
+
+before_script:
+  - wget http://doxygen.nl/files/doxygen-1.8.15.src.tar.gz
+  - tar xf doxygen-1.8.15.src.tar.gz
+  - cd doxygen-1.8.15
+  - mkdir build
+  - cd build
+  - cmake -G "Unix Makefiles" ..
+  - make -j8
+  - cd bin
+  - "export PATH=$PWD:$PATH"
+  - echo $PWD
+  - cd ../../../
+
+script:
+  - ./make-docs.sh
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: docs/generated/html
+  github_token: $GH_REPO_TOKEN
+  on:
+    branch: master
