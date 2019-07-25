@@ -229,6 +229,11 @@ div.header {
 	font-size: 1.2em;
 }
 
+.contents .directory tbody tr td.entry a .icndoc {
+	margin-right: 8px;
+	margin-bottom: 5px;
+}
+
 .contents .directory tbody tr td.entry .arrow {
 	color: #f0f0f0;
 }
@@ -362,7 +367,7 @@ a.qindex:visited {
 	text-shadow: none;
 }
 
-.contents .memitem .memdoc .definition a, .contents .memitem .memdoc .definition a:visited {
+.contents .memitem .memdoc .definition a, .contents .memitem .memdoc .definition a:visited, .contents .memitem .memdoc p a, .contents .memitem .memdoc p a:visited {
 	color: #809bcf;
 }
 
@@ -370,6 +375,40 @@ a.qindex:visited {
 	color: #f0f0f0;
 	margin-right: 10px;
 	font-size: 1.5em;
+}
+
+.contents .memitem .memdoc .params dd table tbody tr td.paramname {
+	color: #d65555;
+}
+
+.contents .memitem .memdoc table.fieldtable {
+	border: 1px solid #181818;
+}
+
+.contents .memitem .memdoc table.fieldtable tbody tr th {
+	background-image: none;
+	background-color: #181818;
+	color: #f0f0f0;
+	border-bottom: 1px solid #181818;
+}
+
+.contents .memitem .memdoc table.fieldtable tbody tr {
+	background-color: #2e2e2e;
+}
+
+.contents .memitem .memdoc table.fieldtable tbody tr td.fieldname {
+	border-right: 1px solid #181818;
+	border-bottom: 1px solid #181818;
+}
+
+.contents .memitem .memdoc table.fieldtable tbody tr td.fielddoc {
+	border-bottom: 1px solid #181818;
+}
+
+.contents .memitem .memdoc .fragment {
+	background-color: #151515;
+	border: none;
+	padding: 10px;
 }
 
 .contents hr {

@@ -1,9 +1,9 @@
+#include <debug/debug.h>
 #include <definitions.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <video/tty.h>
-#include <debug/debug.h>
 
 /// Print string with fixed length
 static bool print(const char* data, size_t length) {

@@ -45,57 +45,58 @@ void isrs_init() {
 }
 
 /**
- * Manage any exception that has occurred
+ * Manage any exception that has occurred.
+ *
  * Exceptions list: https://wiki.osdev.org/Exceptions
  * @param id Exception Id
  * @param err_code Exception's error code, if the exception does not return an error code, it is 0
  */
 void isr_handler(int id, uint32_t err_code) {
 	ExceptionType exception_type;
-	
+
 	debugf("Exception Id: %i", id);
-	
+
 	/* Print exception type */
 	switch(id) {
-		case 2:
-			debug("Exception Type: Interrupt");
-			break;
-		case 3:
-		case 4:
-			exception_type = Trap;
-			debug("Exception Type: Trap");
-			break;
-		case 8:
-		case 18:
-			exception_type = Abort;
-			debug("Exception Type: Abort");
-			break;
-		default:
-			exception_type = Fault;
-			debug("Exception Type: Fault");
-			break;
+	case 2:
+		debug("Exception Type: Interrupt");
+		break;
+	case 3:
+	case 4:
+		exception_type = Trap;
+		debug("Exception Type: Trap");
+		break;
+	case 8:
+	case 18:
+		exception_type = Abort;
+		debug("Exception Type: Abort");
+		break;
+	default:
+		exception_type = Fault;
+		debug("Exception Type: Fault");
+		break;
 	}
 
 	/* Double Fault's (id: 8) error code is always 0 */
 	/* TODO: add use of error code */
 	if(err_code != 0 || id == 8) {
 		switch(id) {
-			case 8:
-				break;
-			case 10:
-				break;
-			case 11:
-				break;
-			case 12:
-				break;
-			case 13:
-				break;
-			case 14:
-				break;
-			case 17:
-				break;
-			case 30:
-				break;
+		case 8:
+			break;
+		case 10:
+			break;
+		case 11:
+			break;
+		case 12:
+			break;
+		case 13:
+			break;
+		case 14:
+			break;
+		case 17:
+			break;
+		case 30:
+			break;
 		}
 	}
 

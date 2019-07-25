@@ -8,9 +8,9 @@
 
 #include <definitions.h>
 #include <ports.h>
+#include <stdarg.h>
 #include <stdbool.h>
 #include <string.h>
-#include <stdarg.h>
 
 void com_init(uint16_t port);
 char com_read(uint16_t port);
