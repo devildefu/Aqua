@@ -24,6 +24,9 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	isrs_init();
 	com_init(COM1_PORT);
 
+	int dog = 10 / 0;
+	debug("Divide-by-zero ISR works!");
+
 	tty_clear();
 	tty_cursor_set_color(7);
 
@@ -57,9 +60,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 			printf("Bootloader: %s\n", mb_info->boot_loader_name);
 		}
 	}
-
-	int dog = 10 / 0;
-	debug("Divide-by-zero ISR works!");
 
 	//cpu_print_info();
 

@@ -17,10 +17,6 @@ void __stack_chk_fail(void) {
 	fail("Stack smashing detected! Terminated.");
 }
 
-/* This function is only for compiling kernel without cross-compiler. */
-void __stack_chk_fail_local(void) {
-}
-
 void __chk_fail(void) {
 	fail("Buffer overflow detected! Terminated.");
 }
