@@ -6,6 +6,8 @@
 #include <stdint.h>
 
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
+int sprintf (char * str, const char * format, ...);
+int vsprintf (char * s, const char * format, va_list arg);
 
 typedef enum _SEEK_L_ {
 	SEEK_SET = 0,
