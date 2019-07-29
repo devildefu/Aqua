@@ -4,4 +4,5 @@ set(PLATFORM_ASM_FLAGS "")
 
 include_directories("arch/arm32/include")
 
-list(APPEND SOURCE arch/aarch64/raspi3/boot.s)
+list(APPEND SOURCE arch/aarch64/raspi3/boot.s
+                   arch/aarch64/raspi3/kernel.c)

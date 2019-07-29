@@ -16,10 +16,12 @@ multiboot_header:
 	dd 0x00000000
 	dd 0x00000000
 	dd 0x00000000
-	dd 0x00000000
-	dd 1920
-	dd 1080
-	dd 32
+	; We want Text Mode with 80x25
+	dd 0x00000001
+	dd 80
+	dd 25
+	; We have no preference
+	dd 0
 
 section .bss
 align 4

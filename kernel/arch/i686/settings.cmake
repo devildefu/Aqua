@@ -6,6 +6,7 @@ set(ARCH_ASM_FLAGS "-felf32")
 set(WORKAROUND arch/i686/crti.asm)
 
 list(APPEND SOURCE  arch/i686/pc/boot.asm
+                    arch/i686/kernel.c
                     arch/i686/cpu/cpu.c
                     arch/i686/cpu/gdt.asm
                     arch/i686/cpu/gdt.c
@@ -17,5 +18,4 @@ list(APPEND SOURCE  arch/i686/pc/boot.asm
                     arch/i686/misc/registers.asm
                     arch/i686/video/tty.c
                     arch/i686/devices/ps2/keyboard/keyboard.c
-                    arch/i686/misc/init_arch.c
                     arch/i686/crtn.asm)

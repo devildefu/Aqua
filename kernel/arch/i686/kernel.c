@@ -1,14 +1,17 @@
-#include "config.h"
+#include "../../config.h"
 
 #include <cpu/cpu.h>
 #include <devices/keyboard.h>
-#include <misc/init_arch.h>
 #include <multiboot/multiboot.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <video/colors.h>
 #include <video/tty.h>
+#include <cpu/gdt.h>
+#include <cpu/idt.h>
+#include <cpu/isrs.h>
+#include <devices/serial.h>
 
 #include <debug/debug.h>
 
@@ -30,13 +33,18 @@ void print_splash_screen(){
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	/* Initialize */
-	init_arch();
+	gdt_init();
+	idt_init();
+	isrs_init();
+	com_init(COM1_PORT);
+
+	int dog = 10 / 0;
+	debug("Divide-by-zero ISR works!");
 
 	tty_clear();
 	tty_cursor_set_color(7);
 
 	printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
-	printf("(%s:%i)\n", __FILE__, __LINE__);
 
 	/* Get multiboot information structure */
 	const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
@@ -65,11 +73,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
 		if(CHECK_FLAG(mb_info->flags, 9)) {
 			indent(1);printf("Used bootloader: %s\n", mb_info->boot_loader_name);
-		}
-
-		/* maybe it'll work someday... maybe */
-		if(CHECK_FLAG(mb_info->flags, 12)) {
-			printf("%i", mb_info->framebuffer_height);
 		}
 	}
 
