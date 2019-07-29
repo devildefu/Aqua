@@ -1,5 +1,6 @@
 #include <debug/debug.h>
 #include <definitions.h>
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
@@ -24,78 +25,78 @@ int printf(const char* restrict format, ...) {
 	int written = 0;
 
 	while(*format != '\0') {
-		size_t maxrem = INT_MAX - written;
+		size_t max_rem = INT_MAX - written;
 
 		if(format[0] != '%' || format[1] == '%') {
 			if(format[0] == '%')
 				format++;
+
 			size_t amount = 1;
 			while(format[amount] && format[amount] != '%')
 				amount++;
-			if(maxrem < amount) {
-				// TODO: Set errno to EOVERFLOW.
-				return -1;
+
+			for(size_t i = 0; i < amount; i++) {
+				tty_putch(format[i]);
 			}
-			if(!print(format, amount))
-				return -1;
+
 			format += amount;
 			written += amount;
 			continue;
 		}
 
-		const char* format_begun_at = format++;
+		format++;
 
 		if(*format == 'c') {
 			format++;
-			char c = (char)va_arg(parameters, int /* char promotes to int */);
-			if(!maxrem) {
-				// TODO: Set errno to EOVERFLOW.
-				return -1;
-			}
-			if(!print(&c, sizeof(c)))
-				return -1;
+			unsigned int ch = va_arg(parameters, int);
+
+			tty_putch(ch);
 			written++;
-		} else if(*format == 's') {
+		}
+
+		if(*format == 's') {
 			format++;
 			const char* str = va_arg(parameters, const char*);
-			size_t len = strlen(str);
-			if(maxrem < len) {
-				// TODO: Set errno to EOVERFLOW.
-				return -1;
-			}
-			if(!print(str, len))
-				return -1;
-			written += len;
-		} else if(*format == 'i' || *format == 'd') {
+
+			tty_write(str);
+			written += strlen(str);
+		}
+
+		if(*format == 'i' || *format == 'd') {
 			format++;
-			int numstr = va_arg(parameters, int);
+			int number = va_arg(parameters, int);
 			char str[sizeof(int)];
-			itoa(numstr, str);
-			size_t len = strlen(str);
-			if(maxrem < len) {
-				// TODO: Set errno to EOVERFLOW.
-				return -1;
+
+			itoa(number, str);
+			tty_write(str);
+			written += strlen(str);
+		}
+
+		if(*format == 'x' || *format == 'X') {
+			format++;
+			int hex = va_arg(parameters, int);
+			char str[sizeof(int)];
+
+			htoa(hex, str);
+			tty_write(str);
+		}
+
+		if(*format == 'o') {
+			format++;
+			int number = va_arg(parameters, int);
+
+			long int decimal = 0;
+			int i = 0;
+			while(number != 0) {
+				decimal += (number % 10) * pow(8, i++);
+				number /= 10;
 			}
-			if(!print(str, len))
-				return -1;
-			written += len;
-		} else if(*format == 'x' || *format == 'X') {
-			UNIMPLEMENTED_PART("x specifier");
-		} else if(*format == 'f' || *format == 'F') {
-			UNIMPLEMENTED_PART("f specifier");
-		} else if(*format == 'p') {
-			UNIMPLEMENTED_PART("p specifier");
-		} else {
-			format = format_begun_at;
-			size_t len = strlen(format);
-			if(maxrem < len) {
-				// TODO: Set errno to EOVERFLOW.
-				return -1;
-			}
-			if(!print(format, len))
-				return -1;
-			written += len;
-			format += len;
+
+			char str[sizeof(int)];
+
+			itoa(decimal, str);
+			tty_write(str);
+			written += strlen(str);
 		}
 	}
 

@@ -28,6 +28,7 @@ set(SOURCE  libssp/ssp.c
             devices/keyboard.c
             libc/stdlib.c
             libc/string.c
+            libc/math.c
             libc/stdio.c
             libc/stdio/printf.c)
 

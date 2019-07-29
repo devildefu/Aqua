@@ -4,7 +4,7 @@
 #include "device.h"
 #include <definitions.h>
 #include <devices/keyboard.h>
-#include <maths.h>
+#include <math.h>
 #include <stdint.h>
 
 /* Enum of keyboard leds */
