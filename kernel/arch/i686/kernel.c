@@ -2,13 +2,16 @@
 
 #include <cpu/cpu.h>
 #include <devices/keyboard.h>
-#include <misc/init_arch.h>
 #include <multiboot/multiboot.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <video/colors.h>
 #include <video/tty.h>
+#include <cpu/gdt.h>
+#include <cpu/idt.h>
+#include <cpu/isrs.h>
+#include <devices/serial.h>
 
 #include <debug/debug.h>
 
@@ -16,7 +19,10 @@
 
 void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	/* Initialize */
-	init_arch();
+	gdt_init();
+	idt_init();
+	isrs_init();
+	com_init(COM1_PORT);
 
 	tty_clear();
 	tty_cursor_set_color(7);
