@@ -12,8 +12,8 @@
 
 /// Struct for containing cursor date such as color and position
 struct tty_CursorData {
-   uint16_t color;
-   uint16_t pos;
+	uint16_t color;
+	uint16_t pos;
 } ttyMouse;
 
 /// Get cursor x and y coordinate
