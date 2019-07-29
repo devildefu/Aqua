@@ -1,4 +1,4 @@
-#include "config.h"
+#include "../../config.h"
 
 #include <cpu/cpu.h>
 #include <devices/keyboard.h>

@@ -29,8 +29,7 @@ set(SOURCE  libssp/ssp.c
             libc/stdlib.c
             libc/string.c
             libc/stdio.c
-            libc/stdio/printf.c
-            kernel.c)
+            libc/stdio/printf.c)
 
 include("arch/${SYSTEM_ARCH}/settings.cmake")
 include("arch/${SYSTEM_ARCH}/${SYSTEM_PLATFORM}/settings.cmake")
