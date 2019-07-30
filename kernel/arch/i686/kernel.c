@@ -30,7 +30,13 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	tty_clear();
 	tty_cursor_set_color(7);
 
+	cpu_print_info();
+
 	printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
+
+	//char* a[512];
+	//scanf("%s", a);
+	//printf("%s\n", a);
 
 	/* Get multiboot information structure */
 	const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
@@ -61,7 +67,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 		}
 	}
 
-	//cpu_print_info();
 
 	/* Keyboard testing */
 	while(true) {

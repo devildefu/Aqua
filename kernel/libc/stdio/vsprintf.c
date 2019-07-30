@@ -9,16 +9,16 @@
 void add_char(char src, char* dst) {
 	size_t len = strlen(dst);
 	dst[len] = src;
-	dst[len+1] = '\0';
+	dst[len + 1] = '\0';
 }
 
 void add_string(char* src, char* dst) {
-	for (size_t i = 0; i < strlen(src); i++) {
+	for(size_t i = 0; i < strlen(src); i++) {
 		add_char(src[i], dst);
 	}
 }
 
-int vsprintf(char * s, const char * format, va_list arg) {
+int vsprintf(char* s, const char* format, va_list arg) {
 	int written = 0;
 
 	while(*format != '\0') {
