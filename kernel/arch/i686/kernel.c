@@ -62,6 +62,7 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	}
 
 	//cpu_print_info();
+	printf("loooool");
 
 	/* Keyboard testing */
 	while(true) {

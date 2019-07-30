@@ -1,22 +1,25 @@
 #include <cpu/cpu.h>
+#include <cpuid.h>
 
-void cpu_cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) {
+/*
+void cpuid(int32_t reg, int32_t* eax, int32_t* ebx, int32_t* ecx, int32_t* edx) {
 	asm volatile("cpuid"
 				 : "=a"(*eax), "=b"(*ebx), "=c"(*ecx), "=d"(*edx)
 				 : "0"(reg));
 }
+*/
 
+/*
 void cpu_info(CPU_INFO* _ptr) {
-	//Variables for store cpu_cpuid return data
+	//Variables for store __get_cpuid return data
 	int32_t eax, ebx, ecx, edx;
 
-	/* TODO: Fix vendor name */
 	char vendor[13];
-	cpu_cpuid(0, &eax, (int32_t*)(vendor + 0), (int32_t*)(vendor + 8), (int32_t*)(vendor + 4));
+	__get_cpuid(0, &eax, (int32_t*)(vendor + 0), (int32_t*)(vendor + 8), (int32_t*)(vendor + 4));
 	strcpy(vendor, _ptr->vendor);
 
 	if(eax >= 0x01) {
-		cpu_cpuid(0x01, &eax, &ebx, &ecx, &edx);
+		__get_cpuid(0x01, &eax, &ebx, &ecx, &edx);
 
 		if(edx & EDX_PSE) _ptr->pse = 1;
 		if(edx & EDX_PAE) _ptr->pae = 1;
@@ -35,9 +38,9 @@ void cpu_info(CPU_INFO* _ptr) {
 		if(ecx & ECX_RDRAND) _ptr->rdrand = 1;
 	}
 
-	cpu_cpuid(0x80000000, &eax, &ebx, &ecx, &edx);
+	__get_cpuid(0x80000000, &eax, &ebx, &ecx, &edx);
 	if(eax >= 0x80000001) {
-		cpu_cpuid(0x80000001, &eax, &ebx, &ecx, &edx);
+		__get_cpuid(0x80000001, &eax, &ebx, &ecx, &edx);
 		if(edx & EDX_64_BIT) {
 			strcpy("amd64", _ptr->architecture);
 		} else {
@@ -45,14 +48,47 @@ void cpu_info(CPU_INFO* _ptr) {
 		}
 	}
 
-	/* TODO: Fix name */
 	if(eax >= 0x80000004) {
 		char name[48];
-		cpu_cpuid(0x80000002, (int32_t*)(name + 0), (int32_t*)(name + 4), (int32_t*)(name + 8), (int32_t*)(name + 12));
-		cpu_cpuid(0x80000003, (int32_t*)(name + 16), (int32_t*)(name + 20), (int32_t*)(name + 24), (int32_t*)(name + 28));
-		cpu_cpuid(0x80000004, (int32_t*)(name + 32), (int32_t*)(name + 36), (int32_t*)(name + 40), (int32_t*)(name + 44));
+		__get_cpuid(0x80000002, (int32_t*)(name + 0), (int32_t*)(name + 4), (int32_t*)(name + 8), (int32_t*)(name + 12));
+		__get_cpuid(0x80000003, (int32_t*)(name + 16), (int32_t*)(name + 20), (int32_t*)(name + 24), (int32_t*)(name + 28));
+		__get_cpuid(0x80000004, (int32_t*)(name + 32), (int32_t*)(name + 36), (int32_t*)(name + 40), (int32_t*)(name + 44));
 
 		strcpy(name, _ptr->name);
+	}
+}
+*/
+
+void cpu_info(CPU_INFO* ptr) {
+	uint32_t eax, ebx, ecx, edx;
+
+	/* TODO: Implement vendor */
+	__get_cpuid(0, &eax, &ebx, &ecx, &edx);
+	if(ebx == signature_INTEL_ebx && ecx == signature_INTEL_ecx && edx == signature_INTEL_edx) {
+        strcpy("GenuineIntel", ptr->vendor);
+    } else if(ebx == signature_AMD_ebx && ecx == signature_AMD_ecx && edx == signature_AMD_edx) {
+        strcpy("AuthenticAMD", ptr->vendor);
+    }
+
+	/* Processor Info and Feature Bits */
+	if(eax >= 0x01) {
+		__get_cpuid(0x01, &eax, &ebx, &ecx, &edx);
+
+		if(edx & EDX_PSE) ptr->pse = 1;
+		if(edx & EDX_PAE) ptr->pae = 1;
+		if(edx & EDX_APIC) ptr->apic = 1;
+		if(edx & EDX_MTRR) ptr->mtrr = 1;
+		if(edx & EDX_TSC) ptr->tsc = 1;
+		if(edx & EDX_MSR) ptr->msr = 1;
+		if(edx & EDX_SSE) ptr->sse = 1;
+		if(edx & EDX_SSE2) ptr->sse2 = 1;
+		if(ecx & ECX_SSE3) ptr->sse3 = 1;
+		if(ecx & ECX_SSSE3) ptr->ssse3 = 1;
+		if(ecx & ECX_SSE41) ptr->sse41 = 1;
+		if(ecx & ECX_SSE42) ptr->sse42 = 1;
+		if(ecx & ECX_AVX) ptr->avx = 1;
+		if(ecx & ECX_F16C) ptr->f16c = 1;
+		if(ecx & ECX_RDRAND) ptr->rdrand = 1;
 	}
 }
 
@@ -61,7 +97,7 @@ void cpu_print_info() {
 	CPU_INFO* info;
 	cpu_info(info);
 
-	//printf("CPU Vendor: %s\n", info->vendor);
+	printf("CPU Vendor: %s\n", info->vendor);
 	//printf("CPU Name: %s\n", info->name);
 	//printf("CPU Architecture: %s\n", info->architecture);
 	printf("CPU supported features: ");
@@ -82,4 +118,5 @@ void cpu_print_info() {
 	if(info->f16c == 1) printf("F16C ");
 	if(info->rdrand == 1) printf("RDRAND");
 	printf("\n");
+
 }

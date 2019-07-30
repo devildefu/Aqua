@@ -77,7 +77,7 @@
 
 typedef struct {
 	/* CPU basic informations */
-	char vendor[13];
+	char vendor[12];
 	char name[48];
 	char architecture[5];
 	/* CPU features */
