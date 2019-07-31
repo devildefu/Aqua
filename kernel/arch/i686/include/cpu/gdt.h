@@ -3,7 +3,7 @@
 
 #include <cpu/tss.h>
 #include <definitions.h>
-#include <memory.h>
+#include <string.h>
 #include <stdint.h>
 
 struct _GdtEntry {

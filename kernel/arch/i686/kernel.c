@@ -61,6 +61,9 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 		}
 	}
 
+	printf("\n\n");
+	cpu_print_info();
+
 	/* Keyboard testing */
 	while(true) {
 		tty_putch(getch());
