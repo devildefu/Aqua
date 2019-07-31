@@ -32,8 +32,4 @@ void m_free(void* ptr);
 void* m_calloc(size_t nmemb, size_t size);
 void* m_realloc(void* ptr, size_t size);
 
-int memcmp(const void* a, const void* b, unsigned int size);
-void* memcpy(void* destination, const void* from, unsigned int block_size);
-void* memset(void* ptr, char value, size_t num);
-
 #endif

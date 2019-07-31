@@ -60,9 +60,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 			printf("Bootloader: %s\n", mb_info->boot_loader_name);
 		}
 	}
-
-	//cpu_print_info();
-	printf("loooool");
+	printf("\n\n");
+	cpu_print_info();
 
 	/* Keyboard testing */
 	while(true) {
