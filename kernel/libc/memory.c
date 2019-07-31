@@ -14,9 +14,10 @@ void init_ram(void* start, void* end, uint32_t limit) {
 	mall_table.alloc_limit = limit;
 }
 
-// Memory manager
-const size_t mman_ptrs_start = 0x01000000; // Memory table starts at 1 MB
-const size_t mman_ptrs_end = mman_ptrs_start + 0x80000; // 512 KB memory table
+/* Memory table starts at 1 MB */
+const size_t mman_ptrs_start = 0x01000000;
+/* 512 KB memory table */
+const size_t mman_ptrs_end = mman_ptrs_start + 0x80000;
 
 size_t last_address = mman_ptrs_start;
 typedef struct {
@@ -34,8 +35,10 @@ void mman_init() {
 		*ptr = 0x00;
 	}
 	debug("Reserving hardware addresses");
-	mreserve(0x00000000, 0x01000000); // Reserved memory
-	mreserve(mman_ptrs_start, mman_ptrs_end); // Memory table
+	/* Reserved memory */
+	mreserve(0x00000000, 0x01000000);
+	mreserve(mman_ptrs_start, mman_ptrs_end);
+	/* Memory table */
 	debug("Memory manager initialized.");
 }
 
@@ -55,7 +58,8 @@ void* malloc(size_t size) {
 		char* ptr = (char*)last_address;
 
 		mman_cell* memcell = (mman_cell*)ptr;
-		if(memcell->start == 0x00 && memcell->end == 0x00) { // Memory cell is free
+		/* Memory cell is free */
+		if(memcell->start == 0x00 && memcell->end == 0x00) {
 			char* wanted = 0x00;
 			char* startaddress = 0x00;
 			char ok = 0;
@@ -66,7 +70,7 @@ void* malloc(size_t size) {
 						ok = 0;
 						startaddress = (char*)current->end;
 						break;
-						// Look further for free memory block
+						/* Look further for free memory block */
 					}
 				}
 				if(ok == 0) {
@@ -84,7 +88,8 @@ void* malloc(size_t size) {
 			last_address = mman_ptrs_start;
 		}
 		retry_count++;
-		if(retry_count > mman_ptrs_end - mman_ptrs_start) { // Out of memory (no more space in pointer table)
+		/* Look further for free memory block */
+		if(retry_count > mman_ptrs_end - mman_ptrs_start) {
 			return 0x00;
 		}
 	}

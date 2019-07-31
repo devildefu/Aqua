@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-void indent(uint8_t size);//Make indentation (for logging)
+void indent(uint8_t size); //<- Make indentation (for logging)
 int printf(const char* format, ...); //<- Prints formatted text to output buffer
 int sprintf(char* str, const char* format, ...); //<- Write formatted data to string
 int vsprintf(char* s, const char* format, va_list arg); //<- Write formatted data from variable argument list to string

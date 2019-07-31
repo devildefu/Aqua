@@ -41,9 +41,11 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 
 		printf("Multiboot info:\n");
 		if(CHECK_FLAG(mb_info->flags, 0)) {
-			indent(1);printf("Lower memory: %i KiB\n", mb_info->mem_lower);
+			indent(1);
+			printf("Lower memory: %i KiB\n", mb_info->mem_lower);
 			/* "The value returned for upper memory is maximally the address of the first upper memory hole minus 1 megabyte." and we need to add 128, I don't know why */
-			indent(1);printf("Upper memory: %i KiB\n", mb_info->mem_upper);
+			indent(1);
+			printf("Upper memory: %i KiB\n", mb_info->mem_upper);
 		}
 
 		/* Has ramdisk been loaded? */
@@ -58,7 +60,8 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 		}
 
 		if(CHECK_FLAG(mb_info->flags, 9)) {
-			indent(1);printf("Used bootloader: %s\n", mb_info->boot_loader_name);
+			indent(1);
+			printf("Used bootloader: %s\n", mb_info->boot_loader_name);
 		}
 	}
 

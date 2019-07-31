@@ -4,8 +4,8 @@
 #include <stddef.h>
 #include <stdint.h>
 #ifdef _i386_
-#include <video/tty.h>
 #include <memory.h>
+#include <video/tty.h>
 #endif
 
 void atoi(char* str, int* a);

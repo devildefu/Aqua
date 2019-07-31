@@ -3,8 +3,8 @@
 
 #include <cpu/tss.h>
 #include <definitions.h>
-#include <string.h>
 #include <stdint.h>
+#include <string.h>
 
 struct _GdtEntry {
 	uint16_t limit_low;

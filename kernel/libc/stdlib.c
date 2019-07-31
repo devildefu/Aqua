@@ -1,13 +1,12 @@
-#include <stdlib.h>
 #include "debug/debug.h"
+#include <stdlib.h>
 
-__attribute__((noreturn))
-void abort(void) {
+__attribute__((noreturn)) void abort(void) {
 	asm("hlt");
 	__builtin_unreachable();
 }
 
-//random
+/* Random */
 
 int rand(void) {
 	next = next * 1103515245 + 12345;
