@@ -6,22 +6,19 @@
 #include <string.h>
 #include <video/tty.h>
 
-/// Print string with fixed length
-static bool print(const char* data, size_t length) {
-	const unsigned char* bytes = (const unsigned char*)data;
-	for(size_t i = 0; i < length; i++)
-		if(bytes[i] == '\0') {
-			return false;
-		} else {
-			tty_putch(bytes[i]);
-		}
-	return true;
+void add_char(char src, char* dst) {
+	size_t len = strlen(dst);
+	dst[len] = src;
+	dst[len + 1] = '\0';
 }
 
-int printf(const char* restrict format, ...) {
-	va_list parameters;
-	va_start(parameters, format);
+void add_string(char* src, char* dst) {
+	for(size_t i = 0; i < strlen(src); i++) {
+		add_char(src[i], dst);
+	}
+}
 
+int vsprintf(char* s, const char* format, va_list arg) {
 	int written = 0;
 
 	while(*format != '\0') {
@@ -36,7 +33,7 @@ int printf(const char* restrict format, ...) {
 				amount++;
 
 			for(size_t i = 0; i < amount; i++) {
-				tty_putch(format[i]);
+				add_char(format[i], s);
 			}
 
 			format += amount;
@@ -48,42 +45,42 @@ int printf(const char* restrict format, ...) {
 
 		if(*format == 'c') {
 			format++;
-			unsigned int ch = va_arg(parameters, int);
+			unsigned int ch = va_arg(arg, int);
 
-			tty_putch(ch);
+			add_char(ch, s);
 			written++;
 		}
 
 		if(*format == 's') {
 			format++;
-			const char* str = va_arg(parameters, const char*);
+			const char* str = va_arg(arg, const char*);
 
-			tty_write(str);
+			add_string(str, s);
 			written += strlen(str);
 		}
 
 		if(*format == 'i' || *format == 'd') {
 			format++;
-			int number = va_arg(parameters, int);
+			int number = va_arg(arg, int);
 			char str[sizeof(int)];
 
 			itoa(number, str);
-			tty_write(str);
+			add_string(str, s);
 			written += strlen(str);
 		}
 
 		if(*format == 'x' || *format == 'X') {
 			format++;
-			int hex = va_arg(parameters, int);
+			int hex = va_arg(arg, int);
 			char str[sizeof(int)];
 
 			htoa(hex, str);
-			tty_write(str);
+			add_string(str, s);
 		}
 
 		if(*format == 'o') {
 			format++;
-			int number = va_arg(parameters, int);
+			int number = va_arg(arg, int);
 
 			long int decimal = 0;
 			int i = 0;
@@ -95,11 +92,9 @@ int printf(const char* restrict format, ...) {
 			char str[sizeof(int)];
 
 			itoa(decimal, str);
-			tty_write(str);
+			add_string(str, s);
 			written += strlen(str);
 		}
 	}
-
-	va_end(parameters);
 	return written;
 }

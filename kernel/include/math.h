@@ -3,4 +3,6 @@
 
 #define _bit(b, n) (b & (1 << n))
 
+int pow(double x, unsigned int y);
+
 #endif

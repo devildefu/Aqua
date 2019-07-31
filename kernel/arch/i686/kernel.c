@@ -1,17 +1,17 @@
 #include "../../config.h"
 
 #include <cpu/cpu.h>
+#include <cpu/gdt.h>
+#include <cpu/idt.h>
+#include <cpu/isrs.h>
 #include <devices/keyboard.h>
+#include <devices/serial.h>
 #include <multiboot/multiboot.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <video/colors.h>
 #include <video/tty.h>
-#include <cpu/gdt.h>
-#include <cpu/idt.h>
-#include <cpu/isrs.h>
-#include <devices/serial.h>
 
 #include <debug/debug.h>
 
@@ -60,6 +60,7 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 			printf("Bootloader: %s\n", mb_info->boot_loader_name);
 		}
 	}
+
 	printf("\n\n");
 	cpu_print_info();
 
