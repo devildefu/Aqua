@@ -24,3 +24,7 @@ bool itos(int32_t integer, char* _ptr);
 
 size_t strlen(const char* str);
 char* strcpy(char* src, char* dest);
+
+int memcmp(const void* a, const void* b, unsigned int size);
+void* memcpy(void* destination, const void* from, unsigned int block_size);
+void* memset(void* ptr, char value, size_t num);
