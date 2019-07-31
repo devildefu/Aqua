@@ -12,7 +12,7 @@ void add_char(char src, char* dst) {
 	dst[len + 1] = '\0';
 }
 
-void add_string(char* src, char* dst) {
+void add_string(const char* src, char* dst) {
 	for(size_t i = 0; i < strlen(src); i++) {
 		add_char(src[i], dst);
 	}

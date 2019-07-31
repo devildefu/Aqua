@@ -5,6 +5,7 @@
 #include <stdint.h>
 #ifdef _i386_
 #include <video/tty.h>
+#include <memory.h>
 #endif
 
 void atoi(char* str, int* a);

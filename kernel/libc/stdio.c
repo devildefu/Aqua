@@ -3,6 +3,12 @@
 #include <string.h>
 #include <video/tty.h>
 
+void indent(uint8_t size){
+	for(uint8_t i=0; i<size; i++){
+		printf("    ");
+	}
+}
+
 int fopen(const char* name, FILE* f) {
 	int ret;
 	f->pr(F_OPEN, &ret, sizeof(ret), f);

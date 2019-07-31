@@ -6,18 +6,6 @@
 #include <string.h>
 #include <video/tty.h>
 
-/// Print string with fixed length
-static bool print(const char* data, size_t length) {
-	const unsigned char* bytes = (const unsigned char*)data;
-	for(size_t i = 0; i < length; i++)
-		if(bytes[i] == '\0') {
-			return false;
-		} else {
-			tty_putch(bytes[i]);
-		}
-	return true;
-}
-
 int printf(const char* restrict format, ...) {
 	va_list parameters;
 	va_start(parameters, format);

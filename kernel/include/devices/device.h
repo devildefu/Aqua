@@ -26,7 +26,6 @@ enum _dev_mode_device_ {
  * 	proc = pointer to a device's procedure function
  */
 typedef struct _device_ {
-
 	int device_s;
 	dev_mode__procedure proc;
 
