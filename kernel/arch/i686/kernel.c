@@ -1,17 +1,17 @@
 #include "../../config.h"
 
 #include <cpu/cpu.h>
+#include <cpu/gdt.h>
+#include <cpu/idt.h>
+#include <cpu/isrs.h>
 #include <devices/keyboard.h>
+#include <devices/serial.h>
 #include <multiboot/multiboot.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <video/colors.h>
 #include <video/tty.h>
-#include <cpu/gdt.h>
-#include <cpu/idt.h>
-#include <cpu/isrs.h>
-#include <devices/serial.h>
 
 #include <debug/debug.h>
 
@@ -33,10 +33,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	cpu_print_info();
 
 	printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
-
-	//char* a[512];
-	//scanf("%s", a);
-	//printf("%s\n", a);
 
 	/* Get multiboot information structure */
 	const multiboot_info_t* mb_info = (multiboot_info_t*)multiboot_pointer;
@@ -66,7 +62,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 			printf("Bootloader: %s\n", mb_info->boot_loader_name);
 		}
 	}
-
 
 	/* Keyboard testing */
 	while(true) {
