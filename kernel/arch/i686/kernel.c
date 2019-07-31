@@ -30,8 +30,6 @@ void kmain(unsigned long magic, unsigned long multiboot_pointer) {
 	tty_clear();
 	tty_cursor_set_color(7);
 
-	cpu_print_info();
-
 	printf("Aqua %s version %s\n\n", SYSTEM_ARCH, SYSTEM_VERSION);
 
 	/* Get multiboot information structure */
