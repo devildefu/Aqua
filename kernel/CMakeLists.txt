@@ -24,8 +24,8 @@ string(STRIP ${crtbegin} crtbegin)
 string(STRIP ${crtend} crtend)
 
 set(SOURCE  libssp/ssp.c
-            memory/memory.c
             devices/keyboard.c
+            libc/memory.c
             libc/stdlib.c
             libc/string.c
             libc/math.c

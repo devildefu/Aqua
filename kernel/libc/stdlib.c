@@ -1,7 +1,9 @@
 #include <stdlib.h>
+#include "debug/debug.h"
 
-__attribute__((noreturn)) void abort(void) {
-	while(1) {}
+__attribute__((noreturn))
+void abort(void) {
+	asm("hlt");
 	__builtin_unreachable();
 }
 

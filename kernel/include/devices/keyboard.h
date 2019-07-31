@@ -132,11 +132,9 @@ typedef struct __dev_k_keybuffer__ {
 
 /*Keyboard device struct. Inherits from device*/
 typedef struct __dev_keyboard__ {
-
 	struct _device_ dev[1];
 	struct __dev_k_keybuffer__ buf[1];
 	char led_states;
-
 } _packed_ _dev_keyboard_;
 
 /* Extern default PS/2 keyboard

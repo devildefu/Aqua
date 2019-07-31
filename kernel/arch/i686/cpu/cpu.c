@@ -1,5 +1,6 @@
 #include <cpu/cpu.h>
 #include <cpuid.h>
+#include <string.h>
 
 void cpu_info(CPU_INFO* ptr) {
 	unsigned int eax, ebx, ecx, edx;
