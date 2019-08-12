@@ -1,2 +1,2 @@
-const char* SYSTEM_VERSION = "0.3";
+const char* SYSTEM_VERSION = "0.4";
 const char* SYSTEM_ARCH = "@SYSTEM_ARCH@";
