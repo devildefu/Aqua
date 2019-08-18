@@ -1,0 +1,351 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('globals_i.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
+
+<h3><a id="index_i"></a>- i -</h3><ul>
+<li>IDT
+: <a class="el" href="idt_8c.html#a88c6c97c5b477db2a2861696d766cc4a">idt.c</a>
+</li>
+<li>IDT_entry
+: <a class="el" href="idt_8h.html#a7de2200f5c170152849512d1b7f3a2e8">idt.h</a>
+</li>
+<li>idt_init()
+: <a class="el" href="idt_8h.html#a164d38a0163ec2c36993b803b8c7fdcb">idt.h</a>
+, <a class="el" href="idt_8c.html#a164d38a0163ec2c36993b803b8c7fdcb">idt.c</a>
+</li>
+<li>idt_set()
+: <a class="el" href="idt_8c.html#a4418274a58b1ff89dbaec5fab2e8c3bb">idt.c</a>
+, <a class="el" href="idt_8h.html#a32ad3da3b7e83de967e704cede874331">idt.h</a>
+</li>
+<li>indent()
+: <a class="el" href="stdio_8c.html#a6f8a67f91960b5226e66216d589ef1db">stdio.c</a>
+, <a class="el" href="stdio_8h.html#a6f8a67f91960b5226e66216d589ef1db">stdio.h</a>
+</li>
+<li>init_device
+: <a class="el" href="device_8h.html#a0b7114584bdb8b2bc6816542c884ec36">device.h</a>
+</li>
+<li>init_keyboard
+: <a class="el" href="include_2devices_2keyboard_8h.html#adb1fec9cc016570f8563f0724d15e7da">include/devices/keyboard.h</a>
+</li>
+<li>init_ram()
+: <a class="el" href="memory_8h.html#a3dc4439325e6a29d4a68d318ce7ed615">memory.h</a>
+, <a class="el" href="memory_8c.html#ab0d108f4a488c42cbb3c46743c25dff5">memory.c</a>
+</li>
+<li>init_ram_alloc_table()
+: <a class="el" href="memory_8c.html#a41e63b9591e1ed83996283b366f23b1d">memory.c</a>
+</li>
+<li>INT_MAX
+: <a class="el" href="definitions_8h.html#a9ec306f36d50c7375e74f0d1c55a3a67">definitions.h</a>
+</li>
+<li>irq0_handler()
+: <a class="el" href="idt_8c.html#ad6cc1b26192413f118c62066c5fda1c5">idt.c</a>
+</li>
+<li>irq10_handler()
+: <a class="el" href="idt_8c.html#af22e3313df8c40cbda4f43a80f40972a">idt.c</a>
+</li>
+<li>irq11_handler()
+: <a class="el" href="idt_8c.html#ad3ff2fba30c64c38229dc49a07e1aa08">idt.c</a>
+</li>
+<li>irq12_handler()
+: <a class="el" href="idt_8c.html#af6c28c2c9379daed19cca5b9b96c9f4c">idt.c</a>
+</li>
+<li>irq13_handler()
+: <a class="el" href="idt_8c.html#a4727518800259cbd652e51cb1a7f3533">idt.c</a>
+</li>
+<li>irq14_handler()
+: <a class="el" href="idt_8c.html#a70318eda6c40a8776d50b9490141767b">idt.c</a>
+</li>
+<li>irq15_handler()
+: <a class="el" href="idt_8c.html#ac4ed3d712a6d483f89f91d9459e5277a">idt.c</a>
+</li>
+<li>irq1_handler()
+: <a class="el" href="idt_8c.html#a140caccefa1363b1ab302a287937f577">idt.c</a>
+</li>
+<li>irq2_handler()
+: <a class="el" href="idt_8c.html#a2990439435e188eeea441646b0f177fb">idt.c</a>
+</li>
+<li>irq3_handler()
+: <a class="el" href="idt_8c.html#afd2f8745fb587d68779dc7aa535a8e1c">idt.c</a>
+</li>
+<li>irq4_handler()
+: <a class="el" href="idt_8c.html#a0dc31c8be9311ffa1cce4819cbaf01d6">idt.c</a>
+</li>
+<li>irq5_handler()
+: <a class="el" href="idt_8c.html#a8b467f9c70d920b33f3e2980465fec47">idt.c</a>
+</li>
+<li>irq6_handler()
+: <a class="el" href="idt_8c.html#a8274a16b7c2c5980297c75c03b0e2104">idt.c</a>
+</li>
+<li>irq7_handler()
+: <a class="el" href="idt_8c.html#ace70eb4c9c4d825b19b245a32bd91372">idt.c</a>
+</li>
+<li>irq8_handler()
+: <a class="el" href="idt_8c.html#ac546917816211a6169a036ea0c2dee16">idt.c</a>
+</li>
+<li>irq9_handler()
+: <a class="el" href="idt_8c.html#a0fb0614f126dc093595d411058d33f3f">idt.c</a>
+</li>
+<li>isr0()
+: <a class="el" href="isrs_8c.html#af88eb8e98d943aa0461c01de3cb53493">isrs.c</a>
+</li>
+<li>isr1()
+: <a class="el" href="isrs_8c.html#aeab0ed9ae661801c25f7dc9089c19f72">isrs.c</a>
+</li>
+<li>isr10()
+: <a class="el" href="isrs_8c.html#a3c8cb1341cf756883a2e7dc317d5272d">isrs.c</a>
+</li>
+<li>isr11()
+: <a class="el" href="isrs_8c.html#a0d8145cf6ee1ef7834f459ba777d323c">isrs.c</a>
+</li>
+<li>isr12()
+: <a class="el" href="isrs_8c.html#a00f00421039cb85f9dd9375995c784bd">isrs.c</a>
+</li>
+<li>isr13()
+: <a class="el" href="isrs_8c.html#af985dcf66872ee696e5f30d819ac16a1">isrs.c</a>
+</li>
+<li>isr14()
+: <a class="el" href="isrs_8c.html#a8b63eaa37c03743718870964a3429ba8">isrs.c</a>
+</li>
+<li>isr16()
+: <a class="el" href="isrs_8c.html#add0980c10028b377643da169e52e5be7">isrs.c</a>
+</li>
+<li>isr17()
+: <a class="el" href="isrs_8c.html#ac7d1e81e585bc7c56b46280006402f9e">isrs.c</a>
+</li>
+<li>isr18()
+: <a class="el" href="isrs_8c.html#ae685c5ca5ed9c9c5e7d297ad8d14de49">isrs.c</a>
+</li>
+<li>isr19()
+: <a class="el" href="isrs_8c.html#ad16b5f77287df551e63d3f0c67f8f75d">isrs.c</a>
+</li>
+<li>isr2()
+: <a class="el" href="isrs_8c.html#a99e457875cca040c3f7c77b61e960b53">isrs.c</a>
+</li>
+<li>isr20()
+: <a class="el" href="isrs_8c.html#a552d2aedae97d97083d3f9caf6ad59a5">isrs.c</a>
+</li>
+<li>isr3()
+: <a class="el" href="isrs_8c.html#a0ef268d2c16a7b318356451a05fd507b">isrs.c</a>
+</li>
+<li>isr30()
+: <a class="el" href="isrs_8c.html#af868664393aedd51c04e3ddd48b8f84f">isrs.c</a>
+</li>
+<li>isr4()
+: <a class="el" href="isrs_8c.html#a09af768d636144aaeaddd76c92a0a2f5">isrs.c</a>
+</li>
+<li>isr5()
+: <a class="el" href="isrs_8c.html#aa91d821a4bcafb44933d92945727b0df">isrs.c</a>
+</li>
+<li>isr6()
+: <a class="el" href="isrs_8c.html#a9fadb95f34937b1ded02c4171b4920ba">isrs.c</a>
+</li>
+<li>isr7()
+: <a class="el" href="isrs_8c.html#a7eb6ec30db7077fb1c9c9d926a0fc407">isrs.c</a>
+</li>
+<li>isr8()
+: <a class="el" href="isrs_8c.html#a86bc69345a3bb409665dbadb77a9d393">isrs.c</a>
+</li>
+<li>isr_handler()
+: <a class="el" href="isrs_8c.html#ae3d70eb23e4ca65372caac5af50cd722">isrs.c</a>
+</li>
+<li>isrs_init()
+: <a class="el" href="isrs_8c.html#aaeee4ce244e890abb201178e5589eb40">isrs.c</a>
+, <a class="el" href="isrs_8h.html#aaeee4ce244e890abb201178e5589eb40">isrs.h</a>
+</li>
+<li>itoa()
+: <a class="el" href="string_8c.html#a793052728278431ab01a1ee8d1dfd8d6">string.c</a>
+, <a class="el" href="string_8h.html#a793052728278431ab01a1ee8d1dfd8d6">string.h</a>
+</li>
+<li>itos()
+: <a class="el" href="string_8c.html#a1962e682e56da50cc5c55a84d35ed1e3">string.c</a>
+, <a class="el" href="string_8h.html#a1962e682e56da50cc5c55a84d35ed1e3">string.h</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

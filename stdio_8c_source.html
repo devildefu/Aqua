@@ -1,0 +1,213 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('stdio_8c_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">stdio.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stdio_8c.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="definitions_8h.html">definitions.h</a>&gt;</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="stdio_8h.html">stdio.h</a>&gt;</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="string_8h.html">string.h</a>&gt;</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;video/tty.h&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="stdio_8c.html#a6f8a67f91960b5226e66216d589ef1db">    6</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="stdio_8c.html#a6f8a67f91960b5226e66216d589ef1db">indent</a>(uint8_t <a class="code" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>) {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">for</span>(uint8_t i = 0; i &lt; <a class="code" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>; i++) {</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <a class="code" href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a>(<span class="stringliteral">&quot;    &quot;</span>);</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    }</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="stdio_8c.html#a8eb72a93584260e4619436950c74886b">   12</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8c.html#a8eb72a93584260e4619436950c74886b">fopen</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* name, <a class="code" href="struct___f_i_l_e__.html">FILE</a>* f) {</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">int</span> ret;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    f-&gt;<a class="code" href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">pr</a>(<a class="code" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a3ae8d874c3df69a1727cbdd1165312c7">F_OPEN</a>, &amp;ret, <span class="keyword">sizeof</span>(ret), f);</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">return</span> ret;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="stdio_8c.html#a16899976ac8e865813485db3d5f5186f">   18</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8c.html#a16899976ac8e865813485db3d5f5186f">fclose</a>(<a class="code" href="struct___f_i_l_e__.html">FILE</a>* f) {</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> ret;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    f-&gt;<a class="code" href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">pr</a>(<a class="code" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74aa9cd16eba093bfd964f9474d261db6a3">F_CLOSE</a>, &amp;ret, <span class="keyword">sizeof</span>(ret), f);</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">return</span> ret;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="stdio_8c.html#a3400ed38f998f8ee52fd8a22901b6fe5">   24</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8c.html#a3400ed38f998f8ee52fd8a22901b6fe5">fseek</a>(<a class="code" href="struct___f_i_l_e__.html">FILE</a>* f, <span class="keywordtype">int</span> offset, <span class="keywordtype">int</span> mode) {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)f-&gt;<a class="code" href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">pr</a>(<a class="code" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74ae6c1f2d6f71ef0ec9abe297e480a2c29">F_SEEK</a>, &amp;offset, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * 2, f);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="stdio_8c.html#a5d1f99d60a4e54a64cbbc805a4eb3861">   28</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8c.html#a5d1f99d60a4e54a64cbbc805a4eb3861">fread</a>(<span class="keywordtype">void</span>* ptr, <span class="keywordtype">size_t</span> <a class="code" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, <span class="keywordtype">size_t</span> nitems, <a class="code" href="struct___f_i_l_e__.html">FILE</a>* f) {</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)f-&gt;<a class="code" href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">pr</a>(<a class="code" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a327988a43a2cd3bbf68e7241964b331d">F_READ</a>, &amp;ptr, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span>*) + <span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) * 2, f);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="stdio_8c.html#ad01dfa0f8dcb82e379523baff664b742">   32</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="stdio_8c.html#ad01dfa0f8dcb82e379523baff664b742">fwrite</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* ptr, <span class="keywordtype">size_t</span> <a class="code" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, <span class="keywordtype">size_t</span> nitems, <a class="code" href="struct___f_i_l_e__.html">FILE</a>* f) {</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)f-&gt;<a class="code" href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">pr</a>(<a class="code" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a8d17b4f5bc28a7102c467492b8f26b2e">F_WRITE</a>, &amp;ptr, <span class="keyword">sizeof</span>(<span class="keywordtype">void</span>*) + <span class="keyword">sizeof</span>(<span class="keywordtype">size_t</span>) * 2, f);</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div><div class="ttc" id="struct___f_i_l_e___html_ad926461d5696fac8ba862eba75e942c1"><div class="ttname"><a href="struct___f_i_l_e__.html#ad926461d5696fac8ba862eba75e942c1">_FILE_::pr</a></div><div class="ttdeci">FILE_PROCEDURE pr</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00035">stdio.h:35</a></div></div>
+<div class="ttc" id="stdio_8h_html_af66b8540fdace3c61d424038de639d74a3ae8d874c3df69a1727cbdd1165312c7"><div class="ttname"><a href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a3ae8d874c3df69a1727cbdd1165312c7">F_OPEN</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00023">stdio.h:23</a></div></div>
+<div class="ttc" id="stdio_8c_html_ad01dfa0f8dcb82e379523baff664b742"><div class="ttname"><a href="stdio_8c.html#ad01dfa0f8dcb82e379523baff664b742">fwrite</a></div><div class="ttdeci">int fwrite(const void *ptr, size_t size, size_t nitems, FILE *f)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00032">stdio.c:32</a></div></div>
+<div class="ttc" id="string_8h_html"><div class="ttname"><a href="string_8h.html">string.h</a></div></div>
+<div class="ttc" id="stdio_8h_html_af66b8540fdace3c61d424038de639d74aa9cd16eba093bfd964f9474d261db6a3"><div class="ttname"><a href="stdio_8h.html#af66b8540fdace3c61d424038de639d74aa9cd16eba093bfd964f9474d261db6a3">F_CLOSE</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00024">stdio.h:24</a></div></div>
+<div class="ttc" id="stdio_8c_html_a3400ed38f998f8ee52fd8a22901b6fe5"><div class="ttname"><a href="stdio_8c.html#a3400ed38f998f8ee52fd8a22901b6fe5">fseek</a></div><div class="ttdeci">int fseek(FILE *f, int offset, int mode)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00024">stdio.c:24</a></div></div>
+<div class="ttc" id="stdio_8c_html_a6f8a67f91960b5226e66216d589ef1db"><div class="ttname"><a href="stdio_8c.html#a6f8a67f91960b5226e66216d589ef1db">indent</a></div><div class="ttdeci">void indent(uint8_t size)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00006">stdio.c:6</a></div></div>
+<div class="ttc" id="stdio_8c_html_a8eb72a93584260e4619436950c74886b"><div class="ttname"><a href="stdio_8c.html#a8eb72a93584260e4619436950c74886b">fopen</a></div><div class="ttdeci">int fopen(const char *name, FILE *f)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00012">stdio.c:12</a></div></div>
+<div class="ttc" id="stdio_8h_html_a98631211a4a8aee62f572375d5b637be"><div class="ttname"><a href="stdio_8h.html#a98631211a4a8aee62f572375d5b637be">printf</a></div><div class="ttdeci">int printf(const char *format,...)</div></div>
+<div class="ttc" id="struct___f_i_l_e___html"><div class="ttname"><a href="struct___f_i_l_e__.html">_FILE_</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00033">stdio.h:33</a></div></div>
+<div class="ttc" id="definitions_8h_html"><div class="ttname"><a href="definitions_8h.html">definitions.h</a></div></div>
+<div class="ttc" id="stdio_8h_html_af66b8540fdace3c61d424038de639d74ae6c1f2d6f71ef0ec9abe297e480a2c29"><div class="ttname"><a href="stdio_8h.html#af66b8540fdace3c61d424038de639d74ae6c1f2d6f71ef0ec9abe297e480a2c29">F_SEEK</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00020">stdio.h:20</a></div></div>
+<div class="ttc" id="stdio_8h_html"><div class="ttname"><a href="stdio_8h.html">stdio.h</a></div></div>
+<div class="ttc" id="stdio_8c_html_a16899976ac8e865813485db3d5f5186f"><div class="ttname"><a href="stdio_8c.html#a16899976ac8e865813485db3d5f5186f">fclose</a></div><div class="ttdeci">int fclose(FILE *f)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00018">stdio.c:18</a></div></div>
+<div class="ttc" id="multiboot_8h_html_a6d813a0f2b5281b18dea3f4cda696c33"><div class="ttname"><a href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a></div><div class="ttdeci">multiboot_uint32_t size</div><div class="ttdef"><b>Definition:</b> <a href="multiboot_8h_source.html#l00098">multiboot.h:98</a></div></div>
+<div class="ttc" id="stdio_8c_html_a5d1f99d60a4e54a64cbbc805a4eb3861"><div class="ttname"><a href="stdio_8c.html#a5d1f99d60a4e54a64cbbc805a4eb3861">fread</a></div><div class="ttdeci">int fread(void *ptr, size_t size, size_t nitems, FILE *f)</div><div class="ttdef"><b>Definition:</b> <a href="stdio_8c_source.html#l00028">stdio.c:28</a></div></div>
+<div class="ttc" id="stdio_8h_html_af66b8540fdace3c61d424038de639d74a8d17b4f5bc28a7102c467492b8f26b2e"><div class="ttname"><a href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a8d17b4f5bc28a7102c467492b8f26b2e">F_WRITE</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00021">stdio.h:21</a></div></div>
+<div class="ttc" id="stdio_8h_html_af66b8540fdace3c61d424038de639d74a327988a43a2cd3bbf68e7241964b331d"><div class="ttname"><a href="stdio_8h.html#af66b8540fdace3c61d424038de639d74a327988a43a2cd3bbf68e7241964b331d">F_READ</a></div><div class="ttdef"><b>Definition:</b> <a href="stdio_8h_source.html#l00022">stdio.h:22</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_78ec8441c641aca30393f7fd89964306.html">libc</a></li><li class="navelem"><a class="el" href="stdio_8c.html">stdio.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

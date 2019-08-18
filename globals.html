@@ -1,0 +1,604 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('globals.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
+
+<h3><a id="index__5F"></a>- _ -</h3><ul>
+<li>__attribute__
+: <a class="el" href="multiboot_8h.html#adab94b48d32ba92da21181f2086eb652">multiboot.h</a>
+, <a class="el" href="stdlib_8c.html#a1b6824bfd4ec0404a4f875ed8db0274e">stdlib.c</a>
+, <a class="el" href="stdlib_8h.html#acac56fd762ae7fce67be68cf1d282994">stdlib.h</a>
+</li>
+<li>__chk_fail()
+: <a class="el" href="ssp_8c.html#a78df838bb6af6005ff95bdf4accfa4b8">ssp.c</a>
+</li>
+<li>__dev_keyboard
+: <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143a296dacc44fb9143c51bbe72befa590f7">device.h</a>
+</li>
+<li>__dev_keyboard_kbhit
+: <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a1e4802b6e3752979c7292f833a837696">include/devices/keyboard.h</a>
+</li>
+<li>__dev_keyboard_keycode
+: <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a3f3afd6c16d1198cbc72ab5079cb64be">include/devices/keyboard.h</a>
+</li>
+<li>__dev_keyboard_led
+: <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a6a54bf9b3f40c5e14d2369a5b7f34e43">include/devices/keyboard.h</a>
+</li>
+<li>__dev_mouse
+: <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143af37bf012d03960e0f1943eaf7d9937af">device.h</a>
+</li>
+<li>__ps2__key__kbhit()
+: <a class="el" href="arch_2i686_2devices_2ps2_2keyboard_2keyboard_8c.html#a2f3e38e2dea1432d0ac7078f9e8c54a2">arch/i686/devices/ps2/keyboard/keyboard.c</a>
+, <a class="el" href="arch_2i686_2include_2devices_2ps2_2keyboard_2keyboard_8h.html#a2f3e38e2dea1432d0ac7078f9e8c54a2">arch/i686/include/devices/ps2/keyboard/keyboard.h</a>
+</li>
+<li>__ps2__key__keycode()
+: <a class="el" href="arch_2i686_2devices_2ps2_2keyboard_2keyboard_8c.html#a13ae57394ddcfada9258a088bdda8f7b">arch/i686/devices/ps2/keyboard/keyboard.c</a>
+, <a class="el" href="arch_2i686_2include_2devices_2ps2_2keyboard_2keyboard_8h.html#a13ae57394ddcfada9258a088bdda8f7b">arch/i686/include/devices/ps2/keyboard/keyboard.h</a>
+</li>
+<li>__ps2__key__led()
+: <a class="el" href="arch_2i686_2include_2devices_2ps2_2keyboard_2keyboard_8h.html#aed4ed0c4e57ab61f0305c5ed6397686e">arch/i686/include/devices/ps2/keyboard/keyboard.h</a>
+, <a class="el" href="arch_2i686_2devices_2ps2_2keyboard_2keyboard_8c.html#aed4ed0c4e57ab61f0305c5ed6397686e">arch/i686/devices/ps2/keyboard/keyboard.c</a>
+</li>
+<li>__ps2_keyboard_entry()
+: <a class="el" href="arch_2i686_2devices_2ps2_2keyboard_2keyboard_8c.html#aac63c84282015807551f512f445f4afc">arch/i686/devices/ps2/keyboard/keyboard.c</a>
+, <a class="el" href="arch_2i686_2include_2devices_2ps2_2keyboard_2keyboard_8h.html#aac63c84282015807551f512f445f4afc">arch/i686/include/devices/ps2/keyboard/keyboard.h</a>
+</li>
+<li>__set_and_goto_leds
+: <a class="el" href="devices_2keyboard_8c.html#aa86d723edadf9e9d4f0bd52aa119f485">devices/keyboard.c</a>
+</li>
+<li>__stack_chk_fail()
+: <a class="el" href="ssp_8c.html#a051883e0ce55ef4ec9e2ac77874d4e5c">ssp.c</a>
+</li>
+<li>__stack_chk_guard
+: <a class="el" href="ssp_8c.html#a17b0c1b06985967e1477112366945404">ssp.c</a>
+</li>
+<li>_bit
+: <a class="el" href="math_8h.html#a3f24c5d04fb651a6dfe8ff240af2cd32">math.h</a>
+</li>
+<li>_DEFAULT_KEYBOARD_PROC
+: <a class="el" href="i686_2include_2devices_2platform-defaults_8h.html#a71adb5c5edda97e149e382dafc6effaf">i686/include/devices/platform-defaults.h</a>
+</li>
+<li>_dev_k_keybuffer_
+: <a class="el" href="include_2devices_2keyboard_8h.html#ac50b6e364dab5e76df90d2d7a12d3aa8">include/devices/keyboard.h</a>
+</li>
+<li>_dev_keyboard_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">include/devices/keyboard.h</a>
+</li>
+<li>_dev_keyboard_proc_signals_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997">include/devices/keyboard.h</a>
+</li>
+<li>_dev_mode_device_
+: <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143">device.h</a>
+</li>
+<li>_ExceptionType
+: <a class="el" href="isrs_8h.html#ad013ad7c9798eadd3199ddbdf7407fce">isrs.h</a>
+</li>
+<li>_getch()
+: <a class="el" href="devices_2keyboard_8c.html#a1bb7f15ff7e4b4d70b1fccf660d22534">devices/keyboard.c</a>
+, <a class="el" href="include_2devices_2keyboard_8h.html#a1bb7f15ff7e4b4d70b1fccf660d22534">include/devices/keyboard.h</a>
+</li>
+<li>_getch_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a0c2e285d060449c0fd2a5d3d091dcc73">include/devices/keyboard.h</a>
+</li>
+<li>_jmp()
+: <a class="el" href="setjmp_8h.html#afb542e019330d9eaf0546be9cdb713cf">setjmp.h</a>
+</li>
+<li>_jmp_buf
+: <a class="el" href="setjmp_8h.html#ae4086348d2eb97ecc823bcc757c683a5">setjmp.h</a>
+</li>
+<li>_K_0
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af95a1674cc2dc20d7be43c8ad794acee">include/devices/keyboard.h</a>
+</li>
+<li>_K_1
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a31c8bffda9262bb7ed8a3ed44125f1c7">include/devices/keyboard.h</a>
+</li>
+<li>_K_2
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aa3f2472d3db86573a3caa7b651c99b49">include/devices/keyboard.h</a>
+</li>
+<li>_K_3
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7e1dbe80ba216cc433e1277905deb725">include/devices/keyboard.h</a>
+</li>
+<li>_K_4
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5510f1f734abce409f0c369de2b3400b">include/devices/keyboard.h</a>
+</li>
+<li>_K_5
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a1bd1d393c1f101fa21024d0d7cc7b2c1">include/devices/keyboard.h</a>
+</li>
+<li>_K_6
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9eefbfb5e169dc38bb4c18b62566ef62">include/devices/keyboard.h</a>
+</li>
+<li>_K_7
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad4f9ba17a54e1fda491c7d7a4ce740be">include/devices/keyboard.h</a>
+</li>
+<li>_K_8
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a6edf3e859b3e38231f62f602c86703db">include/devices/keyboard.h</a>
+</li>
+<li>_K_9
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a35df70de87f2960b864f0e8ce83c6b46">include/devices/keyboard.h</a>
+</li>
+<li>_K_A
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a21a796543a341403c77e11fad21204f2">include/devices/keyboard.h</a>
+</li>
+<li>_K_B
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5f8943e236c54a4be182ce0ab6d9e4f8">include/devices/keyboard.h</a>
+</li>
+<li>_K_BACK_TICK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9ca847afcc15cfe2e5206826a66a2f3c">include/devices/keyboard.h</a>
+</li>
+<li>_K_BACKSLASH
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9e41568d5c4d8e9c771e1a02d09615da">include/devices/keyboard.h</a>
+</li>
+<li>_K_BACKSPACE
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad9da1fde284a2da3e0929ec2eea596ff">include/devices/keyboard.h</a>
+</li>
+<li>_K_C
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a50160f7b8f1160749305e69f2c224bba">include/devices/keyboard.h</a>
+</li>
+<li>_K_CAPS_LOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a67d4c12316180e0e5d9ee6756bdfd498">include/devices/keyboard.h</a>
+</li>
+<li>_K_COMMA
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aed3c39ee4877de7ccc5f1793d9bf1cdd">include/devices/keyboard.h</a>
+</li>
+<li>_K_COUNT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a393783b5538406d2034befc4d29cfc7a">include/devices/keyboard.h</a>
+</li>
+<li>_K_D
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af894915488ad4520aad7f5726132b89a">include/devices/keyboard.h</a>
+</li>
+<li>_K_DASH
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac8f58d4700f2dcab290e7a8b8025066d">include/devices/keyboard.h</a>
+</li>
+<li>_K_DOT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aabbb57d4783c600ffb3b21ba034b53ce">include/devices/keyboard.h</a>
+</li>
+<li>_K_E
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7906e5db679ca5fb0a86aa60ddd80b4c">include/devices/keyboard.h</a>
+</li>
+<li>_K_ENTER
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a450ed4fe2ed8f8c28d42513bf5ee0ed8">include/devices/keyboard.h</a>
+</li>
+<li>_K_EQUAL
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066abb6ea4c92b87a3b4a93bae207e5f4710">include/devices/keyboard.h</a>
+</li>
+<li>_K_ESC
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af0b123218e6f1329d2c1e013257345fe">include/devices/keyboard.h</a>
+</li>
+<li>_K_F
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a635c1923e3a6595cc72add1cce863260">include/devices/keyboard.h</a>
+</li>
+<li>_K_F1
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7a48997049db17dd310352872341d54d">include/devices/keyboard.h</a>
+</li>
+<li>_K_F10
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a73f32fc1d9ce888e6b0b73ad146ca9ea">include/devices/keyboard.h</a>
+</li>
+<li>_K_F11
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a37160b588c774a1e7ddce6c948432b9f">include/devices/keyboard.h</a>
+</li>
+<li>_K_F12
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a398dfd542bb40778b346563218a2f776">include/devices/keyboard.h</a>
+</li>
+<li>_K_F2
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066abaa291b0df005729330ab4bd39c82065">include/devices/keyboard.h</a>
+</li>
+<li>_K_F3
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aca209961cca4c0ac15faab720c8f34ba">include/devices/keyboard.h</a>
+</li>
+<li>_K_F4
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066acb2cd3bc7ca83d45acc3b0c4e4a156d6">include/devices/keyboard.h</a>
+</li>
+<li>_K_F5
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ab60c2a69d149a1edf5c56754afdfdb8c">include/devices/keyboard.h</a>
+</li>
+<li>_K_F6
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a86e75d27e30f9623d0fef6e850e66632">include/devices/keyboard.h</a>
+</li>
+<li>_K_F7
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aed8ea3bfba4d9c4f54036f022f43e8e1">include/devices/keyboard.h</a>
+</li>
+<li>_K_F8
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a0deaf8a08abf6b77cee7041efceee196">include/devices/keyboard.h</a>
+</li>
+<li>_K_F9
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aaf49fadf70c8b2627a6af0fe89500cc1">include/devices/keyboard.h</a>
+</li>
+<li>_K_G
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac4484098ac471780eb2f057018d3b573">include/devices/keyboard.h</a>
+</li>
+<li>_K_H
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac8563c58094a0701e8f2467deff99ff9">include/devices/keyboard.h</a>
+</li>
+<li>_K_I
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a69c39e023f1bd7f09463bbee16c06453">include/devices/keyboard.h</a>
+</li>
+<li>_K_J
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a44166a6209d09bb7e4868ea490c1850a">include/devices/keyboard.h</a>
+</li>
+<li>_K_K
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4edb63f289ec809630ee392d793aeef0">include/devices/keyboard.h</a>
+</li>
+<li>_K_L
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad98b84d382e13da7dd28d0467fe2d97d">include/devices/keyboard.h</a>
+</li>
+<li>_K_LALT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ada889906b68757878a010e51cd7dcded">include/devices/keyboard.h</a>
+</li>
+<li>_K_LCTRL
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066adfd933a2fcde74572a2f7162cebd6a35">include/devices/keyboard.h</a>
+</li>
+<li>_K_LSHIFT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7fdb9ad81f600d8a0f75108404427c9f">include/devices/keyboard.h</a>
+</li>
+<li>_K_M
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a639eb330388d72d14e20fdd1ca5a30bb">include/devices/keyboard.h</a>
+</li>
+<li>_K_MULTI
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3423dbebb1dd12d1f1ad69d8ad348253">include/devices/keyboard.h</a>
+</li>
+<li>_K_N
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a58cd130272194ddda7843455342ab3a7">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM0
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a918f3e7cdc41996b578de527b6b5ca81">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM1
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3ec3753f2ac9d4a8c75445b5b477c30e">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM2
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a705dc67674aefb78736bc830abf2aac9">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM3
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a68dc5e423a871b722455e64a5364918c">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM4
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af37a85887388499ef716742759995978">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM5
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a928248f7963652d31fc3bc226928ac60">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM6
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a08bca9fb73987da23d47f69746db4e9e">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM7
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3164eb2ceda678ac3d063fea0bcb31bb">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM8
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a475a6215772316afd9ddd9672735929d">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUM9
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ae2dffc54972c597133f9ff910b0bd00a">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUMDOT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a2de0986c32d8efd6bc65bac049851fc3">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUMLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a2b24dec3992805ad8495b59711f0f980">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUMMINUS
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066acebd008749fb2a92a39891ac920516d8">include/devices/keyboard.h</a>
+</li>
+<li>_K_NUMPLUS
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4018721632a03cd310c677c021f30a9e">include/devices/keyboard.h</a>
+</li>
+<li>_K_O
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5b0900cc6f4b05caf92dbf58ecdb4515">include/devices/keyboard.h</a>
+</li>
+<li>_K_P
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9288eed5b8c502a9c535d797ad485c64">include/devices/keyboard.h</a>
+</li>
+<li>_K_Q
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a34775d781da528d0f2a326e7c055197d">include/devices/keyboard.h</a>
+</li>
+<li>_K_R
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a8849b65d2ae3e979dd2b9cd11678fb67">include/devices/keyboard.h</a>
+</li>
+<li>_K_R_CAPSLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a427416c80f6955970430e5573ca14a45">include/devices/keyboard.h</a>
+</li>
+<li>_K_R_CONTROL
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7c5847f541944dbf93ea70ae0352d85c">include/devices/keyboard.h</a>
+</li>
+<li>_K_R_NUMLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a429a236640c91b8c43a781018515f9be">include/devices/keyboard.h</a>
+</li>
+<li>_K_R_SCRLCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a05dc10cfa62a61c13b476cf1812ff38a">include/devices/keyboard.h</a>
+</li>
+<li>_K_R_SHIFT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aa71afb7fa6085385d8c7b842eea00fbc">include/devices/keyboard.h</a>
+</li>
+<li>_K_RSHIFT
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af88c9ad7907132ecaa4280640e119786">include/devices/keyboard.h</a>
+</li>
+<li>_K_S
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a13468d542abe852d25da922bdb6441fb">include/devices/keyboard.h</a>
+</li>
+<li>_K_SCRLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aacbd03667151171c610cacf23135356e">include/devices/keyboard.h</a>
+</li>
+<li>_K_SEMICOLON
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a1155bbd005378e14a4d766eb5bded957">include/devices/keyboard.h</a>
+</li>
+<li>_K_SINGLE_QUOTE
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac752cc92352ae272eca347a1d988e41a">include/devices/keyboard.h</a>
+</li>
+<li>_K_SLASH
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a803e75ec87cafdd25e3a1754f71ff74d">include/devices/keyboard.h</a>
+</li>
+<li>_K_SPACE
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aba18d13868dbc5939f8e0afa70bcb0a8">include/devices/keyboard.h</a>
+</li>
+<li>_K_SQUARE_BRACKET_EN
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9263fdc90e62bbe7788e1c96cf622279">include/devices/keyboard.h</a>
+</li>
+<li>_K_SQUARE_BRACKET_OP
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a38a95f57f37dc1727e9e838790ef4577">include/devices/keyboard.h</a>
+</li>
+<li>_K_T
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4fdd30a2db8b17051104536689609b7d">include/devices/keyboard.h</a>
+</li>
+<li>_K_TAB
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a33fbd89995bf1c5ea85c6e7594af0d0f">include/devices/keyboard.h</a>
+</li>
+<li>_K_U
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af0634ce66615bf2c9b343fb69e9123f2">include/devices/keyboard.h</a>
+</li>
+<li>_K_V
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4f5f2c7337a31755d0637e76704c1248">include/devices/keyboard.h</a>
+</li>
+<li>_K_W
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a52f6f8af3cb252f48bea50fcd5b67cad">include/devices/keyboard.h</a>
+</li>
+<li>_K_X
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a48668b049ee938673fbf169e5640db53">include/devices/keyboard.h</a>
+</li>
+<li>_K_Y
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a91e2b92f5a5d080c922863a6eec8bedc">include/devices/keyboard.h</a>
+</li>
+<li>_K_Z
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a237d2ae8d541d7820054aeaabc2d1f5e">include/devices/keyboard.h</a>
+</li>
+<li>_KB_LAYOUT_QWERTY
+: <a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88a2913f3b9eebba2e69be521c232bd4ba9">include/devices/keyboard.h</a>
+</li>
+<li>_kbhit()
+: <a class="el" href="include_2devices_2keyboard_8h.html#a32308d0248502d77da3e9569786ac0e3">include/devices/keyboard.h</a>
+, <a class="el" href="devices_2keyboard_8c.html#a32308d0248502d77da3e9569786ac0e3">devices/keyboard.c</a>
+</li>
+<li>_key_clck()
+: <a class="el" href="devices_2keyboard_8c.html#a52f718f8603d219e208e28b97379d1b5">devices/keyboard.c</a>
+, <a class="el" href="include_2devices_2keyboard_8h.html#a52f718f8603d219e208e28b97379d1b5">include/devices/keyboard.h</a>
+</li>
+<li>_key_leds_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecb">include/devices/keyboard.h</a>
+</li>
+<li>_keycode()
+: <a class="el" href="include_2devices_2keyboard_8h.html#aa8f0354a48920c425cd8b72e09e9fa72">include/devices/keyboard.h</a>
+, <a class="el" href="devices_2keyboard_8c.html#aa8f0354a48920c425cd8b72e09e9fa72">devices/keyboard.c</a>
+</li>
+<li>_keys_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066">include/devices/keyboard.h</a>
+</li>
+<li>_KLED_CAPSLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba88558f40a55f9443cd598ac86cf08589">include/devices/keyboard.h</a>
+</li>
+<li>_KLED_NUMLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba69112e183657072743b37b97bda504dd">include/devices/keyboard.h</a>
+</li>
+<li>_KLED_SCRLOCK
+: <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba969511155c12f01918d1d68be252bceb">include/devices/keyboard.h</a>
+</li>
+<li>_packed_
+: <a class="el" href="tss_8h.html#a8f3433e882f85802d3e3532736c50f4a">tss.h</a>
+, <a class="el" href="definitions_8h.html#ae6f86ca36c97f7eff73e93e2cb9738f9">definitions.h</a>
+, <a class="el" href="gdt_8h.html#a2382d161f38baf47f450cfcc073d80bc">gdt.h</a>
+</li>
+<li>_PROCEDURES_L_
+: <a class="el" href="stdio_8h.html#af66b8540fdace3c61d424038de639d74">stdio.h</a>
+</li>
+<li>_regs
+: <a class="el" href="registers_8h.html#a836cfb1f98c2489cd4feb3ce357ad75d">registers.h</a>
+</li>
+<li>_scancode_langs_
+: <a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88">include/devices/keyboard.h</a>
+</li>
+<li>_SEEK_L_
+: <a class="el" href="stdio_8h.html#aeb44a417e2233d53d18658d994d79bed">stdio.h</a>
+</li>
+<li>_set_key()
+: <a class="el" href="devices_2keyboard_8c.html#a5fb015326fb8806537828083b318f631">devices/keyboard.c</a>
+, <a class="el" href="include_2devices_2keyboard_8h.html#a5fb015326fb8806537828083b318f631">include/devices/keyboard.h</a>
+</li>
+<li>_update_led_states()
+: <a class="el" href="devices_2keyboard_8c.html#aa123f47c1a5b2442bacab45cf1d4aa43">devices/keyboard.c</a>
+, <a class="el" href="include_2devices_2keyboard_8h.html#aa123f47c1a5b2442bacab45cf1d4aa43">include/devices/keyboard.h</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

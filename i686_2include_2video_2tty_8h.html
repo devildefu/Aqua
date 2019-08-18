@@ -1,0 +1,904 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('i686_2include_2video_2tty_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">i686/include/video/tty.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="ports_8h_source.html">ports.h</a>&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br />
+</div>
+<p><a href="i686_2include_2video_2tty_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtty___cursor_data.html">tty_CursorData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct for containing cursor date such as color and position.  <a href="structtty___cursor_data.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a63e5250b27cac4d97fbc4f61e3a67e7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a63e5250b27cac4d97fbc4f61e3a67e7c">TTY_SCREEN_RES_X</a>&#160;&#160;&#160;80</td></tr>
+<tr class="separator:a63e5250b27cac4d97fbc4f61e3a67e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb865fbc2f28fee71eada6e5db0d37d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#aeb865fbc2f28fee71eada6e5db0d37d7">TTY_SCREEN_RES_Y</a>&#160;&#160;&#160;25</td></tr>
+<tr class="separator:aeb865fbc2f28fee71eada6e5db0d37d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b60eb505cba129fd575dd2de9b58ac3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a0b60eb505cba129fd575dd2de9b58ac3">TTY_SCREEN_RES</a>&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a63e5250b27cac4d97fbc4f61e3a67e7c">TTY_SCREEN_RES_X</a>* <a class="el" href="i686_2include_2video_2tty_8h.html#aeb865fbc2f28fee71eada6e5db0d37d7">TTY_SCREEN_RES_Y</a></td></tr>
+<tr class="separator:a0b60eb505cba129fd575dd2de9b58ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0ef221f95f64e8632451312fd18cc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a0c0ef221f95f64e8632451312fd18cc8">stdout</a>&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td></tr>
+<tr class="separator:a0c0ef221f95f64e8632451312fd18cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca70138f0cb63ddb026921afc635179"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#aaca70138f0cb63ddb026921afc635179">stdin</a>&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td></tr>
+<tr class="separator:aaca70138f0cb63ddb026921afc635179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ce35bd5ba5021fd3b2e951e8f497656"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a5ce35bd5ba5021fd3b2e951e8f497656">stderr</a>&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td></tr>
+<tr class="separator:a5ce35bd5ba5021fd3b2e951e8f497656"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a2109f18b643423f7cf3019b1e5e2ade7"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a2109f18b643423f7cf3019b1e5e2ade7">tty_get_x</a> (struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a> *cursor)</td></tr>
+<tr class="memdesc:a2109f18b643423f7cf3019b1e5e2ade7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get cursor x and y coordinate.  <a href="#a2109f18b643423f7cf3019b1e5e2ade7">More...</a><br /></td></tr>
+<tr class="separator:a2109f18b643423f7cf3019b1e5e2ade7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6167f4b4e0d6d5b3c2bfcda885258a4c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a6167f4b4e0d6d5b3c2bfcda885258a4c">tty_get_y</a> (struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a> *cursor)</td></tr>
+<tr class="separator:a6167f4b4e0d6d5b3c2bfcda885258a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc3d1291e38d3992b8294584ad6d3a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#abbc3d1291e38d3992b8294584ad6d3a4">tty_cursor_set_color</a> (uint16_t color)</td></tr>
+<tr class="memdesc:abbc3d1291e38d3992b8294584ad6d3a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and get cursor color.  <a href="#abbc3d1291e38d3992b8294584ad6d3a4">More...</a><br /></td></tr>
+<tr class="separator:abbc3d1291e38d3992b8294584ad6d3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf5db1c3c2d46484c4eaf31d4c0433bb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#aaf5db1c3c2d46484c4eaf31d4c0433bb">tty_cursor_get_color</a> ()</td></tr>
+<tr class="separator:aaf5db1c3c2d46484c4eaf31d4c0433bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9a5e261b755a421ce82d3a863ffbb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a0a9a5e261b755a421ce82d3a863ffbb1">tty_gotoxy</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:a0a9a5e261b755a421ce82d3a863ffbb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cursor gotoxy functions.  <a href="#a0a9a5e261b755a421ce82d3a863ffbb1">More...</a><br /></td></tr>
+<tr class="separator:a0a9a5e261b755a421ce82d3a863ffbb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8776f8f32caea0f35367a116182f428a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a8776f8f32caea0f35367a116182f428a">tty_full_gotoxy</a> (uint16_t xy)</td></tr>
+<tr class="separator:a8776f8f32caea0f35367a116182f428a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab201c14f3ae704ff5ae7acc2c81cc3b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#ab201c14f3ae704ff5ae7acc2c81cc3b3">tty_setpos</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:ab201c14f3ae704ff5ae7acc2c81cc3b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set and move cursor position functions.  <a href="#ab201c14f3ae704ff5ae7acc2c81cc3b3">More...</a><br /></td></tr>
+<tr class="separator:ab201c14f3ae704ff5ae7acc2c81cc3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31dd949723e0a465efb9e46b1cebe539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a31dd949723e0a465efb9e46b1cebe539">tty_move</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="separator:a31dd949723e0a465efb9e46b1cebe539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4786d4a4a4c7e826e7b6dd6bbaa6bab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#aa4786d4a4a4c7e826e7b6dd6bbaa6bab">tty_newline</a> ()</td></tr>
+<tr class="memdesc:aa4786d4a4a4c7e826e7b6dd6bbaa6bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new line.  <a href="#aa4786d4a4a4c7e826e7b6dd6bbaa6bab">More...</a><br /></td></tr>
+<tr class="separator:aa4786d4a4a4c7e826e7b6dd6bbaa6bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4067fa969d0d2e92c28075829044f8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#aa4067fa969d0d2e92c28075829044f8a">tty_clear</a> ()</td></tr>
+<tr class="memdesc:aa4067fa969d0d2e92c28075829044f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear tty.  <a href="#aa4067fa969d0d2e92c28075829044f8a">More...</a><br /></td></tr>
+<tr class="separator:aa4067fa969d0d2e92c28075829044f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ad66ea07e1d588512f4a684ba70d657"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a1ad66ea07e1d588512f4a684ba70d657">tty_putch</a> (char ch)</td></tr>
+<tr class="memdesc:a1ad66ea07e1d588512f4a684ba70d657"><td class="mdescLeft">&#160;</td><td class="mdescRight">Put char at the cursor position.  <a href="#a1ad66ea07e1d588512f4a684ba70d657">More...</a><br /></td></tr>
+<tr class="separator:a1ad66ea07e1d588512f4a684ba70d657"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac770761430a4665ddcc6d9289abcca7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#ac770761430a4665ddcc6d9289abcca7f">tty_write</a> (const char *str)</td></tr>
+<tr class="memdesc:ac770761430a4665ddcc6d9289abcca7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write string at the cursor position.  <a href="#ac770761430a4665ddcc6d9289abcca7f">More...</a><br /></td></tr>
+<tr class="separator:ac770761430a4665ddcc6d9289abcca7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35425bd115b96a3208a91a9c2d3ec8b2"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a35425bd115b96a3208a91a9c2d3ec8b2">tty_get_color</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:a35425bd115b96a3208a91a9c2d3ec8b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and set tty text color.  <a href="#a35425bd115b96a3208a91a9c2d3ec8b2">More...</a><br /></td></tr>
+<tr class="separator:a35425bd115b96a3208a91a9c2d3ec8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a750d915d676f83303016f21fde66f008"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a750d915d676f83303016f21fde66f008">tty_set_color</a> (uint16_t x, uint16_t y, uint16_t color)</td></tr>
+<tr class="separator:a750d915d676f83303016f21fde66f008"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9782e5dda29b04fafe040914d502253"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#ae9782e5dda29b04fafe040914d502253">tty_getch</a> (uint16_t x, uint16_t y)</td></tr>
+<tr class="memdesc:ae9782e5dda29b04fafe040914d502253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get and set char at the position.  <a href="#ae9782e5dda29b04fafe040914d502253">More...</a><br /></td></tr>
+<tr class="separator:ae9782e5dda29b04fafe040914d502253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4f2932c7958452dc9a795e45296b3fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#ad4f2932c7958452dc9a795e45296b3fb">tty_setch</a> (uint16_t x, uint16_t y, char ch)</td></tr>
+<tr class="separator:ad4f2932c7958452dc9a795e45296b3fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d7f5e1f7c9f8ca65268e2bc7e2481a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a6d7f5e1f7c9f8ca65268e2bc7e2481a0">tty_fill_buffer</a> (char ch, uint16_t color)</td></tr>
+<tr class="memdesc:a6d7f5e1f7c9f8ca65268e2bc7e2481a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fill tty buffer.  <a href="#a6d7f5e1f7c9f8ca65268e2bc7e2481a0">More...</a><br /></td></tr>
+<tr class="separator:a6d7f5e1f7c9f8ca65268e2bc7e2481a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76ef8a0fcba377ff57f597b649dcf70f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a76ef8a0fcba377ff57f597b649dcf70f">tty_procedure</a> (int procedure, void *p, uint32_t <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, <a class="el" href="stdio_8h.html#a50a4feaaad29232a0f6fede91864f066">FILE</a> *that)</td></tr>
+<tr class="separator:a76ef8a0fcba377ff57f597b649dcf70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6271bf36c9ebfd7f24c7e00adcbd3940"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a6271bf36c9ebfd7f24c7e00adcbd3940">ttyMouse</a></td></tr>
+<tr class="separator:a6271bf36c9ebfd7f24c7e00adcbd3940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f3e779eb8bf39b071b6af2b65b6e0b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="stdio_8h.html#a50a4feaaad29232a0f6fede91864f066">FILE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a> [1]</td></tr>
+<tr class="separator:a5f3e779eb8bf39b071b6af2b65b6e0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5ce35bd5ba5021fd3b2e951e8f497656"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce35bd5ba5021fd3b2e951e8f497656">&#9670;&nbsp;</a></span>stderr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define stderr&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00055">55</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<a id="aaca70138f0cb63ddb026921afc635179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca70138f0cb63ddb026921afc635179">&#9670;&nbsp;</a></span>stdin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define stdin&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00054">54</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<a id="a0c0ef221f95f64e8632451312fd18cc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c0ef221f95f64e8632451312fd18cc8">&#9670;&nbsp;</a></span>stdout</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define stdout&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a5f3e779eb8bf39b071b6af2b65b6e0b8">sysTTY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00053">53</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<a id="a0b60eb505cba129fd575dd2de9b58ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b60eb505cba129fd575dd2de9b58ac3">&#9670;&nbsp;</a></span>TTY_SCREEN_RES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTY_SCREEN_RES&#160;&#160;&#160;<a class="el" href="i686_2include_2video_2tty_8h.html#a63e5250b27cac4d97fbc4f61e3a67e7c">TTY_SCREEN_RES_X</a>* <a class="el" href="i686_2include_2video_2tty_8h.html#aeb865fbc2f28fee71eada6e5db0d37d7">TTY_SCREEN_RES_Y</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00011">11</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<a id="a63e5250b27cac4d97fbc4f61e3a67e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63e5250b27cac4d97fbc4f61e3a67e7c">&#9670;&nbsp;</a></span>TTY_SCREEN_RES_X</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTY_SCREEN_RES_X&#160;&#160;&#160;80</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00009">9</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<a id="aeb865fbc2f28fee71eada6e5db0d37d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb865fbc2f28fee71eada6e5db0d37d7">&#9670;&nbsp;</a></span>TTY_SCREEN_RES_Y</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TTY_SCREEN_RES_Y&#160;&#160;&#160;25</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2include_2video_2tty_8h_source.html#l00010">10</a> of file <a class="el" href="i686_2include_2video_2tty_8h_source.html">i686/include/video/tty.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aa4067fa969d0d2e92c28075829044f8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4067fa969d0d2e92c28075829044f8a">&#9670;&nbsp;</a></span>tty_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear tty. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00060">60</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="aaf5db1c3c2d46484c4eaf31d4c0433bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf5db1c3c2d46484c4eaf31d4c0433bb">&#9670;&nbsp;</a></span>tty_cursor_get_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t tty_cursor_get_color </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00026">26</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="abbc3d1291e38d3992b8294584ad6d3a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc3d1291e38d3992b8294584ad6d3a4">&#9670;&nbsp;</a></span>tty_cursor_set_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_cursor_set_color </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set and get cursor color. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00022">22</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a6d7f5e1f7c9f8ca65268e2bc7e2481a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d7f5e1f7c9f8ca65268e2bc7e2481a0">&#9670;&nbsp;</a></span>tty_fill_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_fill_buffer </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fill tty buffer. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00121">121</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a8776f8f32caea0f35367a116182f428a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8776f8f32caea0f35367a116182f428a">&#9670;&nbsp;</a></span>tty_full_gotoxy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_full_gotoxy </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>xy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00035">35</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a35425bd115b96a3208a91a9c2d3ec8b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35425bd115b96a3208a91a9c2d3ec8b2">&#9670;&nbsp;</a></span>tty_get_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t tty_get_color </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get and set tty text color. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00103">103</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a2109f18b643423f7cf3019b1e5e2ade7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2109f18b643423f7cf3019b1e5e2ade7">&#9670;&nbsp;</a></span>tty_get_x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t tty_get_x </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get cursor x and y coordinate. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00007">7</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a6167f4b4e0d6d5b3c2bfcda885258a4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6167f4b4e0d6d5b3c2bfcda885258a4c">&#9670;&nbsp;</a></span>tty_get_y()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t tty_get_y </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a> *&#160;</td>
+          <td class="paramname"><em>cursor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00014">14</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="ae9782e5dda29b04fafe040914d502253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9782e5dda29b04fafe040914d502253">&#9670;&nbsp;</a></span>tty_getch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char tty_getch </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get and set char at the position. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00112">112</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a0a9a5e261b755a421ce82d3a863ffbb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a9a5e261b755a421ce82d3a863ffbb1">&#9670;&nbsp;</a></span>tty_gotoxy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_gotoxy </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cursor gotoxy functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00031">31</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a31dd949723e0a465efb9e46b1cebe539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31dd949723e0a465efb9e46b1cebe539">&#9670;&nbsp;</a></span>tty_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_move </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00048">48</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="aa4786d4a4a4c7e826e7b6dd6bbaa6bab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4786d4a4a4c7e826e7b6dd6bbaa6bab">&#9670;&nbsp;</a></span>tty_newline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_newline </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create new line. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00054">54</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a76ef8a0fcba377ff57f597b649dcf70f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76ef8a0fcba377ff57f597b649dcf70f">&#9670;&nbsp;</a></span>tty_procedure()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* tty_procedure </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>procedure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="stdio_8h.html#a50a4feaaad29232a0f6fede91864f066">FILE</a> *&#160;</td>
+          <td class="paramname"><em>that</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1ad66ea07e1d588512f4a684ba70d657"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ad66ea07e1d588512f4a684ba70d657">&#9670;&nbsp;</a></span>tty_putch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_putch </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Put char at the cursor position. </p>
+
+<p class="definition">Definition at line <a class="el" href="arm32_2video_2tty_8c_source.html#l00003">3</a> of file <a class="el" href="arm32_2video_2tty_8c_source.html">arm32/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="a750d915d676f83303016f21fde66f008"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a750d915d676f83303016f21fde66f008">&#9670;&nbsp;</a></span>tty_set_color()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_set_color </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00107">107</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="ad4f2932c7958452dc9a795e45296b3fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f2932c7958452dc9a795e45296b3fb">&#9670;&nbsp;</a></span>tty_setch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_setch </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>ch</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00116">116</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="ab201c14f3ae704ff5ae7acc2c81cc3b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab201c14f3ae704ff5ae7acc2c81cc3b3">&#9670;&nbsp;</a></span>tty_setpos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_setpos </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set and move cursor position functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00043">43</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<a id="ac770761430a4665ddcc6d9289abcca7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac770761430a4665ddcc6d9289abcca7f">&#9670;&nbsp;</a></span>tty_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tty_write </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write string at the cursor position. </p>
+<p>Write string at the cursor position. </p>
+
+<p class="definition">Definition at line <a class="el" href="i686_2video_2tty_8c_source.html#l00093">93</a> of file <a class="el" href="i686_2video_2tty_8c_source.html">i686/video/tty.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a5f3e779eb8bf39b071b6af2b65b6e0b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3e779eb8bf39b071b6af2b65b6e0b8">&#9670;&nbsp;</a></span>sysTTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="stdio_8h.html#a50a4feaaad29232a0f6fede91864f066">FILE</a> sysTTY[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6271bf36c9ebfd7f24c7e00adcbd3940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6271bf36c9ebfd7f24c7e00adcbd3940">&#9670;&nbsp;</a></span>ttyMouse</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structtty___cursor_data.html">tty_CursorData</a>  ttyMouse</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_2f75af7b90e18386b84815cf9f122cab.html">i686</a></li><li class="navelem"><a class="el" href="dir_3b7611eeb6c5acaadbaff53b3456fce2.html">include</a></li><li class="navelem"><a class="el" href="dir_5b5b02ebbd97d25913724c8330e70918.html">video</a></li><li class="navelem"><a class="el" href="i686_2include_2video_2tty_8h.html">tty.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

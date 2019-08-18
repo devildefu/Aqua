@@ -1,0 +1,211 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('registers_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">registers.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="registers_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __REGS_H_</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __REGS_H_</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="structregs.html">    6</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structregs.html">regs</a> {</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structregs.html#a7534a179bc9cc0ef26f0468e0959ee5c">    8</a></span>&#160;    uint32_t <a class="code" href="structregs.html#a93d929ad1fc57af9d4f1793c361fb4f2">eax</a>, <a class="code" href="structregs.html#ae7c1e3339e4dead200cab41010e9127c">ebx</a>, <a class="code" href="structregs.html#af2b16bef95c844028dd145264d1d3875">ecx</a>,</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;        <a class="code" href="structregs.html#ae6db045cebe7b4cf979120dccdee0d01">edx</a>, <a class="code" href="structregs.html#a1588906901fc3015e0865574669a56a6">eip</a>, <a class="code" href="structregs.html#a7534a179bc9cc0ef26f0468e0959ee5c">esp</a>,</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        <a class="code" href="structregs.html#aaba2ad0ff8ba480934feabfdab02b1e7">ebp</a>;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;} <a class="code" href="registers_8h.html#a836cfb1f98c2489cd4feb3ce357ad75d">_regs</a>;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/* Throws all registers to a structure */</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="registers_8h.html#ab49c3987f52ef6e21338fb43e280ee45">throw_regs</a>(<a class="code" href="structregs.html">_regs</a>* regs_p);</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* Sets all registers from structure and jumps to code pointed by eip</span></div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * ebx register will not be setted because it is used as a temponary register*/</span></div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">void</span> <a class="code" href="registers_8h.html#a462dc1fde8b4e129ea245e132c20f51e">set_regs</a>(<a class="code" href="structregs.html">_regs</a>* regs_p);</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/* segment:offset memory data functions */</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keywordtype">void</span> <a class="code" href="registers_8h.html#add0315e6650827d4891fb73b404cb845">pokeb</a>(uint16_t segment, uint32_t offset, uint8_t <span class="keywordtype">byte</span>);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;uint8_t <a class="code" href="registers_8h.html#aa3e907f18b85a59c73e531b6a552b7a1">peekb</a>(uint16_t segment, uint32_t ofsset);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">void</span> <a class="code" href="registers_8h.html#abdf1de15ede09eb18c380cd823895a16">pokew</a>(uint16_t segment, uint32_t offset, uint16_t word);</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;uint16_t <a class="code" href="registers_8h.html#a9dda0dd2135f991e049ed5545f0bfbed">peekw</a>(uint16_t segment, uint32_t offset);</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;uint16_t <a class="code" href="registers_8h.html#a8bd4fd754f00b8282534077098b91149">getseg</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="structregs_html_ae7c1e3339e4dead200cab41010e9127c"><div class="ttname"><a href="structregs.html#ae7c1e3339e4dead200cab41010e9127c">regs::ebx</a></div><div class="ttdeci">uint32_t ebx</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="structregs_html_af2b16bef95c844028dd145264d1d3875"><div class="ttname"><a href="structregs.html#af2b16bef95c844028dd145264d1d3875">regs::ecx</a></div><div class="ttdeci">uint32_t ecx</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="structregs_html_aaba2ad0ff8ba480934feabfdab02b1e7"><div class="ttname"><a href="structregs.html#aaba2ad0ff8ba480934feabfdab02b1e7">regs::ebp</a></div><div class="ttdeci">uint32_t ebp</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="structregs_html_ae6db045cebe7b4cf979120dccdee0d01"><div class="ttname"><a href="structregs.html#ae6db045cebe7b4cf979120dccdee0d01">regs::edx</a></div><div class="ttdeci">uint32_t edx</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="registers_8h_html_a836cfb1f98c2489cd4feb3ce357ad75d"><div class="ttname"><a href="registers_8h.html#a836cfb1f98c2489cd4feb3ce357ad75d">_regs</a></div><div class="ttdeci">struct regs _regs</div></div>
+<div class="ttc" id="structregs_html_a7534a179bc9cc0ef26f0468e0959ee5c"><div class="ttname"><a href="structregs.html#a7534a179bc9cc0ef26f0468e0959ee5c">regs::esp</a></div><div class="ttdeci">uint32_t esp</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="registers_8h_html_add0315e6650827d4891fb73b404cb845"><div class="ttname"><a href="registers_8h.html#add0315e6650827d4891fb73b404cb845">pokeb</a></div><div class="ttdeci">void pokeb(uint16_t segment, uint32_t offset, uint8_t byte)</div></div>
+<div class="ttc" id="registers_8h_html_abdf1de15ede09eb18c380cd823895a16"><div class="ttname"><a href="registers_8h.html#abdf1de15ede09eb18c380cd823895a16">pokew</a></div><div class="ttdeci">void pokew(uint16_t segment, uint32_t offset, uint16_t word)</div></div>
+<div class="ttc" id="structregs_html_a93d929ad1fc57af9d4f1793c361fb4f2"><div class="ttname"><a href="structregs.html#a93d929ad1fc57af9d4f1793c361fb4f2">regs::eax</a></div><div class="ttdeci">uint32_t eax</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="registers_8h_html_a462dc1fde8b4e129ea245e132c20f51e"><div class="ttname"><a href="registers_8h.html#a462dc1fde8b4e129ea245e132c20f51e">set_regs</a></div><div class="ttdeci">void set_regs(_regs *regs_p)</div></div>
+<div class="ttc" id="registers_8h_html_a8bd4fd754f00b8282534077098b91149"><div class="ttname"><a href="registers_8h.html#a8bd4fd754f00b8282534077098b91149">getseg</a></div><div class="ttdeci">uint16_t getseg()</div></div>
+<div class="ttc" id="structregs_html"><div class="ttname"><a href="structregs.html">regs</a></div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00006">registers.h:6</a></div></div>
+<div class="ttc" id="structregs_html_a1588906901fc3015e0865574669a56a6"><div class="ttname"><a href="structregs.html#a1588906901fc3015e0865574669a56a6">regs::eip</a></div><div class="ttdeci">uint32_t eip</div><div class="ttdef"><b>Definition:</b> <a href="registers_8h_source.html#l00008">registers.h:8</a></div></div>
+<div class="ttc" id="registers_8h_html_a9dda0dd2135f991e049ed5545f0bfbed"><div class="ttname"><a href="registers_8h.html#a9dda0dd2135f991e049ed5545f0bfbed">peekw</a></div><div class="ttdeci">uint16_t peekw(uint16_t segment, uint32_t offset)</div></div>
+<div class="ttc" id="registers_8h_html_aa3e907f18b85a59c73e531b6a552b7a1"><div class="ttname"><a href="registers_8h.html#aa3e907f18b85a59c73e531b6a552b7a1">peekb</a></div><div class="ttdeci">uint8_t peekb(uint16_t segment, uint32_t ofsset)</div></div>
+<div class="ttc" id="registers_8h_html_ab49c3987f52ef6e21338fb43e280ee45"><div class="ttname"><a href="registers_8h.html#ab49c3987f52ef6e21338fb43e280ee45">throw_regs</a></div><div class="ttdeci">int throw_regs(_regs *regs_p)</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_2f75af7b90e18386b84815cf9f122cab.html">i686</a></li><li class="navelem"><a class="el" href="dir_3b7611eeb6c5acaadbaff53b3456fce2.html">include</a></li><li class="navelem"><a class="el" href="dir_fe69386a354d6f3322b2f68a2768507c.html">cpu</a></li><li class="navelem"><a class="el" href="registers_8h.html">registers.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

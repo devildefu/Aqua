@@ -1,0 +1,198 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('time_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">time.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="time_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TIME_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TIME_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="time_8h.html#ad6f6f0865df4e0722c227eac00adbc5a">    5</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_MILISECOND 3504055.289</span></div><div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="time_8h.html#a03a2bb442228fd93e15f375db3640b36">    6</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_DECISECOND CLOCKS_PER_MILISECOND * 10</span></div><div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="time_8h.html#a7a8dd968d686faada2da6e17d93252dd">    7</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_CENTISECOND CLOCKS_PER_MILISECOND * 100</span></div><div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="time_8h.html#a4224fff7ddb89fcb1d25a23640bb2dbe">    8</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_SECOND CLOCKS_PER_MILISECOND * 1000</span></div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="time_8h.html#adc148fb9371a9d15f4bea15f22a3e259">    9</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_MINUTE CLOCKS_PER_SECOND * 60</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="time_8h.html#aa4d3bd062a77162e44b4cd1e70479eae">   10</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_HOUR CLOCKS_PER_MINUTE * 60</span></div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="time_8h.html#a0ba8e3c8bda1eed38f53291ad92c9704">   11</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_DAY CLOCKS_PER_HOUR * 24</span></div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="time_8h.html#aeb22dcf768730ac4554147dfe249c669">   12</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_WEEK CLOCKS_PER_DAY * 7</span></div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="time_8h.html#ad3308c39136d09f44ce7f7faa5ecf2f9">   13</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_MONTH CLOCKS_PER_DAY * 31</span></div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="time_8h.html#af790363348532f74d3e7d94763afa69f">   14</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_YEAR_QUATER CLOCKS_PER_MONTH * 4</span></div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="time_8h.html#a34122547079f54a262aa342191a071d9">   15</a></span>&#160;<span class="preprocessor">#define CLOCKS_PER_YEAR CLOCKS_PER_DAY * 365</span></div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="time_8h.html#acacb22ef54ee42a005d9a28e8f9d25c9">   16</a></span>&#160;<span class="preprocessor">#define GHZ CLOCKS_PER_SECOND / 100000000</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">struct </span>{</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="time_8h.html#a6a51e9baeec9b06ae477cf6475efc71d">   19</a></span>&#160;    uint64_t <a class="code" href="time_8h.html#a6a51e9baeec9b06ae477cf6475efc71d">start</a>;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;} <a class="code" href="time_8h.html#a6f5936af4483b325afc7e8528fb7533e">start_clocks</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint64_t rdtsc() {</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint64_t ret;</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">asm</span>(<span class="stringliteral">&quot;rdtsc&quot;</span></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        : <span class="stringliteral">&quot;=A&quot;</span>(ret));</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> ret;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> int64_t clock() {</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> rdtsc() - <a class="code" href="time_8h.html#a6f5936af4483b325afc7e8528fb7533e">start_clocks</a>.start;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> wait(uint64_t ms) {</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    int64_t now = clock();</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    int64_t end = now + (float)ms * <a class="code" href="time_8h.html#ad6f6f0865df4e0722c227eac00adbc5a">CLOCKS_PER_MILISECOND</a>;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">while</span>(clock() &lt; end) {}</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> initTimer() {</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="time_8h.html#a6f5936af4483b325afc7e8528fb7533e">start_clocks</a>.start = rdtsc();</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> waitClocks(uint64_t clocks) {</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint64_t now = rdtsc();</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">while</span>(rdtsc() - now &lt;= clocks) {}</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="time_8h_html_ad6f6f0865df4e0722c227eac00adbc5a"><div class="ttname"><a href="time_8h.html#ad6f6f0865df4e0722c227eac00adbc5a">CLOCKS_PER_MILISECOND</a></div><div class="ttdeci">#define CLOCKS_PER_MILISECOND</div><div class="ttdef"><b>Definition:</b> <a href="time_8h_source.html#l00005">time.h:5</a></div></div>
+<div class="ttc" id="time_8h_html_a6a51e9baeec9b06ae477cf6475efc71d"><div class="ttname"><a href="time_8h.html#a6a51e9baeec9b06ae477cf6475efc71d">start</a></div><div class="ttdeci">uint64_t start</div><div class="ttdef"><b>Definition:</b> <a href="time_8h_source.html#l00019">time.h:19</a></div></div>
+<div class="ttc" id="time_8h_html_a6f5936af4483b325afc7e8528fb7533e"><div class="ttname"><a href="time_8h.html#a6f5936af4483b325afc7e8528fb7533e">start_clocks</a></div><div class="ttdeci">struct @15 start_clocks</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="time_8h.html">time.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

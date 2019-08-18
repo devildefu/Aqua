@@ -1,0 +1,647 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('isrs_8c.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">isrs.c File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="isrs_8h_source.html">cpu/isrs.h</a>&gt;</code><br />
+</div>
+<p><a href="isrs_8c_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af88eb8e98d943aa0461c01de3cb53493"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#af88eb8e98d943aa0461c01de3cb53493">isr0</a> ()</td></tr>
+<tr class="separator:af88eb8e98d943aa0461c01de3cb53493"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab0ed9ae661801c25f7dc9089c19f72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#aeab0ed9ae661801c25f7dc9089c19f72">isr1</a> ()</td></tr>
+<tr class="separator:aeab0ed9ae661801c25f7dc9089c19f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e457875cca040c3f7c77b61e960b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a99e457875cca040c3f7c77b61e960b53">isr2</a> ()</td></tr>
+<tr class="separator:a99e457875cca040c3f7c77b61e960b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef268d2c16a7b318356451a05fd507b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a0ef268d2c16a7b318356451a05fd507b">isr3</a> ()</td></tr>
+<tr class="separator:a0ef268d2c16a7b318356451a05fd507b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09af768d636144aaeaddd76c92a0a2f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a09af768d636144aaeaddd76c92a0a2f5">isr4</a> ()</td></tr>
+<tr class="separator:a09af768d636144aaeaddd76c92a0a2f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91d821a4bcafb44933d92945727b0df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#aa91d821a4bcafb44933d92945727b0df">isr5</a> ()</td></tr>
+<tr class="separator:aa91d821a4bcafb44933d92945727b0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fadb95f34937b1ded02c4171b4920ba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a9fadb95f34937b1ded02c4171b4920ba">isr6</a> ()</td></tr>
+<tr class="separator:a9fadb95f34937b1ded02c4171b4920ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb6ec30db7077fb1c9c9d926a0fc407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a7eb6ec30db7077fb1c9c9d926a0fc407">isr7</a> ()</td></tr>
+<tr class="separator:a7eb6ec30db7077fb1c9c9d926a0fc407"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86bc69345a3bb409665dbadb77a9d393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a86bc69345a3bb409665dbadb77a9d393">isr8</a> ()</td></tr>
+<tr class="separator:a86bc69345a3bb409665dbadb77a9d393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c8cb1341cf756883a2e7dc317d5272d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a3c8cb1341cf756883a2e7dc317d5272d">isr10</a> ()</td></tr>
+<tr class="separator:a3c8cb1341cf756883a2e7dc317d5272d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d8145cf6ee1ef7834f459ba777d323c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a0d8145cf6ee1ef7834f459ba777d323c">isr11</a> ()</td></tr>
+<tr class="separator:a0d8145cf6ee1ef7834f459ba777d323c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00f00421039cb85f9dd9375995c784bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a00f00421039cb85f9dd9375995c784bd">isr12</a> ()</td></tr>
+<tr class="separator:a00f00421039cb85f9dd9375995c784bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af985dcf66872ee696e5f30d819ac16a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#af985dcf66872ee696e5f30d819ac16a1">isr13</a> ()</td></tr>
+<tr class="separator:af985dcf66872ee696e5f30d819ac16a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b63eaa37c03743718870964a3429ba8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a8b63eaa37c03743718870964a3429ba8">isr14</a> ()</td></tr>
+<tr class="separator:a8b63eaa37c03743718870964a3429ba8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add0980c10028b377643da169e52e5be7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#add0980c10028b377643da169e52e5be7">isr16</a> ()</td></tr>
+<tr class="separator:add0980c10028b377643da169e52e5be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d1e81e585bc7c56b46280006402f9e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#ac7d1e81e585bc7c56b46280006402f9e">isr17</a> ()</td></tr>
+<tr class="separator:ac7d1e81e585bc7c56b46280006402f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae685c5ca5ed9c9c5e7d297ad8d14de49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#ae685c5ca5ed9c9c5e7d297ad8d14de49">isr18</a> ()</td></tr>
+<tr class="separator:ae685c5ca5ed9c9c5e7d297ad8d14de49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad16b5f77287df551e63d3f0c67f8f75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#ad16b5f77287df551e63d3f0c67f8f75d">isr19</a> ()</td></tr>
+<tr class="separator:ad16b5f77287df551e63d3f0c67f8f75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a552d2aedae97d97083d3f9caf6ad59a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#a552d2aedae97d97083d3f9caf6ad59a5">isr20</a> ()</td></tr>
+<tr class="separator:a552d2aedae97d97083d3f9caf6ad59a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af868664393aedd51c04e3ddd48b8f84f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#af868664393aedd51c04e3ddd48b8f84f">isr30</a> ()</td></tr>
+<tr class="separator:af868664393aedd51c04e3ddd48b8f84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeee4ce244e890abb201178e5589eb40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#aaeee4ce244e890abb201178e5589eb40">isrs_init</a> ()</td></tr>
+<tr class="separator:aaeee4ce244e890abb201178e5589eb40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d70eb23e4ca65372caac5af50cd722"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="isrs_8c.html#ae3d70eb23e4ca65372caac5af50cd722">isr_handler</a> (int id, uint32_t err_code)</td></tr>
+<tr class="separator:ae3d70eb23e4ca65372caac5af50cd722"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="af88eb8e98d943aa0461c01de3cb53493"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af88eb8e98d943aa0461c01de3cb53493">&#9670;&nbsp;</a></span>isr0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr0 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeab0ed9ae661801c25f7dc9089c19f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeab0ed9ae661801c25f7dc9089c19f72">&#9670;&nbsp;</a></span>isr1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c8cb1341cf756883a2e7dc317d5272d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c8cb1341cf756883a2e7dc317d5272d">&#9670;&nbsp;</a></span>isr10()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr10 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d8145cf6ee1ef7834f459ba777d323c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d8145cf6ee1ef7834f459ba777d323c">&#9670;&nbsp;</a></span>isr11()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr11 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a00f00421039cb85f9dd9375995c784bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f00421039cb85f9dd9375995c784bd">&#9670;&nbsp;</a></span>isr12()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr12 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af985dcf66872ee696e5f30d819ac16a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af985dcf66872ee696e5f30d819ac16a1">&#9670;&nbsp;</a></span>isr13()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr13 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8b63eaa37c03743718870964a3429ba8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b63eaa37c03743718870964a3429ba8">&#9670;&nbsp;</a></span>isr14()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr14 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add0980c10028b377643da169e52e5be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add0980c10028b377643da169e52e5be7">&#9670;&nbsp;</a></span>isr16()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr16 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7d1e81e585bc7c56b46280006402f9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7d1e81e585bc7c56b46280006402f9e">&#9670;&nbsp;</a></span>isr17()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr17 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae685c5ca5ed9c9c5e7d297ad8d14de49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae685c5ca5ed9c9c5e7d297ad8d14de49">&#9670;&nbsp;</a></span>isr18()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr18 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad16b5f77287df551e63d3f0c67f8f75d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad16b5f77287df551e63d3f0c67f8f75d">&#9670;&nbsp;</a></span>isr19()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr19 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a99e457875cca040c3f7c77b61e960b53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e457875cca040c3f7c77b61e960b53">&#9670;&nbsp;</a></span>isr2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr2 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a552d2aedae97d97083d3f9caf6ad59a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a552d2aedae97d97083d3f9caf6ad59a5">&#9670;&nbsp;</a></span>isr20()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr20 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ef268d2c16a7b318356451a05fd507b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef268d2c16a7b318356451a05fd507b">&#9670;&nbsp;</a></span>isr3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr3 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af868664393aedd51c04e3ddd48b8f84f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af868664393aedd51c04e3ddd48b8f84f">&#9670;&nbsp;</a></span>isr30()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr30 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a09af768d636144aaeaddd76c92a0a2f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09af768d636144aaeaddd76c92a0a2f5">&#9670;&nbsp;</a></span>isr4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr4 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa91d821a4bcafb44933d92945727b0df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa91d821a4bcafb44933d92945727b0df">&#9670;&nbsp;</a></span>isr5()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr5 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9fadb95f34937b1ded02c4171b4920ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fadb95f34937b1ded02c4171b4920ba">&#9670;&nbsp;</a></span>isr6()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr6 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7eb6ec30db7077fb1c9c9d926a0fc407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eb6ec30db7077fb1c9c9d926a0fc407">&#9670;&nbsp;</a></span>isr7()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr7 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86bc69345a3bb409665dbadb77a9d393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86bc69345a3bb409665dbadb77a9d393">&#9670;&nbsp;</a></span>isr8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr8 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3d70eb23e4ca65372caac5af50cd722"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d70eb23e4ca65372caac5af50cd722">&#9670;&nbsp;</a></span>isr_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isr_handler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>err_code</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Manage any exception that has occurred.</p>
+<p>Exceptions list: <a href="https://wiki.osdev.org/Exceptions">https://wiki.osdev.org/Exceptions</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Exception Id </td></tr>
+    <tr><td class="paramname">err_code</td><td>Exception's error code, if the exception does not return an error code, it is 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="isrs_8c_source.html#l00054">54</a> of file <a class="el" href="isrs_8c_source.html">isrs.c</a>.</p>
+
+</div>
+</div>
+<a id="aaeee4ce244e890abb201178e5589eb40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaeee4ce244e890abb201178e5589eb40">&#9670;&nbsp;</a></span>isrs_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void isrs_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Setups all exceptions </p>
+
+<p class="definition">Definition at line <a class="el" href="isrs_8c_source.html#l00024">24</a> of file <a class="el" href="isrs_8c_source.html">isrs.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_2f75af7b90e18386b84815cf9f122cab.html">i686</a></li><li class="navelem"><a class="el" href="dir_7d4df2ee2de0f79e10fceadcb5cdf852.html">cpu</a></li><li class="navelem"><a class="el" href="isrs_8c.html">isrs.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

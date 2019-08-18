@@ -1,0 +1,362 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('uart_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">uart.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="mmio_8h_source.html">devices/mmio.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="misc_8h_source.html">misc.h</a>&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="uart_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> = 0x3F201000, 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c">UART0_DR</a> = (UART0_BASE + 0x00), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c">UART0_RSRECR</a> = (UART0_BASE + 0x04), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16">UART0_FR</a> = (UART0_BASE + 0x18), 
+<br />
+&#160;&#160;<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220">UART0_ILPR</a> = (UART0_BASE + 0x20), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb">UART0_IBRD</a> = (UART0_BASE + 0x24), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca">UART0_FBRD</a> = (UART0_BASE + 0x28), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612">UART0_LCRH</a> = (UART0_BASE + 0x2C), 
+<br />
+&#160;&#160;<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f">UART0_CR</a> = (UART0_BASE + 0x30), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7">UART0_IFLS</a> = (UART0_BASE + 0x34), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c">UART0_IMSC</a> = (UART0_BASE + 0x38), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e">UART0_RIS</a> = (UART0_BASE + 0x3C), 
+<br />
+&#160;&#160;<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3">UART0_MIS</a> = (UART0_BASE + 0x40), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5">UART0_ICR</a> = (UART0_BASE + 0x44), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88">UART0_DMACR</a> = (UART0_BASE + 0x48), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196">UART0_ITCR</a> = (UART0_BASE + 0x80), 
+<br />
+&#160;&#160;<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488">UART0_ITIP</a> = (UART0_BASE + 0x84), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386">UART0_ITOP</a> = (UART0_BASE + 0x88), 
+<a class="el" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68">UART0_TDR</a> = (UART0_BASE + 0x8C)
+<br />
+ }</td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a01f5996cfbcef121abc486e732b208c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a01f5996cfbcef121abc486e732b208c7">uart_init</a> ()</td></tr>
+<tr class="separator:a01f5996cfbcef121abc486e732b208c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56660036f7789e250049bff7af91ea2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a56660036f7789e250049bff7af91ea2e">uart_putc</a> (uint8_t c)</td></tr>
+<tr class="separator:a56660036f7789e250049bff7af91ea2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a305693d1fe48929393be1fe4683b96cd"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a305693d1fe48929393be1fe4683b96cd">uart_getc</a> ()</td></tr>
+<tr class="separator:a305693d1fe48929393be1fe4683b96cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6535d7e4f249e5ae9fe0dd795b4a3ecc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8h.html#a6535d7e4f249e5ae9fe0dd795b4a3ecc">uart_puts</a> (const char *str)</td></tr>
+<tr class="separator:a6535d7e4f249e5ae9fe0dd795b4a3ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108"></a>UART0_BASE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c"></a>UART0_DR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c"></a>UART0_RSRECR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16"></a>UART0_FR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220"></a>UART0_ILPR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb"></a>UART0_IBRD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca"></a>UART0_FBRD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612"></a>UART0_LCRH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f"></a>UART0_CR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7"></a>UART0_IFLS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c"></a>UART0_IMSC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e"></a>UART0_RIS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3"></a>UART0_MIS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5"></a>UART0_ICR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88"></a>UART0_DMACR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196"></a>UART0_ITCR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488"></a>UART0_ITIP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386"></a>UART0_ITOP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68"></a>UART0_TDR&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="uart_8h_source.html#l00008">8</a> of file <a class="el" href="uart_8h_source.html">uart.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a305693d1fe48929393be1fe4683b96cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a305693d1fe48929393be1fe4683b96cd">&#9670;&nbsp;</a></span>uart_getc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char uart_getc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="uart_8c_source.html#l00032">32</a> of file <a class="el" href="uart_8c_source.html">uart.c</a>.</p>
+
+</div>
+</div>
+<a id="a01f5996cfbcef121abc486e732b208c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f5996cfbcef121abc486e732b208c7">&#9670;&nbsp;</a></span>uart_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="uart_8c_source.html#l00003">3</a> of file <a class="el" href="uart_8c_source.html">uart.c</a>.</p>
+
+</div>
+</div>
+<a id="a56660036f7789e250049bff7af91ea2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56660036f7789e250049bff7af91ea2e">&#9670;&nbsp;</a></span>uart_putc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_putc </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="uart_8c_source.html#l00027">27</a> of file <a class="el" href="uart_8c_source.html">uart.c</a>.</p>
+
+</div>
+</div>
+<a id="a6535d7e4f249e5ae9fe0dd795b4a3ecc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6535d7e4f249e5ae9fe0dd795b4a3ecc">&#9670;&nbsp;</a></span>uart_puts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_puts </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="uart_8c_source.html#l00037">37</a> of file <a class="el" href="uart_8c_source.html">uart.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_670c7ff2d659643bc9b971f25d384934.html">arm32</a></li><li class="navelem"><a class="el" href="dir_38a310d268d349e7b41163368c5e1c83.html">include</a></li><li class="navelem"><a class="el" href="dir_c9b122792e7d4a1a70ec1e655a3176ba.html">devices</a></li><li class="navelem"><a class="el" href="uart_8h.html">uart.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

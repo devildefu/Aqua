@@ -1,0 +1,301 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_s.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+<div class="textblock">Here is a list of all struct and union fields with links to the structures/unions they belong to:</div>
+
+<h3><a id="index_s"></a>- s -</h3><ul>
+<li>sections
+: <a class="el" href="structmultiboot__tag__elf__sections.html#ace952a363740307f4e786d4f4925bce7">multiboot_tag_elf_sections</a>
+</li>
+<li>selector
+: <a class="el" href="struct___i_d_t__entry.html#a1c44289c163c1460544d6ee0900d02ba">_IDT_entry</a>
+</li>
+<li>sep
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#aabde9f3a1b8b09a6bd5fcdc54b6d451d">CPU_INFO</a>
+</li>
+<li>shndx
+: <a class="el" href="structmultiboot__elf__section__header__table.html#aabe06b014ad15214342929c5d025c154">multiboot_elf_section_header_table</a>
+, <a class="el" href="structmultiboot__tag__elf__sections.html#aabe06b014ad15214342929c5d025c154">multiboot_tag_elf_sections</a>
+</li>
+<li>size
+: <a class="el" href="struct__alloc__data.html#ab2c6b258f02add8fdf4cfc7c371dd772">_alloc_data</a>
+, <a class="el" href="struct___tar.html#a7a3c334bd082b9b6b985ca492d053760">_Tar</a>
+, <a class="el" href="structmultiboot__elf__section__header__table.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_elf_section_header_table</a>
+, <a class="el" href="structmultiboot__header__tag.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag</a>
+, <a class="el" href="structmultiboot__header__tag__address.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_address</a>
+, <a class="el" href="structmultiboot__header__tag__console__flags.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_console_flags</a>
+, <a class="el" href="structmultiboot__header__tag__entry__address.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_entry_address</a>
+, <a class="el" href="structmultiboot__header__tag__framebuffer.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_framebuffer</a>
+, <a class="el" href="structmultiboot__header__tag__information__request.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_information_request</a>
+, <a class="el" href="structmultiboot__header__tag__module__align.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_module_align</a>
+, <a class="el" href="structmultiboot__header__tag__relocatable.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_header_tag_relocatable</a>
+, <a class="el" href="structmultiboot__mmap__entry.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_mmap_entry</a>
+, <a class="el" href="structmultiboot__tag.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag</a>
+, <a class="el" href="structmultiboot__tag__apm.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_apm</a>
+, <a class="el" href="structmultiboot__tag__basic__meminfo.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_basic_meminfo</a>
+, <a class="el" href="structmultiboot__tag__bootdev.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_bootdev</a>
+, <a class="el" href="structmultiboot__tag__efi32.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_efi32</a>
+, <a class="el" href="structmultiboot__tag__efi32__ih.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_efi32_ih</a>
+, <a class="el" href="structmultiboot__tag__efi64.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_efi64</a>
+, <a class="el" href="structmultiboot__tag__efi64__ih.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_efi64_ih</a>
+, <a class="el" href="structmultiboot__tag__efi__mmap.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_efi_mmap</a>
+, <a class="el" href="structmultiboot__tag__elf__sections.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_elf_sections</a>
+, <a class="el" href="structmultiboot__tag__framebuffer__common.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_framebuffer_common</a>
+, <a class="el" href="structmultiboot__tag__load__base__addr.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_load_base_addr</a>
+, <a class="el" href="structmultiboot__tag__mmap.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_mmap</a>
+, <a class="el" href="structmultiboot__tag__module.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_module</a>
+, <a class="el" href="structmultiboot__tag__network.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_network</a>
+, <a class="el" href="structmultiboot__tag__new__acpi.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_new_acpi</a>
+, <a class="el" href="structmultiboot__tag__old__acpi.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_old_acpi</a>
+, <a class="el" href="structmultiboot__tag__smbios.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_smbios</a>
+, <a class="el" href="structmultiboot__tag__string.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_string</a>
+, <a class="el" href="structmultiboot__tag__vbe.html#a6d813a0f2b5281b18dea3f4cda696c33">multiboot_tag_vbe</a>
+</li>
+<li>skinit
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#a2d7491196a1893c9baaf46cfa6c5e86c">CPU_INFO</a>
+</li>
+<li>slice
+: <a class="el" href="structmultiboot__tag__bootdev.html#ae26f92edd58c75caa21f00fe0593f5ab">multiboot_tag_bootdev</a>
+</li>
+<li>smx
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#aefdb92562ad8efa32309cc117f833143">CPU_INFO</a>
+</li>
+<li>ss
+: <a class="el" href="struct___tss_entry.html#a3c59346dd338708c94ca75cf21b78195">_TssEntry</a>
+, <a class="el" href="struct_c_p_u___i_n_f_o.html#a91bb8482cb4115e0d789cdbb7f5a1d4e">CPU_INFO</a>
+</li>
+<li>ss0
+: <a class="el" href="struct___tss_entry.html#a7874b70fa3a93da1588513500cbdf1a8">_TssEntry</a>
+</li>
+<li>ss1
+: <a class="el" href="struct___tss_entry.html#a954b751e620c509ef5538e6cd434ea4e">_TssEntry</a>
+</li>
+<li>ss2
+: <a class="el" href="struct___tss_entry.html#ac96ed21da44a3e051bf3cd7d4f186c1e">_TssEntry</a>
+</li>
+<li>sse
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#abba3874a6247f0df00a9dcc659cc2d67">CPU_INFO</a>
+</li>
+<li>sse2
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#ac10c695e4339dd848f123d05b75d6da7">CPU_INFO</a>
+</li>
+<li>sse3
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#a7b550ee4523633229ac4c132d387f239">CPU_INFO</a>
+</li>
+<li>sse4_1
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#a7b6d15915200c434510194e20cc1e31c">CPU_INFO</a>
+</li>
+<li>sse4_2
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#aa8007b2f0873842e1fd2e5fa4abf4802">CPU_INFO</a>
+</li>
+<li>sse4a
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#ab67da921f6dacd3bca644e6471549da2">CPU_INFO</a>
+</li>
+<li>ssse3
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#a3c068d981247c0c8952fc49f220f66e4">CPU_INFO</a>
+</li>
+<li>start
+: <a class="el" href="struct__alloc__data.html#a53255b934b07b472175fbb8e847f9b5d">_alloc_data</a>
+, <a class="el" href="struct__alloc__table.html#a53255b934b07b472175fbb8e847f9b5d">_alloc_table</a>
+, <a class="el" href="structmman__cell.html#a0ddd26c18444312e92c51d9e3567232a">mman_cell</a>
+</li>
+<li>string
+: <a class="el" href="structmultiboot__tag__string.html#adb156ac2e13ccc7fc201a841d2722126">multiboot_tag_string</a>
+</li>
+<li>strsize
+: <a class="el" href="structmultiboot__aout__symbol__table.html#a686742eb568e2656351069626956f6c6">multiboot_aout_symbol_table</a>
+</li>
+<li>svm
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#af06d6dd9c868cef70927deb422fb30f5">CPU_INFO</a>
+</li>
+<li>syscall
+: <a class="el" href="struct_c_p_u___i_n_f_o.html#a3694790d58049c604deb12674bbe2852">CPU_INFO</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

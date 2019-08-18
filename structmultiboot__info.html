@@ -1,0 +1,898 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('structmultiboot__info.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Data Fields</a>  </div>
+  <div class="headertitle">
+<div class="title">multiboot_info Struct Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="multiboot_8h_source.html">multiboot.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Data Fields</h2></td></tr>
+<tr class="memitem:a0213694a691d49db53a12075c72dd188"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a0213694a691d49db53a12075c72dd188">flags</a></td></tr>
+<tr class="separator:a0213694a691d49db53a12075c72dd188"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90365badcf368f7cea5a69ce6159db7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a90365badcf368f7cea5a69ce6159db7c">mem_lower</a></td></tr>
+<tr class="separator:a90365badcf368f7cea5a69ce6159db7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1ad87832efda8fcf9e215dff4bd9473"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#ad1ad87832efda8fcf9e215dff4bd9473">mem_upper</a></td></tr>
+<tr class="separator:ad1ad87832efda8fcf9e215dff4bd9473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a758aac0c089e4583354024759c9ad59d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a758aac0c089e4583354024759c9ad59d">boot_device</a></td></tr>
+<tr class="separator:a758aac0c089e4583354024759c9ad59d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7474e72e1196f417c08e3ba2108c481"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#af7474e72e1196f417c08e3ba2108c481">cmdline</a></td></tr>
+<tr class="separator:af7474e72e1196f417c08e3ba2108c481"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace0dfe52bc007d3bb3b95a4a1ef3e560"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#ace0dfe52bc007d3bb3b95a4a1ef3e560">mods_count</a></td></tr>
+<tr class="separator:ace0dfe52bc007d3bb3b95a4a1ef3e560"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f65a0b43a9c82c2764957707ec1204a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a3f65a0b43a9c82c2764957707ec1204a">mods_addr</a></td></tr>
+<tr class="separator:a3f65a0b43a9c82c2764957707ec1204a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3f0983d3d97498ba19fa905b1a3004"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:a8ca1b8f277abb318da4c5c7684ae9d84"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a2f11acfde9ee0022a999f69d3e972352">multiboot_aout_symbol_table_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a8ca1b8f277abb318da4c5c7684ae9d84">aout_sym</a></td></tr>
+<tr class="separator:a8ca1b8f277abb318da4c5c7684ae9d84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a500475f6c2e5665c495acd07957fa585"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a2ea4dd45da23724e95b9fc701b41d1e0">multiboot_elf_section_header_table_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a500475f6c2e5665c495acd07957fa585">elf_sec</a></td></tr>
+<tr class="separator:a500475f6c2e5665c495acd07957fa585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3f0983d3d97498ba19fa905b1a3004"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a7d3f0983d3d97498ba19fa905b1a3004">u</a></td></tr>
+<tr class="separator:a7d3f0983d3d97498ba19fa905b1a3004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5062406aefcb70b00567029314e33d21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a5062406aefcb70b00567029314e33d21">mmap_length</a></td></tr>
+<tr class="separator:a5062406aefcb70b00567029314e33d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b0bf02a449484e179f450ab022f9cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a33b0bf02a449484e179f450ab022f9cc">mmap_addr</a></td></tr>
+<tr class="separator:a33b0bf02a449484e179f450ab022f9cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4207625fee5f56d85c35fc522daff07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#ae4207625fee5f56d85c35fc522daff07">drives_length</a></td></tr>
+<tr class="separator:ae4207625fee5f56d85c35fc522daff07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a358a0ba0bba7acf62f7e139b314a3bfc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a358a0ba0bba7acf62f7e139b314a3bfc">drives_addr</a></td></tr>
+<tr class="separator:a358a0ba0bba7acf62f7e139b314a3bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64c479a37bfc2d1a98f8dded8e25c0cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a64c479a37bfc2d1a98f8dded8e25c0cd">config_table</a></td></tr>
+<tr class="separator:a64c479a37bfc2d1a98f8dded8e25c0cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60505e4e2cab6b85cfb236bd173637d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a60505e4e2cab6b85cfb236bd173637d0">boot_loader_name</a></td></tr>
+<tr class="separator:a60505e4e2cab6b85cfb236bd173637d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe6b6e1944c8a5811b151533095572d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#afe6b6e1944c8a5811b151533095572d1">apm_table</a></td></tr>
+<tr class="separator:afe6b6e1944c8a5811b151533095572d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d477ccd4123fa288dc883cec7c8c2b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a1d477ccd4123fa288dc883cec7c8c2b0">vbe_control_info</a></td></tr>
+<tr class="separator:a1d477ccd4123fa288dc883cec7c8c2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97401ea9e56aa21a0973ee6b33245ddf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a97401ea9e56aa21a0973ee6b33245ddf">vbe_mode_info</a></td></tr>
+<tr class="separator:a97401ea9e56aa21a0973ee6b33245ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf06c8c7019f539f24c1391a36dea488"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#adf06c8c7019f539f24c1391a36dea488">vbe_mode</a></td></tr>
+<tr class="separator:adf06c8c7019f539f24c1391a36dea488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29e4dd8c7fb36c53cf9283c556709099"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a29e4dd8c7fb36c53cf9283c556709099">vbe_interface_seg</a></td></tr>
+<tr class="separator:a29e4dd8c7fb36c53cf9283c556709099"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d56219eef7f6d1e61508e7db85ec12e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a8d56219eef7f6d1e61508e7db85ec12e">vbe_interface_off</a></td></tr>
+<tr class="separator:a8d56219eef7f6d1e61508e7db85ec12e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b64246fba237bf2600bcd2b3bdc19ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a3b64246fba237bf2600bcd2b3bdc19ff">vbe_interface_len</a></td></tr>
+<tr class="separator:a3b64246fba237bf2600bcd2b3bdc19ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2dac8ae6a9c44e3f702e0210ba4dd1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a8dfdd61648b48aa31845db590970e06a">multiboot_uint64_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a8a2dac8ae6a9c44e3f702e0210ba4dd1">framebuffer_addr</a></td></tr>
+<tr class="separator:a8a2dac8ae6a9c44e3f702e0210ba4dd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f31b61f59cc375690a24831a7d9e2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#aa6f31b61f59cc375690a24831a7d9e2f">framebuffer_pitch</a></td></tr>
+<tr class="separator:aa6f31b61f59cc375690a24831a7d9e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e2e06b3ce2d8f62119d04416b688bf8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a7e2e06b3ce2d8f62119d04416b688bf8">framebuffer_width</a></td></tr>
+<tr class="separator:a7e2e06b3ce2d8f62119d04416b688bf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7c830558b232b8bc7345381c81d4ee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#ab7c830558b232b8bc7345381c81d4ee4">framebuffer_height</a></td></tr>
+<tr class="separator:ab7c830558b232b8bc7345381c81d4ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7ea298836205c753bf5ec9b987a7b84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#aa7ea298836205c753bf5ec9b987a7b84">framebuffer_bpp</a></td></tr>
+<tr class="separator:aa7ea298836205c753bf5ec9b987a7b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1517455d344519160448b5ba2d895c5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmultiboot__info.html#a1517455d344519160448b5ba2d895c5c">framebuffer_type</a></td></tr>
+<tr class="separator:a1517455d344519160448b5ba2d895c5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b69765ac2159c00353e92465a4dbc29"><td class="memItemLeft" >union {</td></tr>
+<tr class="memitem:aa6a92a27534eae6a4ad49fa7fad86ae1"><td class="memItemLeft" >&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a29d2f3c7e7efb9eb47d5c209f8ae068d"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a29d2f3c7e7efb9eb47d5c209f8ae068d">framebuffer_palette_addr</a></td></tr>
+<tr class="separator:a29d2f3c7e7efb9eb47d5c209f8ae068d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bdd07cf705a6d655b15a865e7fd9be8"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a7bdd07cf705a6d655b15a865e7fd9be8">framebuffer_palette_num_colors</a></td></tr>
+<tr class="separator:a7bdd07cf705a6d655b15a865e7fd9be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a92a27534eae6a4ad49fa7fad86ae1"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:aa6a92a27534eae6a4ad49fa7fad86ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e4ec2983ececa6428e6a9e11acd777"><td class="memItemLeft" >&#160;&#160;&#160;struct {</td></tr>
+<tr class="memitem:a2fc403715ff419e9c62da8555b56d257"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a2fc403715ff419e9c62da8555b56d257">framebuffer_red_field_position</a></td></tr>
+<tr class="separator:a2fc403715ff419e9c62da8555b56d257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6f149ac88afbda93b137f1d5d138e9"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a5b6f149ac88afbda93b137f1d5d138e9">framebuffer_red_mask_size</a></td></tr>
+<tr class="separator:a5b6f149ac88afbda93b137f1d5d138e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a11fe83ed120465f2e91bed8c497b1"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a56a11fe83ed120465f2e91bed8c497b1">framebuffer_green_field_position</a></td></tr>
+<tr class="separator:a56a11fe83ed120465f2e91bed8c497b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20cace6e7149595f09b8e89640e38d2a"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#a20cace6e7149595f09b8e89640e38d2a">framebuffer_green_mask_size</a></td></tr>
+<tr class="separator:a20cace6e7149595f09b8e89640e38d2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad291f2c0f867969fdc62a5f0e4e9aa9b"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#ad291f2c0f867969fdc62a5f0e4e9aa9b">framebuffer_blue_field_position</a></td></tr>
+<tr class="separator:ad291f2c0f867969fdc62a5f0e4e9aa9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00d29e030334039e36237d5bcb5eb29"><td class="memItemLeft" >&#160;&#160;&#160;&#160;&#160;&#160;<a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a>&#160;&#160;&#160;<a class="el" href="structmultiboot__info.html#ae00d29e030334039e36237d5bcb5eb29">framebuffer_blue_mask_size</a></td></tr>
+<tr class="separator:ae00d29e030334039e36237d5bcb5eb29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e4ec2983ececa6428e6a9e11acd777"><td class="memItemLeft" valign="top">&#160;&#160;&#160;}&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:ae0e4ec2983ececa6428e6a9e11acd777"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b69765ac2159c00353e92465a4dbc29"><td class="memItemLeft" valign="top">};&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a5b69765ac2159c00353e92465a4dbc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00141">141</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="a5b69765ac2159c00353e92465a4dbc29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b69765ac2159c00353e92465a4dbc29">&#9670;&nbsp;</a></span>@4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... } </td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8ca1b8f277abb318da4c5c7684ae9d84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca1b8f277abb318da4c5c7684ae9d84">&#9670;&nbsp;</a></span>aout_sym</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a2f11acfde9ee0022a999f69d3e972352">multiboot_aout_symbol_table_t</a> aout_sym</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00160">160</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="afe6b6e1944c8a5811b151533095572d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe6b6e1944c8a5811b151533095572d1">&#9670;&nbsp;</a></span>apm_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> apm_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00179">179</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a758aac0c089e4583354024759c9ad59d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a758aac0c089e4583354024759c9ad59d">&#9670;&nbsp;</a></span>boot_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> boot_device</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00150">150</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a60505e4e2cab6b85cfb236bd173637d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60505e4e2cab6b85cfb236bd173637d0">&#9670;&nbsp;</a></span>boot_loader_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> boot_loader_name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00176">176</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="af7474e72e1196f417c08e3ba2108c481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7474e72e1196f417c08e3ba2108c481">&#9670;&nbsp;</a></span>cmdline</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> cmdline</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00153">153</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a64c479a37bfc2d1a98f8dded8e25c0cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64c479a37bfc2d1a98f8dded8e25c0cd">&#9670;&nbsp;</a></span>config_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> config_table</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00173">173</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a358a0ba0bba7acf62f7e139b314a3bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a358a0ba0bba7acf62f7e139b314a3bfc">&#9670;&nbsp;</a></span>drives_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> drives_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00170">170</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ae4207625fee5f56d85c35fc522daff07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4207625fee5f56d85c35fc522daff07">&#9670;&nbsp;</a></span>drives_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> drives_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00169">169</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a500475f6c2e5665c495acd07957fa585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a500475f6c2e5665c495acd07957fa585">&#9670;&nbsp;</a></span>elf_sec</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a2ea4dd45da23724e95b9fc701b41d1e0">multiboot_elf_section_header_table_t</a> elf_sec</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00161">161</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a0213694a691d49db53a12075c72dd188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0213694a691d49db53a12075c72dd188">&#9670;&nbsp;</a></span>flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00143">143</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a8a2dac8ae6a9c44e3f702e0210ba4dd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2dac8ae6a9c44e3f702e0210ba4dd1">&#9670;&nbsp;</a></span>framebuffer_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a8dfdd61648b48aa31845db590970e06a">multiboot_uint64_t</a> framebuffer_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00189">189</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ad291f2c0f867969fdc62a5f0e4e9aa9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad291f2c0f867969fdc62a5f0e4e9aa9b">&#9670;&nbsp;</a></span>framebuffer_blue_field_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_blue_field_position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00210">210</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ae00d29e030334039e36237d5bcb5eb29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae00d29e030334039e36237d5bcb5eb29">&#9670;&nbsp;</a></span>framebuffer_blue_mask_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_blue_mask_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00211">211</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="aa7ea298836205c753bf5ec9b987a7b84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7ea298836205c753bf5ec9b987a7b84">&#9670;&nbsp;</a></span>framebuffer_bpp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_bpp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00193">193</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a56a11fe83ed120465f2e91bed8c497b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56a11fe83ed120465f2e91bed8c497b1">&#9670;&nbsp;</a></span>framebuffer_green_field_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_green_field_position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00208">208</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a20cace6e7149595f09b8e89640e38d2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20cace6e7149595f09b8e89640e38d2a">&#9670;&nbsp;</a></span>framebuffer_green_mask_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_green_mask_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00209">209</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ab7c830558b232b8bc7345381c81d4ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7c830558b232b8bc7345381c81d4ee4">&#9670;&nbsp;</a></span>framebuffer_height</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> framebuffer_height</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00192">192</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a29d2f3c7e7efb9eb47d5c209f8ae068d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d2f3c7e7efb9eb47d5c209f8ae068d">&#9670;&nbsp;</a></span>framebuffer_palette_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> framebuffer_palette_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00201">201</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a7bdd07cf705a6d655b15a865e7fd9be8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bdd07cf705a6d655b15a865e7fd9be8">&#9670;&nbsp;</a></span>framebuffer_palette_num_colors</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a> framebuffer_palette_num_colors</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00202">202</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="aa6f31b61f59cc375690a24831a7d9e2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f31b61f59cc375690a24831a7d9e2f">&#9670;&nbsp;</a></span>framebuffer_pitch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> framebuffer_pitch</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00190">190</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a2fc403715ff419e9c62da8555b56d257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fc403715ff419e9c62da8555b56d257">&#9670;&nbsp;</a></span>framebuffer_red_field_position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_red_field_position</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00206">206</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a5b6f149ac88afbda93b137f1d5d138e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b6f149ac88afbda93b137f1d5d138e9">&#9670;&nbsp;</a></span>framebuffer_red_mask_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_red_mask_size</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00207">207</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a1517455d344519160448b5ba2d895c5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1517455d344519160448b5ba2d895c5c">&#9670;&nbsp;</a></span>framebuffer_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a037f602538fccf97e90021c19fdfc047">multiboot_uint8_t</a> framebuffer_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00197">197</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a7e2e06b3ce2d8f62119d04416b688bf8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e2e06b3ce2d8f62119d04416b688bf8">&#9670;&nbsp;</a></span>framebuffer_width</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> framebuffer_width</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00191">191</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a90365badcf368f7cea5a69ce6159db7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90365badcf368f7cea5a69ce6159db7c">&#9670;&nbsp;</a></span>mem_lower</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mem_lower</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00146">146</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ad1ad87832efda8fcf9e215dff4bd9473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1ad87832efda8fcf9e215dff4bd9473">&#9670;&nbsp;</a></span>mem_upper</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mem_upper</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00147">147</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a33b0bf02a449484e179f450ab022f9cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33b0bf02a449484e179f450ab022f9cc">&#9670;&nbsp;</a></span>mmap_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mmap_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00166">166</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a5062406aefcb70b00567029314e33d21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5062406aefcb70b00567029314e33d21">&#9670;&nbsp;</a></span>mmap_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mmap_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00165">165</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a3f65a0b43a9c82c2764957707ec1204a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f65a0b43a9c82c2764957707ec1204a">&#9670;&nbsp;</a></span>mods_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mods_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00157">157</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="ace0dfe52bc007d3bb3b95a4a1ef3e560"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace0dfe52bc007d3bb3b95a4a1ef3e560">&#9670;&nbsp;</a></span>mods_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> mods_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00156">156</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a7d3f0983d3d97498ba19fa905b1a3004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d3f0983d3d97498ba19fa905b1a3004">&#9670;&nbsp;</a></span>u</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">union { ... }   u</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1d477ccd4123fa288dc883cec7c8c2b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d477ccd4123fa288dc883cec7c8c2b0">&#9670;&nbsp;</a></span>vbe_control_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> vbe_control_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00182">182</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a3b64246fba237bf2600bcd2b3bdc19ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b64246fba237bf2600bcd2b3bdc19ff">&#9670;&nbsp;</a></span>vbe_interface_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a> vbe_interface_len</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00187">187</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a8d56219eef7f6d1e61508e7db85ec12e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d56219eef7f6d1e61508e7db85ec12e">&#9670;&nbsp;</a></span>vbe_interface_off</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a> vbe_interface_off</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00186">186</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a29e4dd8c7fb36c53cf9283c556709099"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29e4dd8c7fb36c53cf9283c556709099">&#9670;&nbsp;</a></span>vbe_interface_seg</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a> vbe_interface_seg</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00185">185</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="adf06c8c7019f539f24c1391a36dea488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf06c8c7019f539f24c1391a36dea488">&#9670;&nbsp;</a></span>vbe_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a3a11e3c2b5e0617736a05343aa5795b3">multiboot_uint16_t</a> vbe_mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00184">184</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<a id="a97401ea9e56aa21a0973ee6b33245ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97401ea9e56aa21a0973ee6b33245ddf">&#9670;&nbsp;</a></span>vbe_mode_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="multiboot_8h.html#a009f355da41fed4badb8a52d432f5186">multiboot_uint32_t</a> vbe_mode_info</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="multiboot_8h_source.html#l00183">183</a> of file <a class="el" href="multiboot_8h_source.html">multiboot.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
+<li><a class="el" href="multiboot_8h_source.html">multiboot.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structmultiboot__info.html">multiboot_info</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

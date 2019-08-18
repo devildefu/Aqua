@@ -1,0 +1,578 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('device_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">device.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="definitions_8h_source.html">definitions.h</a>&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="device_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__device__.html">_device_</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a7eb0abedd80e0c144c93e4d4e9bd42c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a7eb0abedd80e0c144c93e4d4e9bd42c7">devCall</a>(signal,  data,  <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>,  dev)&#160;&#160;&#160;dev-&gt;proc(signal, data, <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, dev)</td></tr>
+<tr class="separator:a7eb0abedd80e0c144c93e4d4e9bd42c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abefdb02b608d360123063dfd4985e9d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#abefdb02b608d360123063dfd4985e9d8">devCast</a>(dev)&#160;&#160;&#160;((<a class="el" href="device_8h.html#a2ea133d16a0008b964fe8293c6c031d3">device</a>*)dev)</td></tr>
+<tr class="separator:abefdb02b608d360123063dfd4985e9d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3cea4923d66b72b1e9b17f87da7655d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ab3cea4923d66b72b1e9b17f87da7655d">procCmp</a>(dev0,  dev1)&#160;&#160;&#160;dev0-&gt;proc == dev1-&gt;proc</td></tr>
+<tr class="separator:ab3cea4923d66b72b1e9b17f87da7655d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e7ab535ea147cba8fa0931c537f8ed0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a3e7ab535ea147cba8fa0931c537f8ed0">setProc</a>(dev,  proc)&#160;&#160;&#160;dev-&gt;proc = proc</td></tr>
+<tr class="separator:a3e7ab535ea147cba8fa0931c537f8ed0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff00c493d0cd54e81fd41b97f4331b6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#aff00c493d0cd54e81fd41b97f4331b6b">checkIndex</a>(dev,  ind)&#160;&#160;&#160;dev-&gt;device_s == ind</td></tr>
+<tr class="separator:aff00c493d0cd54e81fd41b97f4331b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b7114584bdb8b2bc6816542c884ec36"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a0b7114584bdb8b2bc6816542c884ec36">init_device</a>(dv,  tp,  pr)&#160;&#160;&#160;(dv-&gt;proc = dm, dv-&gt;device_s = tp)</td></tr>
+<tr class="separator:a0b7114584bdb8b2bc6816542c884ec36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9374a8ec50566e6e6e4c6b3b65678c1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ab9374a8ec50566e6e6e4c6b3b65678c1">define_device_tb</a>(dev,  devtype,  devindex,  devproc)&#160;&#160;&#160;devtype dev[1] = { { { { devindex, devproc } } } }</td></tr>
+<tr class="separator:ab9374a8ec50566e6e6e4c6b3b65678c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3bb438b113fd4f2b15d8f8b89164a12"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#ac3bb438b113fd4f2b15d8f8b89164a12">extern_device_tb</a>(dev,  devtype)&#160;&#160;&#160;extern devtype dev[1];</td></tr>
+<tr class="separator:ac3bb438b113fd4f2b15d8f8b89164a12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6dfdb44c1a27ccae2b810230d4279ff2"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="definitions_8h.html#a95c0f4cc152cbacf72a7d70d7077dc96">ulong_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a6dfdb44c1a27ccae2b810230d4279ff2">dev_mode__procedure</a>) (int signal, void *data, size_t <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, struct <a class="el" href="struct__device__.html">_device_</a> *d_ptr)</td></tr>
+<tr class="separator:a6dfdb44c1a27ccae2b810230d4279ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ea133d16a0008b964fe8293c6c031d3"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct__device__.html">_device_</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a2ea133d16a0008b964fe8293c6c031d3">device</a></td></tr>
+<tr class="separator:a2ea133d16a0008b964fe8293c6c031d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a526e74d396b1d251a589901c19eeb143"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143">_dev_mode_device_</a> { <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143a296dacc44fb9143c51bbe72befa590f7">__dev_keyboard</a>, 
+<a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143af37bf012d03960e0f1943eaf7d9937af">__dev_mouse</a>
+ }</td></tr>
+<tr class="separator:a526e74d396b1d251a589901c19eeb143"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a3a4729264c6632d492ebbfca46c5dc35"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143">_dev_mode_device_</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="device_8h.html#a3a4729264c6632d492ebbfca46c5dc35">dev_mode_device</a></td></tr>
+<tr class="separator:a3a4729264c6632d492ebbfca46c5dc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aff00c493d0cd54e81fd41b97f4331b6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff00c493d0cd54e81fd41b97f4331b6b">&#9670;&nbsp;</a></span>checkIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define checkIndex</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ind&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;dev-&gt;device_s == ind</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00055">55</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="ab9374a8ec50566e6e6e4c6b3b65678c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9374a8ec50566e6e6e4c6b3b65678c1">&#9670;&nbsp;</a></span>define_device_tb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define define_device_tb</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">devtype, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">devindex, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">devproc&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;devtype dev[1] = { { { { devindex, devproc } } } }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00068">68</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="a7eb0abedd80e0c144c93e4d4e9bd42c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7eb0abedd80e0c144c93e4d4e9bd42c7">&#9670;&nbsp;</a></span>devCall</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define devCall</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">signal, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">data, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;dev-&gt;proc(signal, data, <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, dev)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00040">40</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="abefdb02b608d360123063dfd4985e9d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abefdb02b608d360123063dfd4985e9d8">&#9670;&nbsp;</a></span>devCast</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define devCast</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev</td><td>)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="device_8h.html#a2ea133d16a0008b964fe8293c6c031d3">device</a>*)dev)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00044">44</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="ac3bb438b113fd4f2b15d8f8b89164a12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3bb438b113fd4f2b15d8f8b89164a12">&#9670;&nbsp;</a></span>extern_device_tb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define extern_device_tb</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">devtype&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;extern devtype dev[1];</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00075">75</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="a0b7114584bdb8b2bc6816542c884ec36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b7114584bdb8b2bc6816542c884ec36">&#9670;&nbsp;</a></span>init_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define init_device</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dv, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">tp, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pr&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;(dv-&gt;proc = dm, dv-&gt;device_s = tp)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00059">59</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="ab3cea4923d66b72b1e9b17f87da7655d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3cea4923d66b72b1e9b17f87da7655d">&#9670;&nbsp;</a></span>procCmp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define procCmp</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev0, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev1&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;dev0-&gt;proc == dev1-&gt;proc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00047">47</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="a3e7ab535ea147cba8fa0931c537f8ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e7ab535ea147cba8fa0931c537f8ed0">&#9670;&nbsp;</a></span>setProc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define setProc</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">dev, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">proc&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;dev-&gt;proc = proc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00051">51</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a6dfdb44c1a27ccae2b810230d4279ff2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dfdb44c1a27ccae2b810230d4279ff2">&#9670;&nbsp;</a></span>dev_mode__procedure</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="definitions_8h.html#a95c0f4cc152cbacf72a7d70d7077dc96">ulong_t</a>(* dev_mode__procedure) (int signal, void *data, size_t <a class="el" href="multiboot_8h.html#a6d813a0f2b5281b18dea3f4cda696c33">size</a>, struct <a class="el" href="struct__device__.html">_device_</a> *d_ptr)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00015">15</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<a id="a2ea133d16a0008b964fe8293c6c031d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ea133d16a0008b964fe8293c6c031d3">&#9670;&nbsp;</a></span>device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct__device__.html">_device_</a> <a class="el" href="device_8h.html#a2ea133d16a0008b964fe8293c6c031d3">device</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a526e74d396b1d251a589901c19eeb143"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a526e74d396b1d251a589901c19eeb143">&#9670;&nbsp;</a></span>_dev_mode_device_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143">_dev_mode_device_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a526e74d396b1d251a589901c19eeb143a296dacc44fb9143c51bbe72befa590f7"></a>__dev_keyboard&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a526e74d396b1d251a589901c19eeb143af37bf012d03960e0f1943eaf7d9937af"></a>__dev_mouse&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="device_8h_source.html#l00018">18</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a3a4729264c6632d492ebbfca46c5dc35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a4729264c6632d492ebbfca46c5dc35">&#9670;&nbsp;</a></span>dev_mode_device</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143">_dev_mode_device_</a>  dev_mode_device</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_b8de6bdb0bfd32a791f104a8b51b3368.html">devices</a></li><li class="navelem"><a class="el" href="device_8h.html">device.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

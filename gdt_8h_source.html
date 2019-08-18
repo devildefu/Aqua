@@ -1,0 +1,214 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('gdt_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">gdt.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="gdt_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GDT_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define GDT_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="tss_8h.html">cpu/tss.h</a>&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="definitions_8h.html">definitions.h</a>&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="string_8h.html">string.h</a>&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct___gdt_entry.html">_GdtEntry</a> {</div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#aa7ae5b5a918e00776ff07fb1c58a348d">   10</a></span>&#160;    uint16_t <a class="code" href="struct___gdt_entry.html#aa7ae5b5a918e00776ff07fb1c58a348d">limit_low</a>;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#a71e21ea67de59991e9a27666a1752a8f">   11</a></span>&#160;    uint16_t <a class="code" href="struct___gdt_entry.html#a71e21ea67de59991e9a27666a1752a8f">base_low</a>;</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#a6b67e86f6de9204d76adab79069aec29">   12</a></span>&#160;    uint8_t <a class="code" href="struct___gdt_entry.html#a6b67e86f6de9204d76adab79069aec29">base_middle</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#a8b0d6200bc639dd37ff68847a0adde5f">   13</a></span>&#160;    uint8_t <a class="code" href="struct___gdt_entry.html#a8b0d6200bc639dd37ff68847a0adde5f">access</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#acfea365f69e71368a2db03333d4afd6f">   14</a></span>&#160;    uint8_t <a class="code" href="struct___gdt_entry.html#acfea365f69e71368a2db03333d4afd6f">granularity</a>;</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="struct___gdt_entry.html#a1a173457c7aa39c59c008fcc3332d2b3">   15</a></span>&#160;    uint8_t <a class="code" href="struct___gdt_entry.html#a1a173457c7aa39c59c008fcc3332d2b3">base_high</a>;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;} <a class="code" href="gdt_8h.html#a2382d161f38baf47f450cfcc073d80bc">_packed_</a>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="struct___gdt_ptr.html">   18</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct___gdt_ptr.html">_GdtPtr</a> {</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct___gdt_ptr.html#ab28e82ae69032cb4ad3ec3a0be3d7129">   19</a></span>&#160;    uint16_t <a class="code" href="struct___gdt_ptr.html#ab28e82ae69032cb4ad3ec3a0be3d7129">limit</a>;</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct___gdt_ptr.html#a0523cedff47e2441fc198b7770ec5d3f">   20</a></span>&#160;    uint32_t <a class="code" href="struct___gdt_ptr.html#a0523cedff47e2441fc198b7770ec5d3f">base</a>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;} <a class="code" href="gdt_8h.html#a2382d161f38baf47f450cfcc073d80bc">_packed_</a>;</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="gdt_8h.html#aa6c75e302540d71eaef807ebee498fc2">   23</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct___gdt_entry.html">_GdtEntry</a> <a class="code" href="struct___gdt_entry.html">GdtEntry</a>;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="gdt_8h.html#a9b382376c88410553aa651c271af074b">   24</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="struct___gdt_ptr.html">_GdtPtr</a> <a class="code" href="struct___gdt_ptr.html">GdtPtr</a>;</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="gdt_8h.html#a9dc74fc329cb61a7332989b6bf181a57">gdt_flush</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gdt_8h.html#aa8a299c77751d0fb605f0a9755bb7457">gdt_set_gate</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="struct___gdt_ptr.html#a0523cedff47e2441fc198b7770ec5d3f">base</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="struct___gdt_ptr.html#ab28e82ae69032cb4ad3ec3a0be3d7129">limit</a>, uint8_t access, uint8_t gran);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gdt_8h.html#aaa7a7d6a41843f8a0c64fd66967feef4">gdt_init</a>();</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gdt_8h.html#a326b0fd1b55a87f435fe1933619db7c1">gdt_init_tss</a>(int32_t <span class="keywordtype">id</span>, uint16_t ss0, uint32_t esp0);</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keywordtype">void</span> <a class="code" href="gdt_8h.html#a9e9d52a9decf874179b67b14b1bc686f">gdt_set_kernel_stack_tts</a>(uint32_t stack);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="struct___gdt_entry_html_a71e21ea67de59991e9a27666a1752a8f"><div class="ttname"><a href="struct___gdt_entry.html#a71e21ea67de59991e9a27666a1752a8f">_GdtEntry::base_low</a></div><div class="ttdeci">uint16_t base_low</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00011">gdt.h:11</a></div></div>
+<div class="ttc" id="struct___gdt_entry_html_aa7ae5b5a918e00776ff07fb1c58a348d"><div class="ttname"><a href="struct___gdt_entry.html#aa7ae5b5a918e00776ff07fb1c58a348d">_GdtEntry::limit_low</a></div><div class="ttdeci">uint16_t limit_low</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00010">gdt.h:10</a></div></div>
+<div class="ttc" id="string_8h_html"><div class="ttname"><a href="string_8h.html">string.h</a></div></div>
+<div class="ttc" id="tss_8h_html"><div class="ttname"><a href="tss_8h.html">tss.h</a></div></div>
+<div class="ttc" id="struct___gdt_entry_html"><div class="ttname"><a href="struct___gdt_entry.html">_GdtEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00009">gdt.h:9</a></div></div>
+<div class="ttc" id="struct___gdt_ptr_html_ab28e82ae69032cb4ad3ec3a0be3d7129"><div class="ttname"><a href="struct___gdt_ptr.html#ab28e82ae69032cb4ad3ec3a0be3d7129">_GdtPtr::limit</a></div><div class="ttdeci">uint16_t limit</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00019">gdt.h:19</a></div></div>
+<div class="ttc" id="struct___gdt_entry_html_a6b67e86f6de9204d76adab79069aec29"><div class="ttname"><a href="struct___gdt_entry.html#a6b67e86f6de9204d76adab79069aec29">_GdtEntry::base_middle</a></div><div class="ttdeci">uint8_t base_middle</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00012">gdt.h:12</a></div></div>
+<div class="ttc" id="gdt_8h_html_aa8a299c77751d0fb605f0a9755bb7457"><div class="ttname"><a href="gdt_8h.html#aa8a299c77751d0fb605f0a9755bb7457">gdt_set_gate</a></div><div class="ttdeci">void gdt_set_gate(int id, unsigned long base, unsigned long limit, uint8_t access, uint8_t gran)</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8c_source.html#l00008">gdt.c:8</a></div></div>
+<div class="ttc" id="struct___gdt_entry_html_acfea365f69e71368a2db03333d4afd6f"><div class="ttname"><a href="struct___gdt_entry.html#acfea365f69e71368a2db03333d4afd6f">_GdtEntry::granularity</a></div><div class="ttdeci">uint8_t granularity</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00014">gdt.h:14</a></div></div>
+<div class="ttc" id="gdt_8h_html_a326b0fd1b55a87f435fe1933619db7c1"><div class="ttname"><a href="gdt_8h.html#a326b0fd1b55a87f435fe1933619db7c1">gdt_init_tss</a></div><div class="ttdeci">void gdt_init_tss(int32_t id, uint16_t ss0, uint32_t esp0)</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8c_source.html#l00052">gdt.c:52</a></div></div>
+<div class="ttc" id="gdt_8h_html_a9e9d52a9decf874179b67b14b1bc686f"><div class="ttname"><a href="gdt_8h.html#a9e9d52a9decf874179b67b14b1bc686f">gdt_set_kernel_stack_tts</a></div><div class="ttdeci">void gdt_set_kernel_stack_tts(uint32_t stack)</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8c_source.html#l00071">gdt.c:71</a></div></div>
+<div class="ttc" id="struct___gdt_ptr_html"><div class="ttname"><a href="struct___gdt_ptr.html">_GdtPtr</a></div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00018">gdt.h:18</a></div></div>
+<div class="ttc" id="gdt_8h_html_a2382d161f38baf47f450cfcc073d80bc"><div class="ttname"><a href="gdt_8h.html#a2382d161f38baf47f450cfcc073d80bc">_packed_</a></div><div class="ttdeci">struct _GdtEntry _packed_</div></div>
+<div class="ttc" id="struct___gdt_entry_html_a8b0d6200bc639dd37ff68847a0adde5f"><div class="ttname"><a href="struct___gdt_entry.html#a8b0d6200bc639dd37ff68847a0adde5f">_GdtEntry::access</a></div><div class="ttdeci">uint8_t access</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00013">gdt.h:13</a></div></div>
+<div class="ttc" id="definitions_8h_html"><div class="ttname"><a href="definitions_8h.html">definitions.h</a></div></div>
+<div class="ttc" id="struct___gdt_entry_html_a1a173457c7aa39c59c008fcc3332d2b3"><div class="ttname"><a href="struct___gdt_entry.html#a1a173457c7aa39c59c008fcc3332d2b3">_GdtEntry::base_high</a></div><div class="ttdeci">uint8_t base_high</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00015">gdt.h:15</a></div></div>
+<div class="ttc" id="gdt_8h_html_aaa7a7d6a41843f8a0c64fd66967feef4"><div class="ttname"><a href="gdt_8h.html#aaa7a7d6a41843f8a0c64fd66967feef4">gdt_init</a></div><div class="ttdeci">void gdt_init()</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8c_source.html#l00025">gdt.c:25</a></div></div>
+<div class="ttc" id="gdt_8h_html_a9dc74fc329cb61a7332989b6bf181a57"><div class="ttname"><a href="gdt_8h.html#a9dc74fc329cb61a7332989b6bf181a57">gdt_flush</a></div><div class="ttdeci">void gdt_flush()</div></div>
+<div class="ttc" id="struct___gdt_ptr_html_a0523cedff47e2441fc198b7770ec5d3f"><div class="ttname"><a href="struct___gdt_ptr.html#a0523cedff47e2441fc198b7770ec5d3f">_GdtPtr::base</a></div><div class="ttdeci">uint32_t base</div><div class="ttdef"><b>Definition:</b> <a href="gdt_8h_source.html#l00020">gdt.h:20</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_2f75af7b90e18386b84815cf9f122cab.html">i686</a></li><li class="navelem"><a class="el" href="dir_3b7611eeb6c5acaadbaff53b3456fce2.html">include</a></li><li class="navelem"><a class="el" href="dir_fe69386a354d6f3322b2f68a2768507c.html">cpu</a></li><li class="navelem"><a class="el" href="gdt_8h.html">gdt.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

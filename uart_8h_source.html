@@ -1,0 +1,220 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('uart_8h_source.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">uart.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="uart_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef UART_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define UART_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mmio_8h.html">devices/mmio.h</a>&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="misc_8h.html">misc.h</a>&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">enum</span> {</div><div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">    9</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> = 0x3F201000,</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c">   11</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c">UART0_DR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x00),</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c">   12</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c">UART0_RSRECR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x04),</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16">   13</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16">UART0_FR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x18),</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220">   14</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220">UART0_ILPR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x20),</div><div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb">   15</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb">UART0_IBRD</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x24),</div><div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca">   16</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca">UART0_FBRD</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x28),</div><div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612">   17</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612">UART0_LCRH</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x2C),</div><div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f">   18</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f">UART0_CR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x30),</div><div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7">   19</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7">UART0_IFLS</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x34),</div><div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c">   20</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c">UART0_IMSC</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x38),</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e">   21</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e">UART0_RIS</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x3C),</div><div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3">   22</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3">UART0_MIS</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x40),</div><div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5">   23</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5">UART0_ICR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x44),</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88">   24</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88">UART0_DMACR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x48),</div><div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196">   25</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196">UART0_ITCR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x80),</div><div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488">   26</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488">UART0_ITIP</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x84),</div><div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386">   27</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386">UART0_ITOP</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x88),</div><div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68">   28</a></span>&#160;    <a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68">UART0_TDR</a> = (<a class="code" href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a> + 0x8C),</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a01f5996cfbcef121abc486e732b208c7">uart_init</a>();</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a56660036f7789e250049bff7af91ea2e">uart_putc</a>(uint8_t c);</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="uart_8h.html#a305693d1fe48929393be1fe4683b96cd">uart_getc</a>();</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="uart_8h.html#a6535d7e4f249e5ae9fe0dd795b4a3ecc">uart_puts</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* str);</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div><div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba82e9833d5b9d7a4320f39bfedc63a196">UART0_ITCR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00025">uart.h:25</a></div></div>
+<div class="ttc" id="uart_8h_html_a01f5996cfbcef121abc486e732b208c7"><div class="ttname"><a href="uart_8h.html#a01f5996cfbcef121abc486e732b208c7">uart_init</a></div><div class="ttdeci">void uart_init()</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00003">uart.c:3</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1f94564e258e80ea91947f5c6760ac3">UART0_MIS</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00022">uart.h:22</a></div></div>
+<div class="ttc" id="misc_8h_html"><div class="ttname"><a href="misc_8h.html">misc.h</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba2d0d335e4762ad470b713c77f1512dc7">UART0_IFLS</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00019">uart.h:19</a></div></div>
+<div class="ttc" id="uart_8h_html_a56660036f7789e250049bff7af91ea2e"><div class="ttname"><a href="uart_8h.html#a56660036f7789e250049bff7af91ea2e">uart_putc</a></div><div class="ttdeci">void uart_putc(uint8_t c)</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00027">uart.c:27</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba287fd62188156a023afe438408d08e16">UART0_FR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00013">uart.h:13</a></div></div>
+<div class="ttc" id="uart_8h_html_a6535d7e4f249e5ae9fe0dd795b4a3ecc"><div class="ttname"><a href="uart_8h.html#a6535d7e4f249e5ae9fe0dd795b4a3ecc">uart_puts</a></div><div class="ttdeci">void uart_puts(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00037">uart.c:37</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacfff6aff5fad3036e287d684b65bbf9e">UART0_RIS</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00021">uart.h:21</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba1deb6c7b52022e0b5575b8ddaddd08eb">UART0_IBRD</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00015">uart.h:15</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba42098e2f3820ea3840287c6013b3fe1c">UART0_DR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00011">uart.h:11</a></div></div>
+<div class="ttc" id="uart_8h_html_a305693d1fe48929393be1fe4683b96cd"><div class="ttname"><a href="uart_8h.html#a305693d1fe48929393be1fe4683b96cd">uart_getc</a></div><div class="ttdeci">unsigned char uart_getc()</div><div class="ttdef"><b>Definition:</b> <a href="uart_8c_source.html#l00032">uart.c:32</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba44e99ea5f4c559bbd32cec158fdaa1e5">UART0_ICR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00023">uart.h:23</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab653945bfd1e661721eefb3b7246894f">UART0_CR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00018">uart.h:18</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5a4814328d614bed666ee0a94a412488">UART0_ITIP</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00026">uart.h:26</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bae886a98a6c5cdcc6b3faad7539796386">UART0_ITOP</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00027">uart.h:27</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bafc090412ca679540da6eef757bd9ae5c">UART0_RSRECR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00012">uart.h:12</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa0441def9484e671fd3767f10e469f68">UART0_TDR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00028">uart.h:28</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa34e170e810783cf2362d819676c2612">UART0_LCRH</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00017">uart.h:17</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5f7f3bfc42c4e8c1d5c28001ae8ce108">UART0_BASE</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00009">uart.h:9</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba84799ccb9671dc1763980f8ee7475dca">UART0_FBRD</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00016">uart.h:16</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55bacd09e3b8004496a64e0497a840f1d58c">UART0_IMSC</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00020">uart.h:20</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baea5d1f84efe6d5ee9b230a4cefc1ca88">UART0_DMACR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00024">uart.h:24</a></div></div>
+<div class="ttc" id="mmio_8h_html"><div class="ttname"><a href="mmio_8h.html">mmio.h</a></div></div>
+<div class="ttc" id="uart_8h_html_a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220"><div class="ttname"><a href="uart_8h.html#a06fc87d81c62e9abb8790b6e5713c55baf1b90fc306ba740ea2d2dc8dca188220">UART0_ILPR</a></div><div class="ttdef"><b>Definition:</b> <a href="uart_8h_source.html#l00014">uart.h:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_670c7ff2d659643bc9b971f25d384934.html">arm32</a></li><li class="navelem"><a class="el" href="dir_38a310d268d349e7b41163368c5e1c83.html">include</a></li><li class="navelem"><a class="el" href="dir_c9b122792e7d4a1a70ec1e655a3176ba.html">devices</a></li><li class="navelem"><a class="el" href="uart_8h.html">uart.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

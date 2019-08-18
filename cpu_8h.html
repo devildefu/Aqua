@@ -1,0 +1,2037 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('cpu_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle">
+<div class="title">cpu.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;<a class="el" href="debug_8h_source.html">debug/debug.h</a>&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="stdio_8h_source.html">stdio.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="string_8h_source.html">string.h</a>&gt;</code><br />
+</div>
+<p><a href="cpu_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_c_p_u___i_n_f_o.html">CPU_INFO</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aea40363130ccd9d4c7e89aa737f73928"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aea40363130ccd9d4c7e89aa737f73928">ECX_SSE3</a>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
+<tr class="separator:aea40363130ccd9d4c7e89aa737f73928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88006299e38c976b1eb1576f5f0508fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a88006299e38c976b1eb1576f5f0508fe">ECX_PCLMULQDQ</a>&#160;&#160;&#160;(1 &lt;&lt; 1)</td></tr>
+<tr class="separator:a88006299e38c976b1eb1576f5f0508fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f0e06cb94d0e0c3f2bab3f8c6d1863f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2f0e06cb94d0e0c3f2bab3f8c6d1863f">ECX_DTES64</a>&#160;&#160;&#160;(1 &lt;&lt; 2)</td></tr>
+<tr class="separator:a2f0e06cb94d0e0c3f2bab3f8c6d1863f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27146cfe684acf96c9817eff2d1d1027"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a27146cfe684acf96c9817eff2d1d1027">ECX_MONITOR</a>&#160;&#160;&#160;(1 &lt;&lt; 3)</td></tr>
+<tr class="separator:a27146cfe684acf96c9817eff2d1d1027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e3f2da1d8254e07b318ac9e707af19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a99e3f2da1d8254e07b318ac9e707af19">ECX_DS_CPL</a>&#160;&#160;&#160;(1 &lt;&lt; 4)</td></tr>
+<tr class="separator:a99e3f2da1d8254e07b318ac9e707af19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed75bfda2658ce0abde52516068e8dec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aed75bfda2658ce0abde52516068e8dec">ECX_VMX</a>&#160;&#160;&#160;(1 &lt;&lt; 5)</td></tr>
+<tr class="separator:aed75bfda2658ce0abde52516068e8dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcb5019b5501e71a85eb19e50dc6937d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#afcb5019b5501e71a85eb19e50dc6937d">ECX_SMX</a>&#160;&#160;&#160;(1 &lt;&lt; 6)</td></tr>
+<tr class="separator:afcb5019b5501e71a85eb19e50dc6937d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a867c000609c5cab333cfe7fdec00da2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a867c000609c5cab333cfe7fdec00da2d">ECX_EST</a>&#160;&#160;&#160;(1 &lt;&lt; 7)</td></tr>
+<tr class="separator:a867c000609c5cab333cfe7fdec00da2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade524e9bdbe9bcbc9e5891520fd90bc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ade524e9bdbe9bcbc9e5891520fd90bc8">ECX_TM2</a>&#160;&#160;&#160;(1 &lt;&lt; 8)</td></tr>
+<tr class="separator:ade524e9bdbe9bcbc9e5891520fd90bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adead9f0882ae71eaa184683013c29c09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#adead9f0882ae71eaa184683013c29c09">ECX_SSSE3</a>&#160;&#160;&#160;(1 &lt;&lt; 9)</td></tr>
+<tr class="separator:adead9f0882ae71eaa184683013c29c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ce8b2a030b99c9b238d494aa758edb4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a7ce8b2a030b99c9b238d494aa758edb4">ECX_CNXT_ID</a>&#160;&#160;&#160;(1 &lt;&lt; 10)</td></tr>
+<tr class="separator:a7ce8b2a030b99c9b238d494aa758edb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8670a3a65aa96e663591d9f277eaccd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac8670a3a65aa96e663591d9f277eaccd">ECX_FMA</a>&#160;&#160;&#160;(1 &lt;&lt; 12)</td></tr>
+<tr class="separator:ac8670a3a65aa96e663591d9f277eaccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773e7f78a4a9bb86e99a27501c79f6fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a773e7f78a4a9bb86e99a27501c79f6fc">ECX_CX16</a>&#160;&#160;&#160;(1 &lt;&lt; 13)</td></tr>
+<tr class="separator:a773e7f78a4a9bb86e99a27501c79f6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa907c0beedeb79202076709d4bb09cac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa907c0beedeb79202076709d4bb09cac">ECX_XTPR</a>&#160;&#160;&#160;(1 &lt;&lt; 14)</td></tr>
+<tr class="separator:aa907c0beedeb79202076709d4bb09cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa87a6cf2cf7e0b63b2630873e46894db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa87a6cf2cf7e0b63b2630873e46894db">ECX_PDCM</a>&#160;&#160;&#160;(1 &lt;&lt; 15)</td></tr>
+<tr class="separator:aa87a6cf2cf7e0b63b2630873e46894db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a947bf94a2d4a994827fd10caeb2527e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a947bf94a2d4a994827fd10caeb2527e3">ECX_PCID</a>&#160;&#160;&#160;(1 &lt;&lt; 17)</td></tr>
+<tr class="separator:a947bf94a2d4a994827fd10caeb2527e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aade9b84e1aa8231731065de50a865bb4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aade9b84e1aa8231731065de50a865bb4">ECX_DCA</a>&#160;&#160;&#160;(1 &lt;&lt; 18)</td></tr>
+<tr class="separator:aade9b84e1aa8231731065de50a865bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a910c539f21ccd254628ade665ddfb1ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a910c539f21ccd254628ade665ddfb1ab">ECX_SSE41</a>&#160;&#160;&#160;(1 &lt;&lt; 19)</td></tr>
+<tr class="separator:a910c539f21ccd254628ade665ddfb1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10db7841963e9f64b870ea960e27cd51"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a10db7841963e9f64b870ea960e27cd51">ECX_SSE42</a>&#160;&#160;&#160;(1 &lt;&lt; 20)</td></tr>
+<tr class="separator:a10db7841963e9f64b870ea960e27cd51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c5ff002801115c449bf38cd4abad370"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a8c5ff002801115c449bf38cd4abad370">ECX_X2APIC</a>&#160;&#160;&#160;(1 &lt;&lt; 21)</td></tr>
+<tr class="separator:a8c5ff002801115c449bf38cd4abad370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a673d46b999e2039c8eab155deba2795b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a673d46b999e2039c8eab155deba2795b">ECX_MOVBE</a>&#160;&#160;&#160;(1 &lt;&lt; 22)</td></tr>
+<tr class="separator:a673d46b999e2039c8eab155deba2795b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fa42d78070f22e934f5f3008c5aa49f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a9fa42d78070f22e934f5f3008c5aa49f">ECX_POPCNT</a>&#160;&#160;&#160;(1 &lt;&lt; 23)</td></tr>
+<tr class="separator:a9fa42d78070f22e934f5f3008c5aa49f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abea85010fe030520df7caa50eb1713b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#abea85010fe030520df7caa50eb1713b0">ECX_TSC</a>&#160;&#160;&#160;(1 &lt;&lt; 24)</td></tr>
+<tr class="separator:abea85010fe030520df7caa50eb1713b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392a5490e1de75744ac9e15b2b1e2f10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a392a5490e1de75744ac9e15b2b1e2f10">ECX_AESNI</a>&#160;&#160;&#160;(1 &lt;&lt; 25)</td></tr>
+<tr class="separator:a392a5490e1de75744ac9e15b2b1e2f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bb9abac5611dd05d00482be7c9e808"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac8bb9abac5611dd05d00482be7c9e808">ECX_XSAVE</a>&#160;&#160;&#160;(1 &lt;&lt; 26)</td></tr>
+<tr class="separator:ac8bb9abac5611dd05d00482be7c9e808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb62a3cd9d14bbad65660cb66fd42d81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#abb62a3cd9d14bbad65660cb66fd42d81">ECX_OSXSAVE</a>&#160;&#160;&#160;(1 &lt;&lt; 27)</td></tr>
+<tr class="separator:abb62a3cd9d14bbad65660cb66fd42d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd4cf8905dae4fd3e5a8fbeec714a78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a9dd4cf8905dae4fd3e5a8fbeec714a78">ECX_AVX</a>&#160;&#160;&#160;(1 &lt;&lt; 28)</td></tr>
+<tr class="separator:a9dd4cf8905dae4fd3e5a8fbeec714a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a493b67200dada6ff6748e64fc59b51ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a493b67200dada6ff6748e64fc59b51ea">ECX_F16C</a>&#160;&#160;&#160;(1 &lt;&lt; 29)</td></tr>
+<tr class="separator:a493b67200dada6ff6748e64fc59b51ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43ed2edda144fb065a33af72cb74708d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a43ed2edda144fb065a33af72cb74708d">ECX_RDRAND</a>&#160;&#160;&#160;(1 &lt;&lt; 30)</td></tr>
+<tr class="separator:a43ed2edda144fb065a33af72cb74708d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0ef1551723fe0271392495d155f9ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a8b0ef1551723fe0271392495d155f9ed">EDX_FPU</a>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
+<tr class="separator:a8b0ef1551723fe0271392495d155f9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09b05a6f9ea9cd8491705aa5a24a6fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ae09b05a6f9ea9cd8491705aa5a24a6fa">EDX_VME</a>&#160;&#160;&#160;(1 &lt;&lt; 1)</td></tr>
+<tr class="separator:ae09b05a6f9ea9cd8491705aa5a24a6fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffb4c68958b1a27682f3e86cb8756dc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a3ffb4c68958b1a27682f3e86cb8756dc">EDX_DE</a>&#160;&#160;&#160;(1 &lt;&lt; 2)</td></tr>
+<tr class="separator:a3ffb4c68958b1a27682f3e86cb8756dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a788411e5452e502dc20fcacdf4799ccb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a788411e5452e502dc20fcacdf4799ccb">EDX_PSE</a>&#160;&#160;&#160;(1 &lt;&lt; 3)</td></tr>
+<tr class="separator:a788411e5452e502dc20fcacdf4799ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ab73c8dc4cf7f6d6b24800d7991f3a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ab6ab73c8dc4cf7f6d6b24800d7991f3a">EDX_TSC</a>&#160;&#160;&#160;(1 &lt;&lt; 4)</td></tr>
+<tr class="separator:ab6ab73c8dc4cf7f6d6b24800d7991f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea31f6d48e27d721488c9237dc82a8ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aea31f6d48e27d721488c9237dc82a8ec">EDX_MSR</a>&#160;&#160;&#160;(1 &lt;&lt; 5)</td></tr>
+<tr class="separator:aea31f6d48e27d721488c9237dc82a8ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeef18667596f1d5f295ba641b84aea16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aeef18667596f1d5f295ba641b84aea16">EDX_PAE</a>&#160;&#160;&#160;(1 &lt;&lt; 6)</td></tr>
+<tr class="separator:aeef18667596f1d5f295ba641b84aea16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3ec694ce4542e0458eaaf2769b44537"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ab3ec694ce4542e0458eaaf2769b44537">EDX_MCE</a>&#160;&#160;&#160;(1 &lt;&lt; 7)</td></tr>
+<tr class="separator:ab3ec694ce4542e0458eaaf2769b44537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad35b13967c9a0ab20179509fcd19ae1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aad35b13967c9a0ab20179509fcd19ae1">EDX_CX8</a>&#160;&#160;&#160;(1 &lt;&lt; 8)</td></tr>
+<tr class="separator:aad35b13967c9a0ab20179509fcd19ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8410aec38ee96c662f35fba3c5ef16b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ad8410aec38ee96c662f35fba3c5ef16b">EDX_APIC</a>&#160;&#160;&#160;(1 &lt;&lt; 9)</td></tr>
+<tr class="separator:ad8410aec38ee96c662f35fba3c5ef16b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540c4fc3352a42253fe3c942f118306e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a540c4fc3352a42253fe3c942f118306e">EDX_SEP</a>&#160;&#160;&#160;(1 &lt;&lt; 11)</td></tr>
+<tr class="separator:a540c4fc3352a42253fe3c942f118306e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0e55fb245f2e2de587822d934d71d5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a5b0e55fb245f2e2de587822d934d71d5">EDX_MTRR</a>&#160;&#160;&#160;(1 &lt;&lt; 12)</td></tr>
+<tr class="separator:a5b0e55fb245f2e2de587822d934d71d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73d42efffc1c0de0fc011d5a8c905e84"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a73d42efffc1c0de0fc011d5a8c905e84">EDX_PGE</a>&#160;&#160;&#160;(1 &lt;&lt; 13)</td></tr>
+<tr class="separator:a73d42efffc1c0de0fc011d5a8c905e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c09c3f6eefb2a1ebea5a9d504b48ae2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2c09c3f6eefb2a1ebea5a9d504b48ae2">EDX_MCA</a>&#160;&#160;&#160;(1 &lt;&lt; 14)</td></tr>
+<tr class="separator:a2c09c3f6eefb2a1ebea5a9d504b48ae2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12c3d2ed0a9654f54765a9e7460da598"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a12c3d2ed0a9654f54765a9e7460da598">EDX_CMOV</a>&#160;&#160;&#160;(1 &lt;&lt; 15)</td></tr>
+<tr class="separator:a12c3d2ed0a9654f54765a9e7460da598"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5144147c0a6a325b093e7085f65bceb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac5144147c0a6a325b093e7085f65bceb">EDX_PAT</a>&#160;&#160;&#160;(1 &lt;&lt; 16)</td></tr>
+<tr class="separator:ac5144147c0a6a325b093e7085f65bceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95daa6db40e5e4ead4580d776415f239"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a95daa6db40e5e4ead4580d776415f239">EDX_PSE36</a>&#160;&#160;&#160;(1 &lt;&lt; 17)</td></tr>
+<tr class="separator:a95daa6db40e5e4ead4580d776415f239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cad8344c1fde4647d3296482da57a1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2cad8344c1fde4647d3296482da57a1a">EDX_PSN</a>&#160;&#160;&#160;(1 &lt;&lt; 18)</td></tr>
+<tr class="separator:a2cad8344c1fde4647d3296482da57a1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6273a34177b8c2eb9f5c77a15d1bd42f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a6273a34177b8c2eb9f5c77a15d1bd42f">EDX_CLFLUSH</a>&#160;&#160;&#160;(1 &lt;&lt; 19)</td></tr>
+<tr class="separator:a6273a34177b8c2eb9f5c77a15d1bd42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6797d78f8ff5e2faed04e3fdd49d66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a4a6797d78f8ff5e2faed04e3fdd49d66">EDX_DS</a>&#160;&#160;&#160;(1 &lt;&lt; 21)</td></tr>
+<tr class="separator:a4a6797d78f8ff5e2faed04e3fdd49d66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e42f48d8327853ac9946239b5078f19"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a5e42f48d8327853ac9946239b5078f19">EDX_ACPI</a>&#160;&#160;&#160;(1 &lt;&lt; 22)</td></tr>
+<tr class="separator:a5e42f48d8327853ac9946239b5078f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a3ef54ca6bc42f3e4815c5c10b66e41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a3a3ef54ca6bc42f3e4815c5c10b66e41">EDX_MMX</a>&#160;&#160;&#160;(1 &lt;&lt; 23)</td></tr>
+<tr class="separator:a3a3ef54ca6bc42f3e4815c5c10b66e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8153a684e9964ae00247a4ca5fd2a22e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a8153a684e9964ae00247a4ca5fd2a22e">EDX_FXSR</a>&#160;&#160;&#160;(1 &lt;&lt; 24)</td></tr>
+<tr class="separator:a8153a684e9964ae00247a4ca5fd2a22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1556ce3fb2d89acf7980d369f7ab7d89"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a1556ce3fb2d89acf7980d369f7ab7d89">EDX_SSE</a>&#160;&#160;&#160;(1 &lt;&lt; 25)</td></tr>
+<tr class="separator:a1556ce3fb2d89acf7980d369f7ab7d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4a6c8eacee56abaf7f7010ae619a4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a2c4a6c8eacee56abaf7f7010ae619a4b">EDX_SSE2</a>&#160;&#160;&#160;(1 &lt;&lt; 26)</td></tr>
+<tr class="separator:a2c4a6c8eacee56abaf7f7010ae619a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfaf379e276c5129dda2cab7e70846ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#adfaf379e276c5129dda2cab7e70846ef">EDX_SS</a>&#160;&#160;&#160;(1 &lt;&lt; 27)</td></tr>
+<tr class="separator:adfaf379e276c5129dda2cab7e70846ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36c3ca3dc06f341d7b115d20e0764eb2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a36c3ca3dc06f341d7b115d20e0764eb2">EDX_HTT</a>&#160;&#160;&#160;(1 &lt;&lt; 28)</td></tr>
+<tr class="separator:a36c3ca3dc06f341d7b115d20e0764eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89de2f3104e154abe2d289115ef60826"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a89de2f3104e154abe2d289115ef60826">EDX_TM</a>&#160;&#160;&#160;(1 &lt;&lt; 29)</td></tr>
+<tr class="separator:a89de2f3104e154abe2d289115ef60826"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab25d114021d91efd3861dd1edab22b00"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ab25d114021d91efd3861dd1edab22b00">EDX_PBE</a>&#160;&#160;&#160;(1 &lt;&lt; 31)</td></tr>
+<tr class="separator:ab25d114021d91efd3861dd1edab22b00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818a32e2d1996dd7c79ae06d3aa4c6b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a818a32e2d1996dd7c79ae06d3aa4c6b6">EDX_SYSCALL</a>&#160;&#160;&#160;(1 &lt;&lt; 11)</td></tr>
+<tr class="separator:a818a32e2d1996dd7c79ae06d3aa4c6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67fcad41aa64234f4334e88f4969b80"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac67fcad41aa64234f4334e88f4969b80">EDX_MP</a>&#160;&#160;&#160;(1 &lt;&lt; 19)</td></tr>
+<tr class="separator:ac67fcad41aa64234f4334e88f4969b80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1845ee981200a5f5512d9d0fbc8fc779"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a1845ee981200a5f5512d9d0fbc8fc779">EDX_NX</a>&#160;&#160;&#160;(1 &lt;&lt; 20)</td></tr>
+<tr class="separator:a1845ee981200a5f5512d9d0fbc8fc779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d21862e9e0ef8df32f608127b1c641c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a6d21862e9e0ef8df32f608127b1c641c">EDX_MMXEXT</a>&#160;&#160;&#160;(1 &lt;&lt; 22)</td></tr>
+<tr class="separator:a6d21862e9e0ef8df32f608127b1c641c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86d4a58038067bae396c64c68721f180"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a86d4a58038067bae396c64c68721f180">EDX_FXSR_OPT</a>&#160;&#160;&#160;(1 &lt;&lt; 25)</td></tr>
+<tr class="separator:a86d4a58038067bae396c64c68721f180"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade94ed02d5475ab6008229944b594dd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ade94ed02d5475ab6008229944b594dd0">EDX_1GB_PAGE</a>&#160;&#160;&#160;(1 &lt;&lt; 26)</td></tr>
+<tr class="separator:ade94ed02d5475ab6008229944b594dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cb3f8b38750485ac9715dcfbc407b9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a0cb3f8b38750485ac9715dcfbc407b9b">EDX_RDTSCP</a>&#160;&#160;&#160;(1 &lt;&lt; 27)</td></tr>
+<tr class="separator:a0cb3f8b38750485ac9715dcfbc407b9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fad8a7de471fcd3e77bdecdff29985b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a6fad8a7de471fcd3e77bdecdff29985b">EDX_64_BIT</a>&#160;&#160;&#160;(1 &lt;&lt; 29)</td></tr>
+<tr class="separator:a6fad8a7de471fcd3e77bdecdff29985b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac88d2bc3afe53843e177f2d77e914c9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac88d2bc3afe53843e177f2d77e914c9f">EDX_3DNOW</a>&#160;&#160;&#160;(1 &lt;&lt; 31)</td></tr>
+<tr class="separator:ac88d2bc3afe53843e177f2d77e914c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac31bd0671d65b6fe7776ce2f282ee804"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac31bd0671d65b6fe7776ce2f282ee804">EDX_3DNOWEXT</a>&#160;&#160;&#160;(1 &lt;&lt; 30)</td></tr>
+<tr class="separator:ac31bd0671d65b6fe7776ce2f282ee804"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd78513cdfb8208f03af6d1966a5868c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#afd78513cdfb8208f03af6d1966a5868c">ECX_LAHF_LM</a>&#160;&#160;&#160;(1 &lt;&lt; 0)</td></tr>
+<tr class="separator:afd78513cdfb8208f03af6d1966a5868c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a686754d06918c8e16dc9a596e8c3ebe9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a686754d06918c8e16dc9a596e8c3ebe9">ECX_CMP_LEGACY</a>&#160;&#160;&#160;(1 &lt;&lt; 1)</td></tr>
+<tr class="separator:a686754d06918c8e16dc9a596e8c3ebe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa64685097d9313701e3ea9315c883fa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa64685097d9313701e3ea9315c883fa1">ECX_SVM</a>&#160;&#160;&#160;(1 &lt;&lt; 2)</td></tr>
+<tr class="separator:aa64685097d9313701e3ea9315c883fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad7afa23878cf3fb18e3a29cf4124bef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aad7afa23878cf3fb18e3a29cf4124bef">ECX_EXTAPIC</a>&#160;&#160;&#160;(1 &lt;&lt; 3)</td></tr>
+<tr class="separator:aad7afa23878cf3fb18e3a29cf4124bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d1dcd18378f0df7b47c3542a52a5e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#af5d1dcd18378f0df7b47c3542a52a5e6">ECX_CR8_LEGACY</a>&#160;&#160;&#160;(1 &lt;&lt; 4)</td></tr>
+<tr class="separator:af5d1dcd18378f0df7b47c3542a52a5e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae112cb26aa6e69501f90fcbb6d431aed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ae112cb26aa6e69501f90fcbb6d431aed">ECX_ABM</a>&#160;&#160;&#160;(1 &lt;&lt; 5)</td></tr>
+<tr class="separator:ae112cb26aa6e69501f90fcbb6d431aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7c287071ff137da9c1152c2d47a2a31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ae7c287071ff137da9c1152c2d47a2a31">ECX_SSE4A</a>&#160;&#160;&#160;(1 &lt;&lt; 6)</td></tr>
+<tr class="separator:ae7c287071ff137da9c1152c2d47a2a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f8301d4672fce5326f020e5c306b147"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a0f8301d4672fce5326f020e5c306b147">ECX_MISALIGNSSE</a>&#160;&#160;&#160;(1 &lt;&lt; 7)</td></tr>
+<tr class="separator:a0f8301d4672fce5326f020e5c306b147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d805817d9aad6acd7640ff0171cb569"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a4d805817d9aad6acd7640ff0171cb569">ECX_3DNOW_PREFETCH</a>&#160;&#160;&#160;(1 &lt;&lt; 8)</td></tr>
+<tr class="separator:a4d805817d9aad6acd7640ff0171cb569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0682948e99dfc7ac16c1be343f050dfb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a0682948e99dfc7ac16c1be343f050dfb">ECX_OSVW</a>&#160;&#160;&#160;(1 &lt;&lt; 9)</td></tr>
+<tr class="separator:a0682948e99dfc7ac16c1be343f050dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec3f6bb666b0a59863dde12aba9d2cbb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aec3f6bb666b0a59863dde12aba9d2cbb">ECX_IBS</a>&#160;&#160;&#160;(1 &lt;&lt; 10)</td></tr>
+<tr class="separator:aec3f6bb666b0a59863dde12aba9d2cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affbd63acb3a4e62e3a5d3bfefafc3acd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#affbd63acb3a4e62e3a5d3bfefafc3acd">ECX_XOP</a>&#160;&#160;&#160;(1 &lt;&lt; 11)</td></tr>
+<tr class="separator:affbd63acb3a4e62e3a5d3bfefafc3acd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac80f45a29445fe52f7f56ab17d0a6e05"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac80f45a29445fe52f7f56ab17d0a6e05">ECX_SKINIT</a>&#160;&#160;&#160;(1 &lt;&lt; 12)</td></tr>
+<tr class="separator:ac80f45a29445fe52f7f56ab17d0a6e05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110448e0f526d5d87a62901eb08fd2e5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a110448e0f526d5d87a62901eb08fd2e5">ECX_WDT</a>&#160;&#160;&#160;(1 &lt;&lt; 13)</td></tr>
+<tr class="separator:a110448e0f526d5d87a62901eb08fd2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59166c54bc0d83ba62ff288997e98c2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a59166c54bc0d83ba62ff288997e98c2c">ECX_LWP</a>&#160;&#160;&#160;(1 &lt;&lt; 15)</td></tr>
+<tr class="separator:a59166c54bc0d83ba62ff288997e98c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab98bea9dde0e743d99d08e6a9a1b2077"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ab98bea9dde0e743d99d08e6a9a1b2077">ECX_FMA4</a>&#160;&#160;&#160;(1 &lt;&lt; 16)</td></tr>
+<tr class="separator:ab98bea9dde0e743d99d08e6a9a1b2077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a260666eada63753955ccba433dc821de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a260666eada63753955ccba433dc821de">ECX_TCE</a>&#160;&#160;&#160;(1 &lt;&lt; 17)</td></tr>
+<tr class="separator:a260666eada63753955ccba433dc821de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fdb5e5d8bb27d511e4b64afc0dfd6f9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a1fdb5e5d8bb27d511e4b64afc0dfd6f9">ECX_NODEID_MSR</a>&#160;&#160;&#160;(1 &lt;&lt; 19)</td></tr>
+<tr class="separator:a1fdb5e5d8bb27d511e4b64afc0dfd6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abab0367bb80c194328b334dd8f586dff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#abab0367bb80c194328b334dd8f586dff">ECX_TBM</a>&#160;&#160;&#160;(1 &lt;&lt; 21)</td></tr>
+<tr class="separator:abab0367bb80c194328b334dd8f586dff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec8c82b1345e8cf76609138789cd151"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a7ec8c82b1345e8cf76609138789cd151">ECX_TOPOEXT</a>&#160;&#160;&#160;(1 &lt;&lt; 22)</td></tr>
+<tr class="separator:a7ec8c82b1345e8cf76609138789cd151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa66ccbe8f26b9d5decde1e995a4bf73e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa66ccbe8f26b9d5decde1e995a4bf73e">ECX_PERFCTR_CORE</a>&#160;&#160;&#160;(1 &lt;&lt; 23)</td></tr>
+<tr class="separator:aa66ccbe8f26b9d5decde1e995a4bf73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af97aa43907c2afc72a1b8be6bd987dab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#af97aa43907c2afc72a1b8be6bd987dab">ECX_PERFCTR_NB</a>&#160;&#160;&#160;(1 &lt;&lt; 24)</td></tr>
+<tr class="separator:af97aa43907c2afc72a1b8be6bd987dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e09f4feac654e6d81ea4bf44030ea7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a78e09f4feac654e6d81ea4bf44030ea7">ECX_DBX</a>&#160;&#160;&#160;(1 &lt;&lt; 26)</td></tr>
+<tr class="separator:a78e09f4feac654e6d81ea4bf44030ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8a6c2c088003d149b60c44af4f78e55"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#af8a6c2c088003d149b60c44af4f78e55">ECX_PERFTSC</a>&#160;&#160;&#160;(1 &lt;&lt; 27)</td></tr>
+<tr class="separator:af8a6c2c088003d149b60c44af4f78e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19196c54d382f2f222af82f2e9340837"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#a19196c54d382f2f222af82f2e9340837">ECX_PCX_L2I</a>&#160;&#160;&#160;(1 &lt;&lt; 28)</td></tr>
+<tr class="separator:a19196c54d382f2f222af82f2e9340837"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aa8cc1b240610d5c5fed0a1cb0addaad7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#aa8cc1b240610d5c5fed0a1cb0addaad7">cpu_info</a> (<a class="el" href="struct_c_p_u___i_n_f_o.html">CPU_INFO</a> *ptr)</td></tr>
+<tr class="separator:aa8cc1b240610d5c5fed0a1cb0addaad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9bbe78baf811e0f7141364b012d27a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cpu_8h.html#ac9bbe78baf811e0f7141364b012d27a7">cpu_print_info</a> ()</td></tr>
+<tr class="separator:ac9bbe78baf811e0f7141364b012d27a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a4d805817d9aad6acd7640ff0171cb569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d805817d9aad6acd7640ff0171cb569">&#9670;&nbsp;</a></span>ECX_3DNOW_PREFETCH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_3DNOW_PREFETCH&#160;&#160;&#160;(1 &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>PREFETCH and PREFETCHW instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00163">163</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ae112cb26aa6e69501f90fcbb6d431aed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae112cb26aa6e69501f90fcbb6d431aed">&#9670;&nbsp;</a></span>ECX_ABM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_ABM&#160;&#160;&#160;(1 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Advanced bit manipulation </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00157">157</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a392a5490e1de75744ac9e15b2b1e2f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392a5490e1de75744ac9e15b2b1e2f10">&#9670;&nbsp;</a></span>ECX_AESNI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_AESNI&#160;&#160;&#160;(1 &lt;&lt; 25)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>AESNI Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00051">51</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a9dd4cf8905dae4fd3e5a8fbeec714a78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dd4cf8905dae4fd3e5a8fbeec714a78">&#9670;&nbsp;</a></span>ECX_AVX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_AVX&#160;&#160;&#160;(1 &lt;&lt; 28)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>AVX Instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00057">57</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a686754d06918c8e16dc9a596e8c3ebe9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a686754d06918c8e16dc9a596e8c3ebe9">&#9670;&nbsp;</a></span>ECX_CMP_LEGACY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_CMP_LEGACY&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Hyperthreading not valid </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00149">149</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a7ce8b2a030b99c9b238d494aa758edb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ce8b2a030b99c9b238d494aa758edb4">&#9670;&nbsp;</a></span>ECX_CNXT_ID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_CNXT_ID&#160;&#160;&#160;(1 &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>L1 Context ID </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00025">25</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="af5d1dcd18378f0df7b47c3542a52a5e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d1dcd18378f0df7b47c3542a52a5e6">&#9670;&nbsp;</a></span>ECX_CR8_LEGACY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_CR8_LEGACY&#160;&#160;&#160;(1 &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CR8 in 32-bit mode </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00155">155</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a773e7f78a4a9bb86e99a27501c79f6fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773e7f78a4a9bb86e99a27501c79f6fc">&#9670;&nbsp;</a></span>ECX_CX16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_CX16&#160;&#160;&#160;(1 &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CMPXCHG16B Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00029">29</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a78e09f4feac654e6d81ea4bf44030ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e09f4feac654e6d81ea4bf44030ea7">&#9670;&nbsp;</a></span>ECX_DBX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_DBX&#160;&#160;&#160;(1 &lt;&lt; 26)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Data breakpoint extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00191">191</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aade9b84e1aa8231731065de50a865bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aade9b84e1aa8231731065de50a865bb4">&#9670;&nbsp;</a></span>ECX_DCA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_DCA&#160;&#160;&#160;(1 &lt;&lt; 18)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Direct Cache Access </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00037">37</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a99e3f2da1d8254e07b318ac9e707af19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e3f2da1d8254e07b318ac9e707af19">&#9670;&nbsp;</a></span>ECX_DS_CPL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_DS_CPL&#160;&#160;&#160;(1 &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CPL Qualified Debug Store </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00013">13</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a2f0e06cb94d0e0c3f2bab3f8c6d1863f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f0e06cb94d0e0c3f2bab3f8c6d1863f">&#9670;&nbsp;</a></span>ECX_DTES64</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_DTES64&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>64-Bit Debug Store Area </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00009">9</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a867c000609c5cab333cfe7fdec00da2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a867c000609c5cab333cfe7fdec00da2d">&#9670;&nbsp;</a></span>ECX_EST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_EST&#160;&#160;&#160;(1 &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enhanced SpeedStep Technology </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00019">19</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aad7afa23878cf3fb18e3a29cf4124bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad7afa23878cf3fb18e3a29cf4124bef">&#9670;&nbsp;</a></span>ECX_EXTAPIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_EXTAPIC&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended APIC space </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00153">153</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a493b67200dada6ff6748e64fc59b51ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493b67200dada6ff6748e64fc59b51ea">&#9670;&nbsp;</a></span>ECX_F16C</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_F16C&#160;&#160;&#160;(1 &lt;&lt; 29)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>16-bit Floating Point Instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00059">59</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac8670a3a65aa96e663591d9f277eaccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8670a3a65aa96e663591d9f277eaccd">&#9670;&nbsp;</a></span>ECX_FMA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_FMA&#160;&#160;&#160;(1 &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Fused Multiply Add </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00027">27</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ab98bea9dde0e743d99d08e6a9a1b2077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab98bea9dde0e743d99d08e6a9a1b2077">&#9670;&nbsp;</a></span>ECX_FMA4</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_FMA4&#160;&#160;&#160;(1 &lt;&lt; 16)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>4 operands fused multiply-add </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00177">177</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aec3f6bb666b0a59863dde12aba9d2cbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec3f6bb666b0a59863dde12aba9d2cbb">&#9670;&nbsp;</a></span>ECX_IBS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_IBS&#160;&#160;&#160;(1 &lt;&lt; 10)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Instruction Based Sampling </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00167">167</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="afd78513cdfb8208f03af6d1966a5868c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd78513cdfb8208f03af6d1966a5868c">&#9670;&nbsp;</a></span>ECX_LAHF_LM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_LAHF_LM&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>LAHF/SAHF in long mode </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00147">147</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a59166c54bc0d83ba62ff288997e98c2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59166c54bc0d83ba62ff288997e98c2c">&#9670;&nbsp;</a></span>ECX_LWP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_LWP&#160;&#160;&#160;(1 &lt;&lt; 15)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Light Weight Profiling </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00175">175</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a0f8301d4672fce5326f020e5c306b147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f8301d4672fce5326f020e5c306b147">&#9670;&nbsp;</a></span>ECX_MISALIGNSSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_MISALIGNSSE&#160;&#160;&#160;(1 &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Misaligned SSE mode </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00161">161</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a27146cfe684acf96c9817eff2d1d1027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27146cfe684acf96c9817eff2d1d1027">&#9670;&nbsp;</a></span>ECX_MONITOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_MONITOR&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MONITOR/MWAIT </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00011">11</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a673d46b999e2039c8eab155deba2795b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a673d46b999e2039c8eab155deba2795b">&#9670;&nbsp;</a></span>ECX_MOVBE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_MOVBE&#160;&#160;&#160;(1 &lt;&lt; 22)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MOVBE Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00045">45</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a1fdb5e5d8bb27d511e4b64afc0dfd6f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fdb5e5d8bb27d511e4b64afc0dfd6f9">&#9670;&nbsp;</a></span>ECX_NODEID_MSR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_NODEID_MSR&#160;&#160;&#160;(1 &lt;&lt; 19)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>NodeID MSR </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00181">181</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a0682948e99dfc7ac16c1be343f050dfb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0682948e99dfc7ac16c1be343f050dfb">&#9670;&nbsp;</a></span>ECX_OSVW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_OSVW&#160;&#160;&#160;(1 &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>OS Visible Workaround </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00165">165</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="abb62a3cd9d14bbad65660cb66fd42d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb62a3cd9d14bbad65660cb66fd42d81">&#9670;&nbsp;</a></span>ECX_OSXSAVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_OSXSAVE&#160;&#160;&#160;(1 &lt;&lt; 27)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>OS Enabled Extended State Management </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00055">55</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a947bf94a2d4a994827fd10caeb2527e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a947bf94a2d4a994827fd10caeb2527e3">&#9670;&nbsp;</a></span>ECX_PCID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PCID&#160;&#160;&#160;(1 &lt;&lt; 17)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Process-context Identifiers </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00035">35</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a88006299e38c976b1eb1576f5f0508fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88006299e38c976b1eb1576f5f0508fe">&#9670;&nbsp;</a></span>ECX_PCLMULQDQ</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PCLMULQDQ&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>PCLMULQDQ Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00007">7</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a19196c54d382f2f222af82f2e9340837"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19196c54d382f2f222af82f2e9340837">&#9670;&nbsp;</a></span>ECX_PCX_L2I</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PCX_L2I&#160;&#160;&#160;(1 &lt;&lt; 28)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>L2I perf counter extension </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00195">195</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aa87a6cf2cf7e0b63b2630873e46894db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa87a6cf2cf7e0b63b2630873e46894db">&#9670;&nbsp;</a></span>ECX_PDCM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PDCM&#160;&#160;&#160;(1 &lt;&lt; 15)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Perf/Debug Capability MSR </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00033">33</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aa66ccbe8f26b9d5decde1e995a4bf73e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa66ccbe8f26b9d5decde1e995a4bf73e">&#9670;&nbsp;</a></span>ECX_PERFCTR_CORE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PERFCTR_CORE&#160;&#160;&#160;(1 &lt;&lt; 23)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Core performance counter extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00187">187</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="af97aa43907c2afc72a1b8be6bd987dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af97aa43907c2afc72a1b8be6bd987dab">&#9670;&nbsp;</a></span>ECX_PERFCTR_NB</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PERFCTR_NB&#160;&#160;&#160;(1 &lt;&lt; 24)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>NB performance counter extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00189">189</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="af8a6c2c088003d149b60c44af4f78e55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8a6c2c088003d149b60c44af4f78e55">&#9670;&nbsp;</a></span>ECX_PERFTSC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_PERFTSC&#160;&#160;&#160;(1 &lt;&lt; 27)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Performance TSC </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00193">193</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a9fa42d78070f22e934f5f3008c5aa49f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fa42d78070f22e934f5f3008c5aa49f">&#9670;&nbsp;</a></span>ECX_POPCNT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_POPCNT&#160;&#160;&#160;(1 &lt;&lt; 23)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>POPCNT Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00047">47</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a43ed2edda144fb065a33af72cb74708d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43ed2edda144fb065a33af72cb74708d">&#9670;&nbsp;</a></span>ECX_RDRAND</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_RDRAND&#160;&#160;&#160;(1 &lt;&lt; 30)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>RDRAND Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00061">61</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac80f45a29445fe52f7f56ab17d0a6e05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac80f45a29445fe52f7f56ab17d0a6e05">&#9670;&nbsp;</a></span>ECX_SKINIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SKINIT&#160;&#160;&#160;(1 &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SKINIT/STGI instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00171">171</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="afcb5019b5501e71a85eb19e50dc6937d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcb5019b5501e71a85eb19e50dc6937d">&#9670;&nbsp;</a></span>ECX_SMX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SMX&#160;&#160;&#160;(1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Safer Mode Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00017">17</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aea40363130ccd9d4c7e89aa737f73928"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea40363130ccd9d4c7e89aa737f73928">&#9670;&nbsp;</a></span>ECX_SSE3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SSE3&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Streaming SIMD Extensions 3 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00005">5</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a910c539f21ccd254628ade665ddfb1ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a910c539f21ccd254628ade665ddfb1ab">&#9670;&nbsp;</a></span>ECX_SSE41</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SSE41&#160;&#160;&#160;(1 &lt;&lt; 19)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Streaming SIMD Extensions 4.1 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00039">39</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a10db7841963e9f64b870ea960e27cd51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10db7841963e9f64b870ea960e27cd51">&#9670;&nbsp;</a></span>ECX_SSE42</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SSE42&#160;&#160;&#160;(1 &lt;&lt; 20)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Streaming SIMD Extensions 4.2 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00041">41</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ae7c287071ff137da9c1152c2d47a2a31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7c287071ff137da9c1152c2d47a2a31">&#9670;&nbsp;</a></span>ECX_SSE4A</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SSE4A&#160;&#160;&#160;(1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SSE4a </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00159">159</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="adead9f0882ae71eaa184683013c29c09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adead9f0882ae71eaa184683013c29c09">&#9670;&nbsp;</a></span>ECX_SSSE3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SSSE3&#160;&#160;&#160;(1 &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Supplemental Streaming SIMD Extensions 3 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00023">23</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aa64685097d9313701e3ea9315c883fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa64685097d9313701e3ea9315c883fa1">&#9670;&nbsp;</a></span>ECX_SVM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_SVM&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Secure Virtual Machine </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00151">151</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="abab0367bb80c194328b334dd8f586dff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab0367bb80c194328b334dd8f586dff">&#9670;&nbsp;</a></span>ECX_TBM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_TBM&#160;&#160;&#160;(1 &lt;&lt; 21)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Trailing Bit Manipulation </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00183">183</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a260666eada63753955ccba433dc821de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a260666eada63753955ccba433dc821de">&#9670;&nbsp;</a></span>ECX_TCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_TCE&#160;&#160;&#160;(1 &lt;&lt; 17)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Translation Cache Extension </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00179">179</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ade524e9bdbe9bcbc9e5891520fd90bc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade524e9bdbe9bcbc9e5891520fd90bc8">&#9670;&nbsp;</a></span>ECX_TM2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_TM2&#160;&#160;&#160;(1 &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Thermal Monitor 2 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00021">21</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a7ec8c82b1345e8cf76609138789cd151"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec8c82b1345e8cf76609138789cd151">&#9670;&nbsp;</a></span>ECX_TOPOEXT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_TOPOEXT&#160;&#160;&#160;(1 &lt;&lt; 22)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Topology Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00185">185</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="abea85010fe030520df7caa50eb1713b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea85010fe030520df7caa50eb1713b0">&#9670;&nbsp;</a></span>ECX_TSC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_TSC&#160;&#160;&#160;(1 &lt;&lt; 24)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Local APIC supports TSC Deadline </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00049">49</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aed75bfda2658ce0abde52516068e8dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed75bfda2658ce0abde52516068e8dec">&#9670;&nbsp;</a></span>ECX_VMX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_VMX&#160;&#160;&#160;(1 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Virtual Machine Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00015">15</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a110448e0f526d5d87a62901eb08fd2e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110448e0f526d5d87a62901eb08fd2e5">&#9670;&nbsp;</a></span>ECX_WDT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_WDT&#160;&#160;&#160;(1 &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Watchdog timer </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00173">173</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a8c5ff002801115c449bf38cd4abad370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c5ff002801115c449bf38cd4abad370">&#9670;&nbsp;</a></span>ECX_X2APIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_X2APIC&#160;&#160;&#160;(1 &lt;&lt; 21)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended xAPIC Support </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00043">43</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="affbd63acb3a4e62e3a5d3bfefafc3acd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affbd63acb3a4e62e3a5d3bfefafc3acd">&#9670;&nbsp;</a></span>ECX_XOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_XOP&#160;&#160;&#160;(1 &lt;&lt; 11)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>XOP instruction set </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00169">169</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac8bb9abac5611dd05d00482be7c9e808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8bb9abac5611dd05d00482be7c9e808">&#9670;&nbsp;</a></span>ECX_XSAVE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_XSAVE&#160;&#160;&#160;(1 &lt;&lt; 26)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>XSAVE/XSTOR States </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00053">53</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aa907c0beedeb79202076709d4bb09cac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa907c0beedeb79202076709d4bb09cac">&#9670;&nbsp;</a></span>ECX_XTPR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ECX_XTPR&#160;&#160;&#160;(1 &lt;&lt; 14)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>xTPR Update Control </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00031">31</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ade94ed02d5475ab6008229944b594dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade94ed02d5475ab6008229944b594dd0">&#9670;&nbsp;</a></span>EDX_1GB_PAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_1GB_PAGE&#160;&#160;&#160;(1 &lt;&lt; 26)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>1 GB Pages </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00136">136</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac88d2bc3afe53843e177f2d77e914c9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac88d2bc3afe53843e177f2d77e914c9f">&#9670;&nbsp;</a></span>EDX_3DNOW</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_3DNOW&#160;&#160;&#160;(1 &lt;&lt; 31)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>3DNow! Technology </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00142">142</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac31bd0671d65b6fe7776ce2f282ee804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac31bd0671d65b6fe7776ce2f282ee804">&#9670;&nbsp;</a></span>EDX_3DNOWEXT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_3DNOWEXT&#160;&#160;&#160;(1 &lt;&lt; 30)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended 3DNow! </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00144">144</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a6fad8a7de471fcd3e77bdecdff29985b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fad8a7de471fcd3e77bdecdff29985b">&#9670;&nbsp;</a></span>EDX_64_BIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_64_BIT&#160;&#160;&#160;(1 &lt;&lt; 29)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>64-bit Architecture </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00140">140</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a5e42f48d8327853ac9946239b5078f19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e42f48d8327853ac9946239b5078f19">&#9670;&nbsp;</a></span>EDX_ACPI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_ACPI&#160;&#160;&#160;(1 &lt;&lt; 22)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Thermal Monitor and Software Clock Facilities </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00104">104</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ad8410aec38ee96c662f35fba3c5ef16b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8410aec38ee96c662f35fba3c5ef16b">&#9670;&nbsp;</a></span>EDX_APIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_APIC&#160;&#160;&#160;(1 &lt;&lt; 9)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>APIC On-Chip </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00082">82</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a6273a34177b8c2eb9f5c77a15d1bd42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6273a34177b8c2eb9f5c77a15d1bd42f">&#9670;&nbsp;</a></span>EDX_CLFLUSH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_CLFLUSH&#160;&#160;&#160;(1 &lt;&lt; 19)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CLFLUSH Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00100">100</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a12c3d2ed0a9654f54765a9e7460da598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12c3d2ed0a9654f54765a9e7460da598">&#9670;&nbsp;</a></span>EDX_CMOV</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_CMOV&#160;&#160;&#160;(1 &lt;&lt; 15)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Conditional Move Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00092">92</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aad35b13967c9a0ab20179509fcd19ae1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad35b13967c9a0ab20179509fcd19ae1">&#9670;&nbsp;</a></span>EDX_CX8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_CX8&#160;&#160;&#160;(1 &lt;&lt; 8)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>CMPXCHG8 Instruction </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00080">80</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a3ffb4c68958b1a27682f3e86cb8756dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ffb4c68958b1a27682f3e86cb8756dc">&#9670;&nbsp;</a></span>EDX_DE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_DE&#160;&#160;&#160;(1 &lt;&lt; 2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Debugging Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00068">68</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a4a6797d78f8ff5e2faed04e3fdd49d66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6797d78f8ff5e2faed04e3fdd49d66">&#9670;&nbsp;</a></span>EDX_DS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_DS&#160;&#160;&#160;(1 &lt;&lt; 21)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Debug Store </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00102">102</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a8b0ef1551723fe0271392495d155f9ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b0ef1551723fe0271392495d155f9ed">&#9670;&nbsp;</a></span>EDX_FPU</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_FPU&#160;&#160;&#160;(1 &lt;&lt; 0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Floating-Point Unit On-Chip </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00064">64</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a8153a684e9964ae00247a4ca5fd2a22e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8153a684e9964ae00247a4ca5fd2a22e">&#9670;&nbsp;</a></span>EDX_FXSR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_FXSR&#160;&#160;&#160;(1 &lt;&lt; 24)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>FXSAVE and FXSTOR Instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00108">108</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a86d4a58038067bae396c64c68721f180"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d4a58038067bae396c64c68721f180">&#9670;&nbsp;</a></span>EDX_FXSR_OPT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_FXSR_OPT&#160;&#160;&#160;(1 &lt;&lt; 25)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>FXSAVE/FXRSTOR optimizations </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00134">134</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a36c3ca3dc06f341d7b115d20e0764eb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36c3ca3dc06f341d7b115d20e0764eb2">&#9670;&nbsp;</a></span>EDX_HTT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_HTT&#160;&#160;&#160;(1 &lt;&lt; 28)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multi-Threading </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00116">116</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a2c09c3f6eefb2a1ebea5a9d504b48ae2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c09c3f6eefb2a1ebea5a9d504b48ae2">&#9670;&nbsp;</a></span>EDX_MCA</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MCA&#160;&#160;&#160;(1 &lt;&lt; 14)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Machine-Check Architecture </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00090">90</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ab3ec694ce4542e0458eaaf2769b44537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3ec694ce4542e0458eaaf2769b44537">&#9670;&nbsp;</a></span>EDX_MCE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MCE&#160;&#160;&#160;(1 &lt;&lt; 7)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Machine-Check Exception </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00078">78</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a3a3ef54ca6bc42f3e4815c5c10b66e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a3ef54ca6bc42f3e4815c5c10b66e41">&#9670;&nbsp;</a></span>EDX_MMX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MMX&#160;&#160;&#160;(1 &lt;&lt; 23)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>MMX Technology </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00106">106</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a6d21862e9e0ef8df32f608127b1c641c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d21862e9e0ef8df32f608127b1c641c">&#9670;&nbsp;</a></span>EDX_MMXEXT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MMXEXT&#160;&#160;&#160;(1 &lt;&lt; 22)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extended MMX </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00132">132</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac67fcad41aa64234f4334e88f4969b80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67fcad41aa64234f4334e88f4969b80">&#9670;&nbsp;</a></span>EDX_MP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MP&#160;&#160;&#160;(1 &lt;&lt; 19)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Multiprocessor Capable </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00128">128</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aea31f6d48e27d721488c9237dc82a8ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea31f6d48e27d721488c9237dc82a8ec">&#9670;&nbsp;</a></span>EDX_MSR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MSR&#160;&#160;&#160;(1 &lt;&lt; 5)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Model Specific Registers </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00074">74</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a5b0e55fb245f2e2de587822d934d71d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b0e55fb245f2e2de587822d934d71d5">&#9670;&nbsp;</a></span>EDX_MTRR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_MTRR&#160;&#160;&#160;(1 &lt;&lt; 12)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Memory Type Range Registers </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00086">86</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a1845ee981200a5f5512d9d0fbc8fc779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1845ee981200a5f5512d9d0fbc8fc779">&#9670;&nbsp;</a></span>EDX_NX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_NX&#160;&#160;&#160;(1 &lt;&lt; 20)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>No Executable bit </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00130">130</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="aeef18667596f1d5f295ba641b84aea16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef18667596f1d5f295ba641b84aea16">&#9670;&nbsp;</a></span>EDX_PAE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PAE&#160;&#160;&#160;(1 &lt;&lt; 6)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Physical Address Extension </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00076">76</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ac5144147c0a6a325b093e7085f65bceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5144147c0a6a325b093e7085f65bceb">&#9670;&nbsp;</a></span>EDX_PAT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PAT&#160;&#160;&#160;(1 &lt;&lt; 16)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Page Attribute Table </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00094">94</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ab25d114021d91efd3861dd1edab22b00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab25d114021d91efd3861dd1edab22b00">&#9670;&nbsp;</a></span>EDX_PBE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PBE&#160;&#160;&#160;(1 &lt;&lt; 31)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pending Break Enable </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00120">120</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a73d42efffc1c0de0fc011d5a8c905e84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73d42efffc1c0de0fc011d5a8c905e84">&#9670;&nbsp;</a></span>EDX_PGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PGE&#160;&#160;&#160;(1 &lt;&lt; 13)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Page Global Bit </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00088">88</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a788411e5452e502dc20fcacdf4799ccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a788411e5452e502dc20fcacdf4799ccb">&#9670;&nbsp;</a></span>EDX_PSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PSE&#160;&#160;&#160;(1 &lt;&lt; 3)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Page Size Extension </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00070">70</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a95daa6db40e5e4ead4580d776415f239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95daa6db40e5e4ead4580d776415f239">&#9670;&nbsp;</a></span>EDX_PSE36</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PSE36&#160;&#160;&#160;(1 &lt;&lt; 17)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>36-bit Page Size Extension </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00096">96</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a2cad8344c1fde4647d3296482da57a1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cad8344c1fde4647d3296482da57a1a">&#9670;&nbsp;</a></span>EDX_PSN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_PSN&#160;&#160;&#160;(1 &lt;&lt; 18)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Processor Serial Number </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00098">98</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a0cb3f8b38750485ac9715dcfbc407b9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb3f8b38750485ac9715dcfbc407b9b">&#9670;&nbsp;</a></span>EDX_RDTSCP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_RDTSCP&#160;&#160;&#160;(1 &lt;&lt; 27)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>RDTSCP and IA32_TSC_AUX </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00138">138</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a540c4fc3352a42253fe3c942f118306e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a540c4fc3352a42253fe3c942f118306e">&#9670;&nbsp;</a></span>EDX_SEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_SEP&#160;&#160;&#160;(1 &lt;&lt; 11)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SYSENTER/SYSEXIT instructions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00084">84</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="adfaf379e276c5129dda2cab7e70846ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfaf379e276c5129dda2cab7e70846ef">&#9670;&nbsp;</a></span>EDX_SS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_SS&#160;&#160;&#160;(1 &lt;&lt; 27)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Self Snoop </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00114">114</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a1556ce3fb2d89acf7980d369f7ab7d89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1556ce3fb2d89acf7980d369f7ab7d89">&#9670;&nbsp;</a></span>EDX_SSE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_SSE&#160;&#160;&#160;(1 &lt;&lt; 25)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Streaming SIMD Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00110">110</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a2c4a6c8eacee56abaf7f7010ae619a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4a6c8eacee56abaf7f7010ae619a4b">&#9670;&nbsp;</a></span>EDX_SSE2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_SSE2&#160;&#160;&#160;(1 &lt;&lt; 26)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Streaming SIMD Extensions 2 </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00112">112</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a818a32e2d1996dd7c79ae06d3aa4c6b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818a32e2d1996dd7c79ae06d3aa4c6b6">&#9670;&nbsp;</a></span>EDX_SYSCALL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_SYSCALL&#160;&#160;&#160;(1 &lt;&lt; 11)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>SYSCALL/SYSRET </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00126">126</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="a89de2f3104e154abe2d289115ef60826"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89de2f3104e154abe2d289115ef60826">&#9670;&nbsp;</a></span>EDX_TM</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_TM&#160;&#160;&#160;(1 &lt;&lt; 29)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Thermal Monitor </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00118">118</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ab6ab73c8dc4cf7f6d6b24800d7991f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ab73c8dc4cf7f6d6b24800d7991f3a">&#9670;&nbsp;</a></span>EDX_TSC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_TSC&#160;&#160;&#160;(1 &lt;&lt; 4)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Time Stamp Counter </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00072">72</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<a id="ae09b05a6f9ea9cd8491705aa5a24a6fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09b05a6f9ea9cd8491705aa5a24a6fa">&#9670;&nbsp;</a></span>EDX_VME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EDX_VME&#160;&#160;&#160;(1 &lt;&lt; 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Virtual 8086 Mode Extensions </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8h_source.html#l00066">66</a> of file <a class="el" href="cpu_8h_source.html">cpu.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aa8cc1b240610d5c5fed0a1cb0addaad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8cc1b240610d5c5fed0a1cb0addaad7">&#9670;&nbsp;</a></span>cpu_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cpu_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_c_p_u___i_n_f_o.html">CPU_INFO</a> *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Creates a <a class="el" href="struct_c_p_u___i_n_f_o.html">CPU_INFO</a> object with CPU information.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>A <a class="el" href="struct_c_p_u___i_n_f_o.html">CPU_INFO</a> struct </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8c_source.html#l00005">5</a> of file <a class="el" href="cpu_8c_source.html">cpu.c</a>.</p>
+
+</div>
+</div>
+<a id="ac9bbe78baf811e0f7141364b012d27a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9bbe78baf811e0f7141364b012d27a7">&#9670;&nbsp;</a></span>cpu_print_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cpu_print_info </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prints info about CPU </p>
+
+<p class="definition">Definition at line <a class="el" href="cpu_8c_source.html#l00141">141</a> of file <a class="el" href="cpu_8c_source.html">cpu.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_4a04b9aac4eefdd334a78e565f4616f2.html">arch</a></li><li class="navelem"><a class="el" href="dir_2f75af7b90e18386b84815cf9f122cab.html">i686</a></li><li class="navelem"><a class="el" href="dir_3b7611eeb6c5acaadbaff53b3456fce2.html">include</a></li><li class="navelem"><a class="el" href="dir_fe69386a354d6f3322b2f68a2768507c.html">cpu</a></li><li class="navelem"><a class="el" href="cpu_8h.html">cpu.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,1047 @@
+<!-- HTML header for doxygen 1.8.15-->
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta name="generator" content="Doxygen 1.8.15" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Aqua Documentation</title>
+	<link href="tabs.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="dynsections.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+	<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+	<link href="doxygen.css" rel="stylesheet" type="text/css" />
+	<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<script>
+	$(document).ready(function () {
+		$("#main-nav").addClass("__color-second");
+		$("#MSearchField").addClass("__color-third");
+		$("#MSearchBox .left #MSearchSelect").ready(function () {
+			$("#MSearchBox .left #MSearchSelect").replaceWith('<i id="MSearchSelect" class="fa fa-search" aria-hidden="true" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"></i>');
+		});
+		$(".ui-resizable-handle").addClass("__color-fourth");
+		$(".contents .directory tbody tr td.entry span.icona .icon").ready(function () {
+			$(".contents .directory tbody tr td.entry span.icona .icon").replaceWith('<i class="fa fa-code reicon" aria-hidden="true"></i>');
+		});
+		$(".contents .directory tbody tr td.entry a .icondoc").ready(function () {
+			$(".contents .directory tbody tr td.entry a .icondoc").replaceWith('<i class="fa fa-file icndoc" aria-hidden="true"></i>');
+		});
+		$(".contents .memtitle .permalink a").ready(function () {
+			var a_ = $(".contents .memtitle .permalink a");
+			a_.replaceWith('<a href="' + a_.attr('href') + '">' + '<i class="fa fa-cube" aria-hidden="true"></i></a>');
+		});
+		$("table.classindex").ready(function () {
+			var t_content = []
+			var t_table = $("table.classindex tbody").children("tr");
+			t_table.each(function (row) {
+				var t_td = $(t_table[row]).children("td");
+				t_td.each(function (cell) {
+					if ($(t_td[cell]).attr("rowspan") == 2) {
+					} else {
+						if ($(t_td[cell]).children("a").text().length != 0) {
+							t_content.push({ "a-link": $(t_td[cell]).children("a").attr("href"), "a-content": $(t_td[cell]).children("a").text() });
+						}
+					}
+				});
+			});
+			$("table.classindex").replaceWith($("<div class='__st_index'></div>"));
+			function sort_by_key(array, key) {
+				return array.sort(function (a, b) {
+					var x = a[key]; var y = b[key];
+					return x.charCodeAt(0) - y.charCodeAt(0);
+				});
+			}
+			var new_t_content = sort_by_key(t_content, 'a-content');
+			var __t_h_letters = [];
+			var __t_h_ltr = [];
+			function find_in_array(array, name) {
+				array.forEach(function (e) {
+					if (e.letter == name) {
+						return true;
+					}
+				});
+				return false;
+			}
+			var __t_h_single_letter = [];
+			var __t_h_last_letter;
+			new_t_content.forEach(function (cell) {
+				if (__t_h_last_letter != cell["a-content"][0]) {
+					__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+					__t_h_single_letter = [];
+				}
+				if (!find_in_array(__t_h_letters, cell["a-content"][0])) {
+					__t_h_single_letter.push({ "a-link": cell["a-link"], "a-content": cell["a-content"] });
+					__t_h_last_letter = cell["a-content"][0];
+				}
+			});
+			__t_h_letters.push({ "letter": __t_h_last_letter, __t_h_single_letter });
+			__t_h_single_letter = [];
+			function viewportToPixel(val) {
+				var percent = val.match(/\d+/)[0] / 100,
+					unit = val.match(/[vwh]+/)[0];
+				return (unit == 'vh' ? $(window).height() : $(window).width()) * percent + 'px';
+			}
+			$.fn.overflown = function () { var e = this[0]; return e.scrollHeight > e.clientHeight || e.scrollWidth > e.clientWidth; }
+			__t_h_letters.forEach(function (e) {
+				if (e["letter"] != undefined) {
+					$('<header>' + e["letter"] + '</header>').appendTo(".__st_index");
+					e["__t_h_single_letter"].forEach(function (r) {
+						$('<div><a href=' + r["a-link"] + '>' + r["a-content"] + '</a></div>').appendTo(".__st_index");
+						if ($(".__st_index").overflown()) {
+							console.log($(".__st_index").css("height"));
+							console.log(viewportToPixel("1vh"));
+							$('.__st_index').height('+=40vh');
+						}
+					});
+				}
+			});
+		});
+	});
+</script>
+<body>
+	<div id="top">
+		<!-- do not remove this div, it is closed by doxygen! -->
+		<div id="titlearea" class="__color-master">
+			<a href="index.html">
+				<div id="ta_cnt">
+					<img alt="Logo" src="logo-white.svg" />
+					<div id="titlearea_desc">
+						<span>Aqua</span>
+						<span id="titlearea_desc-version">0.2/0.3</span>
+					</div>
+				</div>
+			</a>
+		</div>
+		<!-- end header part --><!-- Generated by Doxygen 1.8.15 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('include_2devices_2keyboard_8h.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">include/devices/keyboard.h File Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="device_8h_source.html">device.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="definitions_8h_source.html">definitions.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="include_2devices_2keyboard_8h_source.html">devices/keyboard.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="math_8h_source.html">math.h</a>&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+</div>
+<p><a href="include_2devices_2keyboard_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____dev__k__keybuffer____.html">__dev_k_keybuffer__</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____dev__keyboard____.html">__dev_keyboard__</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a145c3ba7d90a0d27ced2613cf788fe16"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a145c3ba7d90a0d27ced2613cf788fe16">key_clck</a>(key)&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a52f718f8603d219e208e28b97379d1b5">_key_clck</a>(key, <a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td></tr>
+<tr class="separator:a145c3ba7d90a0d27ced2613cf788fe16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ab2241c744dcefe47dda07bce035a7c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a1ab2241c744dcefe47dda07bce035a7c">set_key</a>(key)&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a5fb015326fb8806537828083b318f631">_set_key</a>(key, <a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td></tr>
+<tr class="separator:a1ab2241c744dcefe47dda07bce035a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb24178fd7f7ed2684c7e068e9f0a1c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a0eb24178fd7f7ed2684c7e068e9f0a1c">kbhit</a>()&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a32308d0248502d77da3e9569786ac0e3">_kbhit</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td></tr>
+<tr class="separator:a0eb24178fd7f7ed2684c7e068e9f0a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a517e72331a92aaf79848344129d30c49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a517e72331a92aaf79848344129d30c49">keycode</a>()&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#aa8f0354a48920c425cd8b72e09e9fa72">_keycode</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>, 1)</td></tr>
+<tr class="separator:a517e72331a92aaf79848344129d30c49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2e285d060449c0fd2a5d3d091dcc73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a0c2e285d060449c0fd2a5d3d091dcc73">_getch_</a>(LAYOUT)&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a1bb7f15ff7e4b4d70b1fccf660d22534">_getch</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>, LAYOUT, 1)</td></tr>
+<tr class="separator:a0c2e285d060449c0fd2a5d3d091dcc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af06d804ba4b13a2086f028475c0786f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#af06d804ba4b13a2086f028475c0786f4">getch</a>()&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a0c2e285d060449c0fd2a5d3d091dcc73">_getch_</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88a2913f3b9eebba2e69be521c232bd4ba9">_KB_LAYOUT_QWERTY</a>)</td></tr>
+<tr class="separator:af06d804ba4b13a2086f028475c0786f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a453614bf9f1dd7930edbb56230ef9638"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a453614bf9f1dd7930edbb56230ef9638">set_leds</a>(leds,  k)&#160;&#160;&#160;k-&gt;led_states ^= leds</td></tr>
+<tr class="separator:a453614bf9f1dd7930edbb56230ef9638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a709ca33159e4a6cc8e5d40c4295bfd1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a709ca33159e4a6cc8e5d40c4295bfd1a">set_and_update_leds</a>(leds,  k)</td></tr>
+<tr class="separator:a709ca33159e4a6cc8e5d40c4295bfd1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb1fec9cc016570f8563f0724d15e7da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#adb1fec9cc016570f8563f0724d15e7da">init_keyboard</a>()&#160;&#160;&#160;<a class="el" href="device_8h.html#a0b7114584bdb8b2bc6816542c884ec36">init_device</a>(<a class="el" href="device_8h.html#abefdb02b608d360123063dfd4985e9d8">devCast</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>), <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143a296dacc44fb9143c51bbe72befa590f7">__dev_keyboard</a>, _ps2)</td></tr>
+<tr class="separator:adb1fec9cc016570f8563f0724d15e7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ac50b6e364dab5e76df90d2d7a12d3aa8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____dev__k__keybuffer____.html">__dev_k_keybuffer__</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#ac50b6e364dab5e76df90d2d7a12d3aa8">_dev_k_keybuffer_</a></td></tr>
+<tr class="separator:ac50b6e364dab5e76df90d2d7a12d3aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a454a7e1275cd88e0a6b3c6f25ec9c0fa"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct____dev__keyboard____.html">__dev_keyboard__</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a></td></tr>
+<tr class="separator:a454a7e1275cd88e0a6b3c6f25ec9c0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a0d838a73613e80c21645b8cb7a02aecb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecb">_key_leds_</a> { <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba88558f40a55f9443cd598ac86cf08589">_KLED_CAPSLOCK</a> = 1, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba969511155c12f01918d1d68be252bceb">_KLED_SCRLOCK</a> = 2, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecba69112e183657072743b37b97bda504dd">_KLED_NUMLOCK</a> = 4
+ }</td></tr>
+<tr class="separator:a0d838a73613e80c21645b8cb7a02aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94d3da263ca4c2bc8f8f70fd9db5aa88"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88">_scancode_langs_</a> { <a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88a2913f3b9eebba2e69be521c232bd4ba9">_KB_LAYOUT_QWERTY</a>
+ }</td></tr>
+<tr class="separator:a94d3da263ca4c2bc8f8f70fd9db5aa88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a509f2109a9dec9ee0485866f74eb5066"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066">_keys_</a> { <br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af0b123218e6f1329d2c1e013257345fe">_K_ESC</a> = 0x01, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a31c8bffda9262bb7ed8a3ed44125f1c7">_K_1</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aa3f2472d3db86573a3caa7b651c99b49">_K_2</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7e1dbe80ba216cc433e1277905deb725">_K_3</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5510f1f734abce409f0c369de2b3400b">_K_4</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a1bd1d393c1f101fa21024d0d7cc7b2c1">_K_5</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9eefbfb5e169dc38bb4c18b62566ef62">_K_6</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad4f9ba17a54e1fda491c7d7a4ce740be">_K_7</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a6edf3e859b3e38231f62f602c86703db">_K_8</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a35df70de87f2960b864f0e8ce83c6b46">_K_9</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af95a1674cc2dc20d7be43c8ad794acee">_K_0</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac8f58d4700f2dcab290e7a8b8025066d">_K_DASH</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066abb6ea4c92b87a3b4a93bae207e5f4710">_K_EQUAL</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad9da1fde284a2da3e0929ec2eea596ff">_K_BACKSPACE</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a33fbd89995bf1c5ea85c6e7594af0d0f">_K_TAB</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a34775d781da528d0f2a326e7c055197d">_K_Q</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a52f6f8af3cb252f48bea50fcd5b67cad">_K_W</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7906e5db679ca5fb0a86aa60ddd80b4c">_K_E</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a8849b65d2ae3e979dd2b9cd11678fb67">_K_R</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4fdd30a2db8b17051104536689609b7d">_K_T</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a91e2b92f5a5d080c922863a6eec8bedc">_K_Y</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af0634ce66615bf2c9b343fb69e9123f2">_K_U</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a69c39e023f1bd7f09463bbee16c06453">_K_I</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5b0900cc6f4b05caf92dbf58ecdb4515">_K_O</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9288eed5b8c502a9c535d797ad485c64">_K_P</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a38a95f57f37dc1727e9e838790ef4577">_K_SQUARE_BRACKET_OP</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9263fdc90e62bbe7788e1c96cf622279">_K_SQUARE_BRACKET_EN</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a450ed4fe2ed8f8c28d42513bf5ee0ed8">_K_ENTER</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066adfd933a2fcde74572a2f7162cebd6a35">_K_LCTRL</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a21a796543a341403c77e11fad21204f2">_K_A</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a13468d542abe852d25da922bdb6441fb">_K_S</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af894915488ad4520aad7f5726132b89a">_K_D</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a635c1923e3a6595cc72add1cce863260">_K_F</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac4484098ac471780eb2f057018d3b573">_K_G</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac8563c58094a0701e8f2467deff99ff9">_K_H</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a44166a6209d09bb7e4868ea490c1850a">_K_J</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4edb63f289ec809630ee392d793aeef0">_K_K</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ad98b84d382e13da7dd28d0467fe2d97d">_K_L</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a1155bbd005378e14a4d766eb5bded957">_K_SEMICOLON</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ac752cc92352ae272eca347a1d988e41a">_K_SINGLE_QUOTE</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9ca847afcc15cfe2e5206826a66a2f3c">_K_BACK_TICK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7fdb9ad81f600d8a0f75108404427c9f">_K_LSHIFT</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a9e41568d5c4d8e9c771e1a02d09615da">_K_BACKSLASH</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a237d2ae8d541d7820054aeaabc2d1f5e">_K_Z</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a48668b049ee938673fbf169e5640db53">_K_X</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a50160f7b8f1160749305e69f2c224bba">_K_C</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4f5f2c7337a31755d0637e76704c1248">_K_V</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a5f8943e236c54a4be182ce0ab6d9e4f8">_K_B</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a58cd130272194ddda7843455342ab3a7">_K_N</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a639eb330388d72d14e20fdd1ca5a30bb">_K_M</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aed3c39ee4877de7ccc5f1793d9bf1cdd">_K_COMMA</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aabbb57d4783c600ffb3b21ba034b53ce">_K_DOT</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a803e75ec87cafdd25e3a1754f71ff74d">_K_SLASH</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af88c9ad7907132ecaa4280640e119786">_K_RSHIFT</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3423dbebb1dd12d1f1ad69d8ad348253">_K_MULTI</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ada889906b68757878a010e51cd7dcded">_K_LALT</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aba18d13868dbc5939f8e0afa70bcb0a8">_K_SPACE</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a67d4c12316180e0e5d9ee6756bdfd498">_K_CAPS_LOCK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7a48997049db17dd310352872341d54d">_K_F1</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066abaa291b0df005729330ab4bd39c82065">_K_F2</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aca209961cca4c0ac15faab720c8f34ba">_K_F3</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066acb2cd3bc7ca83d45acc3b0c4e4a156d6">_K_F4</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ab60c2a69d149a1edf5c56754afdfdb8c">_K_F5</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a86e75d27e30f9623d0fef6e850e66632">_K_F6</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aed8ea3bfba4d9c4f54036f022f43e8e1">_K_F7</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a0deaf8a08abf6b77cee7041efceee196">_K_F8</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aaf49fadf70c8b2627a6af0fe89500cc1">_K_F9</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a73f32fc1d9ce888e6b0b73ad146ca9ea">_K_F10</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a2b24dec3992805ad8495b59711f0f980">_K_NUMLOCK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aacbd03667151171c610cacf23135356e">_K_SCRLOCK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3164eb2ceda678ac3d063fea0bcb31bb">_K_NUM7</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a475a6215772316afd9ddd9672735929d">_K_NUM8</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066ae2dffc54972c597133f9ff910b0bd00a">_K_NUM9</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066acebd008749fb2a92a39891ac920516d8">_K_NUMMINUS</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066af37a85887388499ef716742759995978">_K_NUM4</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a928248f7963652d31fc3bc226928ac60">_K_NUM5</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a08bca9fb73987da23d47f69746db4e9e">_K_NUM6</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a4018721632a03cd310c677c021f30a9e">_K_NUMPLUS</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a3ec3753f2ac9d4a8c75445b5b477c30e">_K_NUM1</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a705dc67674aefb78736bc830abf2aac9">_K_NUM2</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a68dc5e423a871b722455e64a5364918c">_K_NUM3</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a918f3e7cdc41996b578de527b6b5ca81">_K_NUM0</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a2de0986c32d8efd6bc65bac049851fc3">_K_NUMDOT</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a37160b588c774a1e7ddce6c948432b9f">_K_F11</a> = 0x57, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a398dfd542bb40778b346563218a2f776">_K_F12</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a427416c80f6955970430e5573ca14a45">_K_R_CAPSLOCK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a05dc10cfa62a61c13b476cf1812ff38a">_K_R_SCRLCK</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a429a236640c91b8c43a781018515f9be">_K_R_NUMLOCK</a>, 
+<br />
+&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066aa71afb7fa6085385d8c7b842eea00fbc">_K_R_SHIFT</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a7c5847f541944dbf93ea70ae0352d85c">_K_R_CONTROL</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066a393783b5538406d2034befc4d29cfc7a">_K_COUNT</a> = _K_R_CONTROL
+<br />
+ }</td></tr>
+<tr class="separator:a509f2109a9dec9ee0485866f74eb5066"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ea4f6b79a777b070ba4df69acbfe997"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997">_dev_keyboard_proc_signals_</a> { <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a1e4802b6e3752979c7292f833a837696">__dev_keyboard_kbhit</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a3f3afd6c16d1198cbc72ab5079cb64be">__dev_keyboard_keycode</a>, 
+<a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997a6a54bf9b3f40c5e14d2369a5b7f34e43">__dev_keyboard_led</a>
+ }</td></tr>
+<tr class="separator:a1ea4f6b79a777b070ba4df69acbfe997"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a52f718f8603d219e208e28b97379d1b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a52f718f8603d219e208e28b97379d1b5">_key_clck</a> (char key, <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *k)</td></tr>
+<tr class="separator:a52f718f8603d219e208e28b97379d1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fb015326fb8806537828083b318f631"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a5fb015326fb8806537828083b318f631">_set_key</a> (char key, <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *k)</td></tr>
+<tr class="separator:a5fb015326fb8806537828083b318f631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95da6fcbc22be04776565361e1e65d30"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a95da6fcbc22be04776565361e1e65d30">translate_keycode</a> (uint8_t s, int layout, <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d)</td></tr>
+<tr class="separator:a95da6fcbc22be04776565361e1e65d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbb83c8bff959c983b00f17020db70da"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#abbb83c8bff959c983b00f17020db70da">access_keyboard_settings</a> (uint8_t s, <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d)</td></tr>
+<tr class="separator:abbb83c8bff959c983b00f17020db70da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32308d0248502d77da3e9569786ac0e3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a32308d0248502d77da3e9569786ac0e3">_kbhit</a> (<a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d)</td></tr>
+<tr class="separator:a32308d0248502d77da3e9569786ac0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f0354a48920c425cd8b72e09e9fa72"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#aa8f0354a48920c425cd8b72e09e9fa72">_keycode</a> (<a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d, char wait)</td></tr>
+<tr class="separator:aa8f0354a48920c425cd8b72e09e9fa72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb7f15ff7e4b4d70b1fccf660d22534"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a1bb7f15ff7e4b4d70b1fccf660d22534">_getch</a> (<a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d, int layout, char wait)</td></tr>
+<tr class="separator:a1bb7f15ff7e4b4d70b1fccf660d22534"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa123f47c1a5b2442bacab45cf1d4aa43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#aa123f47c1a5b2442bacab45cf1d4aa43">_update_led_states</a> (<a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *d)</td></tr>
+<tr class="separator:aa123f47c1a5b2442bacab45cf1d4aa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a4705d13671406b35b510da7d0d5a7895"><td class="memItemLeft" align="right" valign="top"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a> [1]</td></tr>
+<tr class="separator:a4705d13671406b35b510da7d0d5a7895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a0c2e285d060449c0fd2a5d3d091dcc73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2e285d060449c0fd2a5d3d091dcc73">&#9670;&nbsp;</a></span>_getch_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define _getch_</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">LAYOUT</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a1bb7f15ff7e4b4d70b1fccf660d22534">_getch</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>, LAYOUT, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00176">176</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="af06d804ba4b13a2086f028475c0786f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af06d804ba4b13a2086f028475c0786f4">&#9670;&nbsp;</a></span>getch</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define getch</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a0c2e285d060449c0fd2a5d3d091dcc73">_getch_</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88a2913f3b9eebba2e69be521c232bd4ba9">_KB_LAYOUT_QWERTY</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00177">177</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="adb1fec9cc016570f8563f0724d15e7da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb1fec9cc016570f8563f0724d15e7da">&#9670;&nbsp;</a></span>init_keyboard</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define init_keyboard</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="device_8h.html#a0b7114584bdb8b2bc6816542c884ec36">init_device</a>(<a class="el" href="device_8h.html#abefdb02b608d360123063dfd4985e9d8">devCast</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>), <a class="el" href="device_8h.html#a526e74d396b1d251a589901c19eeb143a296dacc44fb9143c51bbe72befa590f7">__dev_keyboard</a>, _ps2)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00190">190</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a0eb24178fd7f7ed2684c7e068e9f0a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb24178fd7f7ed2684c7e068e9f0a1c">&#9670;&nbsp;</a></span>kbhit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define kbhit</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a32308d0248502d77da3e9569786ac0e3">_kbhit</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00174">174</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a145c3ba7d90a0d27ced2613cf788fe16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a145c3ba7d90a0d27ced2613cf788fe16">&#9670;&nbsp;</a></span>key_clck</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define key_clck</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">key</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a52f718f8603d219e208e28b97379d1b5">_key_clck</a>(key, <a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00172">172</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a517e72331a92aaf79848344129d30c49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a517e72331a92aaf79848344129d30c49">&#9670;&nbsp;</a></span>keycode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define keycode</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#aa8f0354a48920c425cd8b72e09e9fa72">_keycode</a>(<a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>, 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00175">175</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a709ca33159e4a6cc8e5d40c4295bfd1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a709ca33159e4a6cc8e5d40c4295bfd1a">&#9670;&nbsp;</a></span>set_and_update_leds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define set_and_update_leds</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">leds, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">{                                \</div><div class="line">        set_leds(leds, k);           \</div><div class="line">        _update_led_states(k);       \</div><div class="line">    }</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00183">183</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a1ab2241c744dcefe47dda07bce035a7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ab2241c744dcefe47dda07bce035a7c">&#9670;&nbsp;</a></span>set_key</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define set_key</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">key</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="include_2devices_2keyboard_8h.html#a5fb015326fb8806537828083b318f631">_set_key</a>(key, <a class="el" href="include_2devices_2keyboard_8h.html#a4705d13671406b35b510da7d0d5a7895">def_keyboard</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00173">173</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a453614bf9f1dd7930edbb56230ef9638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a453614bf9f1dd7930edbb56230ef9638">&#9670;&nbsp;</a></span>set_leds</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define set_leds</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">leds, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">k&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;k-&gt;led_states ^= leds</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00180">180</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="ac50b6e364dab5e76df90d2d7a12d3aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac50b6e364dab5e76df90d2d7a12d3aa8">&#9670;&nbsp;</a></span>_dev_k_keybuffer_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____dev__k__keybuffer____.html">__dev_k_keybuffer__</a>  <a class="el" href="include_2devices_2keyboard_8h.html#ac50b6e364dab5e76df90d2d7a12d3aa8">_dev_k_keybuffer_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a454a7e1275cd88e0a6b3c6f25ec9c0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a454a7e1275cd88e0a6b3c6f25ec9c0fa">&#9670;&nbsp;</a></span>_dev_keyboard_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="struct____dev__keyboard____.html">__dev_keyboard__</a> <a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a1ea4f6b79a777b070ba4df69acbfe997"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea4f6b79a777b070ba4df69acbfe997">&#9670;&nbsp;</a></span>_dev_keyboard_proc_signals_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="include_2devices_2keyboard_8h.html#a1ea4f6b79a777b070ba4df69acbfe997">_dev_keyboard_proc_signals_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1ea4f6b79a777b070ba4df69acbfe997a1e4802b6e3752979c7292f833a837696"></a>__dev_keyboard_kbhit&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1ea4f6b79a777b070ba4df69acbfe997a3f3afd6c16d1198cbc72ab5079cb64be"></a>__dev_keyboard_keycode&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1ea4f6b79a777b070ba4df69acbfe997a6a54bf9b3f40c5e14d2369a5b7f34e43"></a>__dev_keyboard_led&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00123">123</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a0d838a73613e80c21645b8cb7a02aecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d838a73613e80c21645b8cb7a02aecb">&#9670;&nbsp;</a></span>_key_leds_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="include_2devices_2keyboard_8h.html#a0d838a73613e80c21645b8cb7a02aecb">_key_leds_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0d838a73613e80c21645b8cb7a02aecba88558f40a55f9443cd598ac86cf08589"></a>_KLED_CAPSLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d838a73613e80c21645b8cb7a02aecba969511155c12f01918d1d68be252bceb"></a>_KLED_SCRLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a0d838a73613e80c21645b8cb7a02aecba69112e183657072743b37b97bda504dd"></a>_KLED_NUMLOCK&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00011">11</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a509f2109a9dec9ee0485866f74eb5066"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a509f2109a9dec9ee0485866f74eb5066">&#9670;&nbsp;</a></span>_keys_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="include_2devices_2keyboard_8h.html#a509f2109a9dec9ee0485866f74eb5066">_keys_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af0b123218e6f1329d2c1e013257345fe"></a>_K_ESC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a31c8bffda9262bb7ed8a3ed44125f1c7"></a>_K_1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aa3f2472d3db86573a3caa7b651c99b49"></a>_K_2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a7e1dbe80ba216cc433e1277905deb725"></a>_K_3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a5510f1f734abce409f0c369de2b3400b"></a>_K_4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a1bd1d393c1f101fa21024d0d7cc7b2c1"></a>_K_5&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a9eefbfb5e169dc38bb4c18b62566ef62"></a>_K_6&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ad4f9ba17a54e1fda491c7d7a4ce740be"></a>_K_7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a6edf3e859b3e38231f62f602c86703db"></a>_K_8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a35df70de87f2960b864f0e8ce83c6b46"></a>_K_9&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af95a1674cc2dc20d7be43c8ad794acee"></a>_K_0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ac8f58d4700f2dcab290e7a8b8025066d"></a>_K_DASH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066abb6ea4c92b87a3b4a93bae207e5f4710"></a>_K_EQUAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ad9da1fde284a2da3e0929ec2eea596ff"></a>_K_BACKSPACE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a33fbd89995bf1c5ea85c6e7594af0d0f"></a>_K_TAB&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a34775d781da528d0f2a326e7c055197d"></a>_K_Q&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a52f6f8af3cb252f48bea50fcd5b67cad"></a>_K_W&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a7906e5db679ca5fb0a86aa60ddd80b4c"></a>_K_E&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a8849b65d2ae3e979dd2b9cd11678fb67"></a>_K_R&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a4fdd30a2db8b17051104536689609b7d"></a>_K_T&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a91e2b92f5a5d080c922863a6eec8bedc"></a>_K_Y&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af0634ce66615bf2c9b343fb69e9123f2"></a>_K_U&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a69c39e023f1bd7f09463bbee16c06453"></a>_K_I&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a5b0900cc6f4b05caf92dbf58ecdb4515"></a>_K_O&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a9288eed5b8c502a9c535d797ad485c64"></a>_K_P&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a38a95f57f37dc1727e9e838790ef4577"></a>_K_SQUARE_BRACKET_OP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a9263fdc90e62bbe7788e1c96cf622279"></a>_K_SQUARE_BRACKET_EN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a450ed4fe2ed8f8c28d42513bf5ee0ed8"></a>_K_ENTER&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066adfd933a2fcde74572a2f7162cebd6a35"></a>_K_LCTRL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a21a796543a341403c77e11fad21204f2"></a>_K_A&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a13468d542abe852d25da922bdb6441fb"></a>_K_S&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af894915488ad4520aad7f5726132b89a"></a>_K_D&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a635c1923e3a6595cc72add1cce863260"></a>_K_F&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ac4484098ac471780eb2f057018d3b573"></a>_K_G&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ac8563c58094a0701e8f2467deff99ff9"></a>_K_H&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a44166a6209d09bb7e4868ea490c1850a"></a>_K_J&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a4edb63f289ec809630ee392d793aeef0"></a>_K_K&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ad98b84d382e13da7dd28d0467fe2d97d"></a>_K_L&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a1155bbd005378e14a4d766eb5bded957"></a>_K_SEMICOLON&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ac752cc92352ae272eca347a1d988e41a"></a>_K_SINGLE_QUOTE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a9ca847afcc15cfe2e5206826a66a2f3c"></a>_K_BACK_TICK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a7fdb9ad81f600d8a0f75108404427c9f"></a>_K_LSHIFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a9e41568d5c4d8e9c771e1a02d09615da"></a>_K_BACKSLASH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a237d2ae8d541d7820054aeaabc2d1f5e"></a>_K_Z&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a48668b049ee938673fbf169e5640db53"></a>_K_X&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a50160f7b8f1160749305e69f2c224bba"></a>_K_C&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a4f5f2c7337a31755d0637e76704c1248"></a>_K_V&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a5f8943e236c54a4be182ce0ab6d9e4f8"></a>_K_B&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a58cd130272194ddda7843455342ab3a7"></a>_K_N&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a639eb330388d72d14e20fdd1ca5a30bb"></a>_K_M&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aed3c39ee4877de7ccc5f1793d9bf1cdd"></a>_K_COMMA&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aabbb57d4783c600ffb3b21ba034b53ce"></a>_K_DOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a803e75ec87cafdd25e3a1754f71ff74d"></a>_K_SLASH&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af88c9ad7907132ecaa4280640e119786"></a>_K_RSHIFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a3423dbebb1dd12d1f1ad69d8ad348253"></a>_K_MULTI&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ada889906b68757878a010e51cd7dcded"></a>_K_LALT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aba18d13868dbc5939f8e0afa70bcb0a8"></a>_K_SPACE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a67d4c12316180e0e5d9ee6756bdfd498"></a>_K_CAPS_LOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a7a48997049db17dd310352872341d54d"></a>_K_F1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066abaa291b0df005729330ab4bd39c82065"></a>_K_F2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aca209961cca4c0ac15faab720c8f34ba"></a>_K_F3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066acb2cd3bc7ca83d45acc3b0c4e4a156d6"></a>_K_F4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ab60c2a69d149a1edf5c56754afdfdb8c"></a>_K_F5&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a86e75d27e30f9623d0fef6e850e66632"></a>_K_F6&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aed8ea3bfba4d9c4f54036f022f43e8e1"></a>_K_F7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a0deaf8a08abf6b77cee7041efceee196"></a>_K_F8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aaf49fadf70c8b2627a6af0fe89500cc1"></a>_K_F9&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a73f32fc1d9ce888e6b0b73ad146ca9ea"></a>_K_F10&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a2b24dec3992805ad8495b59711f0f980"></a>_K_NUMLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aacbd03667151171c610cacf23135356e"></a>_K_SCRLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a3164eb2ceda678ac3d063fea0bcb31bb"></a>_K_NUM7&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a475a6215772316afd9ddd9672735929d"></a>_K_NUM8&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066ae2dffc54972c597133f9ff910b0bd00a"></a>_K_NUM9&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066acebd008749fb2a92a39891ac920516d8"></a>_K_NUMMINUS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066af37a85887388499ef716742759995978"></a>_K_NUM4&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a928248f7963652d31fc3bc226928ac60"></a>_K_NUM5&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a08bca9fb73987da23d47f69746db4e9e"></a>_K_NUM6&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a4018721632a03cd310c677c021f30a9e"></a>_K_NUMPLUS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a3ec3753f2ac9d4a8c75445b5b477c30e"></a>_K_NUM1&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a705dc67674aefb78736bc830abf2aac9"></a>_K_NUM2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a68dc5e423a871b722455e64a5364918c"></a>_K_NUM3&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a918f3e7cdc41996b578de527b6b5ca81"></a>_K_NUM0&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a2de0986c32d8efd6bc65bac049851fc3"></a>_K_NUMDOT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a37160b588c774a1e7ddce6c948432b9f"></a>_K_F11&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a398dfd542bb40778b346563218a2f776"></a>_K_F12&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a427416c80f6955970430e5573ca14a45"></a>_K_R_CAPSLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a05dc10cfa62a61c13b476cf1812ff38a"></a>_K_R_SCRLCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a429a236640c91b8c43a781018515f9be"></a>_K_R_NUMLOCK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066aa71afb7fa6085385d8c7b842eea00fbc"></a>_K_R_SHIFT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a7c5847f541944dbf93ea70ae0352d85c"></a>_K_R_CONTROL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a509f2109a9dec9ee0485866f74eb5066a393783b5538406d2034befc4d29cfc7a"></a>_K_COUNT&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00023">23</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<a id="a94d3da263ca4c2bc8f8f70fd9db5aa88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94d3da263ca4c2bc8f8f70fd9db5aa88">&#9670;&nbsp;</a></span>_scancode_langs_</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="include_2devices_2keyboard_8h.html#a94d3da263ca4c2bc8f8f70fd9db5aa88">_scancode_langs_</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a94d3da263ca4c2bc8f8f70fd9db5aa88a2913f3b9eebba2e69be521c232bd4ba9"></a>_KB_LAYOUT_QWERTY&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="include_2devices_2keyboard_8h_source.html#l00018">18</a> of file <a class="el" href="include_2devices_2keyboard_8h_source.html">include/devices/keyboard.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a1bb7f15ff7e4b4d70b1fccf660d22534"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb7f15ff7e4b4d70b1fccf660d22534">&#9670;&nbsp;</a></span>_getch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char _getch </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00029">29</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="a32308d0248502d77da3e9569786ac0e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32308d0248502d77da3e9569786ac0e3">&#9670;&nbsp;</a></span>_kbhit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _kbhit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00017">17</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="a52f718f8603d219e208e28b97379d1b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52f718f8603d219e208e28b97379d1b5">&#9670;&nbsp;</a></span>_key_clck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _key_clck </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00009">9</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="aa8f0354a48920c425cd8b72e09e9fa72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8f0354a48920c425cd8b72e09e9fa72">&#9670;&nbsp;</a></span>_keycode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t _keycode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>wait</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00021">21</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="a5fb015326fb8806537828083b318f631"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fb015326fb8806537828083b318f631">&#9670;&nbsp;</a></span>_set_key()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _set_key </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00013">13</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="aa123f47c1a5b2442bacab45cf1d4aa43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa123f47c1a5b2442bacab45cf1d4aa43">&#9670;&nbsp;</a></span>_update_led_states()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _update_led_states </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00033">33</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="abbb83c8bff959c983b00f17020db70da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbb83c8bff959c983b00f17020db70da">&#9670;&nbsp;</a></span>access_keyboard_settings()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t access_keyboard_settings </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00037">37</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<a id="a95da6fcbc22be04776565361e1e65d30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95da6fcbc22be04776565361e1e65d30">&#9670;&nbsp;</a></span>translate_keycode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t translate_keycode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>layout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> *&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="devices_2keyboard_8c_source.html#l00091">91</a> of file <a class="el" href="devices_2keyboard_8c_source.html">devices/keyboard.c</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a4705d13671406b35b510da7d0d5a7895"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4705d13671406b35b510da7d0d5a7895">&#9670;&nbsp;</a></span>def_keyboard</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="include_2devices_2keyboard_8h.html#a454a7e1275cd88e0a6b3c6f25ec9c0fa">_dev_keyboard_</a> def_keyboard[1]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- HTML footer for doxygen 1.8.15-->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_dc43877d82dd332f9fb2071fcca799d6.html">kernel</a></li><li class="navelem"><a class="el" href="dir_009f605b833ac4622acd6c3c0c26c0f0.html">include</a></li><li class="navelem"><a class="el" href="dir_b8de6bdb0bfd32a791f104a8b51b3368.html">devices</a></li><li class="navelem"><a class="el" href="include_2devices_2keyboard_8h.html">keyboard.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
+</body>
+</html>
