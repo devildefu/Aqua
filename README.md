@@ -1,11 +1,6 @@
 # Aqua
 Operating system made for fun. Use pull requests to help us in developing.
 
-<p align=center>
-  <img alt="Stable version" src="https://img.shields.io/badge/stable-0.2-blue.svg">
-  <img alt="Preview version" src="https://img.shields.io/badge/preview-0.3-red.svg">
-</p>
-
 # Preparation
 
 To compile Aqua, you need exactly:
